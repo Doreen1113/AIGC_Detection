@@ -1,0 +1,9 @@
+
+濾鏡類型：Face Reshaping (瘦臉)
+方法：MediaPipe FaceLandmarker (Tasks API) 偵測臉頰位置 + 局部 warp，縮臉比例 = 0.92
+對臉做了什麼：以臉部中心為基準，將臉頰局部像素向內位移，造成臉型變窄/變瘦的視覺效果
+
+量化結果：
+- 臉頰寬度（landmark 234↔454 距離）：143.09px → 131.65px（縮減 8.0%）
+
+可能的偵測特徵：臉部輪廓與耳朵/髮際線比例不自然、landmark 幾何比例異常、局部區域出現像素扭曲（warp artifact）

@@ -1,0 +1,64 @@
+學妹你們好，我有看了你們的 proposal，先簡單講一下我的想法：你們現在的方向是有 ok 的，但我會建議先把範圍收斂一點，先做出一個穩定的 baseline，再慢慢往解釋性和 mobile 端延伸。以你們目前的規劃來看，MobileNetV4 當主 backbone 是合理的，因為它比較符合 edge / mobile 的需求；Qwen2-VL + LoRA 也可以試，但我比較建議把它當成 teacher 或 control group，因為整體訓練和調參成本會比較高，進度比較容易被拖住，等後期如果還有時間再去研究，前期先不一定要把這部分當主線。
+
+我覺得在開始實驗之前，建議你們先把幾個地方定義清楚：
+1. filter 的定義要先明確
+你們的 filter 指的到底是什麼，是對光影的調整，還是對人臉的修改之類的。建議先限定在比較明確的人臉美顏或 retouch 類型，例如 smoothing、whitening、臉型修飾這種，不然「filter」這個範圍會太大，後面標註和訓練都會很容易混亂。這部分也可以看看有沒有相關的 paper 有提到 filter 的定義，如果比較少的話，就先想想看怎麼定義會比較可解釋、不會產生歧義，也比較方便實作。
+2. 第一版先不要做太多任務
+你們現在同時想做 AIGC 偵測、filter 偵測、解釋、還有 mobile app，我覺得會有點太多。比較穩的做法是先做：
+    * real / fake / filter-processed
+或者先做
+    * real vs manipulated
+再慢慢往下拆。
+3. explanation 先不要直接做自由生成
+如果一開始就想讓模型直接產生完整自然語言說明，難度會蠻高，而且容易不穩。比較建議先做 structured clues + template-based explanation，例如先輸出「哪裡可疑、可疑類型是什麼」，再套模板轉成文字，這樣會比較實作得出來，也比較好評估。這邊也要先定義清楚模型輸出的格式，像是：
+    * suspicious region
+    * artifact type
+    * confidence
+    * explanation sentence
+這樣後面訓練和評估才會有一致標準。
+4. MobileNetV4 如果要加解釋，建議用「輕量可解釋」的方式做
+我會建議你們不要期待 MobileNetV4 自己像 VLM 一樣直接生長篇解釋，而是讓它輸出比較結構化的訊號，再轉成可讀的說明，例如：
+    * 用 Grad-CAM / Score-CAM 顯示可疑區域
+    * 再搭配固定模板產生簡短 explanation
+    * 或者輸出一些 artifact tags，例如 over-smoothing / unnatural skin texture / inconsistent contour 
+    * 這樣會比直接讓小模型生成自由文字穩很多，也比較符合你們想做的 lightweight / edge-friendly 方向。
+如果後面真的想做更進階的 explanation，可以考慮把大模型產生的 artifact clues 蒸餾給小模型，但這個可以放在第二階段。
+5. 資料集的部分要先確認分佈和標註方式
+你們現在如果會混用不同資料集，這邊要特別小心，因為不同資料集很容易有 domain gap，模型可能學到的是資料來源差異，不一定是真正的 AIGC 或 filter 特徵。建議先確認：
+    * 每個資料集的標籤定義是不是一致
+    * train / val / test 要怎麼切
+    * 有沒有 identity leakage
+    * 不同資料集混訓時，是否要做 cross-dataset evaluation
+    * 或者是最好先做單一資料集的 baseline，再去測跨資料集表現，這樣會比較看得出模型是不是有真的學到泛化能力
+6. evaluation metrics 也要先定義好
+我會建議你們不要只看 accuracy，也可以看：
+    * Accuracy
+    * Precision / Recall / F1
+    * AUROC
+    * Latency / inference time
+    * Model size / parameter count
+    * Memory / VRAM usage …
+    * 如果你們有做 explanation，也可以再補相關的metrics
+這樣你們最後就不會只有說「準不準」，也能說明模型是不是「夠快、夠小、也夠可解釋」。
+
+模型方面，我會建議你們可以這樣試：
+* MobileNetV4：baseline，最符合你們的目標。
+* EfficientNet-Lite / RepViT / FastViT：可以當輕量對照組，比較準確率和速度。
+* Qwen2-VL + LoRA：可以試，但比較適合當 teacher / 比較組，不建議直接當主模型。
+
+如果你們最後想做解釋能力，我會比較建議把大模型產生的 artifact clues 蒸餾到小模型上，而不是讓小模型自己直接生成長篇文字，這樣會比較可控。
+
+如果要看 paper，我會建議先找這幾類：
+* MobileNet：了解模型的架構和細節。
+* FakeShield：偏向可解釋偵測和定位。
+* FakeVLM：偏向 vision-language explanation。
+* HEIE：跟可解釋 AIGC 偵測的方向很接近。
+* Deepfake-Eval 2024 這類 benchmark paper：可以幫你們了解真實場景怎麼評估。
+* 如果你們要補資料集和定義，也可以再找跟 filter / retouching detection 有關的 paper，幫你們把 filter 的範圍定得更清楚。
+找 paper 的時候可以儘量看近幾年的，如果是模型或者是方法類的可以儘量找有 source code 的，復現起來會比較方便。
+
+整體來說，我會建議你們現在的順序是：
+1. 先確認 filter 的定義、任務範圍和資料標註方式
+2. 再把 baseline 實作出來，先確認模型在核心任務上是可行的
+3. 再加 explanation，而且先以輕量、結構化的方式做
+4. 最後再考慮 mobile app / on-device 部署

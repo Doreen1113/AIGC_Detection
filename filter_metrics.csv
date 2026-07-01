@@ -1,0 +1,5 @@
+Filter,n_success,avg_PSNR(dB),avg_SSIM,avg_texture_reduction_%,avg_brightness_delta(L),avg_eye_ratio_change_%,avg_cheek_width_shrink_%
+Smoothing,10,37.65,0.9726,43.26,,,
+Whitening,10,31.02,0.9904,,15.1,,
+Eye Enlarging,10,34.38,0.9783,,,0.33,
+Face Reshaping,10,26.22,0.8866,,,,8.0

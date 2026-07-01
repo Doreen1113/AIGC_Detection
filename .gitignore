@@ -1,0 +1,29 @@
+# 資料集（太大）
+AIGuard/real/
+AIGuard/fake/
+AIGuard/unseen/
+
+# 模型權重（大檔）
+*.pth
+*.pt
+*.task
+
+# 輸出圖片資料夾
+filter_output/
+gradcam_output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# 系統
+.DS_Store
+Thumbs.db
+
+# log
+*.log
+*.txt
+!tip.txt
+!face_reshaping_report.txt

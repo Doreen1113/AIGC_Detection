@@ -161,5 +161,5 @@ for name in model_names:
 print("\n" + "="*70 + "\nBASELINE COMPARISON SUMMARY (4 models)\n" + "="*70)
 df = pd.DataFrame(results).T
 print(df.to_string())
-df.to_csv("baseline_comparison.csv")
+df.to_csv(os.path.join(base_path, "..", "results", "baseline_comparison.csv"))
 print("\nSaved to baseline_comparison.csv")

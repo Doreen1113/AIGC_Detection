@@ -18,6 +18,9 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 
+CLAUDE.md
+.claude/
+
 # 系統
 .DS_Store
 Thumbs.db

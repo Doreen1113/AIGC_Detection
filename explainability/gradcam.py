@@ -5,7 +5,7 @@ Step 2: 對 5 張 real + 5 張 fake 圖跑 Grad-CAM
 Step 3: 輸出 heatmap overlay 到 gradcam_output/
 
 執行環境：base conda env（有 torch, torchvision, timm）
-    python gradcam.py
+    python explainability/gradcam.py
 """
 
 import os, random, time

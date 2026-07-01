@@ -1,7 +1,8 @@
 """整合 4 個 filter 腳本，對 10 張 AIGuard/real 圖跑完並輸出 avg metrics table。
 
 執行環境：mediapipe_env
-    conda run -n mediapipe_env python filter_pipeline.py
+    conda activate mediapipe_env
+    python filters/pipeline.py
 """
 
 import os
@@ -373,12 +374,12 @@ def main():
     df = pd.DataFrame(rows)
     print(df.to_string(index=False))
 
-    out_csv = os.path.join(BASE, "filter_metrics.csv")
+    out_csv = os.path.join(BASE, "results", "filter_metrics.csv")
     df.to_csv(out_csv, index=False)
     print(f"\nSaved → {out_csv}")
 
     # also save per-image detail
-    detail_csv = os.path.join(BASE, "filter_metrics_detail.csv")
+    detail_csv = os.path.join(BASE, "results", "filter_metrics_detail.csv")
     pd.DataFrame(per_image_rows).to_csv(detail_csv, index=False)
     print(f"Detail → {detail_csv}")
 

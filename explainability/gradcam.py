@@ -120,13 +120,14 @@ def train():
     return model
 
 # ──────────────────────────────────────────────
-# Grad-CAM
+# Grad-CAM++
 # ──────────────────────────────────────────────
-class GradCAM:
+class GradCAMPlusPlus:
     def __init__(self, model, target_layer):
         self.model = model
         self._act  = None
         self._grad = None
+        # 依然使用 Hook 捕捉前向與反向傳播的特徵圖與梯度
         target_layer.register_forward_hook(
             lambda m, i, o: setattr(self, '_act', o.detach()))
         target_layer.register_full_backward_hook(
@@ -137,6 +138,7 @@ class GradCAM:
         inp = inp.to(device).requires_grad_(False)
         out = self.model(inp)
         probs = torch.softmax(out, 1)[0]
+        
         if class_idx is None:
             class_idx = out.argmax(1).item()
 
@@ -144,35 +146,85 @@ class GradCAM:
         score = out[0, class_idx]
         score.backward()
 
-        weights = self._grad.mean(dim=[2, 3], keepdim=True)
-        cam = torch.relu((weights * self._act).sum(dim=1)).squeeze()
+        # ───【Grad-CAM++ 數學原理核心實作】───
+        # 1. 取得特徵圖與梯度
+        features = self._act         # Shape: [1, C, H, W]
+        gradients = self._grad       # Shape: [1, C, H, W]
+
+        # 2. 計算一階、二階、三階梯度，用來求解 Grad-CAM++ 的 alpha 權重
+        grads_power_2 = gradients ** 2
+        grads_power_3 = gradients ** 3
+
+        # 計算特徵圖在空間維度 (H, W) 的總和
+        sum_features = torch.sum(features, dim=[2, 3], keepdim=True)
+
+        # 根據 Grad-CAM++ 論文公式，計算每個像素梯度的加權係數 (alpha)
+        alpha_denom = 2 * grads_power_2 + sum_features * grads_power_3
+        # 避免除以 0
+        alpha_denom = torch.where(alpha_denom != 0, alpha_denom, torch.ones_like(alpha_denom))
+        
+        alpha = grads_power_2 / alpha_denom
+
+        # 3. 計算正向梯度的權重 (只考慮對預測有正向貢獻的梯度)
+        weights = torch.sum(alpha * torch.relu(gradients), dim=[2, 3], keepdim=True)
+
+        # 4. 對特徵圖進行加權求和，並套用 ReLU
+        cam = torch.relu((weights * features).sum(dim=1)).squeeze()
+        
+        # ───【後處理：縮放與歸一化】───
         cam = cam.cpu().numpy()
         cam = cv2.resize(cam, (224, 224))
         if cam.max() > cam.min():
             cam = (cam - cam.min()) / (cam.max() - cam.min())
+            
         return cam, class_idx, probs[class_idx].item()
-
 
 def overlay_heatmap(img_bgr, cam, alpha=0.45):
     """cam 疊在原圖上，紅色=高激活（可疑），藍色=低激活。"""
     heat = cv2.applyColorMap((cam * 255).astype(np.uint8), cv2.COLORMAP_JET)
     img_resized = cv2.resize(img_bgr, (224, 224))
-    return cv2.addWeighted(img_resized, 1 - alpha, heat, alpha, 0)
+    gradcam_blended = cv2.addWeighted(img_resized, 1 - alpha, heat, alpha, 0)
+    """
+    將 Grad-CAM++ 矩陣轉化為 FakeShield 風格的黑白精準遮罩 (Binary Mask)。
+    輸出將會是純黑白的影像：白色代表模型認定的偽造篡改區域，黑色為背景。
+    """
+    cam_gray = (cam * 255).astype(np.uint8)
+    _, binary_mask = cv2.threshold(cam_gray, 115, 255, cv2.THRESH_BINARY)
+    binary_mask_resized = cv2.resize(binary_mask, (224, 224))
+    fakeshield_mask = cv2.cvtColor(binary_mask_resized, cv2.COLOR_GRAY2BGR)
 
+    return gradcam_blended, fakeshield_mask
 
 def save_gradcam_figure(img_bgr, cam, pred_label, confidence, out_path, title):
-    overlay = overlay_heatmap(img_bgr, cam)
-    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    """
+    橫向三圖併排排版：
+    [ 1. 原始圖片 ] ---> [ 2. Grad-CAM++ 漸層 ] ---> [ 3. FakeShield 二值化遮罩 ]
+    """
+    # 呼叫修改後的函數，同時取得「漸層疊加圖」與「黑白遮罩」
+    gradcam_blended, fakeshield_mask = overlay_heatmap(img_bgr, cam)
+    
+    # 修改為 1 列 3 欄 (1, 3)
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+    
+    # 圖 1：原始輸入圖
     axes[0].imshow(cv2.cvtColor(cv2.resize(img_bgr, (224, 224)), cv2.COLOR_BGR2RGB))
-    axes[0].set_title("Original", fontsize=13, pad=8)
+    axes[0].set_title("1. Input Image", fontsize=12, pad=8)
     axes[0].axis("off")
-    axes[1].imshow(cv2.cvtColor(overlay, cv2.COLOR_BGR2RGB))
-    axes[1].set_title(
-        f"Grad-CAM  →  {pred_label}  ({confidence:.1%})", fontsize=13, pad=8)
+    
+    # 圖 2：Grad-CAM++ 漸層熱圖
+    axes[1].imshow(cv2.cvtColor(gradcam_blended, cv2.COLOR_BGR2RGB))
+    axes[1].set_title(f"2. Grad-CAM++ ({confidence:.1%})", fontsize=12, pad=8)
     axes[1].axis("off")
-    plt.suptitle(title, fontsize=11, y=1.01)
+    
+    # 圖 3：FakeShield 黑白二值化精準遮罩
+    axes[2].imshow(cv2.cvtColor(fakeshield_mask, cv2.COLOR_BGR2RGB))
+    axes[2].set_title(f"3. FakeShield Mask ({pred_label})", fontsize=12, pad=8)
+    axes[2].axis("off")
+    
+    # 排版與標題優化
+    plt.suptitle(title, fontsize=11, y=1.02)
     plt.tight_layout()
-    plt.savefig(out_path, dpi=120, bbox_inches="tight")
+    plt.savefig(out_path, dpi=130, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -191,8 +243,8 @@ def main():
         print("No checkpoint found, training from scratch...")
         model = train()
 
-    # ---- Grad-CAM：target = conv5（最後 1x1 conv 後的 feature map）----
-    gradcam = GradCAM(model, model.conv5)
+    # ---- Grad-CAM++：target = conv5（最後 1x1 conv 後的 feature map）----
+    gradcam = GradCAMPlusPlus(model, model.conv5)
 
     # ---- 選測試圖：5 real + 5 fake ----
     samples = []

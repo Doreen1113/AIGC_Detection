@@ -1,0 +1,3244 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{255}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[{$\!\!$}(1984)]%
+        {1984:1040142}
+ \bibinfo{year}{1984}\natexlab{}.
+\newblock \bibinfo{journal}{\emph{SIGCOMM Comput. Commun. Rev.}}
+  \bibinfo{volume}{13-14}, \bibinfo{number}{5-1} (\bibinfo{year}{1984}).
+\newblock
+\showISSN{0146-4833}
+
+
+\bibitem[Cze(2008)]%
+        {Czerwinski:2008:1358628}
+ \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{CHI '08: CHI '08 extended abstracts on
+  Human factors in computing systems}} (Florence, Italy).
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA}.
+\newblock
+\showISBNx{978-1-60558-012-X}
+\newblock
+\shownote{General Chair-Czerwinski, Mary and General Chair-Lund, Arnie and
+  Program Chair-Tan, Desney}.
+
+
+\bibitem[Ablamowicz and Fauser(2007)]%
+        {Ablamowicz07}
+\bibfield{author}{\bibinfo{person}{Rafal Ablamowicz} {and}
+  \bibinfo{person}{Bertfried Fauser}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{CLIFFORD: a Maple 11 Package for Clifford
+  Algebra Computations, version 11}}.
+\newblock
+\urldef\tempurl%
+\url{http://math.tntech.edu/rafal/cliff11/index.html}
+\showURL{%
+Retrieved February 28, 2008 from \tempurl}
+
+
+\bibitem[Abril and Plant(2007)]%
+        {Abril07}
+\bibfield{author}{\bibinfo{person}{Patricia~S. Abril} {and}
+  \bibinfo{person}{Robert Plant}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{The patent holder's dilemma: Buy, sell, or troll?}
+\newblock \bibinfo{journal}{\emph{Commun. ACM}} \bibinfo{volume}{50},
+  \bibinfo{number}{1} (\bibinfo{date}{Jan.} \bibinfo{year}{2007}),
+  \bibinfo{pages}{36--44}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1188913.1188915}
+\showDOI{\tempurl}
+
+
+\bibitem[Adya et~al\mbox{.}(2004)]%
+        {Adya-01}
+\bibfield{author}{\bibinfo{person}{A. Adya}, \bibinfo{person}{P. Bahl},
+  \bibinfo{person}{J. Padhye}, \bibinfo{person}{A.Wolman}, {and}
+  \bibinfo{person}{L. Zhou}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{A multi-radio unification protocol for {IEEE}
+  802.11 wireless networks}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE 1st International Conference on Broadnets Networks (BroadNets'04)}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{address}{Los Alamitos, CA},
+  \bibinfo{pages}{210--217}.
+\newblock
+
+
+\bibitem[Afchar et~al\mbox{.}(2018)]%
+        {afchar2018mesonet}
+\bibfield{author}{\bibinfo{person}{Darius Afchar}, \bibinfo{person}{Vincent
+  Nozick}, \bibinfo{person}{Junichi Yamagishi}, {and} \bibinfo{person}{Isao
+  Echizen}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Mesonet: a compact facial video forgery detection
+  network}. In \bibinfo{booktitle}{\emph{2018 IEEE international workshop on
+  information forensics and security (WIFS)}}. IEEE, \bibinfo{pages}{1--7}.
+\newblock
+
+
+\bibitem[Agarwal and Farid(2021)]%
+        {agarwal2021detecting}
+\bibfield{author}{\bibinfo{person}{Shruti Agarwal} {and} \bibinfo{person}{Hany
+  Farid}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Detecting deep-fake videos from aural and oral
+  dynamics}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{981--989}.
+\newblock
+
+
+\bibitem[Akyildiz et~al\mbox{.}(2007)]%
+        {Akyildiz-02}
+\bibfield{author}{\bibinfo{person}{I.~F. Akyildiz}, \bibinfo{person}{T.
+  Melodia}, {and} \bibinfo{person}{K.~R. Chowdhury}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{A Survey on Wireless Multimedia Sensor Networks}.
+\newblock \bibinfo{journal}{\emph{Computer Netw.}} \bibinfo{volume}{51},
+  \bibinfo{number}{4} (\bibinfo{year}{2007}), \bibinfo{pages}{921--960}.
+\newblock
+
+
+\bibitem[Akyildiz et~al\mbox{.}(2002)]%
+        {Akyildiz-01}
+\bibfield{author}{\bibinfo{person}{I.~F. Akyildiz}, \bibinfo{person}{W. Su},
+  \bibinfo{person}{Y. Sankarasubramaniam}, {and} \bibinfo{person}{E. Cayirci}.}
+  \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Wireless Sensor Networks: A Survey}.
+\newblock \bibinfo{journal}{\emph{Comm. ACM}} \bibinfo{volume}{38},
+  \bibinfo{number}{4} (\bibinfo{year}{2002}), \bibinfo{pages}{393--422}.
+\newblock
+
+
+\bibitem[American Mathematical Society(2015)]%
+        {Amsthm15}
+American Mathematical Society \bibinfo{year}{2015}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Using the amsthm Package}}.
+\newblock American Mathematical Society.
+\newblock
+\newblock
+\shownote{\url{http://www.ctan.org/pkg/amsthm}}.
+
+
+\bibitem[Amerini et~al\mbox{.}(2019)]%
+        {opticalflow2019}
+\bibfield{author}{\bibinfo{person}{Irene Amerini}, \bibinfo{person}{Leonardo
+  Galteri}, \bibinfo{person}{Roberto Caldelli}, {and} \bibinfo{person}{Alberto
+  Del~Bimbo}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deepfake video detection through optical flow based
+  cnn}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision workshops}}. \bibinfo{pages}{0--0}.
+\newblock
+
+
+\bibitem[Andler(1979)]%
+        {Andler79}
+\bibfield{author}{\bibinfo{person}{Sten Andler}.}
+  \bibinfo{year}{1979}\natexlab{}.
+\newblock \showarticletitle{Predicate Path expressions}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 6th. ACM SIGACT-SIGPLAN
+  symposium on Principles of Programming Languages}}
+  \emph{(\bibinfo{series}{POPL '79})}. \bibinfo{publisher}{ACM Press},
+  \bibinfo{address}{New York, NY}, \bibinfo{pages}{226--236}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/567752.567774}
+\showDOI{\tempurl}
+
+
+\bibitem[Anisi(2003)]%
+        {anisi03}
+\bibfield{author}{\bibinfo{person}{David~A. Anisi}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \emph{\bibinfo{title}{Optimal Motion Control of a Ground Vehicle}}.
+\newblock \bibinfo{thesistype}{Master's\ thesis}. \bibinfo{school}{Royal
+  Institute of Technology (KTH), Stockholm, Sweden}.
+\newblock
+
+
+\bibitem[Anzaroot and McCallum(2013)]%
+        {UMassCitations}
+\bibfield{author}{\bibinfo{person}{Sam Anzaroot} {and} \bibinfo{person}{Andrew
+  McCallum}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{{UMass} Citation Field Extraction
+  Dataset}}.
+\newblock
+\urldef\tempurl%
+\url{http://www.iesl.cs.umass.edu/data/data-umasscitationfield}
+\showURL{%
+Retrieved May 27, 2019 from \tempurl}
+
+
+\bibitem[Anzaroot et~al\mbox{.}(2014)]%
+        {AnzarootPBM14}
+\bibfield{author}{\bibinfo{person}{Sam Anzaroot}, \bibinfo{person}{Alexandre
+  Passos}, \bibinfo{person}{David Belanger}, {and} \bibinfo{person}{Andrew
+  McCallum}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \bibinfo{title}{Learning Soft Linear Constraints with Application to
+  Citation Field Extraction}.
+\newblock
+\newblock
+\showeprint[arxiv]{1403.1349}
+
+
+\bibitem[{Archer, Jr.} et~al\mbox{.}(1984)]%
+        {6:1:1}
+\bibfield{author}{\bibinfo{person}{J.~E. {Archer, Jr.}}, \bibinfo{person}{R.
+  Conway}, {and} \bibinfo{person}{F.~B. Schneider}.}
+  \bibinfo{year}{1984}\natexlab{}.
+\newblock \showarticletitle{User recovery and reversal in interactive systems}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{6}, \bibinfo{number}{1} (\bibinfo{date}{Jan.}
+  \bibinfo{year}{1984}), \bibinfo{pages}{1--19}.
+\newblock
+
+
+\bibitem[Asnani et~al\mbox{.}(2022)]%
+        {asnani2022proactive}
+\bibfield{author}{\bibinfo{person}{Vishal Asnani}, \bibinfo{person}{Xi Yin},
+  \bibinfo{person}{Tal Hassner}, \bibinfo{person}{Sijia Liu}, {and}
+  \bibinfo{person}{Xiaoming Liu}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Proactive Image Manipulation Detection}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition}}. \bibinfo{pages}{15386--15395}.
+\newblock
+
+
+\bibitem[Bahl et~al\mbox{.}(2004)]%
+        {Bahl-02}
+\bibfield{author}{\bibinfo{person}{P. Bahl}, \bibinfo{person}{R. Chancre},
+  {and} \bibinfo{person}{J. Dungeon}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{{SSCH}: Slotted Seeded Channel Hopping for Capacity
+  Improvement in {IEEE} 802.11 Ad-Hoc Wireless Networks}. In
+  \bibinfo{booktitle}{\emph{Proceeding of the 10th International Conference on
+  Mobile Computing and Networking (MobiCom'04)}}. \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY}, \bibinfo{pages}{112--117}.
+\newblock
+
+
+\bibitem[Bharati et~al\mbox{.}(2016)]%
+        {bharati2016detecting}
+\bibfield{author}{\bibinfo{person}{Aparna Bharati}, \bibinfo{person}{Richa
+  Singh}, \bibinfo{person}{Mayank Vatsa}, {and} \bibinfo{person}{Kevin~W
+  Bowyer}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Detecting facial retouching using supervised deep
+  learning}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Information Forensics
+  and Security}} \bibinfo{volume}{11}, \bibinfo{number}{9}
+  (\bibinfo{year}{2016}), \bibinfo{pages}{1903--1913}.
+\newblock
+
+
+\bibitem[Bharati et~al\mbox{.}(2017)]%
+        {bharati2017demography}
+\bibfield{author}{\bibinfo{person}{Aparna Bharati}, \bibinfo{person}{Mayank
+  Vatsa}, \bibinfo{person}{Richa Singh}, \bibinfo{person}{Kevin~W Bowyer},
+  {and} \bibinfo{person}{Xin Tong}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Demography-based facial retouching detection using
+  subclass supervised sparse autoencoder}. In \bibinfo{booktitle}{\emph{2017
+  IEEE international joint conference on biometrics (IJCB)}}. IEEE,
+  \bibinfo{pages}{474--482}.
+\newblock
+
+
+\bibitem[Bornmann et~al\mbox{.}(2019)]%
+        {Bornmann2019}
+\bibfield{author}{\bibinfo{person}{Lutz Bornmann}, \bibinfo{person}{K.~Brad
+  Wray}, {and} \bibinfo{person}{Robin Haunschild}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{Citation concept analysis {(CCA)}---A new form of
+  citation analysis revealing the usefulness of concepts for other researchers
+  illustrated by two exemplary case studies including classic books by {Thomas
+  S.~Kuhn} and {Karl R.~Popper}}.
+\newblock
+\newblock
+\showeprint[arxiv]{1905.12410}~[cs.DL]
+
+
+\bibitem[Bowman et~al\mbox{.}(1993)]%
+        {bowman:reasoning}
+\bibfield{author}{\bibinfo{person}{Mic Bowman}, \bibinfo{person}{Saumya~K.
+  Debray}, {and} \bibinfo{person}{Larry~L. Peterson}.}
+  \bibinfo{year}{1993}\natexlab{}.
+\newblock \showarticletitle{Reasoning About Naming Systems}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{15}, \bibinfo{number}{5} (\bibinfo{date}{November}
+  \bibinfo{year}{1993}), \bibinfo{pages}{795--825}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/161468.161471}
+\showDOI{\tempurl}
+
+
+\bibitem[Braams(1991)]%
+        {braams:babel}
+\bibfield{author}{\bibinfo{person}{Johannes Braams}.}
+  \bibinfo{year}{1991}\natexlab{}.
+\newblock \showarticletitle{Babel, a Multilingual Style-Option System for Use
+  with LaTeX's Standard Document Styles}.
+\newblock \bibinfo{journal}{\emph{TUGboat}} \bibinfo{volume}{12},
+  \bibinfo{number}{2} (\bibinfo{date}{June} \bibinfo{year}{1991}),
+  \bibinfo{pages}{291--301}.
+\newblock
+
+
+\bibitem[Buslaev et~al\mbox{.}(2020)]%
+        {Albumentations}
+\bibfield{author}{\bibinfo{person}{Alexander Buslaev},
+  \bibinfo{person}{Vladimir~I. Iglovikov}, \bibinfo{person}{Eugene
+  Khvedchenya}, \bibinfo{person}{Alex Parinov}, \bibinfo{person}{Mikhail
+  Druzhinin}, {and} \bibinfo{person}{Alexandr~A. Kalinin}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Albumentations: Fast and Flexible Image
+  Augmentations}.
+\newblock \bibinfo{journal}{\emph{Information}} \bibinfo{volume}{11},
+  \bibinfo{number}{2} (\bibinfo{year}{2020}).
+\newblock
+\showISSN{2078-2489}
+\urldef\tempurl%
+\url{https://doi.org/10.3390/info11020125}
+\showDOI{\tempurl}
+
+
+\bibitem[Buss et~al\mbox{.}(1987a)]%
+        {897367}
+\bibfield{author}{\bibinfo{person}{Jonathan~F. Buss},
+  \bibinfo{person}{Arnold~L. Rosenberg}, {and} \bibinfo{person}{Judson~D.
+  Knott}.} \bibinfo{year}{1987}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{Vertex Types in Book-Embeddings}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{address}{Amherst, MA,
+  USA}.
+\newblock
+
+
+\bibitem[Buss et~al\mbox{.}(1987b)]%
+        {Buss:1987:VTB:897367}
+\bibfield{author}{\bibinfo{person}{Jonathan~F. Buss},
+  \bibinfo{person}{Arnold~L. Rosenberg}, {and} \bibinfo{person}{Judson~D.
+  Knott}.} \bibinfo{year}{1987}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{Vertex Types in Book-Embeddings}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{address}{Amherst, MA,
+  USA}.
+\newblock
+
+
+\bibitem[Cao et~al\mbox{.}(2018)]%
+        {cao2018vggface2}
+\bibfield{author}{\bibinfo{person}{Qiong Cao}, \bibinfo{person}{Li Shen},
+  \bibinfo{person}{Weidi Xie}, \bibinfo{person}{Omkar~M Parkhi}, {and}
+  \bibinfo{person}{Andrew Zisserman}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Vggface2: A dataset for recognising faces across
+  pose and age}. In \bibinfo{booktitle}{\emph{2018 13th IEEE international
+  conference on automatic face \& gesture recognition (FG 2018)}}. IEEE,
+  \bibinfo{pages}{67--74}.
+\newblock
+
+
+\bibitem[Carreira and Zisserman(2017)]%
+        {carreira2017quo}
+\bibfield{author}{\bibinfo{person}{Joao Carreira} {and} \bibinfo{person}{Andrew
+  Zisserman}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Quo vadis, action recognition? a new model and the
+  kinetics dataset}. In \bibinfo{booktitle}{\emph{proceedings of the IEEE
+  Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{6299--6308}.
+\newblock
+
+
+\bibitem[Chai et~al\mbox{.}(2020)]%
+        {chai2020makes}
+\bibfield{author}{\bibinfo{person}{Lucy Chai}, \bibinfo{person}{David Bau},
+  \bibinfo{person}{Ser-Nam Lim}, {and} \bibinfo{person}{Phillip Isola}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{What makes fake images detectable? understanding
+  properties that generalize}. In \bibinfo{booktitle}{\emph{European conference
+  on computer vision}}. Springer, \bibinfo{pages}{103--120}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2013)]%
+        {MIW}
+\bibfield{author}{\bibinfo{person}{Cunjian Chen}, \bibinfo{person}{Antitza
+  Dantcheva}, {and} \bibinfo{person}{Arun Ross}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Automatic facial makeup detection with application
+  in face recognition}. In \bibinfo{booktitle}{\emph{2013 international
+  conference on biometrics (ICB)}}. IEEE, \bibinfo{pages}{1--8}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2021b)]%
+        {chen2021crossvit}
+\bibfield{author}{\bibinfo{person}{Chun-Fu~Richard Chen},
+  \bibinfo{person}{Quanfu Fan}, {and} \bibinfo{person}{Rameswar Panda}.}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Crossvit: Cross-attention multi-scale vision
+  transformer for image classification}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision}}. \bibinfo{pages}{357--366}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2019)]%
+        {chen2019beautyglow}
+\bibfield{author}{\bibinfo{person}{Hung-Jen Chen}, \bibinfo{person}{Ka-Ming
+  Hui}, \bibinfo{person}{Szu-Yu Wang}, \bibinfo{person}{Li-Wu Tsao},
+  \bibinfo{person}{Hong-Han Shuai}, {and} \bibinfo{person}{Wen-Huang Cheng}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Beautyglow: On-demand makeup transfer framework
+  with reversible generative network}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{10042--10050}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2021c)]%
+        {chen2021local}
+\bibfield{author}{\bibinfo{person}{Shen Chen}, \bibinfo{person}{Taiping Yao},
+  \bibinfo{person}{Yang Chen}, \bibinfo{person}{Shouhong Ding},
+  \bibinfo{person}{Jilin Li}, {and} \bibinfo{person}{Rongrong Ji}.}
+  \bibinfo{year}{2021}\natexlab{c}.
+\newblock \showarticletitle{Local relation learning for face forgery
+  detection}. In \bibinfo{booktitle}{\emph{Proceedings of the AAAI Conference
+  on Artificial Intelligence}}, Vol.~\bibinfo{volume}{35}.
+  \bibinfo{pages}{1081--1088}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2021a)]%
+        {MVSS}
+\bibfield{author}{\bibinfo{person}{Xinru Chen}, \bibinfo{person}{Chengbo Dong},
+  \bibinfo{person}{Jiaqi Ji}, \bibinfo{person}{Juan Cao}, {and}
+  \bibinfo{person}{Xirong Li}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Image Manipulation Detection by Multi-View
+  Multi-Scale Supervision}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF International Conference on Computer Vision}}.
+  \bibinfo{pages}{14185--14193}.
+\newblock
+
+
+\bibitem[Cheng et~al\mbox{.}(2022)]%
+        {cheng2022voice}
+\bibfield{author}{\bibinfo{person}{Harry Cheng}, \bibinfo{person}{Yangyang
+  Guo}, \bibinfo{person}{Tianyi Wang}, \bibinfo{person}{Qi Li},
+  \bibinfo{person}{Tao Ye}, {and} \bibinfo{person}{Liqiang Nie}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Voice-Face Homogeneity Tells Deepfake}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2203.02195}}
+  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Chiu et~al\mbox{.}(2021)]%
+        {chiu2021high}
+\bibfield{author}{\bibinfo{person}{Meng-Tzu Chiu}, \bibinfo{person}{Hsun-Ying
+  Cheng}, \bibinfo{person}{Chien-Yi Wang}, {and} \bibinfo{person}{Shang-Hong
+  Lai}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{High-Accuracy RGB-D Face Recognition via
+  Segmentation-Aware Face Depth Estimation and Mask-Guided Attention Network}.
+  In \bibinfo{booktitle}{\emph{2021 16th IEEE International Conference on
+  Automatic Face and Gesture Recognition (FG 2021)}}. IEEE,
+  \bibinfo{pages}{1--8}.
+\newblock
+
+
+\bibitem[{Chollet}(2017)]%
+        {XceptionNet}
+\bibfield{author}{\bibinfo{person}{F. {Chollet}}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Xception: Deep learning with depthwise separable
+  convolutions}. In \bibinfo{booktitle}{\emph{CVPR}}.
+\newblock
+
+
+\bibitem[Chollet(2017)]%
+        {chollet2017xception}
+\bibfield{author}{\bibinfo{person}{Fran{\c{c}}ois Chollet}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Xception: Deep learning with depthwise separable
+  convolutions}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{1251--1258}.
+\newblock
+
+
+\bibitem[Clark(1991)]%
+        {clark:pct}
+\bibfield{author}{\bibinfo{person}{Malcolm Clark}.}
+  \bibinfo{year}{1991}\natexlab{}.
+\newblock \showarticletitle{Post Congress Tristesse}. In
+  \bibinfo{booktitle}{\emph{TeX90 Conference Proceedings}}. TeX Users Group,
+  \bibinfo{pages}{84--89}.
+\newblock
+
+
+\bibitem[Clarkson(1985a)]%
+        {Clarkson85}
+\bibfield{author}{\bibinfo{person}{Kenneth~L. Clarkson}.}
+  \bibinfo{year}{1985}\natexlab{a}.
+\newblock \emph{\bibinfo{title}{Algorithms for Closest-Point Problems
+  (Computational Geometry)}}.
+\newblock \bibinfo{thesistype}{Ph.\,D. Dissertation}. \bibinfo{school}{Stanford
+  University}, \bibinfo{address}{Palo Alto, CA}.
+\newblock
+\newblock
+\shownote{UMI Order Number: AAT 8506171}.
+
+
+\bibitem[Clarkson(1985b)]%
+        {Clarkson:1985:ACP:911891}
+\bibfield{author}{\bibinfo{person}{Kenneth~Lee Clarkson}.}
+  \bibinfo{year}{1985}\natexlab{b}.
+\newblock \emph{\bibinfo{title}{Algorithms for Closest-Point Problems
+  (Computational Geometry)}}.
+\newblock \bibinfo{thesistype}{Ph.\,D. Dissertation}. \bibinfo{school}{Stanford
+  University}, \bibinfo{address}{Stanford, CA, USA}.
+\newblock Advisor(s) Yao, Andrew C.
+\newblock
+\newblock
+\shownote{AAT 8506171}.
+
+
+\bibitem[Cloud(2023a)]%
+        {Alibaba}
+\bibfield{author}{\bibinfo{person}{Alibaba Cloud}.}
+  \bibinfo{year}{2023}\natexlab{a}.
+\newblock \bibinfo{title}{Alibaba Face Retouching API}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://help.aliyun.com/document_detail/159210.html}}.
+
+
+\bibitem[Cloud(2023b)]%
+        {Tencent}
+\bibfield{author}{\bibinfo{person}{Tencent Cloud}.}
+  \bibinfo{year}{2023}\natexlab{b}.
+\newblock \bibinfo{title}{Tencent Face Retouching API}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://cloud.tencent.com/document/product/1172/40715}}.
+
+
+\bibitem[Cohen(1996)]%
+        {JCohen96}
+\bibfield{editor}{\bibinfo{person}{Jacques Cohen}} (Ed.).
+  \bibinfo{year}{1996}\natexlab{}. \showarticletitle{Special issue: Digital
+  Libraries}.
+\newblock \bibinfo{journal}{\emph{Commun. {ACM}}} \bibinfo{volume}{39},
+  \bibinfo{number}{11} (\bibinfo{date}{Nov.} \bibinfo{year}{1996}).
+
+\bibitem[Cohen et~al\mbox{.}(2007)]%
+        {Cohen07}
+\bibfield{author}{\bibinfo{person}{Sarah Cohen}, \bibinfo{person}{Werner Nutt},
+  {and} \bibinfo{person}{Yehoshua Sagic}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Deciding equivalances among conjunctive aggregate
+  queries}.
+\newblock \bibinfo{journal}{\emph{J. ACM}} \bibinfo{volume}{54},
+  \bibinfo{number}{2}, Article \bibinfo{articleno}{5} (\bibinfo{date}{April}
+  \bibinfo{year}{2007}), \bibinfo{numpages}{50}~pages.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1219092.1219093}
+\showDOI{\tempurl}
+
+
+\bibitem[Congress(2014)]%
+        {USlaw}
+\bibfield{author}{\bibinfo{person}{United~States Congress}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \bibinfo{title}{Truth in Advertising Act of 2014}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://www.congress.gov/bill/113th-congress/house-bill/4341}}.
+
+
+\bibitem[Conti et~al\mbox{.}(2009a)]%
+        {Conti:2009:DDS:1555009.1555162}
+\bibfield{author}{\bibinfo{person}{Mauro Conti}, \bibinfo{person}{Roberto
+  Di~Pietro}, \bibinfo{person}{Luigi~V. Mancini}, {and}
+  \bibinfo{person}{Alessandro Mei}.} \bibinfo{year}{2009}\natexlab{a}.
+\newblock \showarticletitle{(new) Distributed data source verification in
+  wireless sensor networks}.
+\newblock \bibinfo{journal}{\emph{Inf. Fusion}} \bibinfo{volume}{10},
+  \bibinfo{number}{4} (\bibinfo{date}{Oct.} \bibinfo{year}{2009}),
+  \bibinfo{pages}{342--353}.
+\newblock
+\showISSN{1566-2535}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.inffus.2009.01.002}
+\showDOI{\tempurl}
+
+
+\bibitem[Conti et~al\mbox{.}(2009b)]%
+        {1555162}
+\bibfield{author}{\bibinfo{person}{Mauro Conti}, \bibinfo{person}{Roberto
+  Di~Pietro}, \bibinfo{person}{Luigi~V. Mancini}, {and}
+  \bibinfo{person}{Alessandro Mei}.} \bibinfo{year}{2009}\natexlab{b}.
+\newblock \showarticletitle{(old) Distributed data source verification in
+  wireless sensor networks}.
+\newblock \bibinfo{journal}{\emph{Inf. Fusion}} \bibinfo{volume}{10},
+  \bibinfo{number}{4} (\bibinfo{year}{2009}), \bibinfo{pages}{342--353}.
+\newblock
+\showISSN{1566-2535}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.inffus.2009.01.002}
+\showDOI{\tempurl}
+
+
+\bibitem[Cozzolino et~al\mbox{.}(2021)]%
+        {cozzolino2021id}
+\bibfield{author}{\bibinfo{person}{Davide Cozzolino}, \bibinfo{person}{Andreas
+  R{\"o}ssler}, \bibinfo{person}{Justus Thies}, \bibinfo{person}{Matthias
+  Nie{\ss}ner}, {and} \bibinfo{person}{Luisa Verdoliva}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Id-reveal: Identity-aware deepfake video
+  detection}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  International Conference on Computer Vision}}. \bibinfo{pages}{15108--15117}.
+\newblock
+
+
+\bibitem[CROSSBOW(2008)]%
+        {CROSSBOW}
+CROSSBOW \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{title}{{XBOW} Sensor Motes Specifications}.
+\newblock
+\newblock
+\newblock
+\shownote{http://www.xbow.com}.
+
+
+\bibitem[Cui et~al\mbox{.}(2018)]%
+        {cui2018improving}
+\bibfield{author}{\bibinfo{person}{Jiyun Cui}, \bibinfo{person}{Hao Zhang},
+  \bibinfo{person}{Hu Han}, \bibinfo{person}{Shiguang Shan}, {and}
+  \bibinfo{person}{Xilin Chen}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Improving 2D face recognition via discriminative
+  face depth estimation}. In \bibinfo{booktitle}{\emph{2018 International
+  Conference on Biometrics (ICB)}}. IEEE, \bibinfo{pages}{140--147}.
+\newblock
+
+
+\bibitem[Culler et~al\mbox{.}(2004)]%
+        {Culler-01}
+\bibfield{author}{\bibinfo{person}{D. Culler}, \bibinfo{person}{D. Estrin},
+  {and} \bibinfo{person}{M. Srivastava}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Overview of Sensor Networks}.
+\newblock \bibinfo{journal}{\emph{IEEE Comput.}} \bibinfo{volume}{37},
+  \bibinfo{number}{8 (Special Issue on Sensor Networks)}
+  (\bibinfo{year}{2004}), \bibinfo{pages}{41--49}.
+\newblock
+
+
+\bibitem[Dai et~al\mbox{.}(2021)]%
+        {dai2021coatnet}
+\bibfield{author}{\bibinfo{person}{Zihang Dai}, \bibinfo{person}{Hanxiao Liu},
+  \bibinfo{person}{Quoc~V Le}, {and} \bibinfo{person}{Mingxing Tan}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Coatnet: Marrying convolution and attention for all
+  data sizes}.
+\newblock \bibinfo{journal}{\emph{Advances in Neural Information Processing
+  Systems}}  \bibinfo{volume}{34} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{3965--3977}.
+\newblock
+
+
+\bibitem[Dang et~al\mbox{.}(2020)]%
+        {dang2020detection}
+\bibfield{author}{\bibinfo{person}{Hao Dang}, \bibinfo{person}{Feng Liu},
+  \bibinfo{person}{Joel Stehouwer}, \bibinfo{person}{Xiaoming Liu}, {and}
+  \bibinfo{person}{Anil~K Jain}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{On the detection of digital face manipulation}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern recognition}}. \bibinfo{pages}{5781--5790}.
+\newblock
+
+
+\bibitem[Dantcheva et~al\mbox{.}(2012)]%
+        {VMUYMU}
+\bibfield{author}{\bibinfo{person}{Antitza Dantcheva}, \bibinfo{person}{Cunjian
+  Chen}, {and} \bibinfo{person}{Arun Ross}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Can facial cosmetics affect the matching accuracy
+  of face recognition systems?}. In \bibinfo{booktitle}{\emph{2012 IEEE Fifth
+  international conference on biometrics: theory, applications and systems
+  (BTAS)}}. IEEE, \bibinfo{pages}{391--398}.
+\newblock
+
+
+\bibitem[Dijkstra(1979)]%
+        {Dijkstra:1979:GSC:1241515.1241518}
+\bibfield{author}{\bibinfo{person}{E. Dijkstra}.}
+  \bibinfo{year}{1979}\natexlab{}.
+\newblock \showarticletitle{Go to statement considered harmful}.
+\newblock In \bibinfo{booktitle}{\emph{Classics in software engineering
+  (incoll)}}. \bibinfo{publisher}{Yourdon Press}, \bibinfo{address}{Upper
+  Saddle River, NJ, USA}, \bibinfo{pages}{27--33}.
+\newblock
+\showISBNx{0-917072-14-6}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=1241515.1241518}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Dolhansky et~al\mbox{.}(2019)]%
+        {dolhansky2019deepfake}
+\bibfield{author}{\bibinfo{person}{Brian Dolhansky}, \bibinfo{person}{Russ
+  Howes}, \bibinfo{person}{Ben Pflaum}, \bibinfo{person}{Nicole Baram}, {and}
+  \bibinfo{person}{Cristian~Canton Ferrer}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{The deepfake detection challenge (dfdc) preview
+  dataset}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1910.08854}}
+  (\bibinfo{year}{2019}).
+\newblock
+
+
+\bibitem[Dong et~al\mbox{.}(2022)]%
+        {dong2022protecting}
+\bibfield{author}{\bibinfo{person}{Xiaoyi Dong}, \bibinfo{person}{Jianmin Bao},
+  \bibinfo{person}{Dongdong Chen}, \bibinfo{person}{Ting Zhang},
+  \bibinfo{person}{Weiming Zhang}, \bibinfo{person}{Nenghai Yu},
+  \bibinfo{person}{Dong Chen}, \bibinfo{person}{Fang Wen}, {and}
+  \bibinfo{person}{Baining Guo}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Protecting celebrities from deepfake with identity
+  consistency transformer}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{9468--9478}.
+\newblock
+
+
+\bibitem[Dosovitskiy et~al\mbox{.}(2020)]%
+        {ViT}
+\bibfield{author}{\bibinfo{person}{Alexey Dosovitskiy}, \bibinfo{person}{Lucas
+  Beyer}, \bibinfo{person}{Alexander Kolesnikov}, \bibinfo{person}{Dirk
+  Weissenborn}, \bibinfo{person}{Xiaohua Zhai}, \bibinfo{person}{Thomas
+  Unterthiner}, \bibinfo{person}{Mostafa Dehghani}, \bibinfo{person}{Matthias
+  Minderer}, \bibinfo{person}{Georg Heigold}, \bibinfo{person}{Sylvain Gelly},
+  {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{An image is worth 16x16 words: Transformers for
+  image recognition at scale}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2010.11929}}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Dosovitskiy et~al\mbox{.}(2021)]%
+        {dosovitskiy2020vit}
+\bibfield{author}{\bibinfo{person}{Alexey Dosovitskiy}, \bibinfo{person}{Lucas
+  Beyer}, \bibinfo{person}{Alexander Kolesnikov}, \bibinfo{person}{Dirk
+  Weissenborn}, \bibinfo{person}{Xiaohua Zhai}, \bibinfo{person}{Thomas
+  Unterthiner}, \bibinfo{person}{Mostafa Dehghani}, \bibinfo{person}{Matthias
+  Minderer}, \bibinfo{person}{Georg Heigold}, \bibinfo{person}{Sylvain Gelly},
+  \bibinfo{person}{Jakob Uszkoreit}, {and} \bibinfo{person}{Neil Houlsby}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{An Image is Worth 16x16 Words: Transformers for
+  Image Recognition at Scale}. In \bibinfo{booktitle}{\emph{9th International
+  Conference on Learning Representations, {ICLR} 2021, Virtual Event, Austria,
+  May 3-7, 2021}}. \bibinfo{publisher}{OpenReview.net}.
+\newblock
+\urldef\tempurl%
+\url{https://openreview.net/forum?id=YicbFdNTTy}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Douglass et~al\mbox{.}(1998)]%
+        {Douglass98}
+\bibfield{author}{\bibinfo{person}{Bruce~P. Douglass}, \bibinfo{person}{David
+  Harel}, {and} \bibinfo{person}{Mark~B. Trakhtenbrot}.}
+  \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Statecarts in use: structured analysis and
+  object-orientation}.
+\newblock In \bibinfo{booktitle}{\emph{Lectures on Embedded Systems}},
+  \bibfield{editor}{\bibinfo{person}{Grzegorz Rozenberg} {and}
+  \bibinfo{person}{Frits~W. Vaandrager}} (Eds.). \bibinfo{series}{Lecture Notes
+  in Computer Science}, Vol.~\bibinfo{volume}{1494}.
+  \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{London},
+  \bibinfo{pages}{368--394}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/3-540-65193-4_29}
+\showDOI{\tempurl}
+
+
+\bibitem[Du et~al\mbox{.}(2022)]%
+        {VOS}
+\bibfield{author}{\bibinfo{person}{Xuefeng Du}, \bibinfo{person}{Zhaoning
+  Wang}, \bibinfo{person}{Mu Cai}, {and} \bibinfo{person}{Yixuan Li}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Vos: Learning what you don't know by virtual
+  outlier synthesis}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2202.01197}}
+  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Dunlop and Basili(1985)]%
+        {7:1:137}
+\bibfield{author}{\bibinfo{person}{D.~D. Dunlop} {and} \bibinfo{person}{V.~R.
+  Basili}.} \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Generalizing specifications for uniformly
+  implemented loops}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{7}, \bibinfo{number}{1} (\bibinfo{date}{Jan.}
+  \bibinfo{year}{1985}), \bibinfo{pages}{137--158}.
+\newblock
+
+
+\bibitem[Editor(2007)]%
+        {Editor00}
+\bibfield{editor}{\bibinfo{person}{Ian Editor}} (Ed.).
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The title of book one}
+  (\bibinfo{edition}{1st.} ed.)}. \bibinfo{series}{The name of the series one},
+  Vol.~\bibinfo{volume}{9}.
+\newblock \bibinfo{publisher}{University of Chicago Press},
+  \bibinfo{address}{Chicago}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/3-540-09237-4}
+\showDOI{\tempurl}
+
+
+\bibitem[Editor(2008)]%
+        {Editor00a}
+\bibfield{editor}{\bibinfo{person}{Ian Editor}} (Ed.).
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The title of book two}
+  (\bibinfo{edition}{2nd.} ed.)}.
+\newblock \bibinfo{publisher}{University of Chicago Press},
+  \bibinfo{address}{Chicago}, Chapter 100.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/3-540-09237-4}
+\showDOI{\tempurl}
+
+
+\bibitem[Face++(2023)]%
+        {Megvii}
+\bibfield{author}{\bibinfo{person}{Megvii Face++}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Megvii Face Retouching API}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://www.faceplusplus.com.cn/sdk/facebeautify/}}.
+
+
+\bibitem[Fear(2005)]%
+        {Fear05}
+\bibfield{author}{\bibinfo{person}{Simon Fear}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Publication quality tables in {\LaTeX}}}.
+\newblock
+\newblock
+\shownote{\url{http://www.ctan.org/pkg/booktabs}}.
+
+
+\bibitem[Feng et~al\mbox{.}(2018)]%
+        {feng2018joint}
+\bibfield{author}{\bibinfo{person}{Yao Feng}, \bibinfo{person}{Fan Wu},
+  \bibinfo{person}{Xiaohu Shao}, \bibinfo{person}{Yanfeng Wang}, {and}
+  \bibinfo{person}{Xi Zhou}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Joint 3d face reconstruction and dense alignment
+  with position map regression network}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the European conference on computer
+  vision (ECCV)}}. \bibinfo{pages}{534--551}.
+\newblock
+
+
+\bibitem[Fernandes et~al\mbox{.}(2019)]%
+        {fernandes2019predicting}
+\bibfield{author}{\bibinfo{person}{Steven Fernandes}, \bibinfo{person}{Sunny
+  Raj}, \bibinfo{person}{Eddy Ortiz}, \bibinfo{person}{Iustina Vintila},
+  \bibinfo{person}{Margaret Salter}, \bibinfo{person}{Gordana Urosevic}, {and}
+  \bibinfo{person}{Sumit Jha}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Predicting heart rate variations of deepfake videos
+  using neural ode}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  international conference on computer vision workshops}}.
+  \bibinfo{pages}{0--0}.
+\newblock
+
+
+\bibitem[Frank et~al\mbox{.}(2020)]%
+        {frank2020leveraging}
+\bibfield{author}{\bibinfo{person}{Joel Frank}, \bibinfo{person}{Thorsten
+  Eisenhofer}, \bibinfo{person}{Lea Sch{\"o}nherr}, \bibinfo{person}{Asja
+  Fischer}, \bibinfo{person}{Dorothea Kolossa}, {and} \bibinfo{person}{Thorsten
+  Holz}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Leveraging frequency analysis for deep fake image
+  recognition}. In \bibinfo{booktitle}{\emph{International conference on
+  machine learning}}. PMLR, \bibinfo{pages}{3247--3258}.
+\newblock
+
+
+\bibitem[Galbally et~al\mbox{.}(2014)]%
+        {galbally2014biometric}
+\bibfield{author}{\bibinfo{person}{Javier Galbally},
+  \bibinfo{person}{S{\'e}bastien Marcel}, {and} \bibinfo{person}{Julian
+  Fierrez}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Biometric antispoofing methods: A survey in face
+  recognition}.
+\newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{2}
+  (\bibinfo{year}{2014}), \bibinfo{pages}{1530--1552}.
+\newblock
+
+
+\bibitem[Geiger and Meek(2005)]%
+        {GM05}
+\bibfield{author}{\bibinfo{person}{Dan Geiger} {and}
+  \bibinfo{person}{Christopher Meek}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Structured Variational Inference Procedures and
+  their Realizations (as incol)}.
+\newblock In \bibinfo{booktitle}{\emph{Proceedings of Tenth International
+  Workshop on Artificial Intelligence and Statistics, {\rm The Barbados}}}.
+  \bibinfo{publisher}{The Society for Artificial Intelligence and Statistics}.
+\newblock
+
+
+\bibitem[Geng et~al\mbox{.}(2020)]%
+        {geng2020masked}
+\bibfield{author}{\bibinfo{person}{Mengyue Geng}, \bibinfo{person}{Peixi Peng},
+  \bibinfo{person}{Yangru Huang}, {and} \bibinfo{person}{Yonghong Tian}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Masked face recognition with generative data
+  augmentation and domain constrained ranking}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM International
+  Conference on Multimedia}}. \bibinfo{pages}{2246--2254}.
+\newblock
+
+
+\bibitem[Gerndt(1989)]%
+        {gerndt:89}
+\bibfield{author}{\bibinfo{person}{Michael Gerndt}.}
+  \bibinfo{year}{1989}\natexlab{}.
+\newblock \emph{\bibinfo{title}{Automatic Parallelization for
+  Distributed-Memory Multiprocessing Systems}}.
+\newblock \bibinfo{thesistype}{Ph.\,D. Dissertation}.
+  \bibinfo{school}{University of Bonn}, \bibinfo{address}{Bonn, Germany}.
+\newblock
+
+
+\bibitem[Goossens et~al\mbox{.}(1999)]%
+        {Goossens:1999:LWC:553897}
+\bibfield{author}{\bibinfo{person}{Michel Goossens}, \bibinfo{person}{S.~P.
+  Rahtz}, \bibinfo{person}{Ross Moore}, {and} \bibinfo{person}{Robert~S.
+  Sutor}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The Latex Web Companion: Integrating TEX,
+  HTML, and XML} (\bibinfo{edition}{1st} ed.)}.
+\newblock \bibinfo{publisher}{Addison-Wesley Longman Publishing Co., Inc.},
+  \bibinfo{address}{Boston, MA, USA}.
+\newblock
+\showISBNx{0201433117}
+
+
+\bibitem[Gu et~al\mbox{.}(2022a)]%
+        {gu2022finegraineddeepfake}
+\bibfield{author}{\bibinfo{person}{Qiqi Gu}, \bibinfo{person}{Shen Chen},
+  \bibinfo{person}{Taiping Yao}, \bibinfo{person}{Yang Chen},
+  \bibinfo{person}{Shouhong Ding}, {and} \bibinfo{person}{Ran Yi}.}
+  \bibinfo{year}{2022}\natexlab{a}.
+\newblock \showarticletitle{Exploiting fine-grained face forgery clues via
+  progressive enhancement learning}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the AAAI Conference on Artificial Intelligence}},
+  Vol.~\bibinfo{volume}{36}. \bibinfo{pages}{735--743}.
+\newblock
+
+
+\bibitem[Gu et~al\mbox{.}(2022b)]%
+        {gu2022exploiting}
+\bibfield{author}{\bibinfo{person}{Qiqi Gu}, \bibinfo{person}{Shen Chen},
+  \bibinfo{person}{Taiping Yao}, \bibinfo{person}{Yang Chen},
+  \bibinfo{person}{Shouhong Ding}, {and} \bibinfo{person}{Ran Yi}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \showarticletitle{Exploiting fine-grained face forgery clues via
+  progressive enhancement learning}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the AAAI Conference on Artificial Intelligence}},
+  Vol.~\bibinfo{volume}{36}. \bibinfo{pages}{735--743}.
+\newblock
+
+
+\bibitem[Gu et~al\mbox{.}(2021)]%
+        {gu2021spatiotemporal}
+\bibfield{author}{\bibinfo{person}{Zhihao Gu}, \bibinfo{person}{Yang Chen},
+  \bibinfo{person}{Taiping Yao}, \bibinfo{person}{Shouhong Ding},
+  \bibinfo{person}{Jilin Li}, \bibinfo{person}{Feiyue Huang}, {and}
+  \bibinfo{person}{Lizhuang Ma}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Spatiotemporal inconsistency learning for deepfake
+  video detection}. In \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM
+  International Conference on Multimedia}}. \bibinfo{pages}{3473--3481}.
+\newblock
+
+
+\bibitem[Gu et~al\mbox{.}(2022c)]%
+        {gu2022delving}
+\bibfield{author}{\bibinfo{person}{Zhihao Gu}, \bibinfo{person}{Yang Chen},
+  \bibinfo{person}{Taiping Yao}, \bibinfo{person}{Shouhong Ding},
+  \bibinfo{person}{Jilin Li}, {and} \bibinfo{person}{Lizhuang Ma}.}
+  \bibinfo{year}{2022}\natexlab{c}.
+\newblock \showarticletitle{Delving into the local: Dynamic inconsistency
+  learning for deepfake video detection}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}}, Vol.~\bibinfo{volume}{36}. \bibinfo{pages}{744--752}.
+\newblock
+
+
+\bibitem[Guarnera et~al\mbox{.}(2020)]%
+        {convolutionaltrace2020}
+\bibfield{author}{\bibinfo{person}{Luca Guarnera}, \bibinfo{person}{Oliver
+  Giudice}, {and} \bibinfo{person}{Sebastiano Battiato}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Deepfake detection by analyzing convolutional
+  traces}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF conference
+  on computer vision and pattern recognition workshops}}.
+  \bibinfo{pages}{666--667}.
+\newblock
+
+
+\bibitem[Gundy et~al\mbox{.}(2007)]%
+        {VanGundy07}
+\bibfield{author}{\bibinfo{person}{Matthew~Van Gundy}, \bibinfo{person}{Davide
+  Balzarotti}, {and} \bibinfo{person}{Giovanni Vigna}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Catch me, if you can: Evading network signatures
+  with web-based polymorphic worms}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the first USENIX workshop on Offensive Technologies}}
+  \emph{(\bibinfo{series}{WOOT '07})}. \bibinfo{publisher}{USENIX Association},
+  \bibinfo{address}{Berkley, CA}, Article \bibinfo{articleno}{7},
+  \bibinfo{numpages}{9}~pages.
+\newblock
+
+
+\bibitem[Gundy et~al\mbox{.}(2008)]%
+        {VanGundy08}
+\bibfield{author}{\bibinfo{person}{Matthew~Van Gundy}, \bibinfo{person}{Davide
+  Balzarotti}, {and} \bibinfo{person}{Giovanni Vigna}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Catch me, if you can: Evading network signatures
+  with web-based polymorphic worms}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the first USENIX workshop on Offensive Technologies}}
+  \emph{(\bibinfo{series}{WOOT '08})}. \bibinfo{publisher}{USENIX Association},
+  \bibinfo{address}{Berkley, CA}, Article \bibinfo{articleno}{7},
+  \bibinfo{numpages}{2}~pages.
+\newblock
+
+
+\bibitem[Gundy et~al\mbox{.}(2009)]%
+        {VanGundy09}
+\bibfield{author}{\bibinfo{person}{Matthew~Van Gundy}, \bibinfo{person}{Davide
+  Balzarotti}, {and} \bibinfo{person}{Giovanni Vigna}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Catch me, if you can: Evading network signatures
+  with web-based polymorphic worms}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the first USENIX workshop on Offensive Technologies}}
+  \emph{(\bibinfo{series}{WOOT '09})}. \bibinfo{publisher}{USENIX Association},
+  \bibinfo{address}{Berkley, CA}, \bibinfo{pages}{90--100}.
+\newblock
+
+
+\bibitem[Guo et~al\mbox{.}(2022)]%
+        {CMT}
+\bibfield{author}{\bibinfo{person}{Jianyuan Guo}, \bibinfo{person}{Kai Han},
+  \bibinfo{person}{Han Wu}, \bibinfo{person}{Yehui Tang},
+  \bibinfo{person}{Xinghao Chen}, \bibinfo{person}{Yunhe Wang}, {and}
+  \bibinfo{person}{Chang Xu}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Cmt: Convolutional neural networks meet vision
+  transformers}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{12175--12185}.
+\newblock
+
+
+\bibitem[Hagerup et~al\mbox{.}(1993)]%
+        {Hagerup1993}
+\bibfield{author}{\bibinfo{person}{Torben Hagerup}, \bibinfo{person}{Kurt
+  Mehlhorn}, {and} \bibinfo{person}{J.~Ian Munro}.}
+  \bibinfo{year}{1993}\natexlab{}.
+\newblock \showarticletitle{Maintaining Discrete Probability Distributions
+  Optimally}. In \bibinfo{booktitle}{\emph{Proceedings of the 20th
+  International Colloquium on Automata, Languages and Programming}}
+  \emph{(\bibinfo{series}{Lecture Notes in Computer Science},
+  Vol.~\bibinfo{volume}{700})}. \bibinfo{publisher}{Springer-Verlag},
+  \bibinfo{address}{Berlin}, \bibinfo{pages}{253--264}.
+\newblock
+
+
+\bibitem[Haliassos et~al\mbox{.}(2021a)]%
+        {mouth2021}
+\bibfield{author}{\bibinfo{person}{Alexandros Haliassos},
+  \bibinfo{person}{Konstantinos Vougioukas}, \bibinfo{person}{Stavros
+  Petridis}, {and} \bibinfo{person}{Maja Pantic}.}
+  \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Lips don't lie: A generalisable and robust approach
+  to face forgery detection}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{5039--5049}.
+\newblock
+
+
+\bibitem[Haliassos et~al\mbox{.}(2021b)]%
+        {Haliassos2021lips}
+\bibfield{author}{\bibinfo{person}{Alexandros Haliassos},
+  \bibinfo{person}{Konstantinos Vougioukas}, \bibinfo{person}{Stavros
+  Petridis}, {and} \bibinfo{person}{Maja Pantic}.}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Lips Don't Lie: A Generalisable and Robust Approach
+  to Face Forgery Detection}. In \bibinfo{booktitle}{\emph{2021 IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition (CVPR)}}.
+  \bibinfo{pages}{5037--5047}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPR46437.2021.00500}
+\showDOI{\tempurl}
+
+
+\bibitem[Harel(1978)]%
+        {Harel78}
+\bibfield{author}{\bibinfo{person}{David Harel}.}
+  \bibinfo{year}{1978}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{LOGICS of Programs: AXIOMATICS and
+  DESCRIPTIVE POWER}}.
+\newblock \bibinfo{type}{MIT Research Lab Technical Report} TR-200.
+  \bibinfo{institution}{Massachusetts Institute of Technology},
+  \bibinfo{address}{Cambridge, MA}.
+\newblock
+
+
+\bibitem[Harel(1979)]%
+        {Harel79}
+\bibfield{author}{\bibinfo{person}{David Harel}.}
+  \bibinfo{year}{1979}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{First-Order Dynamic Logic}}.
+  \bibinfo{series}{Lecture Notes in Computer Science},
+  Vol.~\bibinfo{volume}{68}.
+\newblock \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{New York,
+  NY}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/3-540-09237-4}
+\showDOI{\tempurl}
+
+
+\bibitem[Harvard CodeBlue(2008)]%
+        {Harvard-01}
+Harvard CodeBlue \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{title}{{CodeBlue}: Sensor Networks for Medical Care}.
+\newblock
+\newblock
+\newblock
+\shownote{http://www.eecs.harvard.edu/mdw/ proj/codeblue/}.
+
+
+\bibitem[He et~al\mbox{.}(2020)]%
+        {he2020semi}
+\bibfield{author}{\bibinfo{person}{Jiahuan He}, \bibinfo{person}{Qichao Ying},
+  \bibinfo{person}{Zhenxing Qian}, \bibinfo{person}{Guorui Feng}, {and}
+  \bibinfo{person}{Xinpeng Zhang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Semi-structured data protection scheme based on
+  robust watermarking}.
+\newblock \bibinfo{journal}{\emph{EURASIP Journal on Image and Video
+  Processing}} \bibinfo{volume}{2020}, \bibinfo{number}{1}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{1--10}.
+\newblock
+
+
+\bibitem[He et~al\mbox{.}(2016)]%
+        {he2016resnet}
+\bibfield{author}{\bibinfo{person}{Kaiming He}, \bibinfo{person}{Xiangyu
+  Zhang}, \bibinfo{person}{Shaoqing Ren}, {and} \bibinfo{person}{Jian Sun}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Deep residual learning for image recognition}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{770--778}.
+\newblock
+
+
+\bibitem[{He} et~al\mbox{.}(2016)]%
+        {ResNetv2}
+\bibfield{author}{\bibinfo{person}{K. {He}}, \bibinfo{person}{X. {Zhang}},
+  \bibinfo{person}{S. {Ren}}, {and} \bibinfo{person}{J. {Sun}}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Identity Mappings in Deep Residual Networks}. In
+  \bibinfo{booktitle}{\emph{ECCV}}.
+\newblock
+
+
+\bibitem[Heering and Klint(1985)]%
+        {7:2:183}
+\bibfield{author}{\bibinfo{person}{J. Heering} {and} \bibinfo{person}{P.
+  Klint}.} \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Towards monolingual programming environments}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{7}, \bibinfo{number}{2} (\bibinfo{date}{April}
+  \bibinfo{year}{1985}), \bibinfo{pages}{183--213}.
+\newblock
+
+
+\bibitem[Herlihy(1993)]%
+        {herlihy:methodology}
+\bibfield{author}{\bibinfo{person}{Maurice Herlihy}.}
+  \bibinfo{year}{1993}\natexlab{}.
+\newblock \showarticletitle{A Methodology for Implementing Highly Concurrent
+  Data Objects}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{15}, \bibinfo{number}{5} (\bibinfo{date}{November}
+  \bibinfo{year}{1993}), \bibinfo{pages}{745--770}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/161468.161469}
+\showDOI{\tempurl}
+
+
+\bibitem[Hernandez-Ortega et~al\mbox{.}(2020)]%
+        {heartrate2020}
+\bibfield{author}{\bibinfo{person}{Javier Hernandez-Ortega},
+  \bibinfo{person}{Ruben Tolosana}, \bibinfo{person}{Julian Fierrez}, {and}
+  \bibinfo{person}{Aythami Morales}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Deepfakeson-phys: Deepfakes detection based on
+  heart rate estimation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2010.00400}}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Hoare(1972)]%
+        {Hoare:1972:CIN:1243380.1243382}
+\bibfield{author}{\bibinfo{person}{C.~A.~R. Hoare}.}
+  \bibinfo{year}{1972}\natexlab{}.
+\newblock \showarticletitle{Chapter II: Notes on data structuring}.
+\newblock In \bibinfo{booktitle}{\emph{Structured programming (incoll)}},
+  \bibfield{editor}{\bibinfo{person}{O.~J. Dahl}, \bibinfo{person}{E.~W.
+  Dijkstra}, {and} \bibinfo{person}{C.~A.~R. Hoare}} (Eds.).
+  \bibinfo{publisher}{Academic Press Ltd.}, \bibinfo{address}{London, UK, UK},
+  \bibinfo{pages}{83--174}.
+\newblock
+\showISBNx{0-12-200550-3}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=1243380.1243382}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hollis(1999)]%
+        {Hollis:1999:VBD:519964}
+\bibfield{author}{\bibinfo{person}{Billy~S. Hollis}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Visual Basic 6: Design, Specification, and
+  Objects with Other} (\bibinfo{edition}{1st} ed.)}.
+\newblock \bibinfo{publisher}{Prentice Hall PTR}, \bibinfo{address}{Upper
+  Saddle River, NJ, USA}.
+\newblock
+\showISBNx{0130850845}
+
+
+\bibitem[H{\"o}rmander(1985a)]%
+        {MR781537}
+\bibfield{author}{\bibinfo{person}{Lars H{\"o}rmander}.}
+  \bibinfo{year}{1985}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{The analysis of linear partial differential
+  operators. {III}}}. \bibinfo{series}{Grundlehren der Mathematischen
+  Wissenschaften [Fundamental Principles of Mathematical Sciences]},
+  Vol.~\bibinfo{volume}{275}.
+\newblock \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{Berlin,
+  Germany}. viii+525 pages.
+\newblock
+\showISBNx{3-540-13828-5}
+\newblock
+\shownote{Pseudodifferential operators}.
+
+
+\bibitem[H{\"o}rmander(1985b)]%
+        {MR781536}
+\bibfield{author}{\bibinfo{person}{Lars H{\"o}rmander}.}
+  \bibinfo{year}{1985}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{The analysis of linear partial differential
+  operators. {IV}}}. \bibinfo{series}{Grundlehren der Mathematischen
+  Wissenschaften [Fundamental Principles of Mathematical Sciences]},
+  Vol.~\bibinfo{volume}{275}.
+\newblock \bibinfo{publisher}{Springer-Verlag}, \bibinfo{address}{Berlin,
+  Germany}. vii+352 pages.
+\newblock
+\showISBNx{3-540-13829-3}
+\newblock
+\shownote{Fourier integral operators}.
+
+
+\bibitem[Hu et~al\mbox{.}(2022a)]%
+        {hu2022finfer}
+\bibfield{author}{\bibinfo{person}{Juan Hu}, \bibinfo{person}{Xin Liao},
+  \bibinfo{person}{Jinwen Liang}, \bibinfo{person}{Wenbo Zhou}, {and}
+  \bibinfo{person}{Zheng Qin}.} \bibinfo{year}{2022}\natexlab{a}.
+\newblock \showarticletitle{Finfer: Frame inference-based deepfake detection
+  for high-visual-quality videos}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the AAAI conference on artificial intelligence}}, Vol.~\bibinfo{volume}{36}.
+  \bibinfo{pages}{951--959}.
+\newblock
+
+
+\bibitem[Hu et~al\mbox{.}(2022b)]%
+        {9408664}
+\bibfield{author}{\bibinfo{person}{Juan Hu}, \bibinfo{person}{Xin Liao},
+  \bibinfo{person}{Wei Wang}, {and} \bibinfo{person}{Zheng Qin}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \showarticletitle{Detecting Compressed Deepfake Videos in Social
+  Networks Using Frame-Temporality Two-Stream Convolutional Network}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Circuits and Systems for
+  Video Technology}} \bibinfo{volume}{32}, \bibinfo{number}{3}
+  (\bibinfo{year}{2022}), \bibinfo{pages}{1089--1102}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TCSVT.2021.3074259}
+\showDOI{\tempurl}
+
+
+\bibitem[Hu et~al\mbox{.}(2021)]%
+        {hu2021dynamic}
+\bibfield{author}{\bibinfo{person}{Ziheng Hu}, \bibinfo{person}{Hongtao Xie},
+  \bibinfo{person}{YuXin Wang}, \bibinfo{person}{Jiahong Li},
+  \bibinfo{person}{Zhongyuan Wang}, {and} \bibinfo{person}{Yongdong Zhang}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Dynamic Inconsistency-aware DeepFake Video
+  Detection.}. In \bibinfo{booktitle}{\emph{IJCAI}}. \bibinfo{pages}{736--742}.
+\newblock
+
+
+\bibitem[Huang et~al\mbox{.}(2017)]%
+        {DenseNet}
+\bibfield{author}{\bibinfo{person}{Gao Huang}, \bibinfo{person}{Zhuang Liu},
+  \bibinfo{person}{Laurens Van Der~Maaten}, {and} \bibinfo{person}{Kilian~Q
+  Weinberger}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Densely connected convolutional networks}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{4700--4708}.
+\newblock
+
+
+\bibitem[Huang et~al\mbox{.}(2020)]%
+        {huang2020fakepolisher}
+\bibfield{author}{\bibinfo{person}{Yihao Huang}, \bibinfo{person}{Felix
+  Juefei-Xu}, \bibinfo{person}{Run Wang}, \bibinfo{person}{Qing Guo},
+  \bibinfo{person}{Lei Ma}, \bibinfo{person}{Xiaofei Xie},
+  \bibinfo{person}{Jianwen Li}, \bibinfo{person}{Weikai Miao},
+  \bibinfo{person}{Yang Liu}, {and} \bibinfo{person}{Geguang Pu}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Fakepolisher: Making deepfakes more
+  detection-evasive by shallow reconstruction}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM international
+  conference on multimedia}}. \bibinfo{pages}{1217--1226}.
+\newblock
+
+
+\bibitem[IEEE(2004)]%
+        {2004:ITE:1009386.1010128}
+IEEE \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{IEEE TCSC Executive Committee}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE International Conference on
+  Web Services}} \emph{(\bibinfo{series}{ICWS '04})}. \bibinfo{publisher}{IEEE
+  Computer Society}, \bibinfo{address}{Washington, DC, USA},
+  \bibinfo{pages}{21--22}.
+\newblock
+\showISBNx{0-7695-2167-3}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICWS.2004.64}
+\showDOI{\tempurl}
+
+
+\bibitem[Isley(2018)]%
+        {Kowalski2018faceswap}
+\bibfield{author}{\bibinfo{person}{Peter Isley}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{FaceSwap}.
+\newblock \bibinfo{howpublished}{https://github.com/ marekkowalski/faceswap}.
+\newblock
+\newblock
+\shownote{Accessed on August 1st, 2020}.
+
+
+\bibitem[Jain et~al\mbox{.}(2020)]%
+        {jain2020detecting}
+\bibfield{author}{\bibinfo{person}{Anubhav Jain}, \bibinfo{person}{Puspita
+  Majumdar}, \bibinfo{person}{Richa Singh}, {and} \bibinfo{person}{Mayank
+  Vatsa}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Detecting GANs and retouching based digital
+  alterations via DAD-HCNN}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops}}.
+  \bibinfo{pages}{672--673}.
+\newblock
+
+
+\bibitem[Jain et~al\mbox{.}(2018)]%
+        {jain2018detecting}
+\bibfield{author}{\bibinfo{person}{Anubhav Jain}, \bibinfo{person}{Richa
+  Singh}, {and} \bibinfo{person}{Mayank Vatsa}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{On detecting GANs and retouching based synthetic
+  alterations}. In \bibinfo{booktitle}{\emph{2018 IEEE 9th international
+  conference on biometrics theory, applications and systems (BTAS)}}. IEEE,
+  \bibinfo{pages}{1--7}.
+\newblock
+
+
+\bibitem[Jang et~al\mbox{.}(2016)]%
+        {Gumbel}
+\bibfield{author}{\bibinfo{person}{Eric Jang}, \bibinfo{person}{Shixiang Gu},
+  {and} \bibinfo{person}{Ben Poole}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Categorical reparameterization with
+  gumbel-softmax}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1611.01144}}
+  (\bibinfo{year}{2016}).
+\newblock
+
+
+\bibitem[Jiang et~al\mbox{.}(2020)]%
+        {jiang2020psgan}
+\bibfield{author}{\bibinfo{person}{Wentao Jiang}, \bibinfo{person}{Si Liu},
+  \bibinfo{person}{Chen Gao}, \bibinfo{person}{Jie Cao}, \bibinfo{person}{Ran
+  He}, \bibinfo{person}{Jiashi Feng}, {and} \bibinfo{person}{Shuicheng Yan}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Psgan: Pose and expression robust spatial-aware gan
+  for customizable makeup transfer}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{5194--5202}.
+\newblock
+
+
+\bibitem[Jin et~al\mbox{.}(2021)]%
+        {jin2021face}
+\bibfield{author}{\bibinfo{person}{Bo Jin}, \bibinfo{person}{Leandro Cruz},
+  {and} \bibinfo{person}{Nuno Gon{\c{c}}alves}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Face depth prediction by the scene depth}. In
+  \bibinfo{booktitle}{\emph{2021 IEEE/ACIS 19th International Conference on
+  Computer and Information Science (ICIS)}}. IEEE, \bibinfo{pages}{42--48}.
+\newblock
+
+
+\bibitem[Kang et~al\mbox{.}(2022)]%
+        {kang2022facial}
+\bibfield{author}{\bibinfo{person}{Minjun Kang}, \bibinfo{person}{Jaesung
+  Choe}, \bibinfo{person}{Hyowon Ha}, \bibinfo{person}{Hae-Gon Jeon},
+  \bibinfo{person}{Sunghoon Im}, \bibinfo{person}{In~So Kweon}, {and}
+  \bibinfo{person}{Kuk-Jin Yoon}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Facial Depth and Normal Estimation using Single
+  Dual-Pixel Camera}. In \bibinfo{booktitle}{\emph{Computer Vision--ECCV 2022:
+  17th European Conference, Tel Aviv, Israel, October 23--27, 2022,
+  Proceedings, Part VIII}}. Springer, \bibinfo{pages}{181--200}.
+\newblock
+
+
+\bibitem[Karras et~al\mbox{.}(2019)]%
+        {FFHQ}
+\bibfield{author}{\bibinfo{person}{Tero Karras}, \bibinfo{person}{Samuli
+  Laine}, {and} \bibinfo{person}{Timo Aila}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{A style-based generator architecture for generative
+  adversarial networks}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{4401--4410}.
+\newblock
+
+
+\bibitem[Ke et~al\mbox{.}(2021)]%
+        {MUSIQ}
+\bibfield{author}{\bibinfo{person}{Junjie Ke}, \bibinfo{person}{Qifei Wang},
+  \bibinfo{person}{Yilin Wang}, \bibinfo{person}{Peyman Milanfar}, {and}
+  \bibinfo{person}{Feng Yang}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Musiq: Multi-scale image quality transformer}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF International
+  Conference on Computer Vision}}. \bibinfo{pages}{5148--5157}.
+\newblock
+
+
+\bibitem[Kee and Farid(2011)]%
+        {kee2011perceptual}
+\bibfield{author}{\bibinfo{person}{Eric Kee} {and} \bibinfo{person}{Hany
+  Farid}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{A perceptual metric for photo retouching}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the National Academy of
+  Sciences}} \bibinfo{volume}{108}, \bibinfo{number}{50}
+  (\bibinfo{year}{2011}), \bibinfo{pages}{19907--19912}.
+\newblock
+
+
+\bibitem[Kim et~al\mbox{.}(2019)]%
+        {noisy2019}
+\bibfield{author}{\bibinfo{person}{Youngdong Kim}, \bibinfo{person}{Junho Yim},
+  \bibinfo{person}{Juseung Yun}, {and} \bibinfo{person}{Junmo Kim}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Nlnl: Negative learning for noisy labels}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision}}. \bibinfo{pages}{101--110}.
+\newblock
+
+
+\bibitem[Kingma and Ba(2014)]%
+        {kingma2014adam}
+\bibfield{author}{\bibinfo{person}{Diederik~P Kingma} {and}
+  \bibinfo{person}{Jimmy Ba}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Adam: A method for stochastic optimization}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1412.6980}}
+  (\bibinfo{year}{2014}).
+\newblock
+
+
+\bibitem[Kingma and Ba(2015)]%
+        {Kingma2015AdamAM}
+\bibfield{author}{\bibinfo{person}{Diederik~P. Kingma} {and}
+  \bibinfo{person}{Jimmy Ba}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Adam: A Method for Stochastic Optimization}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1412.6980}
+  (\bibinfo{year}{2015}).
+\newblock
+
+
+\bibitem[Kirschmer and Voight(2010)]%
+        {Kirschmer:2010:AEI:1958016.1958018}
+\bibfield{author}{\bibinfo{person}{Markus Kirschmer} {and}
+  \bibinfo{person}{John Voight}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Algorithmic Enumeration of Ideal Classes for
+  Quaternion Orders}.
+\newblock \bibinfo{journal}{\emph{SIAM J. Comput.}} \bibinfo{volume}{39},
+  \bibinfo{number}{5} (\bibinfo{date}{Jan.} \bibinfo{year}{2010}),
+  \bibinfo{pages}{1714--1747}.
+\newblock
+\showISSN{0097-5397}
+\urldef\tempurl%
+\url{https://doi.org/10.1137/080734467}
+\showDOI{\tempurl}
+
+
+\bibitem[Knuth(1981a)]%
+        {book-minimal}
+\bibfield{author}{\bibinfo{person}{Donald~E. Knuth}.}
+  \bibinfo{year}{1981}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{Seminumerical Algorithms}}.
+\newblock \bibinfo{publisher}{Addison-Wesley}.
+\newblock
+
+
+\bibitem[Knuth(1981b)]%
+        {test}
+\bibfield{author}{\bibinfo{person}{Donald~E. Knuth}.}
+  \bibinfo{year}{1981}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{Seminumerical Algorithms}
+  (\bibinfo{edition}{2nd} ed.)}. \bibinfo{series}{The Art of Computer
+  Programming}, Vol.~\bibinfo{volume}{2}.
+\newblock \bibinfo{publisher}{Addison-Wesley}, \bibinfo{address}{Reading, MA}.
+\newblock
+
+
+\bibitem[Knuth(1984)]%
+        {knuth:texbook}
+\bibfield{author}{\bibinfo{person}{Donald~E. Knuth}.}
+  \bibinfo{year}{1984}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The {\TeX{}book}}}.
+\newblock \bibinfo{publisher}{Addison-Wesley}, \bibinfo{address}{Reading, MA.}
+\newblock
+
+
+\bibitem[Knuth(1997)]%
+        {Knuth97}
+\bibfield{author}{\bibinfo{person}{Donald~E. Knuth}.}
+  \bibinfo{year}{1997}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The Art of Computer Programming, Vol. 1:
+  Fundamental Algorithms (3rd. ed.)}}.
+\newblock \bibinfo{publisher}{Addison Wesley Longman Publishing Co., Inc.}
+\newblock
+
+
+\bibitem[Knuth(1998)]%
+        {Knuth98}
+\bibfield{author}{\bibinfo{person}{Donald~E. Knuth}.}
+  \bibinfo{year}{1998}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The Art of Computer Programming}
+  (\bibinfo{edition}{3rd} ed.)}. \bibinfo{series}{Fundamental Algorithms},
+  Vol.~\bibinfo{volume}{1}.
+\newblock \bibinfo{publisher}{Addison Wesley Longman Publishing Co., Inc.}
+\newblock
+\newblock
+\shownote{(book)}.
+
+
+\bibitem[Kong(2001a)]%
+        {KAGM:2001}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2001}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{E-commerce and cultural values}}.
+\newblock \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA,
+  USA}, Name of chapter: The implementation of electronic commerce in SMEs in
+  Singapore (Inbook-w-chap-w-type), \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2001b)]%
+        {KA:2001}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2001}\natexlab{b}.
+\newblock \showarticletitle{The implementation of electronic commerce in SMEs
+  in Singapore (as Incoll)}.
+\newblock In \bibinfo{booktitle}{\emph{E-commerce and cultural values}}.
+  \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA, USA},
+  \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2002)]%
+        {Kong:2002:IEC:887006.887010}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Chapter 9}.
+\newblock In \bibinfo{booktitle}{\emph{E-commerce and cultural values
+  (Incoll-w-text (chap 9) 'title')}},
+  \bibfield{editor}{\bibinfo{person}{Theerasak Thanasankit}} (Ed.).
+  \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA, USA},
+  \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2003)]%
+        {Kong:2003:IEC:887006.887011}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{The implementation of electronic commerce in SMEs
+  in Singapore (Incoll)}.
+\newblock In \bibinfo{booktitle}{\emph{E-commerce and cultural values}},
+  \bibfield{editor}{\bibinfo{person}{Theerasak Thanasankit}} (Ed.).
+  \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA, USA},
+  \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2004)]%
+        {Kong:2004:IEC:123456.887010}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{E-commerce and cultural values -
+  (InBook-num-in-chap)}}.
+\newblock \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA,
+  USA}, Chapter~9, \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2005)]%
+        {Kong:2005:IEC:887006.887010}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{E-commerce and cultural values
+  (Inbook-text-in-chap)}}.
+\newblock \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA,
+  USA}, Chapter: The implementation of electronic commerce in SMEs in
+  Singapore, \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kong(2006)]%
+        {Kong:2006:IEC:887006.887010}
+\bibfield{author}{\bibinfo{person}{Wei-Chang Kong}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{E-commerce and cultural values (Inbook-num
+  chap)}}.
+\newblock \bibinfo{publisher}{IGI Publishing}, \bibinfo{address}{Hershey, PA,
+  USA}, Chapter (in type field)~22, \bibinfo{pages}{51--74}.
+\newblock
+\showISBNx{1-59140-056-2}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=887006.887010}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Korach et~al\mbox{.}(1984)]%
+        {6:3:380}
+\bibfield{author}{\bibinfo{person}{E. Korach}, \bibinfo{person}{D. Rotem},
+  {and} \bibinfo{person}{N. Santoro}.} \bibinfo{year}{1984}\natexlab{}.
+\newblock \showarticletitle{Distributed algorithms for finding centers and
+  medians in networks}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{6}, \bibinfo{number}{3} (\bibinfo{date}{July}
+  \bibinfo{year}{1984}), \bibinfo{pages}{380--401}.
+\newblock
+
+
+\bibitem[Kornerup(1994)]%
+        {ko94}
+\bibfield{author}{\bibinfo{person}{Jacob Kornerup}.}
+  \bibinfo{year}{1994}\natexlab{}.
+\newblock \emph{\bibinfo{title}{Mapping Powerlists onto Hypercubes}}.
+\newblock \bibinfo{thesistype}{Master's\ thesis}. \bibinfo{school}{The
+  University of Texas at Austin}.
+\newblock
+\newblock
+\shownote{(In preparation)}.
+
+
+\bibitem[Kosiur(2001)]%
+        {Kosiur01}
+\bibfield{author}{\bibinfo{person}{David Kosiur}.}
+  \bibinfo{year}{2001}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Understanding Policy-Based Networking}
+  (\bibinfo{edition}{2nd.} ed.)}.
+\newblock \bibinfo{publisher}{Wiley}, \bibinfo{address}{New York, NY}.
+\newblock
+
+
+\bibitem[{Krizhevsky} et~al\mbox{.}(2012)]%
+        {AlexNet}
+\bibfield{author}{\bibinfo{person}{A. {Krizhevsky}}, \bibinfo{person}{I.
+  {Sutskever}}, {and} \bibinfo{person}{G. {Hinton}}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Imagenet classification with deep convolutional
+  neural networks}. In \bibinfo{booktitle}{\emph{NIPS}}.
+\newblock
+
+
+\bibitem[Lamport(1986)]%
+        {Lamport:LaTeX}
+\bibfield{author}{\bibinfo{person}{Leslie Lamport}.}
+  \bibinfo{year}{1986}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{\it {\LaTeX}: A Document Preparation
+  System}}.
+\newblock \bibinfo{publisher}{Addison-Wesley}, \bibinfo{address}{Reading, MA.}
+\newblock
+
+
+\bibitem[Lee(1981)]%
+        {Lee:1978:TQA:800025.1198348}
+\bibfield{author}{\bibinfo{person}{Jan Lee}.} \bibinfo{year}{1981}\natexlab{}.
+\newblock \showarticletitle{Transcript of question and answer session}.
+\newblock In \bibinfo{booktitle}{\emph{History of programming languages I
+  (incoll)}}, \bibfield{editor}{\bibinfo{person}{Richard~L. Wexelblat}} (Ed.).
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{68--71}.
+\newblock
+\showISBNx{0-12-745040-8}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/800025.1198348}
+\showDOI{\tempurl}
+
+
+\bibitem[Lee(2005)]%
+        {Lee05}
+\bibfield{author}{\bibinfo{person}{Newton Lee}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Interview with Bill Kinder: January 13, 2005}.
+\newblock \bibinfo{howpublished}{Video}.
+\newblock \bibinfo{journal}{\emph{Comput. Entertain.}} \bibinfo{volume}{3},
+  \bibinfo{number}{1}, Article \bibinfo{articleno}{4}
+  (\bibinfo{date}{Jan.-March} \bibinfo{year}{2005}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1057270.1057278}
+\showDOI{\tempurl}
+
+
+\bibitem[Li et~al\mbox{.}(2008)]%
+        {Li:2008:PUC:1358628.1358946}
+\bibfield{author}{\bibinfo{person}{Cheng-Lun Li}, \bibinfo{person}{Ayse~G.
+  Buyuktur}, \bibinfo{person}{David~K. Hutchful}, \bibinfo{person}{Natasha~B.
+  Sant}, {and} \bibinfo{person}{Satyendra~K. Nainwal}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Portalis: using competitive online interactions to
+  support aid initiatives for the homeless}. In \bibinfo{booktitle}{\emph{CHI
+  '08 extended abstracts on Human factors in computing systems}} (Florence,
+  Italy). \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{3873--3878}.
+\newblock
+\showISBNx{978-1-60558-012-X}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1358628.1358946}
+\showDOI{\tempurl}
+
+
+\bibitem[Li et~al\mbox{.}(2021)]%
+        {li2021DCT}
+\bibfield{author}{\bibinfo{person}{Jiaming Li}, \bibinfo{person}{Hongtao Xie},
+  \bibinfo{person}{Jiahong Li}, \bibinfo{person}{Zhongyuan Wang}, {and}
+  \bibinfo{person}{Yongdong Zhang}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Frequency-aware discriminative feature learning
+  supervised by single-center loss for face forgery detection}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{6458--6467}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2019)]%
+        {li2019faceshifter}
+\bibfield{author}{\bibinfo{person}{Lingzhi Li}, \bibinfo{person}{Jianmin Bao},
+  \bibinfo{person}{Hao Yang}, \bibinfo{person}{Dong Chen}, {and}
+  \bibinfo{person}{Fang Wen}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Faceshifter: Towards high fidelity and occlusion
+  aware face swapping}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1912.13457}}
+  (\bibinfo{year}{2019}).
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020a)]%
+        {li2020facexray}
+\bibfield{author}{\bibinfo{person}{Lingzhi Li}, \bibinfo{person}{Jianmin Bao},
+  \bibinfo{person}{Ting Zhang}, \bibinfo{person}{Hao Yang},
+  \bibinfo{person}{Dong Chen}, \bibinfo{person}{Fang Wen}, {and}
+  \bibinfo{person}{Baining Guo}.} \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{Face x-ray for more general face forgery
+  detection}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{5001--5010}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020b)]%
+        {li2020face}
+\bibfield{author}{\bibinfo{person}{Lingzhi Li}, \bibinfo{person}{Jianmin Bao},
+  \bibinfo{person}{Ting Zhang}, \bibinfo{person}{Hao Yang},
+  \bibinfo{person}{Dong Chen}, \bibinfo{person}{Fang Wen}, {and}
+  \bibinfo{person}{Baining Guo}.} \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{Face x-ray for more general face forgery
+  detection}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{5001--5010}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2018c)]%
+        {li2018beautygan}
+\bibfield{author}{\bibinfo{person}{Tingting Li}, \bibinfo{person}{Ruihe Qian},
+  \bibinfo{person}{Chao Dong}, \bibinfo{person}{Si Liu}, \bibinfo{person}{Qiong
+  Yan}, \bibinfo{person}{Wenwu Zhu}, {and} \bibinfo{person}{Liang Lin}.}
+  \bibinfo{year}{2018}\natexlab{c}.
+\newblock \showarticletitle{Beautygan: Instance-level facial makeup transfer
+  with deep generative adversarial network}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 26th ACM international
+  conference on Multimedia}}. \bibinfo{pages}{645--653}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020c)]%
+        {li2020sharp}
+\bibfield{author}{\bibinfo{person}{Xiaodan Li}, \bibinfo{person}{Yining Lang},
+  \bibinfo{person}{Yuefeng Chen}, \bibinfo{person}{Xiaofeng Mao},
+  \bibinfo{person}{Yuan He}, \bibinfo{person}{Shuhui Wang},
+  \bibinfo{person}{Hui Xue}, {and} \bibinfo{person}{Quan Lu}.}
+  \bibinfo{year}{2020}\natexlab{c}.
+\newblock \showarticletitle{Sharp multiple instance learning for deepfake video
+  detection}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM
+  international conference on multimedia}}. \bibinfo{pages}{1864--1872}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2018a)]%
+        {eyeblink}
+\bibfield{author}{\bibinfo{person}{Yuezun Li}, \bibinfo{person}{Ming-Ching
+  Chang}, {and} \bibinfo{person}{Siwei Lyu}.} \bibinfo{year}{2018}\natexlab{a}.
+\newblock \showarticletitle{In ictu oculi: Exposing ai created fake videos by
+  detecting eye blinking}. In \bibinfo{booktitle}{\emph{2018 IEEE international
+  workshop on information forensics and security (WIFS)}}. IEEE,
+  \bibinfo{pages}{1--7}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2018b)]%
+        {li2018ictu}
+\bibfield{author}{\bibinfo{person}{Yuezun Li}, \bibinfo{person}{Ming-Ching
+  Chang}, {and} \bibinfo{person}{Siwei Lyu}.} \bibinfo{year}{2018}\natexlab{b}.
+\newblock \showarticletitle{In ictu oculi: Exposing ai created fake videos by
+  detecting eye blinking}. In \bibinfo{booktitle}{\emph{2018 IEEE International
+  workshop on information forensics and security (WIFS)}}. IEEE,
+  \bibinfo{pages}{1--7}.
+\newblock
+
+
+\bibitem[Li and Lyu(2018)]%
+        {li2018exposing}
+\bibfield{author}{\bibinfo{person}{Yuezun Li} {and} \bibinfo{person}{Siwei
+  Lyu}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Exposing deepfake videos by detecting face warping
+  artifacts}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.00656}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020d)]%
+        {li2020celebdf}
+\bibfield{author}{\bibinfo{person}{Yuezun Li}, \bibinfo{person}{Xin Yang},
+  \bibinfo{person}{Pu Sun}, \bibinfo{person}{Honggang Qi}, {and}
+  \bibinfo{person}{Siwei Lyu}.} \bibinfo{year}{2020}\natexlab{d}.
+\newblock \showarticletitle{Celeb-df: A large-scale challenging dataset for
+  deepfake forensics}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{3207--3216}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2021c)]%
+        {liu2021face}
+\bibfield{author}{\bibinfo{person}{Ajian Liu}, \bibinfo{person}{Zichang Tan},
+  \bibinfo{person}{Jun Wan}, \bibinfo{person}{Yanyan Liang},
+  \bibinfo{person}{Zhen Lei}, \bibinfo{person}{Guodong Guo}, {and}
+  \bibinfo{person}{Stan~Z Li}.} \bibinfo{year}{2021}\natexlab{c}.
+\newblock \showarticletitle{Face anti-spoofing via adversarial cross-modality
+  translation}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Information Forensics
+  and Security}}  \bibinfo{volume}{16} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{2759--2772}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2021a)]%
+        {liu2021spatial}
+\bibfield{author}{\bibinfo{person}{Honggu Liu}, \bibinfo{person}{Xiaodan Li},
+  \bibinfo{person}{Wenbo Zhou}, \bibinfo{person}{Yuefeng Chen},
+  \bibinfo{person}{Yuan He}, \bibinfo{person}{Hui Xue},
+  \bibinfo{person}{Weiming Zhang}, {and} \bibinfo{person}{Nenghai Yu}.}
+  \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Spatial-phase shallow learning: rethinking face
+  forgery detection in frequency domain}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{772--781}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2022b)]%
+        {robust2}
+\bibfield{author}{\bibinfo{person}{Sheng Liu}, \bibinfo{person}{Zhihui Zhu},
+  \bibinfo{person}{Qing Qu}, {and} \bibinfo{person}{Chong You}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \showarticletitle{Robust training under label noise by
+  over-parameterization}. In \bibinfo{booktitle}{\emph{International Conference
+  on Machine Learning}}. PMLR, \bibinfo{pages}{14153--14172}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2020)]%
+        {liu2020energy}
+\bibfield{author}{\bibinfo{person}{Weitang Liu}, \bibinfo{person}{Xiaoyun
+  Wang}, \bibinfo{person}{John Owens}, {and} \bibinfo{person}{Yixuan Li}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Energy-based out-of-distribution detection}.
+\newblock \bibinfo{journal}{\emph{Advances in neural information processing
+  systems}}  \bibinfo{volume}{33} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{21464--21475}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2021b)]%
+        {Swin}
+\bibfield{author}{\bibinfo{person}{Ze Liu}, \bibinfo{person}{Yutong Lin},
+  \bibinfo{person}{Yue Cao}, \bibinfo{person}{Han Hu}, \bibinfo{person}{Yixuan
+  Wei}, \bibinfo{person}{Zheng Zhang}, \bibinfo{person}{Stephen Lin}, {and}
+  \bibinfo{person}{Baining Guo}.} \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Swin transformer: Hierarchical vision transformer
+  using shifted windows}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF international conference on computer vision}}.
+  \bibinfo{pages}{10012--10022}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2018)]%
+        {CelebA}
+\bibfield{author}{\bibinfo{person}{Ziwei Liu}, \bibinfo{person}{Ping Luo},
+  \bibinfo{person}{Xiaogang Wang}, {and} \bibinfo{person}{Xiaoou Tang}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Large-scale celebfaces attributes (CelebA)
+  dataset}.
+\newblock \bibinfo{journal}{\emph{Retrieved August}} \bibinfo{volume}{15},
+  \bibinfo{number}{2018} (\bibinfo{year}{2018}), \bibinfo{pages}{11}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2022a)]%
+        {ConvNext}
+\bibfield{author}{\bibinfo{person}{Zhuang Liu}, \bibinfo{person}{Hanzi Mao},
+  \bibinfo{person}{Chao-Yuan Wu}, \bibinfo{person}{Christoph Feichtenhofer},
+  \bibinfo{person}{Trevor Darrell}, {and} \bibinfo{person}{Saining Xie}.}
+  \bibinfo{year}{2022}\natexlab{a}.
+\newblock \showarticletitle{A convnet for the 2020s}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition}}. \bibinfo{pages}{11976--11986}.
+\newblock
+
+
+\bibitem[LIY and InIctuOculi(2018)]%
+        {liy2018exposingaicreated}
+\bibfield{author}{\bibinfo{person}{CHANG~M LIY} {and} \bibinfo{person}{LYUS
+  InIctuOculi}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Exposingaicreated
+  fakevideosbydetectingeyeblinking}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 2018 IEEE International Workshop on Information Forensics and Security
+  (WIFS), Hong Kong, China}}. \bibinfo{pages}{11--13}.
+\newblock
+
+
+\bibitem[Luo et~al\mbox{.}(2021)]%
+        {luo2021SRM}
+\bibfield{author}{\bibinfo{person}{Yuchen Luo}, \bibinfo{person}{Yong Zhang},
+  \bibinfo{person}{Junchi Yan}, {and} \bibinfo{person}{Wei Liu}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Generalizing face forgery detection with
+  high-frequency features}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{16317--16326}.
+\newblock
+
+
+\bibitem[Masi et~al\mbox{.}(2020)]%
+        {masi2020two}
+\bibfield{author}{\bibinfo{person}{Iacopo Masi}, \bibinfo{person}{Aditya
+  Killekar}, \bibinfo{person}{Royston~Marian Mascarenhas},
+  \bibinfo{person}{Shenoy~Pratik Gurudatt}, {and} \bibinfo{person}{Wael
+  AbdAlmageed}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Two-branch recurrent network for isolating
+  deepfakes in videos}. In \bibinfo{booktitle}{\emph{European conference on
+  computer vision}}. Springer, \bibinfo{pages}{667--684}.
+\newblock
+
+
+\bibitem[McCloskey and Albright(2019)]%
+        {McCloskey2019detecting}
+\bibfield{author}{\bibinfo{person}{Scott McCloskey} {and}
+  \bibinfo{person}{Michael Albright}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Detecting GAN-Generated Imagery Using Saturation
+  Cues}. In \bibinfo{booktitle}{\emph{2019 IEEE International Conference on
+  Image Processing (ICIP)}}. \bibinfo{pages}{4584--4588}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICIP.2019.8803661}
+\showDOI{\tempurl}
+
+
+\bibitem[McCracken and Golden(1990)]%
+        {McCracken:1990:SSC:575315}
+\bibfield{author}{\bibinfo{person}{Daniel~D. McCracken} {and}
+  \bibinfo{person}{Donald~G. Golden}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Simplified Structured COBOL with
+  Microsoft/MicroFocus COBOL}}.
+\newblock \bibinfo{publisher}{John Wiley \& Sons, Inc.}, \bibinfo{address}{New
+  York, NY, USA}.
+\newblock
+\showISBNx{0471514071}
+
+
+\bibitem[McInnes et~al\mbox{.}(2018)]%
+        {UMAP}
+\bibfield{author}{\bibinfo{person}{Leland McInnes}, \bibinfo{person}{John
+  Healy}, {and} \bibinfo{person}{James Melville}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Umap: Uniform manifold approximation and projection
+  for dimension reduction}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1802.03426}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[Mittal et~al\mbox{.}(2020a)]%
+        {2020emotions}
+\bibfield{author}{\bibinfo{person}{Trisha Mittal}, \bibinfo{person}{Uttaran
+  Bhattacharya}, \bibinfo{person}{Rohan Chandra}, \bibinfo{person}{Aniket
+  Bera}, {and} \bibinfo{person}{Dinesh Manocha}.}
+  \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{Emotions don't lie: An audio-visual deepfake
+  detection method using affective cues}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM international
+  conference on multimedia}}. \bibinfo{pages}{2823--2832}.
+\newblock
+
+
+\bibitem[Mittal et~al\mbox{.}(2020b)]%
+        {mittal2020emotions}
+\bibfield{author}{\bibinfo{person}{Trisha Mittal}, \bibinfo{person}{Uttaran
+  Bhattacharya}, \bibinfo{person}{Rohan Chandra}, \bibinfo{person}{Aniket
+  Bera}, {and} \bibinfo{person}{Dinesh Manocha}.}
+  \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{Emotions don't lie: An audio-visual deepfake
+  detection method using affective cues}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM international
+  conference on multimedia}}. \bibinfo{pages}{2823--2832}.
+\newblock
+
+
+\bibitem[Mullender(1993)]%
+        {Mullender:1993:DS:302430}
+\bibfield{editor}{\bibinfo{person}{Sape Mullender}} (Ed.).
+  \bibinfo{year}{1993}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Distributed systems (2nd Ed.)}}.
+\newblock \bibinfo{publisher}{ACM Press/Addison-Wesley Publishing Co.},
+  \bibinfo{address}{New York, NY, USA}.
+\newblock
+\showISBNx{0-201-62427-3}
+
+
+\bibitem[Mumford(1987)]%
+        {Mumford:1987:MES:54905.54911}
+\bibfield{author}{\bibinfo{person}{E. Mumford}.}
+  \bibinfo{year}{1987}\natexlab{}.
+\newblock \showarticletitle{Managerial expert systems and organizational
+  change: some critical research issues}.
+\newblock In \bibinfo{booktitle}{\emph{Critical issues in information systems
+  research (incoll)}}. \bibinfo{publisher}{John Wiley \& Sons, Inc.},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{135--155}.
+\newblock
+\showISBNx{0-471-91281-6}
+\urldef\tempurl%
+\url{http://portal.acm.org/citation.cfm?id=54905.54911}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Natarajan et~al\mbox{.}(2007)]%
+        {Natarajan-01}
+\bibfield{author}{\bibinfo{person}{A. Natarajan}, \bibinfo{person}{M. Motani},
+  \bibinfo{person}{B. de Silva}, \bibinfo{person}{K. Yap}, {and}
+  \bibinfo{person}{K.~C. Chua}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Investigating Network Architectures for Body Sensor
+  Networks}. In \bibinfo{booktitle}{\emph{Network Architectures}},
+  \bibfield{editor}{\bibinfo{person}{G.~Whitcomb} {and}
+  \bibinfo{person}{P.~Neece}} (Eds.). \bibinfo{publisher}{Keleuven Press},
+  \bibinfo{address}{Dayton, OH}, \bibinfo{pages}{322--328}.
+\newblock
+\showeprint{960935712}~[cs]
+
+
+\bibitem[News.(2015)]%
+        {Israellaw}
+\bibfield{author}{\bibinfo{person}{IBT News.}} \bibinfo{year}{2015}\natexlab{}.
+\newblock \bibinfo{title}{Supermodels Without Photoshop: Israel’s
+  ‘Photoshop Law’ Puts Focus on Digitally Altered Images}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{http://goo.gl/3PvaEf}}.
+
+
+\bibitem[Nguyen et~al\mbox{.}(2019a)]%
+        {Nguyen2019Multi}
+\bibfield{author}{\bibinfo{person}{H.~H. Nguyen}, \bibinfo{person}{F. Fang},
+  \bibinfo{person}{J. Yamagishi}, {and} \bibinfo{person}{I. Echizen}.}
+  \bibinfo{year}{2019}\natexlab{a}.
+\newblock \showarticletitle{Multi-task Learning For Detecting and Segmenting
+  Manipulated Facial Images and Videos}.
+\newblock
+
+
+\bibitem[Nguyen et~al\mbox{.}(2019b)]%
+        {nguyen2019capsule}
+\bibfield{author}{\bibinfo{person}{Huy~H Nguyen}, \bibinfo{person}{Junichi
+  Yamagishi}, {and} \bibinfo{person}{Isao Echizen}.}
+  \bibinfo{year}{2019}\natexlab{b}.
+\newblock \showarticletitle{Capsule-forensics: Using capsule networks to detect
+  forged images and videos}. In \bibinfo{booktitle}{\emph{ICASSP 2019-2019 IEEE
+  International Conference on Acoustics, Speech and Signal Processing
+  (ICASSP)}}. IEEE, \bibinfo{pages}{2307--2311}.
+\newblock
+
+
+\bibitem[Nielson(1985)]%
+        {7:3:359}
+\bibfield{author}{\bibinfo{person}{F. Nielson}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Program transformations in a denotational setting}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Program. Lang. Syst.}}
+  \bibinfo{volume}{7}, \bibinfo{number}{3} (\bibinfo{date}{July}
+  \bibinfo{year}{1985}), \bibinfo{pages}{359--379}.
+\newblock
+
+
+\bibitem[Novak(2003)]%
+        {Novak03}
+\bibfield{author}{\bibinfo{person}{Dave Novak}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Solder man}. \bibinfo{howpublished}{Video}. In
+  \bibinfo{booktitle}{\emph{ACM SIGGRAPH 2003 Video Review on Animation theater
+  Program: Part I - Vol. 145 (July 27--27, 2003)}}. \bibinfo{publisher}{ACM
+  Press}, \bibinfo{address}{New York, NY}, \bibinfo{pages}{4}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/99.9999/woot07-S422}
+\showDOI{\tempurl}
+\urldef\tempurl%
+\url{http://video.google.com/videoplay?docid=6528042696351994555}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Obama(2008)]%
+        {Obama08}
+\bibfield{author}{\bibinfo{person}{Barack Obama}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{title}{A more perfect union}.
+\newblock \bibinfo{howpublished}{Video}.
+\newblock
+\urldef\tempurl%
+\url{http://video.google.com/videoplay?docid=6528042696351994555}
+\showURL{%
+Retrieved March 21, 2008 from \tempurl}
+
+
+\bibitem[Peng et~al\mbox{.}(2021)]%
+        {conformer}
+\bibfield{author}{\bibinfo{person}{Zhiliang Peng}, \bibinfo{person}{Wei Huang},
+  \bibinfo{person}{Shanzhi Gu}, \bibinfo{person}{Lingxi Xie},
+  \bibinfo{person}{Yaowei Wang}, \bibinfo{person}{Jianbin Jiao}, {and}
+  \bibinfo{person}{Qixiang Ye}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Conformer: Local features coupling global
+  representations for visual recognition}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision}}. \bibinfo{pages}{367--376}.
+\newblock
+
+
+\bibitem[P{\'e}rez et~al\mbox{.}(2003)]%
+        {perez2003poisson}
+\bibfield{author}{\bibinfo{person}{Patrick P{\'e}rez}, \bibinfo{person}{Michel
+  Gangnet}, {and} \bibinfo{person}{Andrew Blake}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Poisson image editing}.
+\newblock In \bibinfo{booktitle}{\emph{ACM SIGGRAPH 2003 Papers}}.
+  \bibinfo{pages}{313--318}.
+\newblock
+
+
+\bibitem[Perov et~al\mbox{.}(2020)]%
+        {perov2020deepfacelab}
+\bibfield{author}{\bibinfo{person}{Ivan Perov}, \bibinfo{person}{Daiheng Gao},
+  \bibinfo{person}{Nikolay Chervoniy}, \bibinfo{person}{Kunlin Liu},
+  \bibinfo{person}{Sugasa Marangonda}, \bibinfo{person}{Chris Um{\'e}},
+  \bibinfo{person}{Mr Dpfks}, \bibinfo{person}{Carl~Shift Facenheim},
+  \bibinfo{person}{Luis RP}, \bibinfo{person}{Jian Jiang}, {et~al\mbox{.}}}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{DeepFaceLab: Integrated, flexible and extensible
+  face-swapping framework}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2005.05535}}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Petrie(1986a)]%
+        {Petrie:1986:NAD:899644}
+\bibfield{author}{\bibinfo{person}{Charles~J. Petrie}.}
+  \bibinfo{year}{1986}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{New Algorithms for Dependency-Directed
+  Backtracking (Master's thesis)}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{address}{Austin, TX,
+  USA}.
+\newblock
+
+
+\bibitem[Petrie(1986b)]%
+        {Petrie:1986:NAD:12345}
+\bibfield{author}{\bibinfo{person}{Charles~J. Petrie}.}
+  \bibinfo{year}{1986}\natexlab{b}.
+\newblock \emph{\bibinfo{title}{New Algorithms for Dependency-Directed
+  Backtracking (Master's thesis)}}.
+\newblock \bibinfo{thesistype}{Master's\ thesis}. \bibinfo{school}{University
+  of Texas at Austin}, \bibinfo{address}{Austin, TX, USA}.
+\newblock
+
+
+\bibitem[Poker-Edge.Com(2006)]%
+        {Poker06}
+\bibfield{author}{\bibinfo{person}{Poker-Edge.Com}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \bibinfo{title}{Stats and Analysis}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{http://www.poker-edge.com/stats.php}
+\showURL{%
+Retrieved June 7, 2006 from \tempurl}
+
+
+\bibitem[Press-Reynolds(2021)]%
+        {Norwaylaw}
+\bibfield{author}{\bibinfo{person}{Kieran Press-Reynolds}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{title}{Influencers in Norway will soon have to disclose when
+  paid posts include edited or manipulated body photos}.
+\newblock
+\newblock
+\newblock
+\shownote{\url{https://www.insider.com/norway-law-social-media-influencers-advertisers-disclose-edited-images-2021-7}}.
+
+
+\bibitem[Qian et~al\mbox{.}(2020)]%
+        {qian2020thinking}
+\bibfield{author}{\bibinfo{person}{Yuyang Qian}, \bibinfo{person}{Guojun Yin},
+  \bibinfo{person}{Lu Sheng}, \bibinfo{person}{Zixuan Chen}, {and}
+  \bibinfo{person}{Jing Shao}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Thinking in frequency: Face forgery detection by
+  mining frequency-aware clues}. In \bibinfo{booktitle}{\emph{European
+  conference on computer vision}}. Springer, \bibinfo{pages}{86--103}.
+\newblock
+
+
+\bibitem[Qiu et~al\mbox{.}(2017)]%
+        {qiu2017learning}
+\bibfield{author}{\bibinfo{person}{Zhaofan Qiu}, \bibinfo{person}{Ting Yao},
+  {and} \bibinfo{person}{Tao Mei}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Learning spatio-temporal representation with
+  pseudo-3d residual networks}. In \bibinfo{booktitle}{\emph{proceedings of the
+  IEEE International Conference on Computer Vision}}.
+  \bibinfo{pages}{5533--5541}.
+\newblock
+
+
+\bibitem[{R Core Team}(2019)]%
+        {R}
+\bibfield{author}{\bibinfo{person}{{R Core Team}}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{R: A Language and Environment for
+  Statistical Computing}}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+\newblock
+\urldef\tempurl%
+\url{https://www.R-project.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Rathgeb et~al\mbox{.}(2021)]%
+        {rathgeb2021effects}
+\bibfield{author}{\bibinfo{person}{Christian Rathgeb}, \bibinfo{person}{Kevin
+  Bernardo}, \bibinfo{person}{Nathania~E Haryanto}, {and}
+  \bibinfo{person}{Christoph Busch}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Effects of image compression on face image
+  manipulation detection: A case study on facial retouching}.
+\newblock \bibinfo{journal}{\emph{IET Biometrics}} \bibinfo{volume}{10},
+  \bibinfo{number}{3} (\bibinfo{year}{2021}), \bibinfo{pages}{342--355}.
+\newblock
+
+
+\bibitem[Rathgeb et~al\mbox{.}(2020a)]%
+        {rathgeb2020prnu}
+\bibfield{author}{\bibinfo{person}{Christian Rathgeb},
+  \bibinfo{person}{Angelika Botaljov}, \bibinfo{person}{Fabian Stockhardt},
+  \bibinfo{person}{Sergey Isadskiy}, \bibinfo{person}{Luca Debiasi},
+  \bibinfo{person}{Andreas Uhl}, {and} \bibinfo{person}{Christoph Busch}.}
+  \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{PRNU-based detection of facial retouching}.
+\newblock \bibinfo{journal}{\emph{IET Biometrics}} \bibinfo{volume}{9},
+  \bibinfo{number}{4} (\bibinfo{year}{2020}), \bibinfo{pages}{154--164}.
+\newblock
+
+
+\bibitem[Rathgeb et~al\mbox{.}(2019)]%
+        {rathgeb2019impact}
+\bibfield{author}{\bibinfo{person}{Christian Rathgeb}, \bibinfo{person}{Antitza
+  Dantcheva}, {and} \bibinfo{person}{Christoph Busch}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Impact and detection of facial beautification in
+  face recognition: An overview}.
+\newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{7}
+  (\bibinfo{year}{2019}), \bibinfo{pages}{152667--152678}.
+\newblock
+
+
+\bibitem[Rathgeb et~al\mbox{.}(2020b)]%
+        {rathgeb2020differential}
+\bibfield{author}{\bibinfo{person}{Christian Rathgeb}, \bibinfo{person}{C-I
+  Satnoianu}, \bibinfo{person}{Nathania~E Haryanto}, \bibinfo{person}{Kevin
+  Bernardo}, {and} \bibinfo{person}{Christoph Busch}.}
+  \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{Differential detection of facial retouching: A
+  multi-biometric approach}.
+\newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{8}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{106373--106385}.
+\newblock
+
+
+\bibitem[Rathgeb et~al\mbox{.}(2022)]%
+        {rathgeb2022handbook}
+\bibfield{author}{\bibinfo{person}{Christian Rathgeb}, \bibinfo{person}{Ruben
+  Tolosana}, \bibinfo{person}{Ruben Vera-Rodriguez}, {and}
+  \bibinfo{person}{Christoph Busch}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Handbook of digital face manipulation and
+  detection: From deepfakes to morphing attacks}}.
+\newblock \bibinfo{publisher}{Springer Nature}.
+\newblock
+
+
+\bibitem[Reid(1980)]%
+        {reid:scribe}
+\bibfield{author}{\bibinfo{person}{Brian~K. Reid}.}
+  \bibinfo{year}{1980}\natexlab{}.
+\newblock \showarticletitle{A high-level approach to computer document
+  formatting}. In \bibinfo{booktitle}{\emph{Proceedings of the 7th Annual
+  Symposium on Principles of Programming Languages}}. \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York}, \bibinfo{pages}{24--31}.
+\newblock
+
+
+\bibitem[Ren et~al\mbox{.}(2022)]%
+        {Shunted}
+\bibfield{author}{\bibinfo{person}{Sucheng Ren}, \bibinfo{person}{Daquan Zhou},
+  \bibinfo{person}{Shengfeng He}, \bibinfo{person}{Jiashi Feng}, {and}
+  \bibinfo{person}{Xinchao Wang}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Shunted self-attention via multi-scale token
+  aggregation}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{10853--10862}.
+\newblock
+
+
+\bibitem[Roh et~al\mbox{.}(2021)]%
+        {robust1}
+\bibfield{author}{\bibinfo{person}{Yuji Roh}, \bibinfo{person}{Kangwook Lee},
+  \bibinfo{person}{Steven Whang}, {and} \bibinfo{person}{Changho Suh}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Sample selection for fair and robust training}.
+\newblock \bibinfo{journal}{\emph{Advances in Neural Information Processing
+  Systems}}  \bibinfo{volume}{34} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{815--827}.
+\newblock
+
+
+\bibitem[Rossler et~al\mbox{.}(2019)]%
+        {rossler2019faceforensics++}
+\bibfield{author}{\bibinfo{person}{Andreas Rossler}, \bibinfo{person}{Davide
+  Cozzolino}, \bibinfo{person}{Luisa Verdoliva}, \bibinfo{person}{Christian
+  Riess}, \bibinfo{person}{Justus Thies}, {and} \bibinfo{person}{Matthias
+  Nie{\ss}ner}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Faceforensics++: Learning to detect manipulated
+  facial images}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  international conference on computer vision}}. \bibinfo{pages}{1--11}.
+\newblock
+
+
+\bibitem[Rous(2008)]%
+        {rous08}
+\bibfield{author}{\bibinfo{person}{Bernard Rous}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{The Enabling of Digital Libraries}.
+\newblock \bibinfo{journal}{\emph{Digital Libraries}} \bibinfo{volume}{12},
+  \bibinfo{number}{3}, Article \bibinfo{articleno}{5} (\bibinfo{date}{July}
+  \bibinfo{year}{2008}).
+\newblock
+\newblock
+\shownote{To appear}.
+
+
+\bibitem[Saeedi et~al\mbox{.}(2010a)]%
+        {SaeediMEJ10}
+\bibfield{author}{\bibinfo{person}{Mehdi Saeedi},
+  \bibinfo{person}{Morteza~Saheb Zamani}, {and} \bibinfo{person}{Mehdi
+  Sedighi}.} \bibinfo{year}{2010}\natexlab{a}.
+\newblock \showarticletitle{A library-based synthesis methodology for
+  reversible logic}.
+\newblock \bibinfo{journal}{\emph{Microelectron. J.}} \bibinfo{volume}{41},
+  \bibinfo{number}{4} (\bibinfo{date}{April} \bibinfo{year}{2010}),
+  \bibinfo{pages}{185--194}.
+\newblock
+
+
+\bibitem[Saeedi et~al\mbox{.}(2010b)]%
+        {SaeediJETC10}
+\bibfield{author}{\bibinfo{person}{Mehdi Saeedi},
+  \bibinfo{person}{Morteza~Saheb Zamani}, \bibinfo{person}{Mehdi Sedighi},
+  {and} \bibinfo{person}{Zahra Sasanian}.} \bibinfo{year}{2010}\natexlab{b}.
+\newblock \showarticletitle{Synthesis of Reversible Circuit Using Cycle-Based
+  Approach}.
+\newblock \bibinfo{journal}{\emph{J. Emerg. Technol. Comput. Syst.}}
+  \bibinfo{volume}{6}, \bibinfo{number}{4} (\bibinfo{date}{Dec.}
+  \bibinfo{year}{2010}).
+\newblock
+
+
+\bibitem[Salas and Hille(1978)]%
+        {salas:calculus}
+\bibfield{author}{\bibinfo{person}{S.L. Salas} {and} \bibinfo{person}{Einar
+  Hille}.} \bibinfo{year}{1978}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Calculus: One and Several Variable}}.
+\newblock \bibinfo{publisher}{John Wiley and Sons}, \bibinfo{address}{New
+  York}.
+\newblock
+
+
+\bibitem[Sanchez et~al\mbox{.}(2023)]%
+        {FFHQWrinkle}
+\bibfield{author}{\bibinfo{person}{Marcelo Sanchez}, \bibinfo{person}{Gil
+  Triginer}, \bibinfo{person}{Coloma Ballester}, \bibinfo{person}{Lara Raad},
+  {and} \bibinfo{person}{Eduard Ramon}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Photorealistic Facial Wrinkles Removal}. In
+  \bibinfo{booktitle}{\emph{Computer Vision--ACCV 2022 Workshops: 16th Asian
+  Conference on Computer Vision, Macao, China, December 4--8, 2022, Revised
+  Selected Papers}}. Springer, \bibinfo{pages}{117--133}.
+\newblock
+
+
+\bibitem[Schroff et~al\mbox{.}(2015)]%
+        {facenet}
+\bibfield{author}{\bibinfo{person}{Florian Schroff}, \bibinfo{person}{Dmitry
+  Kalenichenko}, {and} \bibinfo{person}{James Philbin}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Facenet: A unified embedding for face recognition
+  and clustering}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{815--823}.
+\newblock
+
+
+\bibitem[Schwarcz and Chellappa(2021)]%
+        {Schwarcz2021finding}
+\bibfield{author}{\bibinfo{person}{Steven Schwarcz} {and} \bibinfo{person}{Rama
+  Chellappa}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Finding Facial Forgery Artifacts with Parts-Based
+  Detectors}. In \bibinfo{booktitle}{\emph{2021 IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition Workshops (CVPRW)}}.
+  \bibinfo{pages}{933--942}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPRW53098.2021.00104}
+\showDOI{\tempurl}
+
+
+\bibitem[Scientist(2009)]%
+        {JoeScientist001}
+\bibfield{author}{\bibinfo{person}{Joseph Scientist}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \bibinfo{title}{The fountain of youth}.
+\newblock
+\newblock
+\newblock
+\shownote{Patent No. 12345, Filed July 1st., 2008, Issued Aug. 9th., 2009}.
+
+
+\bibitem[Selvaraju et~al\mbox{.}(2017)]%
+        {selvaraju2017grad}
+\bibfield{author}{\bibinfo{person}{Ramprasaath~R Selvaraju},
+  \bibinfo{person}{Michael Cogswell}, \bibinfo{person}{Abhishek Das},
+  \bibinfo{person}{Ramakrishna Vedantam}, \bibinfo{person}{Devi Parikh}, {and}
+  \bibinfo{person}{Dhruv Batra}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Grad-cam: Visual explanations from deep networks
+  via gradient-based localization}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the IEEE international conference on computer vision}}.
+  \bibinfo{pages}{618--626}.
+\newblock
+
+
+\bibitem[Shafaei et~al\mbox{.}(2021)]%
+        {shafaei2021autoretouch}
+\bibfield{author}{\bibinfo{person}{Alireza Shafaei}, \bibinfo{person}{James~J
+  Little}, {and} \bibinfo{person}{Mark Schmidt}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{AutoRetouch: automatic professional face
+  retouching}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Winter
+  Conference on Applications of Computer Vision}}. \bibinfo{pages}{990--998}.
+\newblock
+
+
+\bibitem[Shi(2021)]%
+        {2021Visualizing}
+\bibfield{author}{\bibinfo{person}{S. Shi}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Visualizing Data using GTSNE}.
+\newblock  (\bibinfo{year}{2021}).
+\newblock
+
+
+\bibitem[{Simonyan} and {Zisserman}(2015)]%
+        {VGG}
+\bibfield{author}{\bibinfo{person}{K. {Simonyan}} {and} \bibinfo{person}{A.
+  {Zisserman}}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Very Deep Convolutional Networks for Large-Scale
+  Image Recognition}. In \bibinfo{booktitle}{\emph{ICLR}}.
+\newblock
+
+
+\bibitem[Smith(2010)]%
+        {Smith10}
+\bibfield{author}{\bibinfo{person}{Stan~W. Smith}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{An experiment in bibliographic mark-up: Parsing
+  metadata for XML export}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  3rd. annual workshop on Librarians and Computers}}
+  \emph{(\bibinfo{series}{LAC '10}, Vol.~\bibinfo{volume}{3})},
+  \bibfield{editor}{\bibinfo{person}{Reginald~N. Smythe} {and}
+  \bibinfo{person}{Alexander Noble}} (Eds.). \bibinfo{publisher}{Paparazzi
+  Press}, \bibinfo{address}{Milan Italy}, \bibinfo{pages}{422--431}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/99.9999/woot07-S422}
+\showDOI{\tempurl}
+
+
+\bibitem[Sohrawardi et~al\mbox{.}(2019)]%
+        {sohrawardi2019poster}
+\bibfield{author}{\bibinfo{person}{Saniat~Javid Sohrawardi},
+  \bibinfo{person}{Akash Chintha}, \bibinfo{person}{Bao Thai},
+  \bibinfo{person}{Sovantharith Seng}, \bibinfo{person}{Andrea Hickerson},
+  \bibinfo{person}{Raymond Ptucha}, {and} \bibinfo{person}{Matthew Wright}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Poster: Towards robust open-world detection of
+  deepfakes}. In \bibinfo{booktitle}{\emph{Proceedings of the 2019 ACM SIGSAC
+  conference on computer and communications security}}.
+  \bibinfo{pages}{2613--2615}.
+\newblock
+
+
+\bibitem[Song et~al\mbox{.}(2022)]%
+        {noise_survey}
+\bibfield{author}{\bibinfo{person}{Hwanjun Song}, \bibinfo{person}{Minseok
+  Kim}, \bibinfo{person}{Dongmin Park}, \bibinfo{person}{Yooju Shin}, {and}
+  \bibinfo{person}{Jae-Gil Lee}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Learning from noisy labels with deep neural
+  networks: A survey}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Neural Networks and
+  Learning Systems}} (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Spector(1990)]%
+        {Spector90}
+\bibfield{author}{\bibinfo{person}{Asad~Z. Spector}.}
+  \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{Achieving application requirements}.
+\newblock In \bibinfo{booktitle}{\emph{Distributed Systems}
+  (\bibinfo{edition}{2nd.} ed.)}, \bibfield{editor}{\bibinfo{person}{Sape
+  Mullender}} (Ed.). \bibinfo{publisher}{ACM Press}, \bibinfo{address}{New
+  York, NY}, \bibinfo{pages}{19--33}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/90417.90738}
+\showDOI{\tempurl}
+
+
+\bibitem[Sun et~al\mbox{.}(2021b)]%
+        {sun2021domain}
+\bibfield{author}{\bibinfo{person}{Ke Sun}, \bibinfo{person}{Hong Liu},
+  \bibinfo{person}{Qixiang Ye}, \bibinfo{person}{Yue Gao},
+  \bibinfo{person}{Jianzhuang Liu}, \bibinfo{person}{Ling Shao}, {and}
+  \bibinfo{person}{Rongrong Ji}.} \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Domain general face forgery detection by learning
+  to weight}. In \bibinfo{booktitle}{\emph{Proceedings of the AAAI conference
+  on artificial intelligence}}, Vol.~\bibinfo{volume}{35}.
+  \bibinfo{pages}{2638--2646}.
+\newblock
+
+
+\bibitem[Sun et~al\mbox{.}(2021a)]%
+        {sun2021improving}
+\bibfield{author}{\bibinfo{person}{Zekun Sun}, \bibinfo{person}{Yujie Han},
+  \bibinfo{person}{Zeyu Hua}, \bibinfo{person}{Na Ruan}, {and}
+  \bibinfo{person}{Weijia Jia}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Improving the Efficiency and Robustness of
+  Deepfakes Detection through Precise Geometric Features}. In
+  \bibinfo{booktitle}{\emph{2021 IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition (CVPR)}}. \bibinfo{pages}{3608--3617}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPR46437.2021.00361}
+\showDOI{\tempurl}
+
+
+\bibitem[{Szegedy} et~al\mbox{.}(2016)]%
+        {inceptionv2}
+\bibfield{author}{\bibinfo{person}{C. {Szegedy}}, \bibinfo{person}{V.
+  {Vanhoucke}}, \bibinfo{person}{S. {Ioffe}}, \bibinfo{person}{J. {Shlens}},
+  {and} \bibinfo{person}{Z. {Wojna}}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Rethinking the Inception Architecture for Computer
+  Vision}. In \bibinfo{booktitle}{\emph{CVPR}}.
+\newblock
+
+
+\bibitem[Tan and Le(2019)]%
+        {tan2019efficientnet}
+\bibfield{author}{\bibinfo{person}{Mingxing Tan} {and} \bibinfo{person}{Quoc
+  Le}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Efficientnet: Rethinking model scaling for
+  convolutional neural networks}. In \bibinfo{booktitle}{\emph{International
+  conference on machine learning}}. PMLR, \bibinfo{pages}{6105--6114}.
+\newblock
+
+
+\bibitem[Thies et~al\mbox{.}(2019)]%
+        {thies2019deferred}
+\bibfield{author}{\bibinfo{person}{Justus Thies}, \bibinfo{person}{Michael
+  Zollh{\"o}fer}, {and} \bibinfo{person}{Matthias Nie{\ss}ner}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deferred neural rendering: Image synthesis using
+  neural textures}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics (TOG)}}
+  \bibinfo{volume}{38}, \bibinfo{number}{4} (\bibinfo{year}{2019}),
+  \bibinfo{pages}{1--12}.
+\newblock
+
+
+\bibitem[Thies et~al\mbox{.}(2016)]%
+        {thies2016face2face}
+\bibfield{author}{\bibinfo{person}{Justus Thies}, \bibinfo{person}{Michael
+  Zollhofer}, \bibinfo{person}{Marc Stamminger}, \bibinfo{person}{Christian
+  Theobalt}, {and} \bibinfo{person}{Matthias Nie{\ss}ner}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Face2face: Real-time face capture and reenactment
+  of rgb videos}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{2387--2395}.
+\newblock
+
+
+\bibitem[Thornburg(2001)]%
+        {Thornburg01}
+\bibfield{author}{\bibinfo{person}{Harry Thornburg}.}
+  \bibinfo{year}{2001}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Introduction to Bayesian Statistics}}.
+\newblock
+\urldef\tempurl%
+\url{http://ccrma.stanford.edu/~jos/bayes/bayes.html}
+\showURL{%
+Retrieved March 2, 2005 from \tempurl}
+
+
+\bibitem[Tora(2018)]%
+        {Tora2018deepfakes}
+\bibfield{author}{\bibinfo{person}{M. Tora}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{FaceSwap}.
+\newblock \bibinfo{howpublished}{https://github.com/deepfakes/
+  faceswap/tree/v2.0.0}.
+\newblock
+\newblock
+\shownote{Accessed on August 1st, 2020}.
+
+
+\bibitem[Tran et~al\mbox{.}(2014)]%
+        {tran2014c3d}
+\bibfield{author}{\bibinfo{person}{Du Tran}, \bibinfo{person}{Lubomir~D
+  Bourdev}, \bibinfo{person}{Rob Fergus}, \bibinfo{person}{Lorenzo Torresani},
+  {and} \bibinfo{person}{Manohar Paluri}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{C3D: generic features for video analysis}.
+\newblock \bibinfo{journal}{\emph{CoRR, abs/1412.0767}} \bibinfo{volume}{2},
+  \bibinfo{number}{7} (\bibinfo{year}{2014}), \bibinfo{pages}{8}.
+\newblock
+
+
+\bibitem[TUG(2017)]%
+        {TUGInstmem}
+TUG \bibinfo{year}{2017}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Institutional members of the {\TeX} Users
+  Group}}.
+\newblock
+\urldef\tempurl%
+\url{http://wwtug.org/instmem.html}
+\showURL{%
+Retrieved May 27, 2017 from \tempurl}
+
+
+\bibitem[Tzamaloukas and Garcia-Luna-Aceves(2000)]%
+        {Tzamaloukas-01}
+\bibfield{author}{\bibinfo{person}{A. Tzamaloukas} {and} \bibinfo{person}{J.~J.
+  Garcia-Luna-Aceves}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Channel-Hopping Multiple Access}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport} I-CA2301.
+  \bibinfo{institution}{Department of Computer Science, University of
+  California}, \bibinfo{address}{Berkeley, CA}.
+\newblock
+
+
+\bibitem[Vaswani et~al\mbox{.}(2017)]%
+        {Vaswani2017attention}
+\bibfield{author}{\bibinfo{person}{Ashish Vaswani}, \bibinfo{person}{Noam
+  Shazeer}, \bibinfo{person}{Niki Parmar}, \bibinfo{person}{Jakob Uszkoreit},
+  \bibinfo{person}{Llion Jones}, \bibinfo{person}{Aidan~N. Gomez},
+  \bibinfo{person}{\L{}ukasz Kaiser}, {and} \bibinfo{person}{Illia
+  Polosukhin}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Attention is All You Need}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 31st International Conference on
+  Neural Information Processing Systems}} (Long Beach, California, USA)
+  \emph{(\bibinfo{series}{NIPS'17})}. \bibinfo{publisher}{Curran Associates
+  Inc.}, \bibinfo{address}{Red Hook, NY, USA}, \bibinfo{pages}{6000–6010}.
+\newblock
+\showISBNx{9781510860964}
+
+
+\bibitem[Veytsman(2017)]%
+        {CTANacmart}
+\bibfield{author}{\bibinfo{person}{Boris Veytsman}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{acmart---{C}lass for typesetting
+  publications of {ACM}}}.
+\newblock
+\urldef\tempurl%
+\url{http://www.ctan.org/pkg/acmart}
+\showURL{%
+Retrieved May 27, 2017 from \tempurl}
+
+
+\bibitem[Wang et~al\mbox{.}(2019)]%
+        {PS}
+\bibfield{author}{\bibinfo{person}{Sheng-Yu Wang}, \bibinfo{person}{Oliver
+  Wang}, \bibinfo{person}{Andrew Owens}, \bibinfo{person}{Richard Zhang}, {and}
+  \bibinfo{person}{Alexei~A Efros}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Detecting photoshopped faces by scripting
+  photoshop}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  International Conference on Computer Vision}}. \bibinfo{pages}{10072--10081}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2020a)]%
+        {wang2020cnn}
+\bibfield{author}{\bibinfo{person}{Sheng-Yu Wang}, \bibinfo{person}{Oliver
+  Wang}, \bibinfo{person}{Richard Zhang}, \bibinfo{person}{Andrew Owens}, {and}
+  \bibinfo{person}{Alexei~A Efros}.} \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{CNN-generated images are surprisingly easy to
+  spot... for now}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{8695--8704}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2021)]%
+        {wang2021towards}
+\bibfield{author}{\bibinfo{person}{Xintao Wang}, \bibinfo{person}{Yu Li},
+  \bibinfo{person}{Honglun Zhang}, {and} \bibinfo{person}{Ying Shan}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Towards real-world blind face restoration with
+  generative facial prior}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{9168--9178}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2020b)]%
+        {wang2020deep}
+\bibfield{author}{\bibinfo{person}{Zezheng Wang}, \bibinfo{person}{Zitong Yu},
+  \bibinfo{person}{Chenxu Zhao}, \bibinfo{person}{Xiangyu Zhu},
+  \bibinfo{person}{Yunxiao Qin}, \bibinfo{person}{Qiusheng Zhou},
+  \bibinfo{person}{Feng Zhou}, {and} \bibinfo{person}{Zhen Lei}.}
+  \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{Deep spatial gradient and temporal depth learning
+  for face anti-spoofing}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{5042--5051}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2018)]%
+        {wang2018exploiting}
+\bibfield{author}{\bibinfo{person}{Zezheng Wang}, \bibinfo{person}{Chenxu
+  Zhao}, \bibinfo{person}{Yunxiao Qin}, \bibinfo{person}{Qiusheng Zhou},
+  \bibinfo{person}{Guojun Qi}, \bibinfo{person}{Jun Wan}, {and}
+  \bibinfo{person}{Zhen Lei}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Exploiting temporal and depth information for
+  multi-frame face anti-spoofing}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.05118}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[Wenzel(1992)]%
+        {Wenzel:1992:TVA:146022.146089}
+\bibfield{author}{\bibinfo{person}{Elizabeth~M. Wenzel}.}
+  \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Three-dimensional virtual acoustic displays}.
+\newblock In \bibinfo{booktitle}{\emph{Multimedia interface design (incoll)}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{257--288}.
+\newblock
+\showISBNx{0-201-54981-6}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/146022.146089}
+\showDOI{\tempurl}
+
+
+\bibitem[Werneck et~al\mbox{.}(2000a)]%
+        {Werneck:2000:FMC:351827.384253}
+\bibfield{author}{\bibinfo{person}{Renato Werneck}, \bibinfo{person}{Jo\~{a}o
+  Setubal}, {and} \bibinfo{person}{Arlindo da Conceic\~{a}o}.}
+  \bibinfo{year}{2000}\natexlab{a}.
+\newblock \showarticletitle{(new) Finding minimum congestion spanning trees}.
+\newblock \bibinfo{journal}{\emph{J. Exp. Algorithmics}}  \bibinfo{volume}{5},
+  Article \bibinfo{articleno}{11} (\bibinfo{date}{Dec.} \bibinfo{year}{2000}).
+\newblock
+\showISSN{1084-6654}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/351827.384253}
+\showDOI{\tempurl}
+
+
+\bibitem[Werneck et~al\mbox{.}(2000b)]%
+        {384253}
+\bibfield{author}{\bibinfo{person}{Renato Werneck}, \bibinfo{person}{Jo\~{a}o
+  Setubal}, {and} \bibinfo{person}{Arlindo da Conceic\~{a}o}.}
+  \bibinfo{year}{2000}\natexlab{b}.
+\newblock \showarticletitle{(old) Finding minimum congestion spanning trees}.
+\newblock \bibinfo{journal}{\emph{J. Exp. Algorithmics}}  \bibinfo{volume}{5}
+  (\bibinfo{year}{2000}), \bibinfo{pages}{11}.
+\newblock
+\showISSN{1084-6654}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/351827.384253}
+\showDOI{\tempurl}
+
+
+\bibitem[Woo et~al\mbox{.}(2022)]%
+        {woo2022add}
+\bibfield{author}{\bibinfo{person}{Simon Woo} {et~al\mbox{.}}}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{ADD: Frequency Attention and Multi-View Based
+  Knowledge Distillation to Detect Low-Quality Compressed Deepfake Images}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}}, Vol.~\bibinfo{volume}{36}. \bibinfo{pages}{122--130}.
+\newblock
+
+
+\bibitem[Woo et~al\mbox{.}(2023)]%
+        {convnextv2}
+\bibfield{author}{\bibinfo{person}{Sanghyun Woo}, \bibinfo{person}{Shoubhik
+  Debnath}, \bibinfo{person}{Ronghang Hu}, \bibinfo{person}{Xinlei Chen},
+  \bibinfo{person}{Zhuang Liu}, \bibinfo{person}{In~So Kweon}, {and}
+  \bibinfo{person}{Saining Xie}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{ConvNeXt V2: Co-designing and Scaling ConvNets with
+  Masked Autoencoders}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2301.00808}}
+  (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Wu et~al\mbox{.}(2021a)]%
+        {wu2021dual}
+\bibfield{author}{\bibinfo{person}{Hangtong Wu}, \bibinfo{person}{Dan Zeng},
+  \bibinfo{person}{Yibo Hu}, \bibinfo{person}{Hailin Shi}, {and}
+  \bibinfo{person}{Tao Mei}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Dual Spoof Disentanglement Generation for Face
+  Anti-spoofing with Depth Uncertainty Learning}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Circuits and Systems for
+  Video Technology}} (\bibinfo{year}{2021}).
+\newblock
+
+
+\bibitem[Wu et~al\mbox{.}(2021b)]%
+        {wu2021dsanet}
+\bibfield{author}{\bibinfo{person}{Wenhao Wu}, \bibinfo{person}{Yuxiang Zhao},
+  \bibinfo{person}{Yanwu Xu}, \bibinfo{person}{Xiao Tan},
+  \bibinfo{person}{Dongliang He}, \bibinfo{person}{Zhikang Zou},
+  \bibinfo{person}{Jin Ye}, \bibinfo{person}{Yingying Li},
+  \bibinfo{person}{Mingde Yao}, \bibinfo{person}{Zichao Dong}, {et~al\mbox{.}}}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Dsanet: Dynamic segment aggregation network for
+  video-level representation learning}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM International
+  Conference on Multimedia}}. \bibinfo{pages}{1903--1911}.
+\newblock
+
+
+\bibitem[Wu et~al\mbox{.}(2019)]%
+        {mantra}
+\bibfield{author}{\bibinfo{person}{Yue Wu}, \bibinfo{person}{Wael AbdAlmageed},
+  {and} \bibinfo{person}{Premkumar Natarajan}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Mantra-net: Manipulation tracing network for
+  detection and localization of image forgeries with anomalous features}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition (CVPR)}}. \bibinfo{pages}{9543--9552}.
+\newblock
+
+
+\bibitem[Xie et~al\mbox{.}(2020)]%
+        {xie2020self}
+\bibfield{author}{\bibinfo{person}{Qizhe Xie}, \bibinfo{person}{Minh-Thang
+  Luong}, \bibinfo{person}{Eduard Hovy}, {and} \bibinfo{person}{Quoc~V Le}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Self-training with noisy student improves imagenet
+  classification}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{10687--10698}.
+\newblock
+
+
+\bibitem[Yang et~al\mbox{.}(2019a)]%
+        {headpose2019}
+\bibfield{author}{\bibinfo{person}{Xin Yang}, \bibinfo{person}{Yuezun Li},
+  {and} \bibinfo{person}{Siwei Lyu}.} \bibinfo{year}{2019}\natexlab{a}.
+\newblock \showarticletitle{Exposing deep fakes using inconsistent head poses}.
+  In \bibinfo{booktitle}{\emph{ICASSP 2019-2019 IEEE International Conference
+  on Acoustics, Speech and Signal Processing (ICASSP)}}. IEEE,
+  \bibinfo{pages}{8261--8265}.
+\newblock
+
+
+\bibitem[Yang et~al\mbox{.}(2019b)]%
+        {yang2019exposing}
+\bibfield{author}{\bibinfo{person}{Xin Yang}, \bibinfo{person}{Yuezun Li},
+  {and} \bibinfo{person}{Siwei Lyu}.} \bibinfo{year}{2019}\natexlab{b}.
+\newblock \showarticletitle{Exposing deep fakes using inconsistent head poses}.
+  In \bibinfo{booktitle}{\emph{ICASSP 2019-2019 IEEE International Conference
+  on Acoustics, Speech and Signal Processing (ICASSP)}}. IEEE,
+  \bibinfo{pages}{8261--8265}.
+\newblock
+
+
+\bibitem[Ying et~al\mbox{.}(2021)]%
+        {ying2021image}
+\bibfield{author}{\bibinfo{person}{Qichao Ying}, \bibinfo{person}{Zhenxing
+  Qian}, \bibinfo{person}{Hang Zhou}, \bibinfo{person}{Haisheng Xu},
+  \bibinfo{person}{Xinpeng Zhang}, {and} \bibinfo{person}{Siyi Li}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{From Image to Imuge: Immunized Image Generation}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM international
+  conference on Multimedia}}. \bibinfo{pages}{1--9}.
+\newblock
+
+
+\bibitem[Yu et~al\mbox{.}(2019)]%
+        {yu2019attributing}
+\bibfield{author}{\bibinfo{person}{Ning Yu}, \bibinfo{person}{Larry~S Davis},
+  {and} \bibinfo{person}{Mario Fritz}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Attributing fake images to gans: Learning and
+  analyzing gan fingerprints}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF international conference on computer vision}}.
+  \bibinfo{pages}{7556--7566}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2022a)]%
+        {zhang2022patch}
+\bibfield{author}{\bibinfo{person}{Baogen Zhang}, \bibinfo{person}{Sheng Li},
+  \bibinfo{person}{Guorui Feng}, \bibinfo{person}{Zhenxing Qian}, {and}
+  \bibinfo{person}{Xinpeng Zhang}.} \bibinfo{year}{2022}\natexlab{a}.
+\newblock \showarticletitle{Patch Diffusion: A General Module for Face
+  Manipulation Detection}.
+\newblock  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2021b)]%
+        {zhang2021detecting}
+\bibfield{author}{\bibinfo{person}{Daichi Zhang}, \bibinfo{person}{Chenyu Li},
+  \bibinfo{person}{Fanzhao Lin}, \bibinfo{person}{Dan Zeng}, {and}
+  \bibinfo{person}{Shiming Ge}.} \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Detecting Deepfake Videos with Temporal Dropout
+  3DCNN.}. In \bibinfo{booktitle}{\emph{IJCAI}}. \bibinfo{pages}{1288--1294}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2022b)]%
+        {10.1145/3503161.3547913}
+\bibfield{author}{\bibinfo{person}{DaiChi Zhang}, \bibinfo{person}{Fanzhao
+  Lin}, \bibinfo{person}{Yingying Hua}, \bibinfo{person}{Pengju Wang},
+  \bibinfo{person}{Dan Zeng}, {and} \bibinfo{person}{Shiming Ge}.}
+  \bibinfo{year}{2022}\natexlab{b}.
+\newblock \showarticletitle{Deepfake Video Detection with Spatiotemporal
+  Dropout Transformer}. In \bibinfo{booktitle}{\emph{Proceedings of the 30th
+  ACM International Conference on Multimedia}} (Lisboa, Portugal)
+  \emph{(\bibinfo{series}{MM '22})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{5833–5841}.
+\newblock
+\showISBNx{9781450392037}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3503161.3547913}
+\showDOI{\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2021a)]%
+        {zhang2021self}
+\bibfield{author}{\bibinfo{person}{Linfeng Zhang}, \bibinfo{person}{Chenglong
+  Bao}, {and} \bibinfo{person}{Kaisheng Ma}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Self-distillation: Towards efficient and compact
+  neural networks}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}} \bibinfo{volume}{44}, \bibinfo{number}{8}
+  (\bibinfo{year}{2021}), \bibinfo{pages}{4388--4403}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2020)]%
+        {zhang2020v4d}
+\bibfield{author}{\bibinfo{person}{Shiwen Zhang}, \bibinfo{person}{Sheng Guo},
+  \bibinfo{person}{Weilin Huang}, \bibinfo{person}{Matthew~R Scott}, {and}
+  \bibinfo{person}{Limin Wang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{V4d: 4d convolutional neural networks for
+  video-level representation learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2002.07442}}
+  (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Zhao et~al\mbox{.}(2021c)]%
+        {zhao2021multi}
+\bibfield{author}{\bibinfo{person}{Hanqing Zhao}, \bibinfo{person}{Wenbo Zhou},
+  \bibinfo{person}{Dongdong Chen}, \bibinfo{person}{Tianyi Wei},
+  \bibinfo{person}{Weiming Zhang}, {and} \bibinfo{person}{Nenghai Yu}.}
+  \bibinfo{year}{2021}\natexlab{c}.
+\newblock \showarticletitle{Multi-attentional deepfake detection}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{2185--2194}.
+\newblock
+
+
+\bibitem[Zhao et~al\mbox{.}(2021a)]%
+        {zhao2021PCL}
+\bibfield{author}{\bibinfo{person}{Tianchen Zhao}, \bibinfo{person}{Xiang Xu},
+  \bibinfo{person}{Mingze Xu}, \bibinfo{person}{Hui Ding},
+  \bibinfo{person}{Yuanjun Xiong}, {and} \bibinfo{person}{Wei Xia}.}
+  \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Learning self-consistency for deepfake detection}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision}}. \bibinfo{pages}{15023--15033}.
+\newblock
+
+
+\bibitem[Zhao et~al\mbox{.}(2021b)]%
+        {zhao2021learning}
+\bibfield{author}{\bibinfo{person}{Tianchen Zhao}, \bibinfo{person}{Xiang Xu},
+  \bibinfo{person}{Mingze Xu}, \bibinfo{person}{Hui Ding},
+  \bibinfo{person}{Yuanjun Xiong}, {and} \bibinfo{person}{Wei Xia}.}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Learning self-consistency for deepfake detection}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF international
+  conference on computer vision}}. \bibinfo{pages}{15023--15033}.
+\newblock
+
+
+\bibitem[Zheng et~al\mbox{.}(2021b)]%
+        {zheng2021attention}
+\bibfield{author}{\bibinfo{person}{Wei Zheng}, \bibinfo{person}{Mengyuan Yue},
+  \bibinfo{person}{Shuhuan Zhao}, {and} \bibinfo{person}{Shuaiqi Liu}.}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Attention-based spatial-temporal multi-scale
+  network for face anti-spoofing}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Biometrics, Behavior,
+  and Identity Science}} \bibinfo{volume}{3}, \bibinfo{number}{3}
+  (\bibinfo{year}{2021}), \bibinfo{pages}{296--307}.
+\newblock
+
+
+\bibitem[Zheng et~al\mbox{.}(2021a)]%
+        {zheng2021exploring}
+\bibfield{author}{\bibinfo{person}{Yinglin Zheng}, \bibinfo{person}{Jianmin
+  Bao}, \bibinfo{person}{Dong Chen}, \bibinfo{person}{Ming Zeng}, {and}
+  \bibinfo{person}{Fang Wen}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Exploring temporal coherence for more general video
+  face forgery detection}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF international conference on computer vision}}.
+  \bibinfo{pages}{15044--15054}.
+\newblock
+
+
+\bibitem[Zhou et~al\mbox{.}(2008)]%
+        {Zhou-06}
+\bibfield{author}{\bibinfo{person}{G. Zhou}, \bibinfo{person}{J. Lu},
+  \bibinfo{person}{C.-Y. Wan}, \bibinfo{person}{M.~D. Yarvis}, {and}
+  \bibinfo{person}{J.~A. Stankovic}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Body Sensor Networks}}.
+\newblock \bibinfo{publisher}{MIT Press}, \bibinfo{address}{Cambridge, MA}.
+\newblock
+
+
+\bibitem[Zhou et~al\mbox{.}(2010)]%
+        {Zhou:2010:MMS:1721695.1721705}
+\bibfield{author}{\bibinfo{person}{Gang Zhou}, \bibinfo{person}{Yafeng Wu},
+  \bibinfo{person}{Ting Yan}, \bibinfo{person}{Tian He},
+  \bibinfo{person}{Chengdu Huang}, \bibinfo{person}{John~A. Stankovic}, {and}
+  \bibinfo{person}{Tarek~F. Abdelzaher}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{A multifrequency MAC specially designed for
+  wireless sensor network applications}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Embed. Comput. Syst.}}
+  \bibinfo{volume}{9}, \bibinfo{number}{4}, Article \bibinfo{articleno}{39}
+  (\bibinfo{date}{April} \bibinfo{year}{2010}), \bibinfo{numpages}{41}~pages.
+\newblock
+\showISSN{1539-9087}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1721695.1721705}
+\showDOI{\tempurl}
+
+
+\bibitem[Zhou et~al\mbox{.}(2017)]%
+        {Zhou2017two}
+\bibfield{author}{\bibinfo{person}{Peng Zhou}, \bibinfo{person}{Xintong Han},
+  \bibinfo{person}{Vlad~I. Morariu}, {and} \bibinfo{person}{Larry~S. Davis}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Two-Stream Neural Networks for Tampered Face
+  Detection}. In \bibinfo{booktitle}{\emph{2017 IEEE Conference on Computer
+  Vision and Pattern Recognition Workshops (CVPRW)}}.
+  \bibinfo{pages}{1831--1839}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPRW.2017.229}
+\showDOI{\tempurl}
+
+
+\bibitem[Zhu et~al\mbox{.}(2021)]%
+        {zhu2021face}
+\bibfield{author}{\bibinfo{person}{Xiangyu Zhu}, \bibinfo{person}{Hao Wang},
+  \bibinfo{person}{Hongyan Fei}, \bibinfo{person}{Zhen Lei}, {and}
+  \bibinfo{person}{Stan~Z Li}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Face forgery detection by 3d decomposition}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{2929--2939}.
+\newblock
+
+
+\bibitem[Zi et~al\mbox{.}(2020)]%
+        {zi2020wilddeepfake}
+\bibfield{author}{\bibinfo{person}{Bojia Zi}, \bibinfo{person}{Minghao Chang},
+  \bibinfo{person}{Jingjing Chen}, \bibinfo{person}{Xingjun Ma}, {and}
+  \bibinfo{person}{Yu-Gang Jiang}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Wilddeepfake: A challenging real-world dataset for
+  deepfake detection}. In \bibinfo{booktitle}{\emph{Proceedings of the 28th ACM
+  international conference on multimedia}}. \bibinfo{pages}{2382--2390}.
+\newblock
+
+
+\end{thebibliography}

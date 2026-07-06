@@ -67,6 +67,7 @@ AIGC_Detection/
 
 ---
 
+
 ## Filter Pipeline
 
 Runs all 4 filters on images and outputs metrics + before/after comparison images.
@@ -106,17 +107,52 @@ python explainability/gradcam.py
 
 ---
 
-## Planned Output Format (TODO)
+## Baseline Output Format
+
+The baseline is a binary retouching detector. It only reports whether the image
+was retouched and the confidence of that prediction. Retouching type, severity,
+location, and natural-language explanations are intentionally left for later
+versions.
 
 ```json
 {
-  "prediction": "Fake",
-  "confidence": 0.94,
-  "suspicious_region": "eye area, cheek",
-  "artifact_type": "eye_enlarging, smoothing",
-  "explanation": "Unnatural eye-to-face ratio detected. Skin texture variance reduced by 43%."
+  "schema_version": "1.0.0",
+  "is_retouched": true,
+  "confidence": 0.94
 }
 ```
+
+The dependency-free Python contract is in `baseline_output.py`; its JSON Schema
+is `docs/baseline-output.schema.json`.
+
+### Detailed Output Format (future version)
+
+The original detailed contract is also retained for later development. It
+separates real, AI-generated, and filter-processed images, and reports the
+retouching operation, level, suspicious regions, and explanation.
+
+```json
+{
+  "schema_version": "1.0.0",
+  "prediction": "filter_processed",
+  "confidence": 0.94,
+  "retouching": {
+    "eye_enlarging": {"level": 30, "level_name": "slight", "confidence": 0.91},
+    "face_lifting": {"level": 0, "level_name": "off", "confidence": 0.88},
+    "skin_smoothing": {"level": 60, "level_name": "medium", "confidence": 0.87},
+    "face_whitening": {"level": 0, "level_name": "off", "confidence": 0.95}
+  },
+  "suspicious_regions": [
+    {"region": "eye_area", "confidence": 0.91},
+    {"region": "cheek", "confidence": 0.87}
+  ],
+  "artifact_types": ["eye_enlarging", "skin_smoothing"],
+  "explanation": "Slight eye enlargement and medium skin smoothing detected."
+}
+```
+
+The detailed Python contract remains in `structured_output.py`; its JSON Schema
+is `docs/structured-output.schema.json`.
 
 ---
 
@@ -125,6 +161,6 @@ python explainability/gradcam.py
 - [x] Baseline (4 models) with full metrics
 - [x] Filter pipeline (4 filters, 10 images, avg metrics)
 - [x] Grad-CAM on ShuffleNetV2
-- [ ] Define structured output format (after RetouchingFFHQ labels)
+- [x] Define structured output format (after RetouchingFFHQ labels)
 - [ ] Wait for RetouchingFFHQ dataset → train filter branch
 - [ ] Knowledge distillation: FakeVLM → ShuffleNetV2

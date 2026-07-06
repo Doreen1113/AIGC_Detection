@@ -23,7 +23,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, roc_auc_score
 
-BASE     = r"C:\CVLab\AIGC"
+BASE     = r"C:\My_Project\AIGC"
 CKPT     = os.path.join(BASE, "shufflenet_v2.pth")
 OUT_DIR  = os.path.join(BASE, "gradcam_output")
 REAL_DIR = os.path.join(BASE, "AIGuard", "real")

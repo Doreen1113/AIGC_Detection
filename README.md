@@ -6,6 +6,24 @@ Lightweight + explainable AIGC/filter detection targeting edge devices (<8GB VRA
 
 ---
 
+## Configuration
+
+All scripts use a `BASE` variable pointing to the root of this repo on your local machine.
+**Each team member must update this to match their own path** before running any script.
+
+Files to update:
+
+| File | Line | Variable |
+|---|---|---|
+| `pipeline.py` | 40 | `BASE = r"C:\Your\Path\AIGC"` |
+| `explainability/gradcam.py` | 22 | `BASE = r"C:\Your\Path\AIGC"` |
+| `explainability/explain.py` | 23 | `BASE = r"C:\Your\Path\AIGC"` |
+| `filters/pipeline.py` | 24 | `BASE = r"C:\Your\Path\AIGC"` |
+| `filters/generate_filter_dataset.py` | 27 | `BASE = r"C:\Your\Path\AIGC"` |
+| `AIGuard/train_*.py` | top | `BASE = r"C:\Your\Path\AIGC"` |
+
+---
+
 ## Environments
 
 | Environment | Purpose |
@@ -19,33 +37,34 @@ Lightweight + explainable AIGC/filter detection targeting edge devices (<8GB VRA
 
 ```
 AIGC_Detection/
-├── AIGuard/                        # 資料集 + 訓練腳本
-│   ├── train.py                    # Baseline training (4 models)
+├── pipeline.py                     # Main entry: Real/Fake/Filter detection + explanation
+├── baseline_output.py              # Output format contract (binary baseline)
+│
+├── AIGuard/                        # Dataset + training scripts
+│   ├── train.py                    # Baseline training (4 models, Real/Fake)
+│   ├── train_3class_ffhq_v2.py     # 3-class model (Real/Fake/Filter) — current best
+│   ├── train_artifact_classifier.py# Artifact type classifier (4-class) — current best
 │   ├── real/ fake/ unseen/         # Dataset (gitignored)
 │
-├── filters/                        # Filter 相關腳本
+├── filters/                        # Filter scripts
+│   ├── generate_filter_dataset.py  # Generate filter training data (32K images)
 │   ├── Smoothing/
-│   │   └── Skin-Smoothing.ipynb    # Skin smoothing (bilateral filter)
-│   ├── whitening.py                # Whitening (LAB + YCrCb mask)
-│   ├── eye_enlarging.py            # Eye enlarging (MediaPipe solutions)
-│   ├── face_reshaping.py           # Face reshaping (MediaPipe Tasks API)
-│   └── pipeline.py                 # Unified filter pipeline (all 4 filters)
+│   │   └── Skin-Smoothing.ipynb
+│   ├── whitening.py
+│   ├── eye_enlarging.py
+│   ├── face_reshaping.py
+│   └── pipeline.py                 # Unified filter pipeline (metrics only)
 │
 ├── explainability/
-│   └── gradcam.py                  # Grad-CAM on ShuffleNetV2
+│   ├── gradcam.py                  # Grad-CAM++ on 3-class model (standalone)
+│   └── explain.py                  # Full explanation pipeline (alternative entry)
 │
-├── results/                        # 實驗數據輸出
-│   ├── baseline_comparison.csv
-│   ├── filter_metrics.csv
-│   └── filter_metrics_detail.csv
+├── docs/
+│   ├── research_log.md             # Experiment log
+│   ├── baseline-output.schema.json # JSON Schema (baseline output)
+│   └── structured-output.schema.json # JSON Schema (detailed output, future)
 │
-├── assets/                         # 測試用圖片
-│   └── face.jpg
-│
-├── docs/                           # 論文、proposal、學姊回饋
-│   ├── Paper 清單.md
-│   ├── tip.txt
-│   └── AIGC_Detection_Final V._Proposal .pdf
+├── results/                        # Experiment CSVs
 │
 └── README.md
 ```
@@ -54,14 +73,14 @@ AIGC_Detection/
 
 ## Baseline Results
 
-4 models trained on DeepFake-450K (3000 real + 3000 fake, 5 epochs):
+4 models trained on DeepFake-450K (30000 real + 30000 fake, 15 epochs):
 
 | Model | Params | Acc | F1 | Precision | Recall | AUROC | ms/img | VRAM |
 |---|---|---|---|---|---|---|---|---|
-| MobileNetV4 | 2.50M | 0.8508 | 0.8482 | 0.8636 | 0.8333 | 0.9217 | 5.13 | 0.18GB |
-| EfficientNet-lite | 3.37M | 0.8750 | 0.8777 | 0.8594 | 0.8967 | 0.9463 | 5.27 | 0.48GB |
-| ResNet-lite | 11.18M | 0.9292 | 0.9277 | 0.9478 | 0.9083 | 0.9728 | 5.67 | 0.43GB |
-| **ShuffleNetV2** | **1.26M** | **0.9167** | **0.9132** | **0.9529** | **0.8767** | **0.9737** | **4.74** | **0.13GB** |
+| MobileNetV4 | 2.50M | 0.9723 | 0.9717 | 0.9958 | 0.9487 | 0.9981 | 3.22 | 0.55GB |
+| EfficientNet-lite | 3.37M | 0.9834 | 0.9834 | 0.9817 | 0.9852 | 0.9981 | 2.35 | 1.69GB |
+| ResNet-lite | 11.18M | 0.9832 | 0.9832 | 0.9867 | 0.9797 | 0.9984 | 2.11 | 1.10GB |
+| **ShuffleNetV2** | **1.26M** | **0.9838** | **0.9837** | **0.9868** | **0.9807** | **0.9987** | **2.14** | **0.43GB** |
 
 → **ShuffleNetV2 selected** as main backbone: lowest params, lowest VRAM, highest AUROC.
 
@@ -90,20 +109,20 @@ Output images saved to `filter_output/<image_name>/`.
 
 ---
 
-## Grad-CAM (Explainability)
+## Grad-CAM++ (Explainability)
 
-Trains ShuffleNetV2 (or loads saved weights) and runs Grad-CAM to highlight suspicious regions.
+Loads the 3-class model and runs Grad-CAM++ on 5 real + 5 fake + 5 filter images.
 
 ```bash
 # base env
 python explainability/gradcam.py
 ```
 
-- Target layer: `model.conv5` (final feature map before global avg pool)
-- Saves model weights to `shufflenet_v2.pth` on first run
-- Output: `gradcam_output/` — Original + heatmap overlay (red = high attention)
-
-> Grad-CAM format will be updated after reviewing FakeShield paper.
+- Model: `shufflenet_v2_3class_ffhq_v2.pth` (Real/Fake/Filter, filter F1=0.980)
+- Target layer: `model.spatial_branch.conv5`
+- Output: `gradcam_output/` — 3-panel per image: **Input | Grad-CAM++ heatmap | FakeShield binary mask**
+- Grad-CAM++ uses 2nd/3rd-order gradients (alpha weighting) for more precise localization than Grad-CAM
+- Binary mask: threshold=115 on CAM → white=suspicious region, black=background
 
 ---
 
@@ -151,8 +170,7 @@ retouching operation, level, suspicious regions, and explanation.
 }
 ```
 
-The detailed Python contract remains in `structured_output.py`; its JSON Schema
-is `docs/structured-output.schema.json`.
+The JSON Schema for the detailed format is `docs/structured-output.schema.json`.
 
 ---
 
@@ -160,7 +178,12 @@ is `docs/structured-output.schema.json`.
 
 - [x] Baseline (4 models) with full metrics
 - [x] Filter pipeline (4 filters, 10 images, avg metrics)
-- [x] Grad-CAM on ShuffleNetV2
-- [x] Define structured output format (after RetouchingFFHQ labels)
-- [ ] Wait for RetouchingFFHQ dataset → train filter branch
+- [x] 3-class model (Real/Fake/Filter) — filter F1=0.980 with RetouchingFFHQ
+- [x] Artifact type classifier (4-class, F1=0.985)
+- [x] Grad-CAM++ on 3-class model (15/15 correct, 3-panel output)
+- [x] Grad-CAM++ integrated into pipeline.py (heatmap + binary mask)
+- [x] RetouchingFFHQ dataset integrated (cross-domain filter detection 12% → 100%)
+- [x] Structured output format defined (baseline + detailed schema)
+- [ ] Artifact level prediction (0/30/60/90) to complete detailed output format
+- [ ] MAM attention module (needs FFHQ.zip for pair-based training)
 - [ ] Knowledge distillation: FakeVLM → ShuffleNetV2

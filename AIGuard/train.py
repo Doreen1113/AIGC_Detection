@@ -12,8 +12,7 @@ from sklearn.metrics import f1_score, precision_score, recall_score, roc_auc_sco
 from PIL import Image
 import pandas as pd
 
-# ---- Step 1: 收集圖片路徑 ----
-base_path = r"C:\CVLab\AIGC\AIGuard"
+base_path = r"C:\My_Project\AIGC\AIGuard"
 
 def collect_images(label_dir, max_per_subfolder=600):
     paths = []
@@ -27,14 +26,6 @@ def collect_images(label_dir, max_per_subfolder=600):
             files = files[:max_per_subfolder]
             paths.extend([os.path.join(sub_path, f) for f in files])
     return paths
-
-real_paths = collect_images("real", max_per_subfolder=600)
-fake_paths = collect_images("fake", max_per_subfolder=600)
-
-print(f"Real: {len(real_paths)} | Fake: {len(fake_paths)}")
-
-image_paths = real_paths + fake_paths
-labels = [0] * len(real_paths) + [1] * len(fake_paths)
 
 class FaceDataset(Dataset):
     def __init__(self, image_paths, labels, transform=None):
@@ -50,28 +41,6 @@ class FaceDataset(Dataset):
         if self.transform:
             img = self.transform(img)
         return img, self.labels[idx]
-
-train_paths, test_paths, train_labels, test_labels = train_test_split(
-    image_paths, labels, test_size=0.2, stratify=labels, random_state=42
-)
-print(f"Train: {len(train_paths)} | Test: {len(test_paths)}")
-
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize([0.5]*3, [0.5]*3)
-])
-
-train_dataset = FaceDataset(train_paths, train_labels, transform)
-test_dataset = FaceDataset(test_paths, test_labels, transform)
-
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=0)
-test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=0)
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-print("Using device:", device)
-
-EPOCHS = 5
 
 # 對應先前四個 baseline 模型的建構方式（用參數量比對確認過）：
 # MobileNetV4      -> timm: mobilenetv4_conv_small
@@ -92,74 +61,103 @@ def build_model(name):
     else:
         raise ValueError(name)
 
-model_names = ["MobileNetV4", "EfficientNet-lite", "ResNet-lite", "ShuffleNetV2"]
-results = {}
+if __name__ == '__main__':
+    real_paths = collect_images("real", max_per_subfolder=6000)
+    fake_paths = collect_images("fake", max_per_subfolder=6000)
+    print(f"Real: {len(real_paths)} | Fake: {len(fake_paths)}")
 
-for name in model_names:
-    print(f"\n{'='*50}\nTraining {name}\n{'='*50}")
+    image_paths = real_paths + fake_paths
+    labels = [0] * len(real_paths) + [1] * len(fake_paths)
 
-    model = build_model(name).to(device)
-    n_params = sum(p.numel() for p in model.parameters()) / 1e6
+    train_paths, test_paths, train_labels, test_labels = train_test_split(
+        image_paths, labels, test_size=0.2, stratify=labels, random_state=42
+    )
+    print(f"Train: {len(train_paths)} | Test: {len(test_paths)}")
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-    criterion = torch.nn.CrossEntropyLoss()
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize([0.5]*3, [0.5]*3)
+    ])
 
-    model.train()
-    for epoch in range(EPOCHS):
-        total_loss = 0
-        for imgs, lbls in train_loader:
-            imgs, lbls = imgs.to(device), lbls.to(device)
-            optimizer.zero_grad()
-            out = model(imgs)
-            loss = criterion(out, lbls)
-            loss.backward()
-            optimizer.step()
-            total_loss += loss.item()
-        print(f"  Epoch {epoch+1}/{EPOCHS} - Loss: {total_loss/len(train_loader):.4f}")
+    train_dataset = FaceDataset(train_paths, train_labels, transform)
+    test_dataset = FaceDataset(test_paths, test_labels, transform)
 
-    model.eval()
-    correct, total = 0, 0
-    all_preds, all_labels, all_probs = [], [], []
-    if device == "cuda":
-        torch.cuda.reset_peak_memory_stats()
+    train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=4, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, num_workers=4, pin_memory=True)
 
-    start = time.time()
-    with torch.no_grad():
-        for imgs, lbls in test_loader:
-            imgs, lbls = imgs.to(device), lbls.to(device)
-            out = model(imgs)
-            probs = torch.softmax(out, dim=1)[:, 1]  # P(fake)
-            pred = out.argmax(dim=1)
-            correct += (pred == lbls).sum().item()
-            total += lbls.size(0)
-            all_preds.extend(pred.cpu().numpy())
-            all_labels.extend(lbls.cpu().numpy())
-            all_probs.extend(probs.cpu().numpy())
-    elapsed_total = time.time() - start
-    ms_per_image = (elapsed_total / total) * 1000
-    vram_gb = torch.cuda.max_memory_allocated() / 1e9 if device == "cuda" else 0
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print("Using device:", device)
 
-    acc = correct / total
-    f1 = f1_score(all_labels, all_preds)
-    precision = precision_score(all_labels, all_preds)
-    recall = recall_score(all_labels, all_preds)
-    auroc = roc_auc_score(all_labels, all_probs)
+    EPOCHS = 15
+    model_names = ["MobileNetV4", "EfficientNet-lite", "ResNet-lite", "ShuffleNetV2"]
+    results = {}
 
-    results[name] = {
-        "params_M": round(n_params, 2),
-        "accuracy": round(acc, 4),
-        "f1": round(f1, 4),
-        "precision": round(precision, 4),
-        "recall": round(recall, 4),
-        "auroc": round(auroc, 4),
-        "ms_per_image": round(ms_per_image, 2),
-        "vram_gb": round(vram_gb, 2),
-    }
-    print(f"  Acc={acc:.4f} F1={f1:.4f} Precision={precision:.4f} Recall={recall:.4f} "
-          f"AUROC={auroc:.4f} {ms_per_image:.2f}ms/img {vram_gb:.2f}GB VRAM")
+    for name in model_names:
+        print(f"\n{'='*50}\nTraining {name}\n{'='*50}")
 
-print("\n" + "="*70 + "\nBASELINE COMPARISON SUMMARY (4 models)\n" + "="*70)
-df = pd.DataFrame(results).T
-print(df.to_string())
-df.to_csv(os.path.join(base_path, "..", "results", "baseline_comparison.csv"))
-print("\nSaved to baseline_comparison.csv")
+        model = build_model(name).to(device)
+        n_params = sum(p.numel() for p in model.parameters()) / 1e6
+
+        optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+        criterion = torch.nn.CrossEntropyLoss()
+
+        model.train()
+        for epoch in range(EPOCHS):
+            total_loss = 0
+            for imgs, lbls in train_loader:
+                imgs, lbls = imgs.to(device), lbls.to(device)
+                optimizer.zero_grad()
+                out = model(imgs)
+                loss = criterion(out, lbls)
+                loss.backward()
+                optimizer.step()
+                total_loss += loss.item()
+            print(f"  Epoch {epoch+1}/{EPOCHS} - Loss: {total_loss/len(train_loader):.4f}")
+
+        model.eval()
+        correct, total = 0, 0
+        all_preds, all_labels, all_probs = [], [], []
+        if device == "cuda":
+            torch.cuda.reset_peak_memory_stats()
+
+        start = time.time()
+        with torch.no_grad():
+            for imgs, lbls in test_loader:
+                imgs, lbls = imgs.to(device), lbls.to(device)
+                out = model(imgs)
+                probs = torch.softmax(out, dim=1)[:, 1]
+                pred = out.argmax(dim=1)
+                correct += (pred == lbls).sum().item()
+                total += lbls.size(0)
+                all_preds.extend(pred.cpu().numpy())
+                all_labels.extend(lbls.cpu().numpy())
+                all_probs.extend(probs.cpu().numpy())
+        elapsed_total = time.time() - start
+        ms_per_image = (elapsed_total / total) * 1000
+        vram_gb = torch.cuda.max_memory_allocated() / 1e9 if device == "cuda" else 0
+
+        acc = correct / total
+        f1 = f1_score(all_labels, all_preds)
+        precision = precision_score(all_labels, all_preds)
+        recall = recall_score(all_labels, all_preds)
+        auroc = roc_auc_score(all_labels, all_probs)
+
+        results[name] = {
+            "params_M": round(n_params, 2),
+            "accuracy": round(acc, 4),
+            "f1": round(f1, 4),
+            "precision": round(precision, 4),
+            "recall": round(recall, 4),
+            "auroc": round(auroc, 4),
+            "ms_per_image": round(ms_per_image, 2),
+            "vram_gb": round(vram_gb, 2),
+        }
+        print(f"  Acc={acc:.4f} F1={f1:.4f} Precision={precision:.4f} Recall={recall:.4f} "
+              f"AUROC={auroc:.4f} {ms_per_image:.2f}ms/img {vram_gb:.2f}GB VRAM")
+
+    print("\n" + "="*70 + "\nBASELINE COMPARISON SUMMARY (4 models)\n" + "="*70)
+    df = pd.DataFrame(results).T
+    print(df.to_string())
+    df.to_csv(os.path.join(base_path, "..", "results", "baseline_comparison.csv"))
+    print("\nSaved to baseline_comparison.csv")

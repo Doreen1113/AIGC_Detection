@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
 
-BASE   = r"C:\CVLab\AIGC"
+BASE   = r"C:\My_Project\AIGC"
 REAL   = os.path.join(BASE, "AIGuard", "real")
 MODEL  = os.path.join(BASE, "face_landmarker.task")
 

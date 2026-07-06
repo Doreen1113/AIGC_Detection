@@ -21,7 +21,7 @@ from PIL import Image
 import cv2
 
 BASE                  = r"C:\My_Project\AIGC"
-WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_fft.pth")
+WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v2.pth")
 ARTIFACT_WEIGHTS_PATH = os.path.join(BASE, "artifact_classifier.pth")
 CLASSES          = ["real", "fake", "filter"]
 ARTIFACT_CLASSES = ["eye_enlarging", "face_reshaping", "smoothing", "whitening"]
@@ -33,7 +33,7 @@ ARTIFACT_TAG_MAP = {
 }
 
 # ──────────────────────────────────────────────
-# Model (must match train_3class_fft.py)
+# Model (must match train_3class_ffhq_v2.py)
 # ──────────────────────────────────────────────
 class FFTBranch(nn.Module):
     def __init__(self, out_dim=256):
@@ -77,33 +77,40 @@ class DualBranchModel(nn.Module):
 
 
 # ──────────────────────────────────────────────
-# Grad-CAM
+# Grad-CAM++
 # ──────────────────────────────────────────────
-class GradCAM:
+class GradCAMPlusPlus:
     def __init__(self, model, target_layer):
         self.model = model
-        self.gradients = None
-        self.activations = None
-        target_layer.register_forward_hook(self._save_activation)
-        target_layer.register_full_backward_hook(self._save_gradient)
+        self._act  = None
+        self._grad = None
+        target_layer.register_forward_hook(
+            lambda m, i, o: setattr(self, '_act', o.detach()))
+        target_layer.register_full_backward_hook(
+            lambda m, gi, go: setattr(self, '_grad', go[0].detach()))
 
-    def _save_activation(self, module, input, output):
-        self.activations = output.detach()
-
-    def _save_gradient(self, module, grad_input, grad_output):
-        self.gradients = grad_output[0].detach()
-
-    def generate(self, input_tensor, class_idx):
+    def generate(self, inp, class_idx):
         self.model.zero_grad()
-        output = self.model(input_tensor)
-        output[0, class_idx].backward()
+        out = self.model(inp)
+        out[0, class_idx].backward()
 
-        weights = self.gradients.mean(dim=(2, 3), keepdim=True)  # GAP over spatial
-        cam = (weights * self.activations).sum(dim=1, keepdim=True)
-        cam = F.relu(cam)
-        cam = F.interpolate(cam, size=(224, 224), mode='bilinear', align_corners=False)
-        cam = cam.squeeze().cpu().numpy()
-        cam = (cam - cam.min()) / (cam.max() - cam.min() + 1e-8)
+        features  = self._act
+        gradients = self._grad
+
+        grads_power_2 = gradients ** 2
+        grads_power_3 = gradients ** 3
+        sum_features  = torch.sum(features, dim=[2, 3], keepdim=True)
+
+        alpha_denom = 2 * grads_power_2 + sum_features * grads_power_3
+        alpha_denom = torch.where(alpha_denom != 0, alpha_denom, torch.ones_like(alpha_denom))
+        alpha   = grads_power_2 / alpha_denom
+        weights = torch.sum(alpha * torch.relu(gradients), dim=[2, 3], keepdim=True)
+
+        cam = torch.relu((weights * features).sum(dim=1)).squeeze()
+        cam = cam.cpu().numpy()
+        cam = cv2.resize(cam, (224, 224))
+        if cam.max() > cam.min():
+            cam = (cam - cam.min()) / (cam.max() - cam.min())
         return cam
 
 
@@ -255,8 +262,8 @@ def run_pipeline(image_path, save_heatmap=False):
             torch.load(ARTIFACT_WEIGHTS_PATH, map_location=device))
         artifact_model.eval()
 
-    # Grad-CAM on spatial branch conv5
-    gradcam = GradCAM(model, model.spatial_branch.conv5)
+    # Grad-CAM++ on spatial branch conv5
+    gradcam = GradCAMPlusPlus(model, model.spatial_branch.conv5)
 
     # preprocess
     transform = transforms.Compose([
@@ -302,18 +309,20 @@ def run_pipeline(image_path, save_heatmap=False):
     if save_heatmap:
         out_dir = os.path.join(BASE, "explanation_output")
         os.makedirs(out_dir, exist_ok=True)
-        stem = os.path.splitext(os.path.basename(image_path))[0]
+        stem    = os.path.splitext(os.path.basename(image_path))[0]
+        img_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
 
-        heatmap = (cam * 255).astype(np.uint8)
-        heatmap_color = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-        overlay = cv2.addWeighted(
-            cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR), 0.6,
-            heatmap_color, 0.4, 0)
+        hmap_col = cv2.applyColorMap((cam * 255).astype(np.uint8), cv2.COLORMAP_JET)
+        overlay  = cv2.addWeighted(img_bgr, 0.55, hmap_col, 0.45, 0)
+        _, binary_mask = cv2.threshold((cam * 255).astype(np.uint8), 115, 255, cv2.THRESH_BINARY)
 
-        out_path = os.path.join(out_dir, f"{stem}_explanation.jpg")
-        cv2.imwrite(out_path, overlay)
-        result["heatmap_path"] = out_path
-        print(f"Heatmap saved to {out_path}")
+        hmap_path = os.path.join(out_dir, f"{stem}_heatmap.jpg")
+        mask_path = os.path.join(out_dir, f"{stem}_mask.jpg")
+        cv2.imwrite(hmap_path, overlay)
+        cv2.imwrite(mask_path, binary_mask)
+        result["heatmap_path"] = hmap_path
+        result["mask_path"]    = mask_path
+        print(f"Heatmap saved to {hmap_path}")
 
     return result
 

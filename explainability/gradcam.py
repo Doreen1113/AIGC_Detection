@@ -199,9 +199,20 @@ def save_gradcam_figure(img_bgr, cam, pred_label, confidence, out_path, title):
     """
     橫向三圖併排排版：
     [ 1. 原始圖片 ] ---> [ 2. Grad-CAM++ 漸層 ] ---> [ 3. FakeShield 二值化遮罩 ]
+    符合 FakeShield 邏輯的排版：
+    - 若模型預測為 Fake：顯示二值化 Mask。
+    - 若模型預測為 Real：不生成定位，Mask 顯示全黑。
     """
     # 呼叫修改後的函數，同時取得「漸層疊加圖」與「黑白遮罩」
     gradcam_blended, fakeshield_mask = overlay_heatmap(img_bgr, cam)
+
+    if pred_label == "Real":
+        # 如果模型判定是真圖，將 Mask 強行清空為全黑 (與原圖同尺寸)
+        fakeshield_mask = np.zeros_like(gradcam_blended)
+        mask_title = "3. FakeShield Mask (No Fake Detected)"
+    else:
+        # 如果是假圖，維持原本算出來的二值化遮罩
+        mask_title = f"3. FakeShield Mask ({pred_label})"
     
     # 修改為 1 列 3 欄 (1, 3)
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
@@ -262,7 +273,7 @@ def main():
 
     LABEL_MAP = {0: "Real", 1: "Fake"}
 
-    print(f"\nRunning Grad-CAM on {len(samples)} images...")
+    print(f"\nRunning Grad-CAM++ on {len(samples)} images...")
     for img_path, true_label, true_cls in samples:
         img_bgr = cv2.imread(img_path)
         if img_bgr is None:

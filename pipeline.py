@@ -40,6 +40,7 @@ import cv2
 BASE                  = r"C:\My_Project\AIGC"
 WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v2.pth")
 ARTIFACT_WEIGHTS_PATH = os.path.join(BASE, "artifact_classifier.pth")
+LEVEL_WEIGHTS_PATH    = os.path.join(BASE, "artifact_level_classifier.pth")
 CLASSES          = ["real", "fake", "filter"]
 # ImageFolder alphabetical order → matches training class index
 ARTIFACT_CLASSES = ["eye_enlarging", "face_reshaping", "smoothing", "whitening"]
@@ -49,6 +50,18 @@ ARTIFACT_TAG_MAP = {
     "face_reshaping": "face_reshaping",
     "smoothing":      "over_smoothing",
     "whitening":      "whitening",
+}
+# Level classifier: artifact_tag → valid class indices (None = geometric, skip)
+LEVEL_CLASS_RANGES = {
+    "over_smoothing": (6, 7, 8),    # Smoothing_30/60/90
+    "whitening":      (9, 10, 11),  # Whitening_30/60/90
+    "eye_enlarging":  None,          # geometric, level unreliable
+    "face_reshaping": None,          # geometric, level unreliable
+}
+# class_idx → (level_value, level_name)
+LEVEL_IDX_MAP = {
+    6: (30, "slight"), 7: (60, "medium"), 8: (90, "heavy"),
+    9: (30, "slight"), 10: (60, "medium"), 11: (90, "heavy"),
 }
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".jfif", ".bmp", ".webp"}
 
@@ -193,6 +206,28 @@ def classify_artifact(pil_img, artifact_model, device):
     return tag, float(probs[idx])
 
 
+def build_level_model():
+    model = tv_models.shufflenet_v2_x1_0()
+    model.fc = nn.Linear(model.fc.in_features, 12)
+    return model
+
+
+def classify_level(pil_img, level_model, device, artifact_tag):
+    """Return (level, level_name) for texture filters; (None, None) for geometric."""
+    valid_indices = LEVEL_CLASS_RANGES.get(artifact_tag)
+    if valid_indices is None:
+        return None, None
+    tensor = transform_artifact(pil_img).unsqueeze(0).to(device)
+    with torch.no_grad():
+        logits = level_model(tensor)[0]
+    masked = torch.full_like(logits, float('-inf'))
+    for i in valid_indices:
+        masked[i] = logits[i]
+    pred_idx = int(masked.argmax())
+    level, level_name = LEVEL_IDX_MAP[pred_idx]
+    return level, level_name
+
+
 # ──────────────────────────────────────────────
 # Image statistics for artifact discrimination
 # ──────────────────────────────────────────────
@@ -287,7 +322,7 @@ transform_infer = transforms.Compose([
     transforms.Normalize([0.5]*3, [0.5]*3),
 ])
 
-def run_single(image_path, model, gradcam, artifact_model, device,
+def run_single(image_path, model, gradcam, artifact_model, level_model, device,
                save_heatmap=False, output_dir=None, jpeg_preprocess=True):
     try:
         pil_img = Image.open(image_path).convert("RGB")
@@ -313,22 +348,27 @@ def run_single(image_path, model, gradcam, artifact_model, device,
     regions = top_activated_regions(cam, top_k=2)
 
     # Artifact type: use trained classifier for filter, heuristic for fake
+    level, level_name = None, None
     if prediction == "filter" and artifact_model is not None:
         art_tag, _ = classify_artifact(pil_img, artifact_model, device)
         artifact_types = [art_tag]
+        if level_model is not None:
+            level, level_name = classify_level(pil_img, level_model, device, art_tag)
     else:
         artifact_types = infer_artifact_type(prediction, regions, image_np)
 
     explanation = build_explanation(prediction, artifact_types, regions)
 
     result = {
-        "image":            os.path.basename(image_path),
-        "prediction":       prediction,
-        "confidence":       round(confidence, 4),
-        "class_probs":      all_probs,
-        "artifact_type":    artifact_types,
+        "image":             os.path.basename(image_path),
+        "prediction":        prediction,
+        "confidence":        round(confidence, 4),
+        "class_probs":       all_probs,
+        "artifact_type":     artifact_types,
+        "level":             level,
+        "level_name":        level_name,
         "suspicious_region": regions,
-        "explanation":      explanation,
+        "explanation":       explanation,
     }
 
     if save_heatmap and output_dir:
@@ -379,13 +419,23 @@ def main():
     else:
         print("Artifact classifier not found — using heuristic fallback")
 
+    level_model = None
+    if os.path.exists(LEVEL_WEIGHTS_PATH):
+        level_model = build_level_model().to(device)
+        level_model.load_state_dict(
+            torch.load(LEVEL_WEIGHTS_PATH, map_location=device))
+        level_model.eval()
+        print(f"Level classifier loaded from {LEVEL_WEIGHTS_PATH}")
+    else:
+        print("Level classifier not found — level will not be predicted")
+
     jpeg_pre = not args.no_jpeg_preproc
 
     # ── single image ──
     if args.image:
         out_dir = args.output_dir or os.path.join(BASE, "explanation_output")
         os.makedirs(out_dir, exist_ok=True)
-        result = run_single(args.image, model, gradcam, artifact_model, device,
+        result = run_single(args.image, model, gradcam, artifact_model, level_model, device,
                             save_heatmap=args.save_heatmap,
                             output_dir=out_dir,
                             jpeg_preprocess=jpeg_pre)
@@ -410,7 +460,7 @@ def main():
 
     results = []
     for i, img_path in enumerate(image_files, 1):
-        r = run_single(str(img_path), model, gradcam, artifact_model, device,
+        r = run_single(str(img_path), model, gradcam, artifact_model, level_model, device,
                        save_heatmap=args.save_heatmap,
                        output_dir=out_dir,
                        jpeg_preprocess=jpeg_pre)
@@ -424,7 +474,8 @@ def main():
     csv_path = os.path.join(out_dir, "summary.csv")
     csv_fields = ["image", "prediction", "confidence",
                   "prob_real", "prob_fake", "prob_filter",
-                  "artifact_type", "suspicious_region", "explanation"]
+                  "artifact_type", "level", "level_name",
+                  "suspicious_region", "explanation"]
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=csv_fields, extrasaction="ignore")
         writer.writeheader()
@@ -434,8 +485,10 @@ def main():
             row["prob_real"]   = probs.get("real",   "")
             row["prob_fake"]   = probs.get("fake",   "")
             row["prob_filter"] = probs.get("filter", "")
-            row["artifact_type"]      = "|".join(r.get("artifact_type", []))
-            row["suspicious_region"]  = "|".join(r.get("suspicious_region", []))
+            row["artifact_type"]     = "|".join(r.get("artifact_type", []))
+            row["level"]             = r.get("level", "")
+            row["level_name"]        = r.get("level_name", "")
+            row["suspicious_region"] = "|".join(r.get("suspicious_region", []))
             writer.writerow(row)
 
     # Save all JSONs

@@ -126,6 +126,12 @@ def overlay_heatmap(img_bgr, cam, alpha=0.45):
 def save_gradcam_figure(img_bgr, cam, pred_label, confidence, out_path, title):
     gradcam_blended, fakeshield_mask = overlay_heatmap(img_bgr, cam)
 
+    if pred_label == "Real":
+        fakeshield_mask = np.zeros_like(gradcam_blended)
+        mask_title = "3. FakeShield Mask (No Fake Detected)"
+    else:
+        mask_title = f"3. FakeShield Mask ({pred_label})"
+
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
     axes[0].imshow(cv2.cvtColor(cv2.resize(img_bgr, (224, 224)), cv2.COLOR_BGR2RGB))
@@ -137,7 +143,7 @@ def save_gradcam_figure(img_bgr, cam, pred_label, confidence, out_path, title):
     axes[1].axis("off")
 
     axes[2].imshow(cv2.cvtColor(fakeshield_mask, cv2.COLOR_BGR2RGB))
-    axes[2].set_title(f"3. FakeShield Mask ({pred_label})", fontsize=12, pad=8)
+    axes[2].set_title(mask_title, fontsize=12, pad=8)
     axes[2].axis("off")
 
     plt.suptitle(title, fontsize=11, y=1.02)

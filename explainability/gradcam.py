@@ -126,7 +126,7 @@ def overlay_heatmap(img_bgr, cam, alpha=0.45):
 def save_gradcam_figure(img_bgr, cam, pred_label, confidence, out_path, title):
     gradcam_blended, fakeshield_mask = overlay_heatmap(img_bgr, cam)
 
-    if pred_label == "Real":
+    if pred_label.lower() == "real":
         fakeshield_mask = np.zeros_like(gradcam_blended)
         mask_title = "3. FakeShield Mask (No Fake Detected)"
     else:

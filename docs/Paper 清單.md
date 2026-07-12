@@ -1,37 +1,49 @@
-## **Research Domains**
+# Paper 清單
 
-### **1\. AIGC Detection**：[AIGC detection paper](https://drive.google.com/drive/folders/1ZUvRsQVZ5tjgOoc5gguynBQGLA7GrIpG?usp=drive_link) 待補
+---
 
-1. # [PixelProof](https://github.com/mytechnotalent/pixelproof) 可偵測Ai生成圖與修圖之圖片[https://arxiv.org/abs/2307.10642](https://arxiv.org/abs/2307.10642)
+## 核心使用中
 
-### **2\. Filter**：[filter paper](https://drive.google.com/drive/folders/1zzNmepIFPydH-sBv35TOnQKByoZJ6x3s?usp=drive_link) 待補
+| 論文 | 用途 | 狀態 |
+|------|------|------|
+| [ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design](https://arxiv.org/abs/1807.11164) (ECCV 2018) | 主 backbone，空間分支 | ✅ 使用中 |
+| [RetouchingFFHQ: A Large-scale Dataset for Fine-grained Face Retouching Detection](https://arxiv.org/abs/2307.10642) | Filter 訓練資料 + MAM 架構參考 | ✅ 使用中 |
+| [Grad-CAM++: Improved Visual Explanations for Deep Convolutional Networks](https://arxiv.org/abs/1710.11063) | 可解釋性熱力圖，target layer: conv5 | ✅ 使用中 |
+| [Thinking in Frequency: Face Forgery Detection by Mining Frequency-aware Clues](https://arxiv.org/abs/2007.09355) (ECCV 2020) | FFT branch 設計依據 | ✅ 使用中 |
 
-2. [*EleGANt: Exquisite and Locally Editable Generative Adversarial Network for Makeup Transfer* (ECCV 2022\)](https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136760714.pdf) 能實現局部精準上妝，我們可以做VLM去抓取色彩分布與真實膚色之間的邊緣是否有不自然的融合痕跡   
-3. [StableMakeup: When Real-World Makeup Transfer Meets Diffusion Model](https://arxiv.org/abs/2403.07764)  不用 GAN 他們用 Stable Diffusion 擴散模型幫照片上妝 能加上亮片等複雜的光影效果  
-4. [Unveiling authenticity with diffusion-based face retouching reversal](https://arxiv.org/abs/2405.07582) 用 Stable Diffusion 擴散模型把一張被磨皮過的照片，並修容還原   
-5. [AutoRetouch: Automatic Professional Face Retouching](https://openaccess.thecvf.com/content/WACV2021/papers/Shafaei_AutoRetouch_Automatic_Professional_Face_Retouching_WACV_2021_paper.pdf). 使用全卷積網路 (FCN) 或神經雙邊網格，做到「抹平瑕疵，但完美保留五官邊緣銳利度」的高級磨皮  
-6. [Impact and Detection of Facial Beautification](https://www.researchgate.net/publication/336705492_Impact_and_Detection_of_Facial_Beautification_in_Face_Recognition_An_Overview)  統整學術界對「臉部美化」的百科全書與分類  
-7. [RetouchingFFHQ: A Large-scale Dataset for Fine-grained Face Retouching Detection](https://arxiv.org/abs/2307.10642)  
-   建立了一個大型、細粒度的人臉修圖資料集 **RetouchingFFHQ**，並提出一個可以加在 CNN backbone 上的 **Multi-granularity Attention Module, MAM**，用來提升人臉修圖偵測效果。  
+---
 
-### **3\. 輕量化和邊緣檢測：**
+## 參考 / 引用中
 
-8. [LFFD: A Light and Fast Face Detector for Edge Devices](https://arxiv.org/abs/1904.10633)  專注於 Edge Device 上的模型輕量化設計，符合「手機平台」的資源限制要求  
-9. [Detecting GANs and Retouching Based Digital Alterations via DAD-HCNN](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w39/Jain_Detecting_GANs_and_Retouching_Based_Digital_Alterations_via_DAD-HCNN_CVPRW_2020_paper.pdf) 探討如何利用 CNN 區分出「數位修圖」與「生成式 AI」的差異   
-10. [Hierarchical Fine-G](https://openaccess.thecvf.com/content/CVPR2023/papers/Guo_Hierarchical_Fine-Grained_Image_Forgery_Detection_and_Localization_CVPR_2023_paper.pdf)[Detecting GANs and Retouching Based Digital Alterations via DAD-HCNN](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w39/Jain_Detecting_GANs_and_Retouching_Based_Digital_Alterations_via_DAD-HCNN_CVPRW_2020_paper.pdf)[rained Image Forgery Detection and Localization](https://openaccess.thecvf.com/content/CVPR2023/papers/Guo_Hierarchical_Fine-Grained_Image_Forgery_Detection_and_Localization_CVPR_2023_paper.pdf) 探討如何在圖片上標註出具體哪個局部被動過手腳 
+| 論文 | 用途 | 狀態 |
+|------|------|------|
+| [DF40: Toward Next-Generation Deepfake Detection](https://arxiv.org/abs/2406.13495) (NeurIPS 2024) | Cross-dataset eval protocol；Domain gap 是公認難題的依據 | ✅ 參考中 |
+| [FakeShield: Explainable Image Forgery Detection and Localization via Multi-modal LLMs](https://openreview.net/pdf?id=pAQzEY7M03) (ICLR 2025) | 輸出格式設計 + FakeShield mask 概念 | ✅ 參考中 |
+| [HEIE: MLLM-Based Hierarchical Explainable AIGC Image Evaluation](https://arxiv.org/abs/2412.10667) (CVPR 2025) | 可解釋 AIGC 偵測，我們的目標方向（輕量版） | ✅ 參考中 |
+| [Deceptive Beauty: The Risks of AI-Enhanced Appearance](https://arxiv.org/abs/2409.00375) (2024) | Filter 偵測任務學術依據 | ✅ 參考中 |
+| [Impact and Detection of Facial Beautification in Face Recognition: An Overview](https://www.researchgate.net/publication/336705492) (IEEE Access 2019) | Filter 分類定義依據（磨皮/美白/大眼/瘦臉） | ✅ 參考中 |
+| [Detecting GANs and Retouching Based Digital Alterations via DAD-HCNN](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w39/Jain_Detecting_GANs_and_Retouching_Based_Digital_Alterations_via_DAD-HCNN_CVPRW_2020_paper.pdf) (CVPRW 2020) | 相關工作；同時偵測 GAN 與 retouching | ✅ 參考中 |
+| [Hierarchical Fine-Grained Image Forgery Detection and Localization](https://openaccess.thecvf.com/content/CVPR2023/papers/Guo_Hierarchical_Fine-Grained_Image_Forgery_Detection_and_Localization_CVPR_2023_paper.pdf) (CVPR 2023) | 局部偽造定位，Grad-CAM 區域標注的相關方法 | ✅ 參考中 |
 
-11. # [MobileNetV4: Universal Models for the Mobile Ecosystem](https://link.springer.com/chapter/10.1007/978-3-031-73661-2_5) [所有 MobileNetV4 型號均可在https://github.com/tensorflow/models/blob/master/official/vision/modeling/backbones/mobilenet.py](https://github.com/tensorflow/models/blob/master/official/vision/modeling/backbones/mobilenet.py)取得。
+---
 
-12. # [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) 證明透過將整合模型中的知識提煉到單一模型中
+## 計劃使用（第二階段）
 
-13. # [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/abs/1510.00149) 
+| 論文 | 用途 | 狀態 |
+|------|------|------|
+| [FakeVLM: Towards a Multimodal Deepfake Detection Model](https://arxiv.org/abs/2503.14905) (2025) | 知識蒸餾 teacher model；FakeClue dataset 來源 | ⏳ 計劃使用 |
+| [DeFakeQ: Deepfake Detection via Quantization](https://arxiv.org/abs/2412.01799) | INT8 量化部署 | ⏳ 計劃使用 |
+| [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) (Hinton 2015) | 知識蒸餾方法論 | ⏳ 計劃使用 |
+| [Deep Compression](https://arxiv.org/abs/1510.00149) | 模型壓縮（剪枝 + 量化） | ⏳ 計劃使用 |
+| [MobileNetV4: Universal Models for the Mobile Ecosystem](https://arxiv.org/abs/2404.10518) | Edge 部署備選 backbone | ⏳ 評估中 |
 
-    此壓縮方法有助於在行動應用中使用複雜的神經網絡，在 CPU、GPU 和行動 GPU 上的基準測試表明，壓縮後的網路逐層加速比提高了 3 到 4 倍，能源效率提高了 3 到 7 倍。
+---
 
-### **4\. VLM 與可解釋性** ：
+## 其他相關（已閱，暫不使用）
 
-1. [FakeShield: Explainable Image Forgery Detection and Localization via Multi-modal Large Language Models](https://openreview.net/pdf?id=pAQzEY7M03)  提出多模態框架，探討如何結合視覺與語言模型來解釋影像哪裡被篡改   
-2. [Spot the Fake: Large Multimodal Model-Based Synthetic Image Detection with Artifact Explanation](https://arxiv.org/abs/2503.14905)  如何用 VLM 產生「自然語言特徵解釋」 
-
-### **5\. Future Work ：生成式 Filter (optional)**  
-
+| 論文 | 備注 |
+|------|------|
+| [LFFD: A Light and Fast Face Detector for Edge Devices](https://arxiv.org/abs/1904.10633) | 輕量人臉偵測，若需要 face detection 模組可參考 |
+| [EleGANt: Exquisite and Locally Editable GAN for Makeup Transfer](https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136760714.pdf) (ECCV 2022) | Makeup transfer，不在目前偵測範圍 |
+| [Unveiling Authenticity with Diffusion-based Face Retouching Reversal](https://arxiv.org/abs/2405.07582) | 修圖還原方向，非目前任務 |
+| [AutoRetouch: Automatic Professional Face Retouching](https://openaccess.thecvf.com/content/WACV2021/papers/Shafaei_AutoRetouch_Automatic_Professional_Face_Retouching_WACV_2021_paper.pdf) (WACV 2021) | 生成美顏資料可參考，暫無計劃 |

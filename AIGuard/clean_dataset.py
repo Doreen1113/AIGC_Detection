@@ -79,18 +79,14 @@ def check_resolution(img_path, min_side):
     return True, None
 
 
-def check_face_count(img_path, cascade, max_faces):
+def check_face_count(img_path, detector, max_faces):
     img = cv2.imread(img_path)
     if img is None:
-        return True, None  # already caught by resolution check
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = cascade.detectMultiScale(
-        gray,
-        scaleFactor=1.1,
-        minNeighbors=6,
-        minSize=(50, 50),
-    )
-    n = len(faces)
+        return True, None
+    h, w = img.shape[:2]
+    detector.setInputSize((w, h))
+    _, faces = detector.detect(img)
+    n = 0 if faces is None else len(faces)
     if n > max_faces:
         return False, f"multi_face ({n} faces)"
     return True, None
@@ -118,8 +114,15 @@ def main():
     # Load resources
     excluded_ids = load_ffhq_exclusion_set() if args.ffhq_exclude else set()
 
-    cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-    cascade = cv2.CascadeClassifier(cascade_path) if not args.skip_face else None
+    cascade = None
+    if not args.skip_face:
+        yunet_path = os.path.join(BASE, "face_detection_yunet.onnx")
+        if os.path.exists(yunet_path):
+            cascade = cv2.FaceDetectorYN.create(yunet_path, "", (320, 320), score_threshold=0.6)
+            print(f"  Face detector: YuNet ({yunet_path})")
+        else:
+            print("  [warn] YuNet model not found, skipping face detection.")
+            print("         Download face_detection_yunet.onnx to BASE dir to enable it.")
 
     # Scan
     all_paths = scan_images(scan_dir)

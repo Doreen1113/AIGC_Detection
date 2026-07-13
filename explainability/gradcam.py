@@ -1,6 +1,6 @@
 """Grad-CAM++ for 3-class DualBranchModel (Real / Fake / Filter detector).
 
-Uses shufflenet_v2_3class_ffhq_v2.pth (filter F1=0.980).
+Uses shufflenet_v2_3class_ffhq_v3.pth (filter F1=0.9669 val, Macro F1=0.9521 test).
 Runs on 5 real + 5 fake + 5 filter images.
 Output: gradcam_output/ (3-panel: Input | Grad-CAM++ | FakeShield Mask)
 
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 BASE     = r"C:\My_Project\AIGC"
-CKPT     = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v2.pth")
+CKPT     = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v3.pth")
 OUT_DIR  = os.path.join(BASE, "gradcam_output")
 REAL_DIR = os.path.join(BASE, "AIGuard", "real")
 FAKE_DIR = os.path.join(BASE, "AIGuard", "fake")

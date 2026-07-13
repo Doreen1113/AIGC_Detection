@@ -1,36 +1,67 @@
 # Dataset 清單
 
----
-
-## 目前使用中
-
-| Dataset | Class | 圖片數 | 路徑 | 備注 |
-|---------|-------|--------|------|------|
-| AIGuard real | Real | 30,000 | `AIGuard/real/0~4/` | 來源：Celeb-DF、DeeperForensics、Kaggle 140K |
-| AIGuard fake | Fake | 30,000 | `AIGuard/fake/0~4/` | 來源：FaceForensics++、CDDB、WildDeepfake |
-| filter_data 自建 | Filter | 32,000 | `filter_data/` | OpenCV 模擬：smoothing/whitening/eye/reshaping，各 8K |
-| RetouchingFFHQ four_process | Filter | 10,000 | `FFHQ_four_process/` | 4 種濾鏡同時套用，30/60/90 強度 |
-| RetouchingFFHQ megvii | Filter | 16,737 | `FFHQ_megvii_four_process/` | Megvii（Face++）app |
-| RetouchingFFHQ ali | Filter | 35,998 | `FFHQ_ali_process/` | 阿里美顏 app，有 FilterType_Level 標注 |
-
-**目前總量：Real 30K / Fake 30K / Filter 94.7K**
+> 最後更新：2026-07-13
 
 ---
 
-## 已有，待正式整合
+## 目前使用中（訓練資料）
+
+### Real 類（v3 訓練用，清洗後）
+
+| Dataset | Class | 清洗後可用 | 路徑 | 清洗狀態 |
+|---------|-------|-----------|------|---------|
+| AIGuard real | Real | **25,753** | `AIGuard/real/0~4/` | ✅ Step1+2+人工複查 |
+
+### Fake 類（v3 訓練用，清洗後）
+
+| Dataset | Class | 清洗後可用 | 路徑 | 清洗狀態 |
+|---------|-------|-----------|------|---------|
+| AIGuard fake | Fake | **20,552** | `AIGuard/fake/0~4/` | ✅ Step1+2+人工複查 |
+
+### Filter 類（v3 訓練用，清洗後）
+
+| Dataset | Class | 清洗後可用 | 路徑 | 清洗狀態 |
+|---------|-------|-----------|------|---------|
+| filter_data 自建 | Filter | **25,213** | `filter_data/` | ✅ Step1+2 |
+| RetouchingFFHQ four_process | Filter | **7,731** | `FFHQ_four_process/` | ✅ Step1+FFHQ exclusion |
+| RetouchingFFHQ megvii | Filter | **13,139** | `FFHQ_megvii_four_process/` | ✅ Step1+FFHQ exclusion |
+| RetouchingFFHQ ali | Filter | **23,795** | `FFHQ_ali_process/` | ✅ Step1+FFHQ exclusion |
+
+**v3 訓練實際用量：Real 25,753 / Fake 20,552 / Filter 69,878**
+
+---
+
+## 新增資料集（v4 計畫中）
+
+### 用於擴充 Real + Fake（改善 cross-dataset 泛化）
+
+| Dataset | Class | 清洗後可用 | 路徑 | 清洗狀態 |
+|---------|-------|-----------|------|---------|
+| FakeClue human real | Real | ~2,430（估計） | `FakeClue/train_clean/` label=1, cate=human | ✅ Step1，⚠️ Step2 跑中 |
+| FakeClue deepfake（FF++） | Fake | ~19,166（估計） | `FakeClue/train_clean/` label=0, cate=deepfake | ✅ Step1，⚠️ Step2 跑中 |
+| FakeClue human fake（GenImage AIGC）| Fake | ~6,647（估計）| `FakeClue/train_clean/` label=0, cate=human | ✅ Step1，⚠️ Step2 跑中 |
+| WildDeepfake real | Real | **~1,715**（估計） | `WildDeepfake_subset/images/real/` | ✅ Step1+2 |
+| WildDeepfake fake | Fake | **~1,715**（估計） | `WildDeepfake_subset/images/fake/` | ✅ Step1+2 |
+
+> ⚠️ FakeClue train Step2（31,489 張）目前背景跑中，跑完後更新確切數字
+
+---
+
+## Held-out Test Sets（不得進訓練）
+
+| Dataset | 用途 | 清洗後張數 | 路徑 | 清洗狀態 |
+|---------|------|-----------|------|---------|
+| AIGuard/unseen | Cross-dataset eval | **454** | `AIGuard/unseen/` | ✅ Step1 only |
+| FakeClue test（face 類） | Cross-dataset eval | **1,166** | `FakeClue/test/`；labels: `test_clean/labels.csv` | ✅ Step1+2 |
+| WildDeepfake test（`test_` 前綴）| Cross-dataset eval | ~800（估計） | `WildDeepfake_subset/images/` | ✅ Step1+2 |
+
+---
+
+## 已有，待整合
 
 | Dataset | 用途 | 狀態 | 備注 |
 |---------|------|------|------|
-| AIGuard unseen (622 張) | Domain gap 測試 held-out | ✅ 已用 | 外部來源圖片，最佳 AUROC 0.673 |
 | FFHQ real（RetouchingFFHQ 原始圖） | 擴充 Real 多樣性 | ⚠️ 待確認 | RetouchingFFHQ 的 base images，需確認取得方式 |
-
----
-
-## 待下載
-
-| Dataset | Class | 來源 | 優先度 | 備注 |
-|---------|-------|------|--------|------|
-| FakeClue | Fake + Explanation | HuggingFace `lingcco/FakeClue` | 🔴 高 | VLM 標注的 artifact 說明，第二階段蒸餾需要 |
 
 ---
 

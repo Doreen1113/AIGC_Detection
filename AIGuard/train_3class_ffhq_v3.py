@@ -1,18 +1,19 @@
 """
-3-class + FFT branch, Round 2: all RetouchingFFHQ sources added to filter class.
+3-class + FFT branch v3: loads from clean_paths.txt (post-cleaning data).
 
-Filter class:
-  - filter_data/            : 32K self-generated
-  - FFHQ_four_process       : 10K (4-filter combined, standard)
-  - FFHQ_megvii_four_process: 16.7K (4-filter combined, Megvii app)
-  - FFHQ_ali_process        : 36K (single-filter per subfolder, Ali app)
+Changes from v2:
+  - All datasets loaded via clean_paths.txt instead of directory scan
+  - Class weights in CrossEntropyLoss to handle real/fake/filter imbalance
 
-python AIGuard/train_3class_ffhq_v2.py
+python AIGuard/train_3class_ffhq_v3.py
 """
+import os, random
+from collections import Counter
+from pathlib import Path
+
 import torch
 import torch.nn as nn
 import torchvision.models as tv_models
-import os, random
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from sklearn.model_selection import train_test_split
@@ -20,19 +21,10 @@ from sklearn.metrics import classification_report, confusion_matrix, f1_score, a
 from PIL import Image
 import pandas as pd
 
-BASE             = r"C:\My_Project\AIGC"
-REAL_DIR         = os.path.join(BASE, "AIGuard", "real")
-FAKE_DIR         = os.path.join(BASE, "AIGuard", "fake")
-FILTER_DIR       = os.path.join(BASE, "filter_data")
-FFHQ_DIR         = os.path.join(BASE, "FFHQ_four_process",
-                                 "Whitening_Smoothing_FaceLifting_EyeEnlarging")
-MEGVII_DIR       = os.path.join(BASE, "FFHQ_megvii_four_process",
-                                 "Whitening_Smoothing_FaceLifting_EyeEnlarging")
-ALI_DIR          = os.path.join(BASE, "FFHQ_ali_process")
-WEIGHTS_PATH     = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v2.pth")
+BASE         = r"C:\My_Project\AIGC"
+WEIGHTS_PATH = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v3.pth")
 
 CLASSES    = ["real", "fake", "filter"]
-N_PER_SUB  = 6000
 EPOCHS     = 15
 BATCH_SIZE = 64
 
@@ -61,45 +53,12 @@ class FaceDataset(Dataset):
         return img, self.labels[idx]
 
 
-def collect_subfolders(root, label, max_per_sub=None):
-    """root/subfolder/images — one level of subfolders."""
-    paths, labels = [], []
-    for sub in sorted(os.listdir(root)):
-        sp = os.path.join(root, sub)
-        if not os.path.isdir(sp): continue
-        files = [f for f in os.listdir(sp)
-                 if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
-        random.seed(42); random.shuffle(files)
-        for f in (files[:max_per_sub] if max_per_sub else files):
-            paths.append(os.path.join(sp, f)); labels.append(label)
-    return paths, labels
-
-
-def collect_flat_types(root, label):
-    """filter_data structure: root/type_name/images."""
-    paths, labels = [], []
-    for sub in os.listdir(root):
-        sp = os.path.join(root, sub)
-        if os.path.isdir(sp):
-            for f in os.listdir(sp):
-                if f.lower().endswith(('.jpg', '.jpeg', '.png')):
-                    paths.append(os.path.join(sp, f)); labels.append(label)
-    return paths, labels
-
-
-def collect_ali(root, label):
-    """ali structure: root/FilterType_Level/subfolder/images (3 levels)."""
-    paths, labels = [], []
-    for type_level in os.listdir(root):
-        tl_path = os.path.join(root, type_level)
-        if not os.path.isdir(tl_path): continue
-        for sub in os.listdir(tl_path):
-            sp = os.path.join(tl_path, sub)
-            if os.path.isdir(sp):
-                for f in os.listdir(sp):
-                    if f.lower().endswith(('.jpg', '.jpeg', '.png')):
-                        paths.append(os.path.join(sp, f)); labels.append(label)
-    return paths, labels
+def load_clean_txt(txt_path, label):
+    if not os.path.exists(txt_path):
+        print(f"  Warning: {txt_path} not found, skipping")
+        return [], []
+    paths = [p for p in Path(txt_path).read_text(encoding="utf-8").splitlines() if p]
+    return paths, [label] * len(paths)
 
 
 class FFTBranch(nn.Module):
@@ -133,13 +92,13 @@ if __name__ == '__main__':
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Device: {device}")
 
-    rp, rl = collect_subfolders(REAL_DIR, 0, N_PER_SUB)
-    fp, fl = collect_subfolders(FAKE_DIR, 1, N_PER_SUB)
+    rp, rl = load_clean_txt(os.path.join(BASE, "AIGuard", "real",   "clean_output", "clean_paths.txt"), 0)
+    fp, fl = load_clean_txt(os.path.join(BASE, "AIGuard", "fake",   "clean_output", "clean_paths.txt"), 1)
 
-    flt_p,  flt_l  = collect_flat_types(FILTER_DIR, 2)
-    ffhq_p, ffhq_l = collect_subfolders(FFHQ_DIR, 2)
-    mgv_p,  mgv_l  = collect_subfolders(MEGVII_DIR, 2)
-    ali_p,  ali_l  = collect_ali(ALI_DIR, 2)
+    flt_p,  flt_l  = load_clean_txt(os.path.join(BASE, "filter_data",                "clean_output", "clean_paths.txt"), 2)
+    ffhq_p, ffhq_l = load_clean_txt(os.path.join(BASE, "FFHQ_four_process",          "clean_output", "clean_paths.txt"), 2)
+    mgv_p,  mgv_l  = load_clean_txt(os.path.join(BASE, "FFHQ_megvii_four_process",   "clean_output", "clean_paths.txt"), 2)
+    ali_p,  ali_l  = load_clean_txt(os.path.join(BASE, "FFHQ_ali_process",           "clean_output", "clean_paths.txt"), 2)
 
     filter_paths  = flt_p + ffhq_p + mgv_p + ali_p
     filter_labels = flt_l + ffhq_l + mgv_l + ali_l
@@ -152,21 +111,35 @@ if __name__ == '__main__':
     all_paths  = rp + fp + filter_paths
     all_labels = rl + fl + filter_labels
 
+    # 80/10/10 split: trainval → train+val, then split trainval into 80/10
+    tr_p, te_p, tr_l, te_l = train_test_split(
+        all_paths, all_labels, test_size=0.10, random_state=42, stratify=all_labels)
     tr_p, va_p, tr_l, va_l = train_test_split(
-        all_paths, all_labels, test_size=0.1, random_state=42, stratify=all_labels)
+        tr_p, tr_l, test_size=0.111, random_state=42, stratify=tr_l)  # 0.111 * 0.9 ≈ 0.10
 
     train_ds = FaceDataset(tr_p, tr_l, transform_train)
     val_ds   = FaceDataset(va_p, va_l, transform_val)
+    test_ds  = FaceDataset(te_p, te_l, transform_val)
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,
                               num_workers=4, pin_memory=True)
     val_loader   = DataLoader(val_ds,   batch_size=BATCH_SIZE, shuffle=False,
                               num_workers=4, pin_memory=True)
-    print(f"Train: {len(train_ds)}  Val: {len(val_ds)}")
+    test_loader  = DataLoader(test_ds,  batch_size=BATCH_SIZE, shuffle=False,
+                              num_workers=4, pin_memory=True)
+    print(f"Train: {len(train_ds)}  Val: {len(val_ds)}  Test: {len(test_ds)}")
+
+    # Class weights to handle imbalance
+    count = Counter(all_labels)
+    total = len(all_labels)
+    class_weights = torch.tensor(
+        [total / (len(CLASSES) * count[i]) for i in range(len(CLASSES))],
+        dtype=torch.float).to(device)
+    print(f"Class weights: real={class_weights[0]:.3f}  fake={class_weights[1]:.3f}  filter={class_weights[2]:.3f}")
 
     model     = DualBranchModel(num_classes=3).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(weight=class_weights)
 
     best_f1 = 0.0
     rows = []
@@ -201,22 +174,23 @@ if __name__ == '__main__':
         if f1_filter > best_f1:
             best_f1 = f1_filter
             torch.save(model.state_dict(), WEIGHTS_PATH)
-            print(f"  → Saved (filter F1={best_f1:.4f})")
+            print(f"  -> Saved (filter F1={best_f1:.4f})")
 
     print(f"\nBest filter F1={best_f1:.4f}  Weights: {WEIGHTS_PATH}")
 
-    print("\n--- Classification Report (val) ---")
+    # Final evaluation on held-out test set
+    print("\n--- Classification Report (TEST SET) ---")
     model.load_state_dict(torch.load(WEIGHTS_PATH, map_location=device))
     model.eval()
     preds, trues = [], []
     with torch.no_grad():
-        for imgs, labels in val_loader:
+        for imgs, labels in test_loader:
             preds.extend(model(imgs.to(device)).argmax(1).cpu().tolist())
             trues.extend(labels.tolist())
     print(classification_report(trues, preds, target_names=CLASSES, digits=4))
     print("Confusion matrix:\n", confusion_matrix(trues, preds))
 
     os.makedirs(os.path.join(BASE, "results"), exist_ok=True)
-    pd.DataFrame(rows, columns=["epoch","loss","acc","f1_macro","f1_filter"])\
-      .to_csv(os.path.join(BASE, "results", "3class_ffhq_v2_val_results.csv"), index=False)
-    print(f"\nResults → results/3class_ffhq_v2_val_results.csv")
+    pd.DataFrame(rows, columns=["epoch", "loss", "acc", "f1_macro", "f1_filter"]) \
+      .to_csv(os.path.join(BASE, "results", "3class_ffhq_v3_val_results.csv"), index=False)
+    print(f"\nResults -> results/3class_ffhq_v3_val_results.csv")

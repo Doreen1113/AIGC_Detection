@@ -13,77 +13,77 @@
 ### Cross-dataset eval 結果（持續優化中）
 | 測試集 | v3 AUROC | 狀態 |
 |--------|---------|------|
-| AIGuard unseen | 0.640 | OOD eval |
+| AIGuard unseen | 0.640 | 主要 OOD eval |
 | FakeClue test | 0.540 | 待改善 |
 | WildDeepfake test | 0.216 (inverted) | domain gap 過大，需找方法 |
 
-v3.1（JPEG aug）和 v4（多來源）已跑，結果更差（見 research_log P22–P23）。目前方向是嘗試 domain gap 解法。
+已試過：JPEG augmentation（v3.1）和多來源訓練（v4），兩者結果均更差——JPEG aug 讓 model 把壓縮品質當判斷依據，WildDeepfake（影片幀）AUROC 反降至 0.216。目前嘗試不需重訓的方向。
 
 ---
 
 ## 目標
 
-v3 DualBranch detection backbone 已完成，但 cross-dataset 泛化仍不足。
-**目前方向：改善 OOD 泛化，同時推進 pipeline 整合 + paper。**
+**改善 OOD 泛化（cross-dataset AUROC），同時完成 pipeline 整合與 paper。**
 
-可嘗試的方向（不需重訓或小改）：
-1. **Image quality normalization 前處理**：inference 前統一圖片品質（histogram eq / CLAHE / 固定 JPEG quality）→ 降低 compression shortcut
-2. **TTA（Test-Time Augmentation）**：multi-scale + flip ensemble，不需重訓
-3. **Two-stage inference**：先判 real/not-real（高 threshold），再判 fake/filter → 減少 OOD→filter 錯誤
-4. **Structured output + pipeline 整合**：detection → artifact classifier → Grad-CAM → JSON
+可嘗試方向（Irene 負責，不需重訓）：
+1. **Image quality normalization 前處理**：inference 前統一圖片品質（CLAHE / 固定 JPEG 重壓）→ 降低 compression shortcut 影響
+2. **TTA（Test-Time Augmentation）**：flip + multi-crop ensemble
+3. **Two-stage inference**：P(real) > 0.6 直接輸出 real，否則再判 fake/filter → 減少 OOD 圖被推入 filter class
 
 ---
 
 ## 分工（截止 7/23）
 
-### Yu（無 GPU）
+### Yu
 
-- [ ] **Structured output JSON schema 設計 + 實作**
-  - Input：class（real/fake/filter）、artifact_type、confidence、grad_cam_region
-  - Output：JSON + 一句英文 explanation
-  - 範例格式：
-    ```json
-    {
-      "verdict": "filter",
-      "artifact_type": "skin_smoothing",
-      "confidence": 0.91,
-      "suspicious_region": "cheek",
-      "explanation": "Detected skin smoothing artifact on the cheek region (91% confidence)."
-    }
-    ```
-  - 需涵蓋所有組合：3 class × 4 artifact types × 常見 region（eyes/cheek/jaw/forehead）
-  - 純 Python template logic，完成後給 Irene 串接
+**前置：`git pull origin dev` 拿到所有腳本即可，不需要圖片資料**
 
-- [ ] **Qwen2-VL control group 腳本設計**（不需 GPU，寫腳本讓用戶跑）
+- [ ] **更新 Structured output JSON schema**
+  - 舊版 schema（`docs/structured-output.schema.json`）含有 `retouching.level` 欄位，已決定不輸出 level 資訊（只輸出 artifact type），需移除並對齊目前 pipeline 實際輸出
+  - 現在 pipeline 輸出欄位：`prediction` / `confidence` / `artifact_type` / `suspicious_region` / `explanation`
+  - 更新 schema，並在 `docs/` 補一份簡短說明文件，供 Irene 串接時參考
+  - Explanation 範本在 `pipeline.py` 的 `build_explanation()`，確認涵蓋 3 class × 4 artifact × 常見 region（eyes/cheek/jaw/forehead），有缺的補上
+
+- [ ] **Qwen2-VL control group 腳本**（不需 GPU，寫腳本讓 Doreen 跑）
   - 載入 Qwen2-VL，對 20 張測試圖做 inference
-  - 輸出：fake/real 判斷 + 原因說明（NL）
-  - 用於 paper qualitative comparison
+  - 輸出：fake/real 判斷 + 原因說明（NL），存成 JSON
+  - 用於 paper qualitative comparison table
 
 - [ ] **Paper Method + Experiment 章節草稿**
-  - 數據全在 `docs/research_log.md`（P14–P23）
-  - 重點：DualBranch 架構說明 + baseline 比較表 + cross-dataset eval 結果
+  - 架構說明：ShuffleNetV2 spatial branch（1024-dim）+ FFT CNN branch（256-dim）→ 3-class classifier
+  - 數據：Baseline 比較表（ShuffleNetV2 AUROC 0.9987）、v3 in-dist F1=0.9521、cross-dataset AUROC 表（unseen 0.640 / FakeClue 0.540）
 
 ---
 
-### Irene（8GB GPU）
+### Irene
+
+**前置（需要從 Doreen 取得）：**
+- `git pull origin dev` — 拿到所有腳本
+- Doreen 提供一個 zip（約 2–3GB）內含：
+  - `AIGuard/unseen/`（454 張）
+  - `FakeClue/test_clean/`（1,166 張 + labels.csv）
+  - `WildDeepfake_subset/images/test_*/`（800 張）
+  - `shufflenet_v2_3class_ffhq_v3.pth`
+  - `shufflenet_v2_artifact_classifier_v3.pth`
+- 解壓縮後對應 `C:\My_Project\AIGC\`（或自行修改 eval 腳本頂部的 `BASE` 路徑）
 
 - [ ] **Image quality normalization 前處理實驗**
   - 在現有 v3 weights 不重訓的前提下，inference 前加 CLAHE / 固定 JPEG quality 重壓
-  - 測：AIGuard/unseen + FakeClue/test + WildDeepfake/test 的 AUROC 有無提升
-  - 用 `eval_crossdataset_v3_1.py` 改前處理部分即可
+  - 在 `eval_crossdataset_v3_1.py` 的 `transform` 前加前處理，跑三個 eval set 比較 AUROC
+  - 記錄：前處理方式 + 三個 eval set AUROC（與 v3 baseline 比較）
 
 - [ ] **TTA（Test-Time Augmentation）實驗**
   - flip + multi-crop ensemble（不需重訓）
-  - 同樣跑三個 eval set，確認是否改善 OOD AUROC
+  - 跑三個 eval set，記錄是否改善 OOD AUROC
 
 - [ ] **Two-stage inference 實作**（改 `pipeline.py`）
   - Stage 1：P(real) > 0.6 → 直接輸出 real
-  - Stage 2：不是 real → 再判 fake vs filter
-  - 跑 FakeClue + WildDeepfake 確認 OOD→filter 比例有沒有下降
+  - Stage 2：否則再判 fake vs filter
+  - 跑 FakeClue + WildDeepfake 確認 OOD→filter 比例有無下降
 
-- [ ] **Pipeline 端到端整合**
-  - v3 detection → artifact classifier → Grad-CAM → Yu 的 JSON output 全部串起來
-  - 在 8GB 機器跑 10 張圖驗證輸出格式
+- [ ] **Pipeline 端到端整合**（等 Yu 的 schema 完成後）
+  - v3 detection → artifact classifier → Grad-CAM → JSON output 全部串起來
+  - 在 8GB 機器跑 10 張圖驗證格式正確
 
 ---
 
@@ -94,13 +94,13 @@ Yu 完成 JSON schema
        ↓
 Irene 串接 pipeline（整合測試）
        ↓
-Irene 跑 quality normalization / TTA 實驗
+Irene 跑 quality normalization / TTA 實驗 → 回報結果
        ↓
-用戶 run Qwen2-VL（Yu 腳本準備好後）
+Doreen run Qwen2-VL（Yu 腳本準備好後）
        ↓
 確認最終 cross-dataset 結果 → 決定是否再試其他方向
 ```
 
 ## 規則
-- `docs/research_log.md` 每次跑完實驗立刻更新，不 push 到 git
-- 所有新 weights / 實驗結果備份到 N 槽（用戶負責）
+- 每次跑完實驗請記錄在 docs/test_log.md ，格式：測試了什麼 / AUROC 結果 / 與 v3 比較
+

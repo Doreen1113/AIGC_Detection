@@ -57,14 +57,14 @@
 
 ### Irene
 
-**前置（需要從 Doreen 取得）：**
+**前置：**
 - `git pull origin dev` — 拿到所有腳本
-- Doreen 提供一個 zip（約 2–3GB）內含：
+-  `https://drive.google.com/file/d/1hZxUApfHT67YLo15R74vBoJj71BErwj_/view?usp=drive_link` 載 zip（約 2–3GB）內含：
   - `AIGuard/unseen/`（454 張）
   - `FakeClue/test_clean/`（1,166 張 + labels.csv）
   - `WildDeepfake_subset/images/test_*/`（800 張）
   - `shufflenet_v2_3class_ffhq_v3.pth`
-  - `shufflenet_v2_artifact_classifier_v3.pth`
+  - `artifact_classifier_v3.pth`
 - 解壓縮後對應 `C:\My_Project\AIGC\`（或自行修改 eval 腳本頂部的 `BASE` 路徑）
 
 - [ ] **Image quality normalization 前處理實驗**

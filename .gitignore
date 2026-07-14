@@ -11,6 +11,22 @@ AIGuard/unseen/
 # 輸出圖片資料夾
 filter_output/
 gradcam_output/
+explanation_output/
+pipeline_test_input/
+pipeline_test_output*/
+
+# FFHQ / CelebA 資料（圖片太大）
+FFHQ_ali_process/
+FFHQ_four_process/
+FFHQ_megvii_four_process/
+celeba_real/
+filter_data/
+
+# 本地研究記錄（不推送）
+docs/research_log.md
+
+# 編輯器設定
+.vscode/
 
 # Python
 __pycache__/

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aigc-filter.local/schemas/baseline-output-1.0.0.json",
+  "title": "Binary retouching detection baseline output",
+  "description": "Reports only whether an image was retouched and the model confidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "is_retouched", "confidence"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "is_retouched": { "type": "boolean" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

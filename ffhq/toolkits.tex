@@ -1,0 +1,69 @@
+
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{amsmath,amsfonts,bm,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphics,graphicx,caption,float,color}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{appendix}
+
+% custom
+\usepackage{listings}
+\usepackage{xspace}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+\usepackage{hhline}
+\usepackage{multicol}
+\usepackage{booktabs} 
+\usepackage{makecell} % Xhline
+
+
+% name of our model
+\newcommand{\ffn}{TODO Our Method Name}
+\newcommand{\ourabbr}{AdaptFormer\xspace}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,1}
+\definecolor{MyDarkGreen}{rgb}{0.02,0.6,0.02}
+\definecolor{MyDarkRed}{rgb}{0.8,0.02,0.02}
+\definecolor{MyDarkOrange}{rgb}{0.40,0.2,0.02}
+\definecolor{MyPurple}{RGB}{111,0,255}
+\definecolor{MyRed}{rgb}{1.0,0.0,0.0}
+\definecolor{MyGold}{rgb}{0.75,0.6,0.12}
+\definecolor{MyDarkgray}{rgb}{0.66, 0.66, 0.66}
+
+\definecolor{Image}{RGB}{93,59,155}
+\definecolor{Video}{RGB}{105,145,60}
+
+\definecolor{ice}{RGB}{84,146,214}
+\definecolor{fire}{RGB}{217,129,63}
+\definecolor{baselinecolor}{gray}{.9}
+\definecolor{poscolor}{RGB}{212,17,89}
+\definecolor{negcolor}{RGB}{26,133,255}
+\definecolor{bestcolor}{RGB}{238, 255, 238}
+% copy-paste from Kaiming's MAE, used for ablation tables
+\newcolumntype{x}[1]{>{\centering\arraybackslash}p{#1pt}}
+\newcolumntype{y}[1]{>{\raggedright\arraybackslash}p{#1pt}}
+\newcolumntype{z}[1]{>{\raggedleft\arraybackslash}p{#1pt}}
+% \newcommand{\tablestyle}[2]{\setlength{\tabcolsep}{#1}\renewcommand{\arraystretch}{#2}\centering\footnotesize} % original style from MAE
+\newcommand{\tablestyle}[2]{\setlength{\tabcolsep}{#1}\renewcommand{\arraystretch}{#2}\centering}%\footnotesize
+
+
+\newcommand{\baseline}[1]{\cellcolor{baselinecolor}{#1}}
+\newcommand{\bestcell}[1]{\cellcolor{bestcolor}{#1}}
+\newcommand{\aaa}[1]{\textcolor{poscolor}{\small (#1)}}
+\newcommand{\bbb}[1]{\textcolor{negcolor}{\small (#1)}}
+
+\newcommand{\rebuttal}[1]{#1}
+% \newcommand{\rebuttal}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\ie}{\emph{i.e.}}
+\newcommand{\etal}{\emph{et.al.,}}
+

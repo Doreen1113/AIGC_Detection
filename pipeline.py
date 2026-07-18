@@ -274,6 +274,10 @@ def build_explanation(prediction, artifact_types, regions):
     if prediction == "real":
         return TEMPLATES["real"]
     region_str = " and ".join(REGION_DISPLAY.get(r, r) for r in regions)
+    if prediction == "fake":
+        return TEMPLATES["ai_generated"].format(region=region_str)
+    if not artifact_types:
+        return TEMPLATES["unknown_filter"].format(region=region_str)
     return " ".join(
         TEMPLATES.get(a, TEMPLATES["unknown_filter"]).format(region=region_str)
         for a in artifact_types
@@ -457,3 +461,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

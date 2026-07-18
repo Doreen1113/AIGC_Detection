@@ -5,7 +5,7 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schema_version", "prediction", "confidence", "retouching",
+    "schema_version", "prediction", "confidence",
     "suspicious_regions", "artifact_types", "explanation"
   ],
   "properties": {
@@ -15,22 +15,13 @@
       "enum": ["real", "fake", "filter_processed"]
     },
     "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-    "retouching": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "eye_enlarging", "face_lifting", "skin_smoothing", "face_whitening"
-      ],
-      "properties": {
-        "eye_enlarging": { "$ref": "#/$defs/operation" },
-        "face_lifting": { "$ref": "#/$defs/operation" },
-        "skin_smoothing": { "$ref": "#/$defs/operation" },
-        "face_whitening": { "$ref": "#/$defs/operation" }
-      }
-    },
     "suspicious_regions": {
       "type": "array",
-      "items": { "$ref": "#/$defs/region" }
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["forehead", "left_eye", "right_eye", "nose", "left_cheek", "right_cheek", "mouth", "jaw"]
+      }
     },
     "artifact_types": {
       "type": "array",
@@ -38,52 +29,10 @@
       "items": {
         "type": "string",
         "enum": [
-          "eye_enlarging", "face_lifting", "skin_smoothing", "face_whitening"
+          "eye_enlarging", "face_reshaping", "over_smoothing", "whitening"
         ]
       }
     },
     "explanation": { "type": "string", "minLength": 1 }
-  },
-  "$defs": {
-    "operation": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["level", "level_name", "confidence"],
-      "properties": {
-        "level": { "type": "integer", "enum": [0, 30, 60, 90] },
-        "level_name": {
-          "type": "string",
-          "enum": ["off", "slight", "medium", "heavy"]
-        },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
-      },
-      "allOf": [
-        {
-          "if": { "properties": { "level": { "const": 0 } } },
-          "then": { "properties": { "level_name": { "const": "off" } } }
-        },
-        {
-          "if": { "properties": { "level": { "const": 30 } } },
-          "then": { "properties": { "level_name": { "const": "slight" } } }
-        },
-        {
-          "if": { "properties": { "level": { "const": 60 } } },
-          "then": { "properties": { "level_name": { "const": "medium" } } }
-        },
-        {
-          "if": { "properties": { "level": { "const": 90 } } },
-          "then": { "properties": { "level_name": { "const": "heavy" } } }
-        }
-      ]
-    },
-    "region": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["region", "confidence"],
-      "properties": {
-        "region": { "type": "string", "minLength": 1 },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
-      }
-    }
   }
 }

@@ -1,6 +1,11 @@
 # Pipeline Output Specification (v2.0.0)
 
 輸出格式已與 `pipeline.py` 中的 `build_explanation()` 及 Grad-CAM 輸出對齊，舊版的 `retouching.level` 已移除。
+`pipeline.py` 中的 `build_explanation()`有做修正，多了
+    if prediction == "fake":
+        return TEMPLATES["ai_generated"].format(region=region_str)
+    if not artifact_types:
+        return TEMPLATES["unknown_filter"].format(region=region_str)
 
 ## 正確的 JSON 輸出範例
 

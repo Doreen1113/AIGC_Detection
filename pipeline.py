@@ -38,7 +38,7 @@ import cv2
 # 設定
 # ──────────────────────────────────────────────
 BASE                  = r"C:\My_Project\AIGC"
-WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v3.pth")
+WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_v6.pth")
 ARTIFACT_WEIGHTS_PATH = os.path.join(BASE, "artifact_classifier_v3.pth")
 CLASSES          = ["real", "fake", "filter"]
 # ImageFolder alphabetical order → matches training class index
@@ -55,7 +55,7 @@ IMG_EXTS = {".jpg", ".jpeg", ".png", ".jfif", ".bmp", ".webp"}
 # ──────────────────────────────────────────────
 # Preprocessing
 # ──────────────────────────────────────────────
-def preprocess_jpeg(img_pil, quality=75):
+def preprocess_jpeg(img_pil, quality=85):
     """Re-encode at fixed JPEG quality — 統一壓縮程度，改善 domain gap。"""
     buf = io.BytesIO()
     img_pil.save(buf, format="JPEG", quality=quality)
@@ -274,6 +274,10 @@ def build_explanation(prediction, artifact_types, regions):
     if prediction == "real":
         return TEMPLATES["real"]
     region_str = " and ".join(REGION_DISPLAY.get(r, r) for r in regions)
+    if prediction == "fake":
+        return TEMPLATES["ai_generated"].format(region=region_str)
+    if not artifact_types:
+        return TEMPLATES["unknown_filter"].format(region=region_str)
     return " ".join(
         TEMPLATES.get(a, TEMPLATES["unknown_filter"]).format(region=region_str)
         for a in artifact_types
@@ -296,7 +300,7 @@ def run_single(image_path, model, gradcam, artifact_model, device,
         return {"error": str(e), "image": str(image_path)}
 
     if jpeg_preprocess:
-        pil_img = preprocess_jpeg(pil_img, quality=75)
+        pil_img = preprocess_jpeg(pil_img, quality=85)
 
     image_np     = np.array(pil_img.resize((224, 224)))
     input_tensor = transform_infer(pil_img).unsqueeze(0).to(device)
@@ -323,12 +327,13 @@ def run_single(image_path, model, gradcam, artifact_model, device,
     explanation = build_explanation(prediction, artifact_types, regions)
 
     result = {
+        "schema_version":    "2.0.0",
         "image":             os.path.basename(image_path),
         "prediction":        prediction,
         "confidence":        round(confidence, 4),
         "class_probs":       all_probs,
-        "artifact_type":     artifact_types,
-        "suspicious_region": regions,
+        "artifact_types":    artifact_types,
+        "suspicious_regions": regions,
         "explanation":       explanation,
     }
 
@@ -425,7 +430,7 @@ def main():
     csv_path = os.path.join(out_dir, "summary.csv")
     csv_fields = ["image", "prediction", "confidence",
                   "prob_real", "prob_fake", "prob_filter",
-                  "artifact_type", "suspicious_region", "explanation"]
+                  "artifact_types", "suspicious_regions", "explanation"]
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=csv_fields, extrasaction="ignore")
         writer.writeheader()
@@ -435,8 +440,8 @@ def main():
             row["prob_real"]   = probs.get("real",   "")
             row["prob_fake"]   = probs.get("fake",   "")
             row["prob_filter"] = probs.get("filter", "")
-            row["artifact_type"]     = "|".join(r.get("artifact_type", []))
-            row["suspicious_region"] = "|".join(r.get("suspicious_region", []))
+            row["artifact_types"]     = "|".join(r.get("artifact_types", []))
+            row["suspicious_regions"] = "|".join(r.get("suspicious_regions", []))
             writer.writerow(row)
 
     # Save all JSONs

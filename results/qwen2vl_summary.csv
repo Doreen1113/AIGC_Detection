@@ -1,0 +1,61 @@
+source,image,gt,qwen_verdict,qwen_confidence,correct,reason
+FakeClue,225.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,109.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,402.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,025.png,real,real,1.0,1,"The image appears to be a real, unmodified photograph of a person."
+FakeClue,228.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,123.png,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+FakeClue,078.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,146.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,327.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,000.png,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,267.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,578_adm_188.PNG,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the way the dress 
+FakeClue,aaef5a3a-a5cc-413b-bdfc-9c3f0999731f.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,000.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,382.png,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+FakeClue,125.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,283.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,327.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,019.png,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+FakeClue,166.png,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+AIGuard_unseen,Real_65.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,Real_7.JPG,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,real_211.jpg,real,real,0.9,1,"The image appears to be a real, unmodified photograph of a person."
+AIGuard_unseen,real_269.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,Real_15.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,real_253.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,Real_6.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,real_318.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,real_291.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,real_310.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_301.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_257.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_184.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_270.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_32.jpg,fake,fake,0.95,1,"The image appears to be a deepfake or AI-generated/synthesized face, as the features seem unnatural and the background i"
+AIGuard_unseen,fake_207.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_684.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_110.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_469.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+AIGuard_unseen,fake_683.jpg,fake,real,1.0,0,"The image appears to be an authentic, unmodified photograph of a person."
+WildDeepfake,test_104_real_57_1934.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of contex
+WildDeepfake,test_104_real_83_2932.jpg,real,real,1.0,1,"The image appears to be a real, unmodified photograph of a person."
+WildDeepfake,test_104_real_65_2312.jpg,real,real,1.0,1,"The image appears to be a real, unmodified photograph of a person."
+WildDeepfake,test_104_real_65_2270.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail
+WildDeepfake,test_104_real_65_2238.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail
+WildDeepfake,test_104_real_57_1932.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of contex
+WildDeepfake,test_104_real_57_1963.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_104_real_83_2982.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+WildDeepfake,test_104_real_65_2268.jpg,real,real,1.0,1,"The image appears to be an authentic, unmodified photograph of a person."
+WildDeepfake,test_104_real_13_573.jpg,real,fake,0.9,0,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail
+WildDeepfake,test_1_fake_33_1047.jpg,fake,fake,0.95,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_1194.jpg,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_1049.jpg,fake,fake,0.95,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_1183.jpg,fake,fake,0.95,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_1176.jpg,fake,fake,0.95,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_981.jpg,fake,fake,0.95,1,"The image appears to be a deepfake or AI-generated/synthesized face, as the features seem unnatural and the lighting is "
+WildDeepfake,test_1_fake_33_1135.jpg,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_33_1022.jpg,fake,fake,0.95,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.
+WildDeepfake,test_1_fake_40_1444.jpg,fake,filter,0.9,0,"The image appears to have been beautified using filters, with enhanced skin and facial features, but the identity is pre"
+WildDeepfake,test_1_fake_33_1235.jpg,fake,fake,0.9,1,The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting.

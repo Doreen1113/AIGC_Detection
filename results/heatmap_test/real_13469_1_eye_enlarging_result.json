@@ -1,0 +1,21 @@
+{
+  "schema_version": "2.0.0",
+  "image": "real_13469_1_eye_enlarging.jpg",
+  "prediction": "filter",
+  "confidence": 0.7947,
+  "class_probs": {
+    "real": 0.0761,
+    "fake": 0.1292,
+    "filter": 0.7947
+  },
+  "artifact_types": [
+    "eye_enlarging"
+  ],
+  "suspicious_regions": [
+    "nose",
+    "right_cheek"
+  ],
+  "explanation": "Abnormal eye-to-face ratio detected in nose area and right cheek. Geometric distortion consistent with eye enlargement filter.",
+  "heatmap_path": "C:\\My_Project\\AIGC\\results\\heatmap_test\\real_13469_1_eye_enlarging_heatmap.jpg",
+  "mask_path": "C:\\My_Project\\AIGC\\results\\heatmap_test\\real_13469_1_eye_enlarging_mask.jpg"
+}

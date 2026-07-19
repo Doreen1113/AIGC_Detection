@@ -4,54 +4,56 @@
 | 模型 | 說明 | 結果 |
 |------|------|------|
 | Baseline 4模型比較 | MobileNetV4 / EfficientNet / ResNet18 / ShuffleNetV2 | ShuffleNetV2 最佳，AUROC=0.9987 |
-| **v3 DualBranch（目前最佳）** | ShuffleNetV2 + FFT branch，3-class（real/fake/filter） | In-dist Macro F1=0.9521，unseen AUROC=0.640 |
+| v3 DualBranch | ShuffleNetV2 + FFT branch，3-class（real/fake/filter） | In-dist Macro F1=0.9521，True test AUROC=0.1061（inverted）|
+| v5.1 DualBranch | +LFW +DF40 diffusion +filter fix | True test AUROC=1.0000，filter recall 31% |
+| **v6 DualBranch（目前最佳）** | 純靜態訓練，移除 WildDeepfake | True test AUROC=1.0000，filter recall 67.5%，WildDeepfake 0.889 |
 | Artifact classifier v3 | 細分 filter 類型（smoothing/whitening/eye_enlarging/face_reshaping） | Macro F1=0.9823 |
-| Grad-CAM | 視覺化可疑區域 | 串接 v3，15/15 正確 |
 
-**目前最佳 weights：** `shufflenet_v2_3class_ffhq_v3.pth`
+**目前最佳 weights：** `shufflenet_v2_3class_v6.pth`
 
-### Cross-dataset eval 結果（持續優化中）
-| 測試集 | v3 AUROC | 狀態 |
-|--------|---------|------|
-| AIGuard unseen | 0.640 | 主要 OOD eval |
-| FakeClue test | 0.540 | 待改善 |
-| WildDeepfake test | 0.216 (inverted) | domain gap 過大，需找方法 |
+### Cross-dataset eval 結果
+| 測試集 | v3 | v5.1 | v6 |
+|--------|-----|------|-----|
+| AIGuard unseen | 0.640 | 0.740 | 0.722 |
+| FakeClue test | 0.540 | 0.528 | 0.524 |
+| WildDeepfake test | 0.938 | 0.741 | **0.889** |
+| True test AUROC | 0.1061 | 1.0000 | **1.0000** |
 
-已試過：JPEG augmentation（v3.1）和多來源訓練（v4），兩者結果均更差——JPEG aug 讓 model 把壓縮品質當判斷依據，WildDeepfake（影片幀）AUROC 反降至 0.216。目前嘗試不需重訓的方向。
+### Qwen2-VL 控制組（2026-07-19）
+| 評估集 | 整體準確率 | Filter recall | Binary AUROC |
+|--------|-----------|--------------|--------------|
+| 80 張（3-class） | 46.25% | 0% | — |
+| True test 769 張 | 39.5% | 0% | 0.6497 |
+
+→ 結果存於 `results/qwen2vl_results_3class.json` / `results/qwen2vl_truetest.json`
 
 ---
 
 ## 目標
 
-**改善 OOD 泛化（cross-dataset AUROC），同時完成 pipeline 整合與 paper。**
+**持續改善 OOD 泛化與 filter recall，完成 pipeline 整合與 paper。**
 
-可嘗試方向（Irene 負責，不需重訓）：
-1. **Image quality normalization 前處理**：inference 前統一圖片品質（CLAHE / 固定 JPEG 重壓）→ 降低 compression shortcut 影響
-2. **TTA（Test-Time Augmentation）**：flip + multi-crop ensemble
-3. **Two-stage inference**：P(real) > 0.6 直接輸出 real，否則再判 fake/filter → 減少 OOD 圖被推入 filter class
+待優化方向：
+1. **v7**：過採樣 eye_enlarging × 4 / face_reshaping × 3（目前 eye_enlarging recall 只有 27.4%，訓練樣本只有 smoothing 的 1/5）
+2. **v8**：H.264 壓縮模擬 augmentation，改善 FakeClue AUROC（目前 0.524，root cause：影片壓縮 domain gap）
+3. **解釋性**：Qwen2-VL verbose mode（--verbose flag 呼叫 Qwen2-VL 生成詳細解釋）
 
 ---
 
-## 分工（截止 7/21）
+## 分工（截止 9月初）
 
 ### Yu
 
 **前置：`git pull origin dev` 拿到所有腳本即可，不需要圖片資料**
 
-- [ ] **更新 Structured output JSON schema**
-  - 舊版 schema（`docs/structured-output.schema.json`）含有 `retouching.level` 欄位，已決定不輸出 level 資訊（只輸出 artifact type），需移除並對齊目前 pipeline 實際輸出
-  - 現在 pipeline 輸出欄位：`prediction` / `confidence` / `artifact_type` / `suspicious_region` / `explanation`
-  - 更新 schema，並在 `docs/` 補一份簡短說明文件，供 Irene 串接時參考
-  - Explanation 範本在 `pipeline.py` 的 `build_explanation()`，確認涵蓋 3 class × 4 artifact × 常見 region（eyes/cheek/jaw/forehead），有缺的補上
-
-- [ ] **Qwen2-VL control group 腳本**（不需 GPU，寫腳本讓 Doreen 跑）
-  - 載入 Qwen2-VL，對 20 張測試圖做 inference
-  - 輸出：fake/real 判斷 + 原因說明（NL），存成 JSON
-  - 用於 paper qualitative comparison table
+- [x] **更新 Structured output JSON schema v2.0.0**
+  - `docs/structured-output.schema.json`：prediction enum real/fake/filter，移除 retouching.level
+  - 說明文件：`docs/README_structured-output.md`
 
 - [ ] **Paper Method + Experiment 章節草稿**
   - 架構說明：ShuffleNetV2 spatial branch（1024-dim）+ FFT CNN branch（256-dim）→ 3-class classifier
-  - 數據：Baseline 比較表（ShuffleNetV2 AUROC 0.9987）、v3 in-dist F1=0.9521、cross-dataset AUROC 表（unseen 0.640 / FakeClue 0.540）
+  - 數據：Baseline 比較表、v3→v6 cross-dataset AUROC 歷程、True test 結果、Qwen2-VL 控制組對比
+  - 注意：backbone 改為 ShuffleNetV2（Proposal 寫 MobileNetV4，需說明選擇原因）
 
 ---
 
@@ -59,48 +61,40 @@
 
 **前置：**
 - `git pull origin dev` — 拿到所有腳本
--  `https://drive.google.com/file/d/1hZxUApfHT67YLo15R74vBoJj71BErwj_/view?usp=drive_link` 載 zip（約 2–3GB）內含：
-  - `AIGuard/unseen/`（454 張）
-  - `FakeClue/test_clean/`（1,166 張 + labels.csv）
-  - `WildDeepfake_subset/images/test_*/`（800 張）
-  - `shufflenet_v2_3class_ffhq_v3.pth`
-  - `artifact_classifier_v3.pth`
-- 解壓縮後對應 `C:\My_Project\AIGC\`（或自行修改 eval 腳本頂部的 `BASE` 路徑）
+- 下載 v6：`[https://drive.google.com/file/d/1kDvV8996DzzunqSH2R8q_xa-eMACu9el/view?usp=sharing]`
+  - 新增：`shufflenet_v2_3class_v6.pth`
+  - 其餘同舊包：irene_eval_package.zip（unseen / FakeClue / WildDeepfake test 資料）
 
-- [ ] **Image quality normalization 前處理實驗**
-  - 在現有 v3 weights 不重訓的前提下，inference 前加 CLAHE / 固定 JPEG quality 重壓
-  - 在 `eval_crossdataset_v3_1.py` 的 `transform` 前加前處理，跑三個 eval set 比較 AUROC
-  - 記錄：前處理方式 + 三個 eval set AUROC（與 v3 baseline 比較）
+- [x] **Image quality normalization 前處理實驗**（完成，2026-07-15）
+  - 結果：JPEG q80 最佳（v5.1）；v6 最佳為 q85
+  - 詳見 `docs/test_log.md`（feature/FFHQ branch）
 
-- [ ] **TTA（Test-Time Augmentation）實驗**
-  - flip + multi-crop ensemble（不需重訓）
-  - 跑三個 eval set，記錄是否改善 OOD AUROC
+- [x] **TTA（Test-Time Augmentation）實驗**（完成，不推薦）
+  - five-crop + flip → 三個 dataset AUROC 全部下降
 
-- [ ] **Two-stage inference 實作**（改 `pipeline.py`）
-  - Stage 1：P(real) > 0.6 → 直接輸出 real
-  - Stage 2：否則再判 fake vs filter
-  - 跑 FakeClue + WildDeepfake 確認 OOD→filter 比例有無下降
+- [x] **Two-stage inference 實驗**（完成，不推薦）
+  - Filter logit bias=1.5 效果更好；但 v6 中 filter bias 幾乎無效（OOD→filter 只有 2.6%）
 
-- [ ] **Pipeline 端到端整合**（等 Yu 的 schema 完成後）
-  - v3 detection → artifact classifier → Grad-CAM → JSON output 全部串起來
-  - 在 8GB 機器跑 10 張圖驗證格式正確
+- [x] **Pipeline 端到端整合**（Doreen 完成，2026-07-20）
+  - weights：`shufflenet_v2_3class_v6.pth`，JPEG quality=85
+  - schema v2.0.0 對齊，heatmap 生成正常
+  - VRAM：0.033 GB（DualBranch inference）
 
 ---
 
 ## 關鍵路徑
 
 ```
-Yu 完成 JSON schema
+[本週 TODO ] → v7 訓練（eye_enlarging 過採樣）
        ↓
-Irene 串接 pipeline（整合測試）
+v7 eval → 若 filter recall > 80%，成為新最佳
        ↓
-Irene 跑 quality normalization / TTA 實驗 → 回報結果
+v8 訓練（H.264 aug）+ 解釋性 Qwen2-VL verbose mode
        ↓
-Doreen run Qwen2-VL（Yu 腳本準備好後）
+Yu 寫 paper Method + Experiment
        ↓
-確認最終 cross-dataset 結果 → 決定是否再試其他方向
+Demo / Presentation 準備（8月中）
 ```
 
 ## 規則
-- 每次跑完實驗請記錄在 `docs/test_log.md`，格式：測試了什麼 / AUROC 結果 / 與 v3 比較
-
+- Schema / pipeline 改動記在各自的 `docs/` 說明文件

@@ -1,0 +1,21 @@
+{
+  "schema_version": "2.0.0",
+  "image": "fake_32.jpg",
+  "prediction": "fake",
+  "confidence": 0.9857,
+  "class_probs": {
+    "real": 0.0116,
+    "fake": 0.9857,
+    "filter": 0.0026
+  },
+  "artifact_types": [
+    "ai_generated"
+  ],
+  "suspicious_regions": [
+    "nose",
+    "right_eye"
+  ],
+  "explanation": "Unnatural facial structure detected in nose area and right eye area. Features consistent with AI-generated imagery.",
+  "heatmap_path": "results\\heatmap_test\\fake_32_heatmap.jpg",
+  "mask_path": "results\\heatmap_test\\fake_32_mask.jpg"
+}

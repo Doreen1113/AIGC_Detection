@@ -1,0 +1,482 @@
+[
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/008/225.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/292/109.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/021/402.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/722/025.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be a real, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/891/228.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/931/123.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/572/078.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/163/146.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/458/327.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/real/youtube/c23/frames/498/000.png",
+    "gt": "real",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/NeuralTextures/c23/frames/282_238/267.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\genimage/fake/578_adm_188.PNG",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the way the dress is presented."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\chameleon/fake/aaef5a3a-a5cc-413b-bdfc-9c3f0999731f.jpg",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/FaceSwap/c23/frames/133_148/000.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/Deepfakes/c23/frames/592_500/382.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/NeuralTextures/c23/frames/022_489/125.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/FaceSwap/c23/frames/609_596/283.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/Deepfakes/c23/frames/490_534/327.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/Deepfakes/c23/frames/289_228/019.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\FakeClue\\test\\ff++/fake/Deepfakes/c23/frames/473_366/166.png",
+    "gt": "fake",
+    "source": "FakeClue",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\Real_65.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\Real_7.JPG",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_211.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 0.9,
+    "reason": "The image appears to be a real, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_269.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\Real_15.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_253.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\Real_6.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_318.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_291.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\real_310.jpg",
+    "gt": "real",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_301.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_257.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_184.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_270.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_32.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face, as the features seem unnatural and the background is blurred."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_207.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_684.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_110.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_469.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\AIGuard/unseen\\fake_683.jpg",
+    "gt": "fake",
+    "source": "AIGuard_unseen",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_57_1934.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of context."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_83_2932.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be a real, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_65_2312.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be a real, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_65_2270.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail in the facial features."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_65_2238.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail in the facial features."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_57_1932.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of context."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_57_1963.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_83_2982.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_65_2268.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "real",
+    "confidence": 1.0,
+    "reason": "The image appears to be an authentic, unmodified photograph of a person."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\real\\test_104_real_13_573.jpg",
+    "gt": "real",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural lighting and the lack of detail in the facial features."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1047.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1194.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1049.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1183.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1176.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_981.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face, as the features seem unnatural and the lighting is inconsistent with a real photograph."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1135.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1022.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.95,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_40_1444.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "filter",
+    "confidence": 0.9,
+    "reason": "The image appears to have been beautified using filters, with enhanced skin and facial features, but the identity is preserved."
+  },
+  {
+    "path": "C:\\My_Project\\AIGC\\WildDeepfake_subset\\images\\fake\\test_1_fake_33_1235.jpg",
+    "gt": "fake",
+    "source": "WildDeepfake",
+    "verdict": "fake",
+    "confidence": 0.9,
+    "reason": "The image appears to be a deepfake or AI-generated/synthesized face due to the unnatural skin texture and lighting."
+  }
+]

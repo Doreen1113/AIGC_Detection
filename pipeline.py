@@ -38,8 +38,9 @@ import cv2
 # 設定
 # ──────────────────────────────────────────────
 BASE                  = r"C:\My_Project\AIGC"
-WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_v6.pth")
+WEIGHTS_PATH          = os.path.join(BASE, "shufflenet_v2_3class_v81.pth")
 ARTIFACT_WEIGHTS_PATH = os.path.join(BASE, "artifact_classifier_v3.pth")
+REGION_HEAD_PATH      = os.path.join(BASE, "region_head_v1.pth")
 CLASSES          = ["real", "fake", "filter"]
 # ImageFolder alphabetical order → matches training class index
 ARTIFACT_CLASSES = ["eye_enlarging", "face_reshaping", "smoothing", "whitening"]
@@ -47,10 +48,19 @@ ARTIFACT_CLASSES = ["eye_enlarging", "face_reshaping", "smoothing", "whitening"]
 ARTIFACT_TAG_MAP = {
     "eye_enlarging":  "eye_enlarging",
     "face_reshaping": "face_reshaping",
-    "smoothing":      "over_smoothing",
+    "smoothing":      "smoothing",
     "whitening":      "whitening",
 }
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".jfif", ".bmp", ".webp"}
+
+# Rule-based: artifact_type → suspicious_regions for filter class
+ARTIFACT_REGION_MAP = {
+    "eye_enlarging":  ["left_eye", "right_eye"],
+    "face_reshaping": ["jaw", "left_cheek", "right_cheek"],
+    "smoothing":      ["forehead", "nose", "left_cheek", "right_cheek"],
+    "whitening":      ["forehead", "left_cheek", "right_cheek"],
+    "unknown_filter": [],
+}
 
 # ──────────────────────────────────────────────
 # Preprocessing
@@ -104,6 +114,37 @@ class DualBranchModel(nn.Module):
         spatial = self.spatial_branch(x)
         freq    = self.fft_branch(x)
         return self.classifier(torch.cat([spatial, freq], dim=1))
+
+    def extract_features(self, x):
+        """Return 1280-dim features (before classifier)."""
+        with torch.no_grad():
+            spatial = self.spatial_branch(x)
+            freq    = self.fft_branch(x)
+        return torch.cat([spatial, freq], dim=1)
+
+# ──────────────────────────────────────────────
+# Region Head (Phase 2 — FakeVLM distilled)
+# ──────────────────────────────────────────────
+REGIONS = ["forehead", "left_eye", "right_eye", "nose",
+           "left_cheek", "right_cheek", "mouth", "jaw"]
+
+class RegionHead(nn.Module):
+    def __init__(self, in_dim=1280, num_regions=8):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(in_dim, 256), nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(256, num_regions),
+        )
+    def forward(self, x):
+        return self.net(x)
+
+def predict_regions(features, region_head, threshold=0.5):
+    """1280-dim features → list of suspicious region names."""
+    with torch.no_grad():
+        logits = region_head(features)
+        probs  = torch.sigmoid(logits)[0]
+    return [r for r, p in zip(REGIONS, probs) if p.item() >= threshold]
 
 # ──────────────────────────────────────────────
 # Grad-CAM++
@@ -231,7 +272,7 @@ def infer_artifact_type(prediction, regions, image_np):
     if prediction == "real":
         return []
     if prediction == "fake":
-        return ["ai_generated"]
+        return []
 
     texture_var, brightness_L = compute_skin_stats(image_np)
 
@@ -243,7 +284,7 @@ def infer_artifact_type(prediction, regions, image_np):
 
     # Primary: image statistics for skin-processing filters
     if texture_var < _SMOOTH_TEXTURE_THR:
-        artifacts.append("over_smoothing")
+        artifacts.append("smoothing")
     if brightness_L > _WHITE_BRIGHT_THR:
         artifacts.append("whitening")
 
@@ -263,7 +304,7 @@ def infer_artifact_type(prediction, regions, image_np):
 TEMPLATES = {
     "real":          "No significant manipulation artifacts detected. The image appears authentic.",
     "ai_generated":  "Unnatural facial structure detected in {region}. Features consistent with AI-generated imagery.",
-    "over_smoothing":"Skin texture variance significantly reduced in {region}. Bilateral filter artifacts detected — unnatural surface smoothness.",
+    "smoothing":     "Skin texture variance significantly reduced in {region}. Bilateral filter artifacts detected — unnatural surface smoothness.",
     "whitening":     "Abnormal brightness elevation detected in {region}. Skin tone whitening filter artifacts identified.",
     "eye_enlarging": "Abnormal eye-to-face ratio detected in {region}. Geometric distortion consistent with eye enlargement filter.",
     "face_reshaping":"Unnatural facial contour detected in {region}. Geometric compression consistent with face slimming filter.",
@@ -292,7 +333,7 @@ transform_infer = transforms.Compose([
     transforms.Normalize([0.5]*3, [0.5]*3),
 ])
 
-def run_single(image_path, model, gradcam, artifact_model, device,
+def run_single(image_path, model, gradcam, artifact_model, region_head, device,
                save_heatmap=False, output_dir=None, jpeg_preprocess=True):
     try:
         pil_img = Image.open(image_path).convert("RGB")
@@ -304,25 +345,45 @@ def run_single(image_path, model, gradcam, artifact_model, device,
 
     image_np     = np.array(pil_img.resize((224, 224)))
     input_tensor = transform_infer(pil_img).unsqueeze(0).to(device)
-    input_tensor.requires_grad_(True)
 
-    with torch.enable_grad():
-        logits = model(input_tensor)
-    probs      = torch.softmax(logits, dim=1)[0].detach()
+    # Forward pass — no grad needed unless heatmap requested
+    if save_heatmap:
+        input_tensor.requires_grad_(True)
+        with torch.enable_grad():
+            logits = model(input_tensor)
+        probs = torch.softmax(logits, dim=1)[0].detach()
+    else:
+        with torch.no_grad():
+            logits = model(input_tensor)
+        probs = torch.softmax(logits, dim=1)[0]
+
     pred_idx   = int(probs.argmax())
     prediction = CLASSES[pred_idx]
     confidence = float(probs[pred_idx])
     all_probs  = {c: round(float(p), 4) for c, p in zip(CLASSES, probs)}
 
-    cam     = gradcam.generate(input_tensor, pred_idx)
-    regions = top_activated_regions(cam, top_k=2)
+    # suspicious_regions: source depends on prediction class
+    if prediction == "real":
+        regions = []
+    elif prediction == "fake" and region_head is not None:
+        # Phase 2: use learned region head (FakeVLM distilled)
+        features = model.extract_features(input_tensor)
+        regions  = predict_regions(features, region_head)
+    else:
+        # filter or fallback: derive from artifact_type after classification
+        regions = []  # filled in after artifact_types determined below
 
-    # Artifact type: use trained classifier for filter, heuristic for fake
+    # Artifact type
     if prediction == "filter" and artifact_model is not None:
         art_tag, _ = classify_artifact(pil_img, artifact_model, device)
         artifact_types = [art_tag]
     else:
-        artifact_types = infer_artifact_type(prediction, regions, image_np)
+        image_np_for_stat = np.array(pil_img.resize((224, 224)))
+        artifact_types = infer_artifact_type(prediction, regions, image_np_for_stat)
+
+    # filter regions: rule-based from artifact_type
+    if prediction == "filter":
+        regions = ARTIFACT_REGION_MAP.get(artifact_types[0] if artifact_types else "unknown_filter", [])
 
     explanation = build_explanation(prediction, artifact_types, regions)
 
@@ -338,6 +399,7 @@ def run_single(image_path, model, gradcam, artifact_model, device,
     }
 
     if save_heatmap and output_dir:
+        cam      = gradcam.generate(input_tensor, pred_idx)
         stem     = Path(image_path).stem
         img_bgr  = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
         hmap_col = cv2.applyColorMap((cam * 255).astype(np.uint8), cv2.COLORMAP_JET)
@@ -385,13 +447,22 @@ def main():
     else:
         print("Artifact classifier not found — using heuristic fallback")
 
+    region_head = None
+    if os.path.exists(REGION_HEAD_PATH):
+        region_head = RegionHead().to(device)
+        region_head.load_state_dict(torch.load(REGION_HEAD_PATH, map_location=device))
+        region_head.eval()
+        print(f"Region head loaded from {REGION_HEAD_PATH}")
+    else:
+        print("Region head not found — suspicious_regions will be empty for fake class")
+
     jpeg_pre = not args.no_jpeg_preproc
 
     # ── single image ──
     if args.image:
         out_dir = args.output_dir or os.path.join(BASE, "explanation_output")
         os.makedirs(out_dir, exist_ok=True)
-        result = run_single(args.image, model, gradcam, artifact_model, device,
+        result = run_single(args.image, model, gradcam, artifact_model, region_head, device,
                             save_heatmap=args.save_heatmap,
                             output_dir=out_dir,
                             jpeg_preprocess=jpeg_pre)
@@ -416,7 +487,7 @@ def main():
 
     results = []
     for i, img_path in enumerate(image_files, 1):
-        r = run_single(str(img_path), model, gradcam, artifact_model, device,
+        r = run_single(str(img_path), model, gradcam, artifact_model, region_head, device,
                        save_heatmap=args.save_heatmap,
                        output_dir=out_dir,
                        jpeg_preprocess=jpeg_pre)

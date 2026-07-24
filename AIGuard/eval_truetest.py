@@ -18,8 +18,10 @@ import numpy as np
 
 import argparse
 _parser = argparse.ArgumentParser()
-_parser.add_argument("--ckpt", default="shufflenet_v2_3class_ffhq_v3.pth")
-_parser.add_argument("--out",  default="truetest_v3_results.csv")
+_parser.add_argument("--ckpt",      default="shufflenet_v2_3class_ffhq_v3.pth")
+_parser.add_argument("--out",       default="truetest_v3_results.csv")
+_parser.add_argument("--tribranch", action="store_true",
+                     help="Use TriBranchModel (v7.3+)")
 _args, _ = _parser.parse_known_args()
 
 BASE   = Path(r"C:\My_Project\AIGC")
@@ -63,6 +65,37 @@ class DualBranchModel(nn.Module):
         return self.classifier(torch.cat([self.spatial_branch(x), self.fft_branch(x)], dim=1))
 
 
+class EyeROIBranch(nn.Module):
+    def __init__(self, out_dim=128):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv2d(3,32,3,padding=1), nn.BatchNorm2d(32), nn.ReLU(), nn.MaxPool2d(2),
+            nn.Conv2d(32,64,3,padding=1), nn.BatchNorm2d(64), nn.ReLU(), nn.MaxPool2d(2),
+            nn.Conv2d(64,128,3,padding=1), nn.BatchNorm2d(128), nn.ReLU(), nn.AdaptiveAvgPool2d((4,4)),
+            nn.Flatten(), nn.Linear(128*4*4, out_dim), nn.ReLU())
+    def forward(self, x): return self.net(x)
+
+
+class TriBranchModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        bb = tv_models.shufflenet_v2_x1_0(weights=None)
+        bb.fc = nn.Identity()
+        self.spatial_branch = bb
+        self.fft_branch     = FFTBranch(256)
+        self.eye_branch     = EyeROIBranch(128)
+        self.classifier = nn.Sequential(
+            nn.Linear(1024+256+128, 512), nn.ReLU(), nn.Dropout(0.3), nn.Linear(512, 3))
+    def forward(self, full, eye=None):
+        return self.classifier(torch.cat([self.spatial_branch(full),
+                                          self.fft_branch(full),
+                                          self.eye_branch(eye)], dim=1))
+
+
+EYE_Y0, EYE_Y1, EYE_X0, EYE_X1 = 65, 125, 20, 204
+eye_resize = T.Resize((64, 128))
+
+
 def load_split(txt_path, label):
     paths = []
     with open(txt_path, encoding="utf-8") as f:
@@ -73,12 +106,18 @@ def load_split(txt_path, label):
     return paths
 
 
-def infer(model, path):
+def infer(model, path, tribranch=False):
     try:
         img = Image.open(path).convert("RGB")
-        x = tf(img).unsqueeze(0).to(DEVICE)
+        pil224 = img.resize((224, 224))
+        x = tf(pil224).unsqueeze(0).to(DEVICE)
         with torch.no_grad():
-            logits = model(x)
+            if tribranch:
+                eye_pil = pil224.crop((EYE_X0, EYE_Y0, EYE_X1, EYE_Y1))
+                eye = tf(eye_resize(eye_pil)).unsqueeze(0).to(DEVICE)
+                logits = model(x, eye)
+            else:
+                logits = model(x)
             probs = F.softmax(logits, dim=1)[0].cpu().numpy()
         return probs
     except Exception as e:
@@ -88,8 +127,11 @@ def infer(model, path):
 
 def main():
     print(f"Device: {DEVICE}")
-    print(f"Loading model: {CKPT}")
-    model = DualBranchModel().to(DEVICE)
+    print(f"Loading model: {CKPT}  (tribranch={_args.tribranch})")
+    if _args.tribranch:
+        model = TriBranchModel().to(DEVICE)
+    else:
+        model = DualBranchModel().to(DEVICE)
     model.load_state_dict(torch.load(CKPT, map_location=DEVICE))
     model.eval()
 
@@ -105,7 +147,7 @@ def main():
     for i, (path, gt) in enumerate(data):
         if (i+1) % 100 == 0:
             print(f"  [{i+1}/{len(data)}]")
-        probs = infer(model, path)
+        probs = infer(model, path, tribranch=_args.tribranch)
         if probs is None:
             continue
         pred = int(probs.argmax())

@@ -19,8 +19,13 @@ from PIL import Image
 from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score, confusion_matrix
 import numpy as np
 
+import argparse
+_p = argparse.ArgumentParser()
+_p.add_argument("--ckpt", default="shufflenet_v2_3class_ffhq_v3.pth")
+_args, _ = _p.parse_known_args()
+
 BASE        = r"C:\My_Project\AIGC"
-CKPT        = os.path.join(BASE, "shufflenet_v2_3class_ffhq_v3.pth")
+CKPT        = os.path.join(BASE, _args.ckpt)
 LABELS_CSV  = os.path.join(BASE, "FakeClue", "test_clean", "labels.csv")
 BATCH_SIZE  = 64
 

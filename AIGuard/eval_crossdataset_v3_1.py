@@ -19,8 +19,13 @@ from pathlib import Path
 from sklearn.metrics import roc_auc_score, f1_score, accuracy_score
 from collections import defaultdict
 
+import argparse
+_p = argparse.ArgumentParser()
+_p.add_argument("--ckpt", default="shufflenet_v2_3class_v3_1.pth")
+_args, _ = _p.parse_known_args()
+
 BASE   = Path(r"C:\My_Project\AIGC")
-CKPT   = BASE / "shufflenet_v2_3class_v3_1.pth"
+CKPT   = BASE / _args.ckpt
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 transform = T.Compose([

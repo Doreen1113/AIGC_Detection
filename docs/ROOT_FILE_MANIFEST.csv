@@ -1,0 +1,259 @@
+relative_path,file_type,category,phase,version,status,checkpoint_dependency,hardcoded_path_risk,move_risk,recommended_destination,notes
+./_archive_legacy.py,py,legacy,Phase 1,,active,shufflenet_v2_3class_ablation_a.pth|shufflenet_v2_3class_ablation_b.pth|shufflenet_v2_3class_ffhq_v3.pth|shufflenet_v2_3class_v3_1.pth|shufflenet_v2_3class_v4.pth|shufflenet_v2_3class_v5.pth|shufflenet_v2_3class_v5_1.pth|shufflenet_v2_3class_v6.pth|shufflenet_v2_3class_v7.pth|shufflenet_v2_3class_v71.pth|shufflenet_v2_3class_v710.pth|shufflenet_v2_3class_v72.pth|shufflenet_v2_3class_v73.pth|shufflenet_v2_3class_v74.pth|shufflenet_v2_3class_v75.pth|shufflenet_v2_3class_v76.pth|shufflenet_v2_3class_v77.pth|shufflenet_v2_3class_v78.pth|shufflenet_v2_3class_v79.pth|shufflenet_v2_3class_v8.pth|shufflenet_v2_3class_v81.pth|shufflenet_v2_3class_v810a.pth|shufflenet_v2_3class_v810b.pth|shufflenet_v2_3class_v810b_disjoint.pth|shufflenet_v2_3class_v810b_dose1200.pth|shufflenet_v2_3class_v810b_dose1200_run2.pth|shufflenet_v2_3class_v810b_dose1200_run3.pth|shufflenet_v2_3class_v810b_dose600.pth|shufflenet_v2_3class_v810b_lite.pth|shufflenet_v2_3class_v82.pth|shufflenet_v2_3class_v83.pth|shufflenet_v2_3class_v84.pth|shufflenet_v2_3class_v85.pth|shufflenet_v2_3class_v86.pth|shufflenet_v2_3class_v87.pth|shufflenet_v2_3class_v88.pth|shufflenet_v2_3class_v89a.pth|shufflenet_v2_3class_v89b.pth|shufflenet_v2_3class_v89c.pth|shufflenet_v2_3class_v89d_mini.pth|shufflenet_v2_3class_v89d_plus.pth|shufflenet_v2_3class_v89e_focal.pth,YES,MEDIUM,archive/,
+./analyse_robustness_confusion.py,py,audit_script,Phase 3,,active,,YES,MEDIUM,future: scripts/audit/,
+./analyse_shadow_error_destination.py,py,audit_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/audit/,touches production checkpoint(s)
+./analyze_L1_routing_shift.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./analyze_ffpp_auroc_both.py,py,audit_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/audit/,touches production checkpoint(s)
+./analyze_ffpp_zeroshot_detail.py,py,audit_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/audit/,touches production checkpoint(s)
+./analyze_leakage_detail.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_base_image_geometry.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_cellC_checkpoint_ancestry.py,py,audit_script,Phase 1,,active,shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,YES,MEDIUM,future: scripts/audit/,
+./audit_full_leakage_composition.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_identity_disjoint_recall.py,py,audit_script,Phase 1,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/audit/,touches production checkpoint(s)
+./audit_identity_leakage.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_retouchingffhq_full_pairing.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_shadow_filter_strength.py,py,audit_script,Phase 3,,active,,YES,MEDIUM,future: scripts/audit/,
+./audit_truetest_pairing.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./benchmark_mobile_artifacts.py,py,deployment_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/deployment/,touches production checkpoint(s)
+./build_all_clean_outputs.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_celebdf_blind_holdout.py,py,core_code,Phase 3,,active,shufflenet_v2_3class_v81.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_lfw_filter_train.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_midjourney_clean_output.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_p3m1_fake_labels.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_p3m1_filter_attributes.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_phase2_evidence_pack.py,py,xai_script,Phase 2,,active,shufflenet_v2_3class_v88.pth|shufflenet_v2_layer1_v811c.pth|shufflenet_v2_layer1_v811d.pth,YES,MEDIUM,future: scripts/xai/,touches production checkpoint(s)
+./build_review_all.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_shadow_set.py,py,core_code,Phase 3,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_truetest_set.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./build_ultimate_test_split.py,py,split,Phase 1,,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer1_splits.py,py,split,Phase 1,v811_layer1,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer1b_splits.py,py,split,Phase 1,v811_layer1b,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer1c_splits.py,py,split,Phase 1,v811_layer1c,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer2_splits.py,py,split,Phase 1,v811_layer2,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer2b_splits.py,py,split,Phase 1,v811_layer2b,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v811_layer2c_splits.py,py,split,Phase 1,v811_layer2c,active,,YES,MEDIUM,future: scripts/splits_builders/,
+./build_v812_diverse_base_splits.py,py,split,Phase 1,v812_diverse,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v813_splits.py,py,split,Phase 1,v813_splits,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v814_splits.py,py,split,Phase 1,v814_splits,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v815_canonical_labels.py,py,core_code,Phase 1,v815_canonical,research_candidate,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./build_v815_ffonly_splits.py,py,split,Phase 1,v815_ffonly,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v815_replication_set.py,py,core_code,Phase 1,v815_replication,research_candidate,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./build_v815_splits_v2.py,py,split,Phase 1,v815_splits,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v815a_dualhead_splits.py,py,split,Phase 1,v815a,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v815b_splits.py,py,split,Phase 1,v815b,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_v816_manifest.py,py,core_code,Phase 1,v816_manifest,research_candidate,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./build_v816_splits.py,py,split,Phase 1,v816_splits,research_candidate,,YES,MEDIUM,future: scripts/splits_builders/,"part of v8.12-v8.16 research track, not production"
+./build_xai_evidence.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./build_xai_localization_csv.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./check_df40_leakage.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./check_ffhq_four_identity_overlap.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./check_ffhq_four_process_overlap.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./check_leakage_cddb_fakeclue.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./check_split_structure.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./clean_eye_multiscale.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./dedup_imdbwiki_identity.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./dedup_imdbwiki_v810.py,py,core_code,Phase 1,v810.py,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./dedup_phash_ffpp_vs_aiguard.py,py,core_code,Phase 3,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./dedup_phash_ultimate_test.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./dedup_ultimate_test.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./diagnose_cascade_subset_v815b.py,py,audit_script,Phase 1,v815b,research_candidate,shufflenet_v2_layer2_v815b_14.pth,YES,MEDIUM,future: scripts/audit/,"part of v8.12-v8.16 research track, not production"
+./diagnose_face_crop.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./diagnose_fft_branch.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./diagnose_filter_carryover.py,py,audit_script,Phase 1,,active,,YES,MEDIUM,future: scripts/audit/,
+./diagnose_int8_collapse.py,py,audit_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/audit/,touches production checkpoint(s)
+./diagnose_int8_collapse2.py,py,audit_script,Phase 3,,active,,YES,MEDIUM,future: scripts/audit/,
+./download_celeba_test.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_celeba_train.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_diffusionface_diffswap.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_imdbwiki.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_vggface2_test.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_vggface2_topup.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./download_vggface2_train_sample.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./eval_ABCD_cross_combination.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v811.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_C_0.85_final_confirmation.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,YES,MEDIUM,future: scripts/eval/,
+./eval_df40_benchmark.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer1_v811c.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_fakeclue_leakage_compare.py,py,eval_script,Phase 1,,active,shufflenet_v2_3class_v81.pth,YES,MEDIUM,future: scripts/eval/,
+./eval_ffpp_zeroshot_v811.py,py,eval_script,Phase 3,v811.py,production,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_paired_both_domains.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_replication_auroc.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,YES,MEDIUM,future: scripts/eval/,
+./eval_replication_auroc_v816.py,py,eval_script,Phase 1,v816.py,research_candidate,shufflenet_v2_layer2_v816_mixedlineage.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./eval_replication_set.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,YES,MEDIUM,future: scripts/eval/,
+./eval_replication_set_v816.py,py,eval_script,Phase 1,v816.py,research_candidate,shufflenet_v2_layer2_v816_mixedlineage.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./eval_shadow_set.py,py,eval_script,Phase 3,,active,,YES,MEDIUM,future: scripts/eval/,
+./eval_truetest_filter_bytype_v811.py,py,eval_script,Phase 1,v811.py,production,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_truetest_paired.py,py,eval_script,Phase 1,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_v811_gates.py,py,eval_script,Phase 1,v811_gates,production,shufflenet_v2_layer1_v811c.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_v811_layer1_shadow.py,py,eval_script,Phase 3,v811_layer1,production,shufflenet_v2_layer1_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_v811_layer2_shadow.py,py,eval_script,Phase 3,v811_layer2,production,shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/eval/,touches production checkpoint(s)
+./eval_v812_vs_v811.py,py,eval_script,Phase 1,v812_vs,research_candidate,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v811.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/eval/,"touches production checkpoint(s); part of v8.12-v8.16 research track, not production"
+./eval_v815_ablation_full.py,py,eval_script,Phase 1,v815_ablation,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v815ablation_cellA_unfreeze0_inv0.pth|shufflenet_v2_layer2_v815ablation_cellB_unfreeze0_inv1.pth|shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth|shufflenet_v2_layer2_v815ablation_cellD_unfreeze1_inv1.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./eval_v815a_dualhead.py,py,eval_script,Phase 1,v815a,research_candidate,shufflenet_v2_layer2_v815a_v812.pth|shufflenet_v2_layer2_v815a_v814.pth|shufflenet_v2_layer2_v815b_14.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./export_mobile_tflite.py,py,deployment_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/deployment/,touches production checkpoint(s)
+./extract_celebdf_frames.py,py,core_code,Phase 3,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./extract_ffpp_frames.py,py,core_code,Phase 3,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./extract_imdbwiki_clean_sample.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./extract_imdbwiki_v810_disjoint.py,py,core_code,Phase 1,v810_disjoint,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./extract_imdbwiki_v810_expanded.py,py,core_code,Phase 1,v810_expanded,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_demo_composites.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_fake_filter_hard_neg.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_fake_filter_misclass_chart.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_gt_vs_gradcam_figures.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./generate_imdbwiki_filters.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_landmark_gt.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_phase2_v1_v4_chart.py,py,core_code,Phase 1,v1_v,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_phase3_outcomes_chart.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_shadow_filters.py,py,core_code,Phase 3,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_system_overview_png.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_tradeoff_chart.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_v810b_disjoint_filters.py,py,core_code,Phase 1,v810b,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_v810b_filters.py,py,core_code,Phase 1,v810b,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_v811_confusion_matrix.py,py,core_code,Phase 1,v811_confusion,production,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./generate_v815b_paired_consistency.py,py,core_code,Phase 1,v815b,research_candidate,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./generate_vggface2_filters.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./measure_mobile_memory.py,py,deployment_script,Phase 3,,active,shufflenet_v2_layer1_v811c.pth,YES,MEDIUM,future: scripts/deployment/,
+./mine_fake_filter_hardneg_v813.py,py,core_code,Phase 1,v813.py,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./mine_route_filtered_v814.py,py,core_code,Phase 1,v814.py,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./mine_route_filtered_v814_df40_topup.py,py,core_code,Phase 1,v814_df40,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./mine_route_filtered_v814_round2.py,py,core_code,Phase 1,v814_round2,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v812.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),"part of v8.12-v8.16 research track, not production"
+./mine_v811_layer1_round2.py,py,core_code,Phase 1,v811_layer1,production,shufflenet_v2_layer1_v811b.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./mine_v811_layer1_round3.py,py,core_code,Phase 1,v811_layer1,production,shufflenet_v2_layer1_v811c.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./mine_v811_layer1_round4_newsource.py,py,core_code,Phase 1,v811_layer1,production,shufflenet_v2_layer1_v811c.pth,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./mobile_fft.py,py,deployment_script,Phase 3,,active,,NO,LOW,future: scripts/deployment/,
+./phase2_composite_explanation.py,py,xai_script,Phase 2,,active,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,YES,MEDIUM,future: scripts/xai/,
+./phase2_composite_filtertype_accuracy.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./phase2_p0_v811_filter_gradcam_validation.py,py,xai_script,Phase 2,v811_filter,production,shufflenet_v2_3class_v88.pth|shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/xai/,touches production checkpoint(s)
+./phase2_source_stratified_eval_adapter.py,py,xai_script,Phase 2,,active,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v816_mixedlineage.pth,YES,MEDIUM,future: scripts/xai/,
+./phase2_whitening_pointinggame_diagnostic.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./pipeline.py,py,core_code,Phase 1,,production,region_head_v1.pth|shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,HIGH,root (do not move),Production entry point; forbidden to modify per task scope; touches production checkpoint(s)
+./rebuild_splits_from_clean.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_full_cleaning.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_calibration.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_filter_ablation.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_filter_logit.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_qwen2vl.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_qwen2vl_v2.py,py,core_code,Phase 1,v2.p,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./run_teacher_qwen2vl_v2_fix.py,py,core_code,Phase 1,v2_f,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./sample_stylegan3.py,py,core_code,Phase 1,,active,,NO,LOW,future: scripts/data_prep/ or keep at root (case-by-case),
+./select_p3m0_calibration_samples.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./select_p3m0_samples.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./sync_splits.py,py,core_code,Phase 1,,active,,YES,MEDIUM,future: scripts/data_prep/ or keep at root (case-by-case),
+./test_explanation_wording_regression.py,py,eval_script,Phase 1,,active,,YES,MEDIUM,future: scripts/eval/,
+./test_v813_on_known_hard_subset.py,py,eval_script,Phase 1,v813_on,research_candidate,shufflenet_v2_layer1_v812.pth|shufflenet_v2_layer2_v813.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./threshold_sweep_v815.py,py,eval_script,Phase 1,v815.py,research_candidate,shufflenet_v2_layer2_v815ablation_cellA_unfreeze0_inv0.pth|shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth|shufflenet_v2_layer2_v815ablation_cellD_unfreeze1_inv1.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./threshold_sweep_v816.py,py,eval_script,Phase 1,v816.py,research_candidate,shufflenet_v2_layer2_v816_mixedlineage.pth,YES,MEDIUM,future: scripts/eval/,"part of v8.12-v8.16 research track, not production"
+./verify_mobile_fft.py,py,deployment_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/deployment/,touches production checkpoint(s)
+./verify_tflite_fp16.py,py,deployment_script,Phase 3,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/deployment/,touches production checkpoint(s)
+./verify_v810a_auroc_methodology.py,py,audit_script,Phase 1,v810a,active,shufflenet_v2_3class_v810a.pth,YES,MEDIUM,future: scripts/audit/,
+./visualize_lab_diff_bleed.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./xai_eval_protocol.py,py,eval_script,Phase 1,,active,region_head_v4.pth|shufflenet_v2_3class_v88.pth,YES,MEDIUM,future: scripts/eval/,
+./xai_faithfulness_blur_test.py,py,xai_script,Phase 2,,active,,YES,MEDIUM,future: scripts/xai/,
+./xai_faithfulness_test.py,py,xai_script,Phase 2,,active,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth,YES,MEDIUM,future: scripts/xai/,touches production checkpoint(s)
+./artifact_classifier_v3.pth,pth,checkpoint,Phase 1,artifact_classifier_v3,production,N/A (is a checkpoint),N/A,HIGH,root (do not move),Layer1/Layer2/artifact classifier production set (pipeline.py)
+./region_head_v1.pth,pth,checkpoint,Phase 1,region_head_v1,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded region head; removed from pipeline.py 2026-08-02 (near-total label degeneracy found)
+./region_head_v2.pth,pth,checkpoint,Phase 1,region_head_v2,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded region head iteration
+./region_head_v3.pth,pth,checkpoint,Phase 1,region_head_v3,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded region head iteration; referenced in xai_eval_protocol.py and TODO.md
+./region_head_v4.pth,pth,checkpoint,Phase 1,region_head_v4,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Latest region head iteration but still not used by pipeline.py (fake regions are global-level only per pipeline.py comment)
+./shufflenet_v2_layer1_v811.pth,pth,checkpoint,Phase 1,layer1_v811,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)","Pre-hard-neg Layer1, superseded by v811b/c/d"
+./shufflenet_v2_layer1_v811b.pth,pth,checkpoint,Phase 1,layer1_v811b,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded Layer1 iteration
+./shufflenet_v2_layer1_v811c.pth,pth,checkpoint,Phase 1,layer1_v811c,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Previous production Layer1 before v811d round4 fine-tune
+./shufflenet_v2_layer1_v811d.pth,pth,checkpoint,Phase 1,layer1_v811d,production,N/A (is a checkpoint),N/A,HIGH,root (do not move),PRODUCTION Layer1 -- pipeline.py LAYER1_WEIGHTS_PATH
+./shufflenet_v2_layer1_v812.pth,pth,checkpoint,Phase 1,layer1_v812,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.12 base-diversity experiment Layer1; rejected for production
+./shufflenet_v2_layer1_v813.pth,pth,checkpoint,Phase 1,layer1_v813,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.13 hard-neg mining Layer1; rejected (worse than v8.12)
+./shufflenet_v2_layer2_v811.pth,pth,checkpoint,Phase 1,layer2_v811,production,N/A (is a checkpoint),N/A,HIGH,root (do not move),PRODUCTION Layer2 -- pipeline.py LAYER2_WEIGHTS_PATH
+./shufflenet_v2_layer2_v811b.pth,pth,checkpoint,Phase 1,layer2_v811b,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded Layer2 iteration
+./shufflenet_v2_layer2_v811c.pth,pth,checkpoint,Phase 1,layer2_v811c,historical,N/A (is a checkpoint),N/A,LOW,"future: checkpoints/research/ (Stage C only, after full reference check)",Superseded Layer2 iteration; previously mistakenly reported as v8.11 final numbers per TODO.md 2026-08-11 entry -- historical caution flag
+./shufflenet_v2_layer2_v812.pth,pth,checkpoint,Phase 1,layer2_v812,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.12 Layer2; rejected for production
+./shufflenet_v2_layer2_v813.pth,pth,checkpoint,Phase 1,layer2_v813,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.13 Layer2; rejected
+./shufflenet_v2_layer2_v814.pth,pth,checkpoint,Phase 1,layer2_v814,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.14 route-filtered-mining Layer2; research baseline, not promoted"
+./shufflenet_v2_layer2_v815a_v812.pth,pth,checkpoint,Phase 3 (research),layer2_v815a_v812,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.15a dual-head pilot variant (backbone init v812)
+./shufflenet_v2_layer2_v815a_v814.pth,pth,checkpoint,Phase 3 (research),layer2_v815a_v814,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.15a dual-head pilot variant (backbone init v814)
+./shufflenet_v2_layer2_v815a_v814clean.pth,pth,checkpoint,Phase 3 (research),layer2_v815a_v814clean,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.15a dual-head pilot variant (cleaned v814 init) -- ZERO code/doc references found by grep; orphan checkpoint, purpose UNVERIFIABLE beyond filename"
+./shufflenet_v2_layer2_v815ablation_cellA_unfreeze0_inv0.pth,pth,checkpoint,Phase 3 (research),layer2_v815ablation_cellA_unfreeze0_inv0,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.15 ablation grid Cell A (backbone frozen, labels not inverted)"
+./shufflenet_v2_layer2_v815ablation_cellB_unfreeze0_inv1.pth,pth,checkpoint,Phase 3 (research),layer2_v815ablation_cellB_unfreeze0_inv1,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.15 ablation grid Cell B (backbone frozen, labels inverted)"
+./shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,pth,checkpoint,Phase 3 (research),layer2_v815ablation_cellC_unfreeze1_inv0,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.15 ablation grid Cell C = 'v8.15-C@0.85' per CLAUDE.md; parent of v8.16 mixed-lineage (confirmed via train_v816.py init-from-cellC)
+./shufflenet_v2_layer2_v815ablation_cellD_unfreeze1_inv1.pth,pth,checkpoint,Phase 3 (research),layer2_v815ablation_cellD_unfreeze1_inv1,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.15 ablation grid Cell D (backbone unfrozen, labels inverted)"
+./shufflenet_v2_layer2_v815b_14.pth,pth,checkpoint,Phase 3 (research),layer2_v815b_14,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)",v8.15b variant
+./shufflenet_v2_layer2_v816_mixedlineage.pth,pth,checkpoint,Phase 3 (research),layer2_v816_mixedlineage,research_candidate,N/A (is a checkpoint),N/A,MEDIUM,"future: checkpoints/research/ (Stage C only, after full reference check)","v8.16 mixed-lineage; source-diverse composite training, cross-source generalization still below stretch-goal target per TODO.md"
+./AIGuard/,dir,core_code,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move),Training/eval script library + real/fake/unseen datasets
+./Celeb-DF-v2/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/phase3/,"Video-frame fake source, Phase 3 robustness only (not Phase 1 primary)"
+./DiT/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/df40/,DF40 EFS fake source
+./FFHQ_ali_process/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/filter/,"RetouchingFFHQ filter source (Alibaba), held out as OOD eval per CLAUDE.md"
+./FFHQ_four_process/,dir,dataset,Phase 1,,legacy,N/A,N/A (directory),MEDIUM,future: datasets/filter/,859 unused images audited and found NOT identity-disjoint from megvii version (2026-08-10) -- do not treat as usable new OOD source
+./FFHQ_megvii_four_process/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/filter/,"RetouchingFFHQ filter source (Megvii), trained"
+./FFHQ_settings/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/filter/,FFHQ generation settings metadata
+./FaceForensics_frames/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/phase3/,"FF++ extracted frames, Phase 3 zero-shot eval"
+./FaceForensics_raw/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/phase3/,FF++ raw video source
+./FakeClue/,dir,dataset,Phase 2,,active,N/A,N/A (directory),MEDIUM,future: datasets/phase2/,"Eval + Phase 2 distillation source, not Phase 1 training"
+./FakeClue_meta/,dir,dataset,Phase 2,,active,N/A,N/A (directory),MEDIUM,future: datasets/phase2/,FakeClue metadata
+./FakeVLM_weights/,dir,checkpoint,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),"Weights for rejected FakeVLM teacher model (too heavy, 7.24GB VRAM)"
+./MidJourney/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/fake/,"Fake source, partially used v8.4/v8.5"
+./SiT/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/df40/,DF40 EFS fake source
+./StyleGAN3/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/fake/,GAN fake source archive (DF40 version)
+./WildDeepfake_subset/,dir,dataset,Phase 1,,legacy,N/A,N/A (directory),MEDIUM,archive/ (Stage C),"Deprecated eval source, semantic/video overlap with AIGuard/fake"
+./__pycache__/,dir,unknown,N/A,,N/A,N/A,N/A (directory),MEDIUM,delete-eligible (not part of this task's scope),"Python bytecode cache, gitignored"
+./archive/,dir,legacy,N/A,,N/A,N/A,N/A (directory),MEDIUM,root (already the archive target),Already the destination of a prior legacy-file move (see archive/MOVE_LOG.txt)
+./assets/,dir,unknown,Phase 1,,active,N/A,N/A (directory),MEDIUM,TBD,Not deep-inspected this pass
+./celeba_test/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/real/,"CelebA OOD real eval (19,962 images)"
+./celeba_train/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/real/,CelebA real training partition
+./celeba_val/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/real/,CelebA real val partition
+./ddim/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/df40/,DF40 EFS fake source
+./diffusionface_diffswap_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Ultimate Test Set / Shadow fake-diffusion source
+./docs/,dir,document,N/A,,active,N/A,N/A (directory),HIGH,root (do not move),Documentation root; this task's 7 deliverables live here
+./explainability/,dir,xai_script,Phase 2,,active,N/A,N/A (directory),MEDIUM,root (verify first),Grad-CAM/LRP library; verify import relationship with pipeline.py's inline GradCAMPlusPlus before moving
+./explanation_output/,dir,result,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move -- pipeline.py default path),"pipeline.py default single-image output dir, gitignored"
+./fake_filter_hard_neg/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,Mined hard-negative pool (original round)
+./fake_filter_hard_neg_v88_backup/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),Backup of v8.8-era hard-neg pool
+./fake_filter_hardneg_v813/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,v8.13 mining output pool
+./ffhq/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/base/,Base FFHQ source images
+./filter_data/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/filter/,"Self-built filter dataset, 4 types, 25,213 images"
+./filters/,dir,core_code,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move; imported by many scripts),Filter-generation library (eye_enlarging/whitening/face_reshaping)
+./gradcam_failures/,dir,result,Phase 2,,active,N/A,N/A (directory),MEDIUM,future: results/phase2/,Grad-CAM failure-case outputs
+./gradcam_output/,dir,result,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move -- pipeline.py default path),"pipeline.py --save_heatmap default output dir, gitignored"
+./imdb-clean_repo/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/base/,IMDB-clean source repo for base-image diversity work
+./imdbwiki_clean_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/base/,C1 base-image diversity research pool
+./imdbwiki_filter/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/filter/,C1 filter-on-imdbwiki pool
+./imdbwiki_raw/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/base/,Raw IMDB-WIKI source
+./imdbwiki_v810_disjoint/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/base/,v8.10-era identity-disjoint subset
+./imdbwiki_v810_expanded/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/base/,v8.10-era expanded subset
+./ios_benchmark/,dir,result,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: results/phase3/,iPhone deployment benchmark staging (the one still-pending Freeze Gate item)
+./lfw/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/real/,"LFW real-face training source, 13,233 images"
+./pipeline_test_input/,dir,result,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move),"pipeline.py smoke-test input, gitignored"
+./pipeline_test_output/,dir,result,Phase 1,,active,N/A,N/A (directory),HIGH,root (do not move),"pipeline.py smoke-test output, gitignored"
+./pixart/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/df40/,DF40 EFS fake source
+./results/,dir,result,N/A,,active,N/A,N/A (directory),HIGH,root (do not move; heavily cross-referenced),All eval/train run outputs; see docs/RESULTS_PROVENANCE.md
+./review_all/,dir,result,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: results/review/,Manual review staging
+./review_celebdf/,dir,result,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: results/review/,Manual review staging (Celeb-DF)
+./review_celebdf_real/,dir,result,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: results/review/,Manual review staging (Celeb-DF real)
+./review_lfw_sample/,dir,result,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: results/review/,Manual review staging (LFW sample)
+./route_filtered_hardneg_v814/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,v8.14 route-filtered mining pool
+./route_filtered_hardneg_v814_df40/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,v8.14 route-filtered mining pool (DF40 topup)
+./sd2.1/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/df40/,DF40 EFS fake source
+./shadow_diffswap_fake/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Shadow domain-gap paired eval set (fake)
+./shadow_filter/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Shadow domain-gap paired eval set (filter)
+./shadow_stylegan3_fake/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Shadow domain-gap paired eval set (GAN fake)
+./shadow_vggface2_real/,dir,dataset,Phase 3,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Shadow domain-gap paired eval set (real)
+./splits/,dir,split,N/A,,active,N/A,N/A (directory),HIGH,root (do not move; referenced by exact path in CLAUDE.md),"106 split files, mix of active/superseded; see CLAUDE.md for which are current (v85_*, truetest_*)"
+./stargan/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/fake/,GAN fake source
+./stylegan2_test/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,"StyleGAN2 OOD fake eval, 10,000 images"
+./stylegan3_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Ultimate Test Set GAN source sample
+./test_set_true/,dir,dataset,Phase 1,,active,N/A,N/A (directory),HIGH,root or datasets/eval/ (do not move -- primary benchmark),"True Held-out Test Set source images (769, paired design)"
+./v810b_disjoint_filter_imdbwiki/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/filter/,v8.10b-era generated pool
+./v810b_filter_imdbwiki_expanded/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/filter/,v8.10b-era generated pool
+./v811_layer1_round4_pool/,dir,dataset,Phase 1,,production,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,v8.11 Layer1 round4 mining pool (feeds production Layer1d)
+./v815_replication_set/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/eval/,v8.15 replication set
+./v815b_paired_consistency/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/eval/,v8.15b paired-consistency eval set
+./v816_composite/,dir,dataset,Phase 1,,research_candidate,N/A,N/A (directory),MEDIUM,future: datasets/hardneg/,v8.16 composite training pool
+./v89_filter_imdbwiki/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),v8.9-era generated pool
+./v89_filter_vggface2train/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),v8.9-era generated pool
+./v89d_candidate_pool/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),v8.9d-era candidate pool
+./v89d_paired_mined/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),v8.9d-era mined pool
+./v89d_proxy_unseen_pool/,dir,dataset,Phase 1,,historical,N/A,N/A (directory),MEDIUM,archive/ (Stage C),v8.9d-era proxy pool
+./vggface2_filter_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Ultimate Test Set filter source
+./vggface2_test_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/eval/,Ultimate Test Set real source
+./vggface2_train_sample/,dir,dataset,Phase 1,,active,N/A,N/A (directory),MEDIUM,future: datasets/real/,VGGFace2 training sample
+./pipeline.py,py,core_code,Phase 1,v8.11,production,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth|artifact_classifier_v3.pth,YES,HIGH,root (do not move),"SOLE production entry point; task forbids modifying it; already covered as a py row below, this is a manual override applied on merge"
+./README.md,md,document,N/A,,active,,N/A,MEDIUM,"root (or docs/, low priority)","Project README, references shufflenet_v2_3class_ffhq_v2.pth (a very old, no-longer-present checkpoint) -- see docs/DEPRECATED_OR_HISTORICAL.md"
+./CLAUDE.md,md,document,N/A,,production,shufflenet_v2_layer1_v811d.pth|shufflenet_v2_layer2_v811.pth|shufflenet_v2_3class_v88.pth (historical),N/A,HIGH,root (do not move),Single source of instruction truth per project convention; gitignored (not pushed) but present locally
+./TODO.md,md,document,N/A,,production,,N/A,HIGH,root (do not move),"Single source of TODO truth since 2026-07-31 per CLAUDE.md; very large (154KB), full version history"
+./.gitignore,cfg,core_code,N/A,,active,,N/A,HIGH,root (do not move),"Ignores all *.pth/*.pt/*.task, *.log/*.txt (except tip.txt, face_reshaping_report.txt), CLAUDE.md, docs/research_log.md, several dataset dirs"
+./face_landmarker.task,task,checkpoint,Phase 1,,production,N/A (is itself a model file),N/A,HIGH,root (do not move),MediaPipe FaceLandmarker model; pipeline.py FACE_LANDMARKER_PATH; gitignored via *.task pattern; presence not independently re-verified with ls in this pass beyond pipeline.py's reference to it -- flagged for confirmation

@@ -1,0 +1,25 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": null,
+    "layer2_weights_sha256": null,
+    "script_path": "c:\\My_Project\\AIGC\\eval_v811_layer1_shadow.py",
+    "script_sha256": "3385eb292f7aed8c7de24bb998fd768270939a9dab8e37cce3e0a36801e564ec",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "python eval_v811_layer1_shadow.py shufflenet_v2_layer1_v811d.pth",
+    "console_log_path": "c:\\My_Project\\AIGC\\results\\releases\\v8.11_production_20260813\\shadow_layer1_isolated_run_console.log",
+    "timestamp_utc_approx": "2026-08-13T04:14-04:15 (observed during this run)",
+    "provenance_capture_method": "COMPANION METADATA (script not edited -- not in the 4 authorized-edit list; provenance reconstructed externally by this repair task, hashes computed independently via PowerShell Get-FileHash, cross-checked against the same L1/L2 checkpoint hashes embedded by the 4 edited scripts' own runs)",
+    "note_layer2": "This script only evaluates Layer1 in isolation; Layer2 is not loaded."
+  },
+  "eval_name": "shadow_layer1_isolated",
+  "note": "Not one of the 4 authorized-edit scripts; takes only a Layer1 weights argument (no Layer2), invoked here with explicit positional arg. No internal JSON output mechanism. Supplementary evidence for Step 3 item 6.",
+  "key_results": {
+    "real_recall_pct": 76.9,
+    "fake_gan_manip_recall_pct": 99.0,
+    "fake_diffusion_manip_recall_pct": 73.2,
+    "filter_manip_recall_pct": 51.2,
+    "binary_real_vs_manip_auroc": 0.7907
+  }
+}

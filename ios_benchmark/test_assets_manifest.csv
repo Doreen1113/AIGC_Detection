@@ -1,0 +1,11 @@
+path,class,expected_routing,notes
+TODO/real_01.jpg,real,layer1_only,"placeholder row 1 of 20 real -- fill from splits/truetest_real.txt, do not copy large dataset dumps, just the 20 sampled paths"
+TODO/real_02.jpg,real,layer1_only,placeholder row 2 of 20 real
+TODO/real_03.jpg,real,layer1_only,placeholder row 3 of 20 real
+TODO/real_...,real,layer1_only,"... repeat pattern through real_20.jpg -- 20 rows total for class=real"
+TODO/fake_01.jpg,fake,layer1_then_layer2_fake,"placeholder row 1 of 10 fake -- fill from splits/truetest_fake.txt"
+TODO/fake_02.jpg,fake,layer1_then_layer2_fake,placeholder row 2 of 10 fake
+TODO/fake_...,fake,layer1_then_layer2_fake,"... repeat pattern through fake_10.jpg -- 10 rows total for class=fake"
+TODO/filter_01.jpg,filter,layer1_then_layer2_filter,"placeholder row 1 of 10 filter -- fill from splits/truetest_filter.txt, try to cover multiple artifact_types (smoothing/whitening/eye_enlarging/face_reshaping) rather than one type x10"
+TODO/filter_02.jpg,filter,layer1_then_layer2_filter,placeholder row 2 of 10 filter
+TODO/filter_...,filter,layer1_then_layer2_filter,"... repeat pattern through filter_10.jpg -- 10 rows total for class=filter"

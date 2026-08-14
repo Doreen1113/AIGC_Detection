@@ -1,0 +1,151 @@
+{
+  "member": "C",
+  "manifest_source": "C:\\My_Project\\AIGC\\manifests\\team_data\\C_ios_benchmark_handoff_manifest_template.csv",
+  "generated_at_utc": "2026-08-14T13:05:14.835945+00:00",
+  "dry_run": true,
+  "note": "No file was copied, moved, or uploaded to produce this report. Existence/hash checks only.",
+  "summary": {
+    "total_manifest_rows": 16,
+    "total_files_found": 14,
+    "total_bytes_found": 21997532,
+    "total_mb_found": 20.98,
+    "missing_required_count": 2,
+    "missing_required_assets": [
+      "<40 images listed in ios_benchmark/TEST_ASSET_MANIFEST.csv>",
+      "<golden prediction output, e.g. golden_predictions_v811d_layer2v811.json>"
+    ],
+    "forbidden_pattern_flags": []
+  },
+  "assets": [
+    {
+      "relative_path": "results/mobile_export/layer1_v811d_tf/layer1_v811d_float32.tflite",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "c16cf71f250bea1cc83fe171dc7120edbd2335c06eef3f20998e20d2f4194389",
+      "size_bytes": 10964640,
+      "file_count": 1
+    },
+    {
+      "relative_path": "results/mobile_export/layer2_v811_tf/layer2_v811_float32.tflite",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "3deed69d6ca4ebb9f7597391ce04390c49758e283a59bbbc988f615dd14eb0cd",
+      "size_bytes": 10964636,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/TEST_ASSET_MANIFEST.csv",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "2d9ec8a033e6d00ce3511b7c09416c0b5829646ca0c09acc732c11d62101aac3",
+      "size_bytes": 10092,
+      "file_count": 1
+    },
+    {
+      "relative_path": "<40 images listed in ios_benchmark/TEST_ASSET_MANIFEST.csv>",
+      "required": true,
+      "status": "PLACEHOLDER_NOT_A_SINGLE_PATH",
+      "note": "Manifest row describes a not-yet-materialized or multi-file asset; not independently checkable by path existence.",
+      "sha256": null,
+      "size_bytes": null,
+      "file_count": null
+    },
+    {
+      "relative_path": "<golden prediction output, e.g. golden_predictions_v811d_layer2v811.json>",
+      "required": true,
+      "status": "PLACEHOLDER_NOT_A_SINGLE_PATH",
+      "note": "Manifest row describes a not-yet-materialized or multi-file asset; not independently checkable by path existence.",
+      "sha256": null,
+      "size_bytes": null,
+      "file_count": null
+    },
+    {
+      "relative_path": "ios_benchmark/IOS_BENCHMARK_SPEC.md",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "96b6732124725346abaa36c64435c6ec607c6b095ceb2b21855fa74641a38cc7",
+      "size_bytes": 11928,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/DEVICE_BENCHMARK_PROTOCOL.md",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "72fff04e9f9f64e63ba41ba17787ffad236803894d994b54fddab70974da6813",
+      "size_bytes": 8846,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/BENCHMARK_ACCEPTANCE_GATE.md",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "1b8c55f14439bec0fe594098cdb6f59e8a7f8a77cc1f8ed6a2d43463a0e38976",
+      "size_bytes": 4329,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/EXPECTED_OUTPUT_SCHEMA.json",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "54800dc24474f3c5718754de78f7fcf889b76fe405eefd8d80d13056783ee402",
+      "size_bytes": 7630,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/swift_stub/BenchmarkRunner.swift",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "5a6910d7aead5d67517ff69981cfd6d9f69ed2e957624ac74ed8b270465d4954",
+      "size_bytes": 5728,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/swift_stub/BenchmarkStats.swift",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "2e925ce353850ffb93221f133fb586f746831ceb928581e5f90e061ad8721881",
+      "size_bytes": 2176,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/swift_stub/ContentView.swift",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "e8f1fb1e60c59327c01429089962fb9a7a56b6013c5d17ad6cd106b5597d88a9",
+      "size_bytes": 3625,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/swift_stub/HierarchicalRouter.swift",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "082d71a712236922eb68328a3a981463128556637976b4bc514ef6aa29059474",
+      "size_bytes": 3752,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/swift_stub/ImagePreprocessor.swift",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "deda4d64af74b5aed3e92465eb3b275a906b6ef5a2dcf61287bc687512ed00ad",
+      "size_bytes": 3463,
+      "file_count": 1
+    },
+    {
+      "relative_path": "ios_benchmark/README.md",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "6219cc0a8ddd4f1642a1f62ebf4628ff1a67c0f13277524ba931757d30954a1e",
+      "size_bytes": 5568,
+      "file_count": 1
+    },
+    {
+      "relative_path": "results/mobile_deployment_benchmark.json",
+      "required": true,
+      "status": "FOUND_FILE",
+      "sha256": "e2fe5f1c2aa83dc76be2206144cfb5ee68371c117bebbc00366be0565167ec18",
+      "size_bytes": 1119,
+      "file_count": 1
+    }
+  ]
+}

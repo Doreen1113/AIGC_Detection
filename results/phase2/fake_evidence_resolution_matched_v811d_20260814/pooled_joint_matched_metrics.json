@@ -1,0 +1,9 @@
+{
+  "n_fake": 32,
+  "n_real": 32,
+  "cohens_d": -0.33600497500449056,
+  "auroc": 0.3681640625,
+  "auroc_ci_lower": 0.2373046875,
+  "auroc_ci_upper": 0.5098388671874999,
+  "direction": "higher-in-real"
+}

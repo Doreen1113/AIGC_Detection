@@ -1,0 +1,13 @@
+folder,presumed_class,verdict,n,eye_enlarging,face_reshaping,smoothing,whitening,unknown_filter
+EyeEnlarging_30,eye_enlarging,UNVERIFIABLE,200,144,6,0,38,12
+EyeEnlarging_60,eye_enlarging,UNVERIFIABLE,200,155,2,0,37,6
+EyeEnlarging_90,eye_enlarging,UNVERIFIABLE,200,162,5,0,29,4
+FaceLifting_30,face_reshaping,UNVERIFIABLE,200,134,16,0,41,9
+FaceLifting_60,face_reshaping,UNVERIFIABLE,200,138,7,0,44,11
+FaceLifting_90,face_reshaping,UNVERIFIABLE,200,131,6,0,49,14
+Smoothing_30,smoothing,COARSE_OR_MIXED,200,112,7,11,52,18
+Smoothing_60,smoothing,COARSE_OR_MIXED,200,86,9,55,29,21
+Smoothing_90,smoothing,COARSE_OR_MIXED,200,49,9,100,20,22
+Whitening_30,whitening,UNVERIFIABLE,200,134,4,1,46,15
+Whitening_60,whitening,VERIFIED_SINGLE_TYPE,200,132,7,1,50,10
+Whitening_90,whitening,VERIFIED_SINGLE_TYPE,200,124,4,1,60,11

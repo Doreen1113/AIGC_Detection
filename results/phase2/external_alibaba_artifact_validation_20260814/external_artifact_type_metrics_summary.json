@@ -1,0 +1,25 @@
+{
+  "folders_included": [
+    "Whitening_60",
+    "Whitening_90"
+  ],
+  "n": 400,
+  "ground_truth_assumption": "Folder-family label (Whitening) taken as presumed true class 'whitening', ONLY for folders verdicted VERIFIED_SINGLE_TYPE in Task 1 (see label_provenance_audit.md). This is folder-label ground truth, NOT paired-GT (no before/after pair exists for Alibaba data) -- see docs/xai_evidence_schema.md gt_source vocabulary.",
+  "accuracy": 0.275,
+  "accuracy_95ci": [
+    0.2325,
+    0.3175
+  ],
+  "macro_f1": 0.10784313725490197,
+  "macro_f1_95ci": [
+    0.09432048681541583,
+    0.1204933586337761
+  ],
+  "balanced_accuracy": 0.275,
+  "balanced_accuracy_95ci": [
+    0.2325,
+    0.3175
+  ],
+  "bootstrap_n": 2000,
+  "bootstrap_seed": 42
+}

@@ -1,0 +1,35 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+    "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+    "script_path": "c:\\My_Project\\AIGC\\eval_paired_both_domains.py",
+    "script_sha256": "b3c09a97bd18613f1b8c4646d9fbdf2636185c51551a9ff2561c6598a16e7da5",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "python eval_paired_both_domains.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth",
+    "console_log_path": "c:\\My_Project\\AIGC\\results\\releases\\v8.11_production_20260813\\paired_both_domains_run_console.log",
+    "timestamp_utc_approx": "2026-08-13T04:13-04:15 (observed during this run)",
+    "provenance_capture_method": "COMPANION METADATA (script not edited -- not in the 4 authorized-edit list; provenance reconstructed externally by this repair task, hashes computed independently via PowerShell Get-FileHash, cross-checked against the same L1/L2 checkpoint hashes embedded by the 4 edited scripts' own runs)"
+  },
+  "eval_name": "paired_both_domains_truetest_and_shadow",
+  "note": "Not one of the 4 authorized-edit scripts; already defaulted correctly to v811d/v811, invoked here with explicit positional args (no source modification). No internal JSON output mechanism. Covers Step 3 item 6 (Shadow paired evaluation / error routing) and cross-confirms item 3 (True Test paired) independently of eval_truetest_paired.py.",
+  "key_results": {
+    "true_test_pairs": 249,
+    "shadow_pairs": 279,
+    "true_test_filter_recall_pct": 93.6,
+    "true_test_real_recall_pct": 68.7,
+    "true_test_balanced_pct": 81.1,
+    "true_test_strict_pct": 62.2,
+    "shadow_filter_recall_pct": 10.0,
+    "shadow_real_recall_pct": 77.1,
+    "shadow_balanced_pct": 43.5,
+    "shadow_strict_pct": 7.2,
+    "shadow_error_direction": {
+      "both_ok_pct": 7.2,
+      "filter_biased_pct": 2.9,
+      "missed_filter_pct": 69.9,
+      "both_wrong_pct": 20.1
+    }
+  }
+}

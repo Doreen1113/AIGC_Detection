@@ -1,0 +1,354 @@
+{
+  "_note": "Deletion faithfulness test, PRODUCTION v8.11d hierarchical classifier, blur-based masking (primary, reused from xai_faithfulness_blur_test.py) + constant-fill (comparison only, flagged confound). Effect sizes (Cohen's d, bootstrap 95% CI, 2000 resamples) computed PER SOURCE PER k -- sources never pooled.",
+  "protocol": {
+    "k_fractions": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "n_random_seeds_per_image_per_k": 5,
+    "content_blur": {
+      "ksize": 31,
+      "sigma": 15
+    },
+    "feather_blur": {
+      "ksize": 21,
+      "sigma": 8
+    },
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 20260814
+  },
+  "limitations": [
+    "Only validates attention_faithfulness (model's own decision depends on this region), never paired-GT localization -- no fake-class ground truth mask exists (Tier C, docs/xai_evidence_schema.md).",
+    "Grad-CAM++ target layer is spatial_branch.conv5 only -- CAM reflects spatial-branch activations; it is NOT a joint spatial+FFT visualization (see Task 1's branch-ablation proxy for whole-branch contribution instead)."
+  ],
+  "summary_by_source": {
+    "aiguard_unseen": {
+      "k5": {
+        "n": 50,
+        "mean_hot_drop": 0.0354,
+        "mean_bottom_drop": 0.0014,
+        "mean_random_drop": 0.0132,
+        "std_hot_drop": 0.1258,
+        "std_bottom_drop": 0.0034,
+        "std_random_drop": 0.0541,
+        "hot_minus_bottom": {
+          "mean_diff": 0.034,
+          "cohens_d": 0.2699,
+          "bootstrap_ci_95": [
+            0.0063,
+            0.0733
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.0222,
+          "cohens_d": 0.2647,
+          "bootstrap_ci_95": [
+            0.0047,
+            0.0502
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k10": {
+        "n": 50,
+        "mean_hot_drop": 0.1295,
+        "mean_bottom_drop": 0.0012,
+        "mean_random_drop": 0.0321,
+        "std_hot_drop": 0.1869,
+        "std_bottom_drop": 0.0044,
+        "std_random_drop": 0.087,
+        "hot_minus_bottom": {
+          "mean_diff": 0.1283,
+          "cohens_d": 0.6838,
+          "bootstrap_ci_95": [
+            0.079,
+            0.1857
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.0974,
+          "cohens_d": 0.7137,
+          "bootstrap_ci_95": [
+            0.061,
+            0.1355
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k20": {
+        "n": 50,
+        "mean_hot_drop": 0.2568,
+        "mean_bottom_drop": 0.0012,
+        "mean_random_drop": 0.0914,
+        "std_hot_drop": 0.1808,
+        "std_bottom_drop": 0.0136,
+        "std_random_drop": 0.1077,
+        "hot_minus_bottom": {
+          "mean_diff": 0.2556,
+          "cohens_d": 1.4298,
+          "bootstrap_ci_95": [
+            0.2088,
+            0.3077
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.1654,
+          "cohens_d": 1.2072,
+          "bootstrap_ci_95": [
+            0.1309,
+            0.2044
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "constant_fill_comparison_CONFOUNDED": {
+        "k5": {
+          "n": 50,
+          "mean_hot_drop": 0.0815,
+          "mean_bottom_drop": 0.0108,
+          "mean_random_scattered_drop": 0.0998,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k10": {
+          "n": 50,
+          "mean_hot_drop": 0.2112,
+          "mean_bottom_drop": 0.0153,
+          "mean_random_scattered_drop": 0.0429,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k20": {
+          "n": 50,
+          "mean_hot_drop": 0.3785,
+          "mean_bottom_drop": 0.0188,
+          "mean_random_scattered_drop": 0.0253,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        }
+      }
+    },
+    "stylegan2_ood": {
+      "k5": {
+        "n": 50,
+        "mean_hot_drop": 0.0462,
+        "mean_bottom_drop": 0.0013,
+        "mean_random_drop": 0.0054,
+        "std_hot_drop": 0.1239,
+        "std_bottom_drop": 0.0027,
+        "std_random_drop": 0.0094,
+        "hot_minus_bottom": {
+          "mean_diff": 0.0448,
+          "cohens_d": 0.3568,
+          "bootstrap_ci_95": [
+            0.0146,
+            0.0835
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.0407,
+          "cohens_d": 0.3305,
+          "bootstrap_ci_95": [
+            0.0118,
+            0.0753
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k10": {
+        "n": 50,
+        "mean_hot_drop": 0.211,
+        "mean_bottom_drop": 0.0021,
+        "mean_random_drop": 0.0321,
+        "std_hot_drop": 0.2041,
+        "std_bottom_drop": 0.0045,
+        "std_random_drop": 0.0394,
+        "hot_minus_bottom": {
+          "mean_diff": 0.2089,
+          "cohens_d": 1.0066,
+          "bootstrap_ci_95": [
+            0.1562,
+            0.2702
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.1789,
+          "cohens_d": 0.954,
+          "bootstrap_ci_95": [
+            0.1289,
+            0.2342
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k20": {
+        "n": 50,
+        "mean_hot_drop": 0.315,
+        "mean_bottom_drop": 0.0008,
+        "mean_random_drop": 0.1357,
+        "std_hot_drop": 0.1458,
+        "std_bottom_drop": 0.0062,
+        "std_random_drop": 0.1187,
+        "hot_minus_bottom": {
+          "mean_diff": 0.3142,
+          "cohens_d": 2.1245,
+          "bootstrap_ci_95": [
+            0.2746,
+            0.355
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.1793,
+          "cohens_d": 1.4078,
+          "bootstrap_ci_95": [
+            0.1456,
+            0.2158
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "constant_fill_comparison_CONFOUNDED": {
+        "k5": {
+          "n": 50,
+          "mean_hot_drop": 0.0999,
+          "mean_bottom_drop": 0.0094,
+          "mean_random_scattered_drop": 0.2258,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k10": {
+          "n": 50,
+          "mean_hot_drop": 0.3848,
+          "mean_bottom_drop": 0.0172,
+          "mean_random_scattered_drop": 0.0876,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k20": {
+          "n": 50,
+          "mean_hot_drop": 0.4852,
+          "mean_bottom_drop": 0.0154,
+          "mean_random_scattered_drop": 0.0491,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        }
+      }
+    },
+    "truetest_df40": {
+      "k5": {
+        "n": 50,
+        "mean_hot_drop": 0.0111,
+        "mean_bottom_drop": -0.0001,
+        "mean_random_drop": 0.0021,
+        "std_hot_drop": 0.0229,
+        "std_bottom_drop": 0.002,
+        "std_random_drop": 0.0041,
+        "hot_minus_bottom": {
+          "mean_diff": 0.0112,
+          "cohens_d": 0.4863,
+          "bootstrap_ci_95": [
+            0.0055,
+            0.0183
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.009,
+          "cohens_d": 0.4264,
+          "bootstrap_ci_95": [
+            0.0039,
+            0.0154
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k10": {
+        "n": 50,
+        "mean_hot_drop": 0.0524,
+        "mean_bottom_drop": -0.0005,
+        "mean_random_drop": 0.0058,
+        "std_hot_drop": 0.0945,
+        "std_bottom_drop": 0.0026,
+        "std_random_drop": 0.01,
+        "hot_minus_bottom": {
+          "mean_diff": 0.053,
+          "cohens_d": 0.5526,
+          "bootstrap_ci_95": [
+            0.0286,
+            0.082
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.0467,
+          "cohens_d": 0.5309,
+          "bootstrap_ci_95": [
+            0.0251,
+            0.0743
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "k20": {
+        "n": 50,
+        "mean_hot_drop": 0.0816,
+        "mean_bottom_drop": -0.0011,
+        "mean_random_drop": 0.0195,
+        "std_hot_drop": 0.1279,
+        "std_bottom_drop": 0.0044,
+        "std_random_drop": 0.033,
+        "hot_minus_bottom": {
+          "mean_diff": 0.0828,
+          "cohens_d": 0.6422,
+          "bootstrap_ci_95": [
+            0.0511,
+            0.12
+          ],
+          "ci_excludes_zero": true
+        },
+        "hot_minus_mean_random": {
+          "mean_diff": 0.0622,
+          "cohens_d": 0.544,
+          "bootstrap_ci_95": [
+            0.034,
+            0.0993
+          ],
+          "ci_excludes_zero": true
+        },
+        "passes_faithfulness": true
+      },
+      "constant_fill_comparison_CONFOUNDED": {
+        "k5": {
+          "n": 50,
+          "mean_hot_drop": 0.0647,
+          "mean_bottom_drop": 0.0293,
+          "mean_random_scattered_drop": 0.1072,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k10": {
+          "n": 50,
+          "mean_hot_drop": 0.1323,
+          "mean_bottom_drop": 0.0343,
+          "mean_random_scattered_drop": 0.031,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        },
+        "k20": {
+          "n": 50,
+          "mean_hot_drop": 0.1135,
+          "mean_bottom_drop": 0.0384,
+          "mean_random_scattered_drop": 0.0181,
+          "CONFOUND_WARNING": "Constant-fill scattered-random masking injects broadband high-frequency edges that the FFTBranch reacts to -- xai_faithfulness_v1_20260812.json found this can make random_drop > hot_drop even when the heatmap is faithful. Do NOT read this block as equally trustworthy as the blur-based summary above."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+class_name,precision,recall,f1,support
+eye_enlarging,0.0,0.0,0.0,0
+face_reshaping,0.0,0.0,0.0,0
+smoothing,0.0,0.0,0.0,0
+whitening,1.0,0.275,0.43137254901960786,400
+MACRO_AVG,0.25,0.06875,0.10784313725490197,400

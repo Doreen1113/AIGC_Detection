@@ -1,0 +1,121 @@
+{
+  "_note": "Stability/position-bias test, PRODUCTION v8.11d hierarchical classifier. CAVEAT: pipeline.py has NO face-alignment crop (Resize((224,224)) applied to whatever framing the source image already has) -- a stable-looking peak across images from the SAME source may just reflect that source's consistent framing, not a face-relative invariant the model learned. Both raw-pixel and face-relative peak movement are reported so the evidence is not forced toward either conclusion.",
+  "protocol": {
+    "n_per_source": 20,
+    "translations_px": [
+      [
+        8,
+        8
+      ],
+      [
+        -8,
+        -8
+      ],
+      [
+        8,
+        -8
+      ]
+    ],
+    "jpeg_q": 70,
+    "crop_frac": 0.9,
+    "translation_padding": "cv2.BORDER_REPLICATE (edge-replicate)"
+  },
+  "summary_by_source_and_condition": {
+    "aiguard_unseen": {
+      "crop": {
+        "n_rows": 20,
+        "class_consistency_rate": 0.9,
+        "mean_fake_score_delta": -0.0478,
+        "std_fake_score_delta": 0.1389,
+        "mean_heatmap_overlap_iou_top20": 0.8347,
+        "mean_spearman_rho": 0.944,
+        "mean_raw_peak_movement_px": 33.04,
+        "mean_face_relative_peak_movement": 0.2453
+      },
+      "jpeg": {
+        "n_rows": 20,
+        "class_consistency_rate": 0.95,
+        "mean_fake_score_delta": -0.0261,
+        "std_fake_score_delta": 0.1032,
+        "mean_heatmap_overlap_iou_top20": 0.9269,
+        "mean_spearman_rho": 0.9867,
+        "mean_raw_peak_movement_px": 17.761,
+        "mean_face_relative_peak_movement": 0.1327
+      },
+      "translation": {
+        "n_rows": 60,
+        "class_consistency_rate": 0.6833,
+        "mean_fake_score_delta": -0.2536,
+        "std_fake_score_delta": 0.264,
+        "mean_heatmap_overlap_iou_top20": 0.7346,
+        "mean_spearman_rho": 0.9068,
+        "mean_raw_peak_movement_px": 30.0775,
+        "mean_face_relative_peak_movement": 0.2693
+      }
+    },
+    "stylegan2_ood": {
+      "crop": {
+        "n_rows": 20,
+        "class_consistency_rate": 0.9,
+        "mean_fake_score_delta": -0.0412,
+        "std_fake_score_delta": 0.1544,
+        "mean_heatmap_overlap_iou_top20": 0.7788,
+        "mean_spearman_rho": 0.9141,
+        "mean_raw_peak_movement_px": 26.2695,
+        "mean_face_relative_peak_movement": 0.2014
+      },
+      "jpeg": {
+        "n_rows": 20,
+        "class_consistency_rate": 1.0,
+        "mean_fake_score_delta": -0.0011,
+        "std_fake_score_delta": 0.0108,
+        "mean_heatmap_overlap_iou_top20": 0.9029,
+        "mean_spearman_rho": 0.9731,
+        "mean_raw_peak_movement_px": 13.3125,
+        "mean_face_relative_peak_movement": 0.1069
+      },
+      "translation": {
+        "n_rows": 60,
+        "class_consistency_rate": 0.4167,
+        "mean_fake_score_delta": -0.4448,
+        "std_fake_score_delta": 0.2518,
+        "mean_heatmap_overlap_iou_top20": 0.7124,
+        "mean_spearman_rho": 0.8891,
+        "mean_raw_peak_movement_px": 22.1802,
+        "mean_face_relative_peak_movement": 0.2015
+      }
+    },
+    "truetest_df40": {
+      "crop": {
+        "n_rows": 20,
+        "class_consistency_rate": 0.95,
+        "mean_fake_score_delta": -0.0487,
+        "std_fake_score_delta": 0.1224,
+        "mean_heatmap_overlap_iou_top20": 0.8564,
+        "mean_spearman_rho": 0.9473,
+        "mean_raw_peak_movement_px": 4.8,
+        "mean_face_relative_peak_movement": 0.0513
+      },
+      "jpeg": {
+        "n_rows": 20,
+        "class_consistency_rate": 0.95,
+        "mean_fake_score_delta": -0.0199,
+        "std_fake_score_delta": 0.0804,
+        "mean_heatmap_overlap_iou_top20": 0.9397,
+        "mean_spearman_rho": 0.9877,
+        "mean_raw_peak_movement_px": 6.301,
+        "mean_face_relative_peak_movement": 0.0513
+      },
+      "translation": {
+        "n_rows": 60,
+        "class_consistency_rate": 0.9,
+        "mean_fake_score_delta": -0.0581,
+        "std_fake_score_delta": 0.1489,
+        "mean_heatmap_overlap_iou_top20": 0.7894,
+        "mean_spearman_rho": 0.9274,
+        "mean_raw_peak_movement_px": 17.8273,
+        "mean_face_relative_peak_movement": 0.1901
+      }
+    }
+  }
+}

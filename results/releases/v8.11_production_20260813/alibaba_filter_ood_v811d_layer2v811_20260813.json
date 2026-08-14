@@ -1,0 +1,58 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+    "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+    "script_path": "C:\\My_Project\\AIGC\\AIGuard\\eval_ali_ood_v811.py",
+    "script_sha256": "409556aeeafdcb36addf5d04b81203ab111480f173a86346ee3efde57d2d3839",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "AIGuard/eval_ali_ood_v811.py --layer1-weights shufflenet_v2_layer1_v811d.pth --layer2-weights shufflenet_v2_layer2_v811.pth",
+    "timestamp_utc": "2026-08-13T03:55:40.370371+00:00"
+  },
+  "eval_name": "alibaba_filter_ood",
+  "overall": {
+    "correct": 20743,
+    "total": 21151,
+    "recall_pct": 98.07101319086567
+  },
+  "by_filter_type": {
+    "EyeEnlarging": {
+      "correct": 5240,
+      "total": 5340,
+      "recall_pct": 98.12734082397003
+    },
+    "FaceLifting": {
+      "correct": 5105,
+      "total": 5265,
+      "recall_pct": 96.9610636277303
+    },
+    "Smoothing": {
+      "correct": 5261,
+      "total": 5268,
+      "recall_pct": 99.86712224753227
+    },
+    "Whitening": {
+      "correct": 5137,
+      "total": 5278,
+      "recall_pct": 97.32853353543008
+    }
+  },
+  "by_intensity": {
+    "30": {
+      "correct": 6906,
+      "total": 7060,
+      "recall_pct": 97.8186968838527
+    },
+    "60": {
+      "correct": 6910,
+      "total": 7047,
+      "recall_pct": 98.05591031644671
+    },
+    "90": {
+      "correct": 6927,
+      "total": 7044,
+      "recall_pct": 98.33901192504258
+    }
+  }
+}

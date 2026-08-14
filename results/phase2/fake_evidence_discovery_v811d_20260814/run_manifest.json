@@ -1,0 +1,60 @@
+{
+  "seed": 20260814,
+  "n_real_requested": 70,
+  "n_fake_requested": 60,
+  "skimage_version": "0.26.0",
+  "torch_version": "2.11.0+cu128",
+  "device": "cuda",
+  "sources_requested": {
+    "celeba_test": 70,
+    "lfw": 70,
+    "aiguard_unseen_real": 70,
+    "aiguard_unseen": 60,
+    "stylegan2_ood": 60,
+    "df40_sd21": 45,
+    "df40_dit": 45,
+    "df40_sit": 45,
+    "df40_ddim": 45,
+    "df40_pixart": 45,
+    "midjourney": 45
+  },
+  "sources_achieved": {
+    "real:celeba_test": 70,
+    "real:lfw": 70,
+    "real:aiguard_unseen_real": 70,
+    "fake:aiguard_unseen": 60,
+    "fake:stylegan2_ood": 60,
+    "fake:df40_sd21": 44,
+    "fake:df40_dit": 44,
+    "fake:df40_sit": 45,
+    "fake:df40_ddim": 45,
+    "fake:df40_pixart": 45,
+    "fake:midjourney": 45
+  },
+  "total_images": 598,
+  "elapsed_sec": 29.85372042655945,
+  "output_csv": "C:\\My_Project\\AIGC\\results\\phase2\\fake_evidence_discovery_v811d_20260814\\raw_features.csv",
+  "rubric": {
+    "auroc_bar": 0.6,
+    "min_sources_for_most": 5,
+    "resolution_confound_bar": 0.35,
+    "n_boot": 1000,
+    "boot_seed": 20260814
+  },
+  "cam_faithfulness_join_n_matched": 65,
+  "real_pool_sources": [
+    "celeba_test",
+    "lfw",
+    "aiguard_unseen_real"
+  ],
+  "fake_sources": [
+    "aiguard_unseen",
+    "stylegan2_ood",
+    "df40_dit",
+    "df40_sit",
+    "df40_ddim",
+    "df40_pixart",
+    "df40_sd21",
+    "midjourney"
+  ]
+}

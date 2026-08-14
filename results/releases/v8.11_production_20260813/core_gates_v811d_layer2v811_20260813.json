@@ -1,0 +1,26 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+    "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+    "script_path": "C:\\My_Project\\AIGC\\eval_v811_gates.py",
+    "script_sha256": "68955418fd525f9142db36bb3b3bb26ef43aea64f8a9b7a9fbd2b6e9f8271d31",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "eval_v811_gates.py --layer1-weights shufflenet_v2_layer1_v811d.pth --layer2-weights shufflenet_v2_layer2_v811.pth",
+    "timestamp_utc": "2026-08-13T03:54:11.354780+00:00"
+  },
+  "eval_name": "core_gates",
+  "gates": {
+    "true_test_filter_recall_pct": 93.57429718875501,
+    "aiguard_unseen_fake_auroc": 0.8149898848428261,
+    "celeba_real_recall_pct": 99.73333333333333,
+    "stylegan2_not_real_recall_pct": 99.63333333333333
+  },
+  "sample_sizes": {
+    "true_test_filter_n": 249,
+    "aiguard_unseen_n": 454,
+    "celeba_n": 3000,
+    "stylegan2_n": 3000
+  }
+}

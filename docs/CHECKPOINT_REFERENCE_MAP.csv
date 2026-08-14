@@ -1,0 +1,356 @@
+checkpoint_filename,referenced_by_file,reference_type,is_production,notes
+region_head_v1.pth,./AIGuard/train_region_head_v1.py,train_output,NO,
+region_head_v1.pth,./AIGuard/train_region_head_v2.py,train_output,NO,
+region_head_v1.pth,./docs/Dataset 清單.md,doc_mention,NO,
+region_head_v1.pth,./docs/research_log.md,doc_mention,NO,
+region_head_v1.pth,./docs/研究路線圖：AIGC & Filter Detection 論文發表策略.md,doc_mention,NO,
+region_head_v1.pth,./pipeline.py,config,NO,
+region_head_v2.pth,./AIGuard/train_region_head_v2.py,train_output,NO,
+region_head_v3.pth,./AIGuard/train_region_head_v3.py,train_output,NO,
+region_head_v3.pth,./TODO.md,doc_mention,NO,
+region_head_v4.pth,./AIGuard/train_region_head_v4.py,train_output,NO,
+region_head_v4.pth,./xai_eval_protocol.py,eval_target,NO,
+shufflenet_v2.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_ablation_a.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_ablation_a.pth,./archive/scripts_legacy_v3_v89/AIGuard/eval_ablation.py,eval_target,NO,
+shufflenet_v2_3class_ablation_b.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_ablation_b.pth,./archive/scripts_legacy_v3_v89/AIGuard/eval_ablation.py,eval_target,NO,
+shufflenet_v2_3class_ffhq.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_ffhq_v2.pth,./README.md,doc_mention,NO,
+shufflenet_v2_3class_ffhq_v2.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./AIGuard/eval_fakeclue.py,eval_target,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./AIGuard/eval_truetest.py,eval_target,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./AIGuard/eval_unseen_v3.py,eval_target,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./AIGuard/gradcam_fakeclue_failures.py,eval_target,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_3class_ffhq_v3.py,train_output,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_ablation.py,train_output,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v5.py,train_output,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v6.py,train_output,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_ffhq_v3.pth,./explainability/gradcam.py,eval_target,NO,
+shufflenet_v2_3class_fft.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v3_1.pth,./AIGuard/eval_crossdataset_v3_1.py,eval_target,NO,
+shufflenet_v2_3class_v3_1.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v3_1.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_3class_ffhq_v3_1.py,train_output,NO,
+shufflenet_v2_3class_v4.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v4.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v4.py,train_output,NO,
+shufflenet_v2_3class_v4.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v5.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v5.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v5.py,train_output,NO,
+shufflenet_v2_3class_v5.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v5_1.py,train_output,NO,
+shufflenet_v2_3class_v5.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v5_1.pth,./AIGuard/eval_jpeg_filter_bias.py,eval_target,NO,
+shufflenet_v2_3class_v5_1.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v5_1.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v5_1.py,train_output,NO,
+shufflenet_v2_3class_v5_1.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v6.pth,./AIGuard/eval_filter_recall.py,eval_target,NO,
+shufflenet_v2_3class_v6.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v6.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v6.py,train_output,NO,
+shufflenet_v2_3class_v6.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v7.py,train_output,NO,
+shufflenet_v2_3class_v6.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v71.py,train_output,NO,
+shufflenet_v2_3class_v6.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v72.py,train_output,NO,
+shufflenet_v2_3class_v6.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v73.py,train_output,NO,
+shufflenet_v2_3class_v6.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v6.pth,./docs/work.md,doc_mention,NO,
+shufflenet_v2_3class_v7.pth,./AIGuard/eval_filter_recall.py,eval_target,NO,
+shufflenet_v2_3class_v7.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v7.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v7.py,train_output,NO,
+shufflenet_v2_3class_v7.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v71.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v71.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v71.py,train_output,NO,
+shufflenet_v2_3class_v710.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v710.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v710.py,train_output,NO,
+shufflenet_v2_3class_v710.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v72.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v72.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v72.py,train_output,NO,
+shufflenet_v2_3class_v72.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v74.py,train_output,NO,
+shufflenet_v2_3class_v72.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v75.py,train_output,NO,
+shufflenet_v2_3class_v72.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v73.pth,./AIGuard/eval_filter_recall.py,eval_target,NO,
+shufflenet_v2_3class_v73.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v73.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v73.py,train_output,NO,
+shufflenet_v2_3class_v74.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v74.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v74.py,train_output,NO,
+shufflenet_v2_3class_v74.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v75.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v75.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v75.py,train_output,NO,
+shufflenet_v2_3class_v75.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v76.py,train_output,NO,
+shufflenet_v2_3class_v75.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v76.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v76.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v76.py,train_output,NO,
+shufflenet_v2_3class_v76.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v77.py,train_output,NO,
+shufflenet_v2_3class_v76.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v77.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v77.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v77.py,train_output,NO,
+shufflenet_v2_3class_v77.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v78.py,train_output,NO,
+shufflenet_v2_3class_v77.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v78.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v78.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v78.py,train_output,NO,
+shufflenet_v2_3class_v78.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v79.py,train_output,NO,
+shufflenet_v2_3class_v78.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v79.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v79.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v710.py,train_output,NO,
+shufflenet_v2_3class_v79.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v79.py,train_output,NO,
+shufflenet_v2_3class_v79.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v8.py,train_output,NO,
+shufflenet_v2_3class_v79.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v8.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v8.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v8.py,train_output,NO,
+shufflenet_v2_3class_v8.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v81.py,train_output,NO,
+shufflenet_v2_3class_v8.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v81.pth,./AIGuard/train_region_head_v1.py,train_output,NO,
+shufflenet_v2_3class_v81.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v81.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v81.py,train_output,NO,
+shufflenet_v2_3class_v81.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v82.py,train_output,NO,
+shufflenet_v2_3class_v81.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v83.py,train_output,NO,
+shufflenet_v2_3class_v81.pth,./build_celebdf_blind_holdout.py,eval_target,NO,
+shufflenet_v2_3class_v81.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v81.pth,./eval_fakeclue_leakage_compare.py,eval_target,NO,
+shufflenet_v2_3class_v810a.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810a.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_disjoint.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200_run2.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200_run3.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose600.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_lite.py,train_output,NO,
+shufflenet_v2_3class_v810a.pth,./verify_v810a_auroc_methodology.py,eval_target,NO,
+shufflenet_v2_3class_v810b.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b.py,train_output,NO,
+shufflenet_v2_3class_v810b_disjoint.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_disjoint.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_disjoint.py,train_output,NO,
+shufflenet_v2_3class_v810b_dose1200.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_dose1200.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200.py,train_output,NO,
+shufflenet_v2_3class_v810b_dose1200_run2.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_dose1200_run2.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200_run2.py,train_output,NO,
+shufflenet_v2_3class_v810b_dose1200_run3.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_dose1200_run3.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose1200_run3.py,train_output,NO,
+shufflenet_v2_3class_v810b_dose600.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_dose600.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_dose600.py,train_output,NO,
+shufflenet_v2_3class_v810b_lite.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v810b_lite.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810b_lite.py,train_output,NO,
+shufflenet_v2_3class_v82.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v82.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v82.py,train_output,NO,
+shufflenet_v2_3class_v82.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v83.pth,./AIGuard/diagnose_eye_enlarging.py,eval_target,NO,
+shufflenet_v2_3class_v83.pth,./AIGuard/diagnose_midjourney.py,eval_target,NO,
+shufflenet_v2_3class_v83.pth,./CLAUDE.md,doc_mention,NO,
+shufflenet_v2_3class_v83.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v83.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v83.py,train_output,NO,
+shufflenet_v2_3class_v83.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v84.py,train_output,NO,
+shufflenet_v2_3class_v84.pth,./CLAUDE.md,doc_mention,NO,
+shufflenet_v2_3class_v84.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v84.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v84.py,train_output,NO,
+shufflenet_v2_3class_v84.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v85.py,train_output,NO,
+shufflenet_v2_3class_v84.pth,./docs/research_log.md,doc_mention,NO,
+shufflenet_v2_3class_v85.pth,./AIGuard/train_region_head_v2.py,train_output,NO,
+shufflenet_v2_3class_v85.pth,./CLAUDE.md,doc_mention,NO,
+shufflenet_v2_3class_v85.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v85.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v85.py,train_output,NO,
+shufflenet_v2_3class_v85.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v86.py,train_output,NO,
+shufflenet_v2_3class_v85.pth,./docs/Dataset 清單.md,doc_mention,NO,
+shufflenet_v2_3class_v86.pth,./AIGuard/eval_ali_ood.py,eval_target,NO,
+shufflenet_v2_3class_v86.pth,./CLAUDE.md,doc_mention,NO,
+shufflenet_v2_3class_v86.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v86.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v86.py,train_output,NO,
+shufflenet_v2_3class_v86.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v87.py,train_output,NO,
+shufflenet_v2_3class_v86.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v88.py,train_output,NO,
+shufflenet_v2_3class_v87.pth,./CLAUDE.md,doc_mention,NO,
+shufflenet_v2_3class_v87.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v87.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v87.py,train_output,NO,
+shufflenet_v2_3class_v88.pth,./AIGuard/train_region_head_v3.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./AIGuard/train_region_head_v4.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./AIGuard/train_v811_layer1.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./AIGuard/train_v811_layer2.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./AIGuard/train_v811_layer2b.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./AIGuard/train_v811_layer2c.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./CLAUDE.md,doc_mention,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./TODO.md,doc_mention,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./_archive_legacy.py,eval_target,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v810a.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v88.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89a.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89b.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89c.py,train_output,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./build_phase2_evidence_pack.py,eval_target,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./docs/phase2_story.md,doc_mention,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./explainability/lrp_baseline.py,eval_target,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./phase2_p0_v811_filter_gradcam_validation.py,eval_target,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./results/phase2_evidence_pack_20260813/evidence_pack_index.md,doc_mention,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v88.pth,./xai_eval_protocol.py,eval_target,NO,"Historical best flat 3-class (superseded by v8.11 hierarchical); still used as v8.8 reference baseline in Phase 2 XAI comparison scripts -- legitimate historical reference, not a stray pointer"
+shufflenet_v2_3class_v89a.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89a.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89a.py,train_output,NO,
+shufflenet_v2_3class_v89a.pth,./archive/scripts_legacy_v3_v89/eval_v89a_gates.py,eval_target,NO,
+shufflenet_v2_3class_v89b.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89b.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89b.py,train_output,NO,
+shufflenet_v2_3class_v89c.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89c.py,train_output,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89d_mini.py,train_output,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89d_plus.py,train_output,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89e_focal.py,train_output,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/mine_v89d_paired.py,eval_target,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/score_v89d_candidates.py,eval_target,NO,
+shufflenet_v2_3class_v89c.pth,./archive/scripts_legacy_v3_v89/score_v89d_proxy_unseen.py,eval_target,NO,
+shufflenet_v2_3class_v89d_mini.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89d_mini.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89d_mini.py,train_output,NO,
+shufflenet_v2_3class_v89d_mini.pth,./archive/scripts_legacy_v3_v89/verify_v89d_mini_auroc_methodology.py,eval_target,NO,
+shufflenet_v2_3class_v89d_plus.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89d_plus.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89d_plus.py,train_output,NO,
+shufflenet_v2_3class_v89e_focal.pth,./_archive_legacy.py,eval_target,NO,
+shufflenet_v2_3class_v89e_focal.pth,./archive/scripts_legacy_v3_v89/AIGuard/train_v89e_focal.py,train_output,NO,
+shufflenet_v2_layer1_v811.pth,./AIGuard/stress_test_layer1.py,eval_target,NO,
+shufflenet_v2_layer1_v811.pth,./AIGuard/train_v811_layer1.py,train_output,NO,
+shufflenet_v2_layer1_v811.pth,./AIGuard/train_v811_layer1b.py,train_output,NO,
+shufflenet_v2_layer1_v811.pth,./eval_v811_layer1_shadow.py,eval_target,NO,
+shufflenet_v2_layer1_v811b.pth,./AIGuard/train_v811_layer1b.py,train_output,NO,
+shufflenet_v2_layer1_v811b.pth,./AIGuard/train_v811_layer1c.py,train_output,NO,
+shufflenet_v2_layer1_v811b.pth,./mine_v811_layer1_round2.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./AIGuard/eval_ali_ood_v811.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./AIGuard/eval_robustness.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./AIGuard/stress_test_v811_pipeline.py,config,NO,
+shufflenet_v2_layer1_v811c.pth,./AIGuard/train_v811_layer1c.py,train_output,NO,
+shufflenet_v2_layer1_v811c.pth,./AIGuard/train_v811_layer1d.py,train_output,NO,
+shufflenet_v2_layer1_v811c.pth,./TODO.md,doc_mention,NO,
+shufflenet_v2_layer1_v811c.pth,./build_phase2_evidence_pack.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./docs/Dataset 清單.md,doc_mention,NO,
+shufflenet_v2_layer1_v811c.pth,./eval_df40_benchmark.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./eval_v811_gates.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./measure_mobile_memory.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./mine_v811_layer1_round3.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./mine_v811_layer1_round4_newsource.py,eval_target,NO,
+shufflenet_v2_layer1_v811c.pth,./results/phase2_evidence_pack_20260813/evidence_pack_index.md,doc_mention,NO,
+shufflenet_v2_layer1_v811d.pth,./AIGuard/train_v811_layer1d.py,train_output,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./AIGuard/train_v812_layer1.py,train_output,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./CLAUDE.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./TODO.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./analyse_shadow_error_destination.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./analyze_ffpp_auroc_both.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./analyze_ffpp_zeroshot_detail.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./audit_identity_disjoint_recall.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./benchmark_mobile_artifacts.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./build_phase2_evidence_pack.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./diagnose_int8_collapse.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./docs/Dataset 清單.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./docs/phase2_story.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_ABCD_cross_combination.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_ffpp_zeroshot_v811.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_paired_both_domains.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_truetest_filter_bytype_v811.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_truetest_paired.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./eval_v812_vs_v811.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./export_mobile_tflite.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./ios_benchmark/IOS_BENCHMARK_SPEC.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./ios_benchmark/benchmark_manifest.json,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./phase2_p0_v811_filter_gradcam_validation.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./pipeline.py,config,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./results/phase2_evidence_pack_20260813/evidence_pack_index.md,doc_mention,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./results/phase2_p0_v811_filter_gradcam_validation_20260813.json,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./results/xai_faithfulness_v1_20260812.json,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./verify_mobile_fft.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./verify_tflite_fp16.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v811d.pth,./xai_faithfulness_test.py,eval_target,YES,PRODUCTION Layer1
+shufflenet_v2_layer1_v812.pth,./AIGuard/train_v812_layer1.py,train_output,NO,
+shufflenet_v2_layer1_v812.pth,./AIGuard/train_v813_layer1.py,train_output,NO,
+shufflenet_v2_layer1_v812.pth,./AIGuard/train_v814_layer2.py,train_output,NO,
+shufflenet_v2_layer1_v812.pth,./TODO.md,doc_mention,NO,
+shufflenet_v2_layer1_v812.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,NO,
+shufflenet_v2_layer1_v812.pth,./eval_ABCD_cross_combination.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./eval_C_0.85_final_confirmation.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./eval_v812_vs_v811.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./eval_v815_ablation_full.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./mine_fake_filter_hardneg_v813.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./mine_route_filtered_v814.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./mine_route_filtered_v814_df40_topup.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./mine_route_filtered_v814_round2.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./phase2_composite_explanation.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./phase2_source_stratified_eval_adapter.py,eval_target,NO,
+shufflenet_v2_layer1_v812.pth,./test_v813_on_known_hard_subset.py,eval_target,NO,
+shufflenet_v2_layer1_v813.pth,./AIGuard/train_v813_layer1.py,train_output,NO,
+shufflenet_v2_layer1_v813.pth,./TODO.md,doc_mention,NO,
+shufflenet_v2_layer2_v811.pth,./AIGuard/eval_ali_ood_v811.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./AIGuard/eval_robustness.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./AIGuard/stress_test_v811_pipeline.py,config,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./AIGuard/train_v811_layer2.py,train_output,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./AIGuard/train_v812_layer2.py,train_output,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./CLAUDE.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./TODO.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./analyse_shadow_error_destination.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./analyze_ffpp_auroc_both.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./analyze_ffpp_zeroshot_detail.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./audit_identity_disjoint_recall.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./benchmark_mobile_artifacts.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./diagnose_int8_collapse.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./docs/Dataset 清單.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./docs/phase2_story.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_ABCD_cross_combination.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_df40_benchmark.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_ffpp_zeroshot_v811.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_paired_both_domains.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_truetest_filter_bytype_v811.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_truetest_paired.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_v811_gates.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_v811_layer2_shadow.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./eval_v812_vs_v811.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./export_mobile_tflite.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./ios_benchmark/IOS_BENCHMARK_SPEC.md,doc_mention,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./ios_benchmark/benchmark_manifest.json,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./phase2_p0_v811_filter_gradcam_validation.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./pipeline.py,config,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./results/phase2_p0_v811_filter_gradcam_validation_20260813.json,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./results/xai_faithfulness_v1_20260812.json,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./verify_mobile_fft.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./verify_tflite_fp16.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811.pth,./xai_faithfulness_test.py,eval_target,YES,PRODUCTION Layer2
+shufflenet_v2_layer2_v811b.pth,./AIGuard/train_v811_layer2b.py,train_output,NO,
+shufflenet_v2_layer2_v811c.pth,./AIGuard/train_v811_layer2c.py,train_output,NO,
+shufflenet_v2_layer2_v812.pth,./AIGuard/train_v812_layer2.py,train_output,NO,
+shufflenet_v2_layer2_v812.pth,./AIGuard/train_v813_layer2.py,train_output,NO,
+shufflenet_v2_layer2_v812.pth,./AIGuard/train_v814_layer2.py,train_output,NO,
+shufflenet_v2_layer2_v812.pth,./AIGuard/train_v815a_dualhead.py,train_output,NO,
+shufflenet_v2_layer2_v812.pth,./eval_ABCD_cross_combination.py,eval_target,NO,
+shufflenet_v2_layer2_v812.pth,./eval_v812_vs_v811.py,eval_target,NO,
+shufflenet_v2_layer2_v812.pth,./mine_fake_filter_hardneg_v813.py,eval_target,NO,
+shufflenet_v2_layer2_v812.pth,./mine_route_filtered_v814.py,eval_target,NO,
+shufflenet_v2_layer2_v812.pth,./mine_route_filtered_v814_df40_topup.py,eval_target,NO,
+shufflenet_v2_layer2_v812.pth,./mine_route_filtered_v814_round2.py,eval_target,NO,
+shufflenet_v2_layer2_v813.pth,./AIGuard/train_v813_layer2.py,train_output,NO,
+shufflenet_v2_layer2_v813.pth,./TODO.md,doc_mention,NO,
+shufflenet_v2_layer2_v813.pth,./test_v813_on_known_hard_subset.py,eval_target,NO,
+shufflenet_v2_layer2_v814.pth,./AIGuard/train_v814_layer2.py,train_output,NO,
+shufflenet_v2_layer2_v814.pth,./AIGuard/train_v815_ablation.py,train_output,NO,
+shufflenet_v2_layer2_v814.pth,./AIGuard/train_v815a_dualhead.py,train_output,NO,
+shufflenet_v2_layer2_v814.pth,./AIGuard/train_v815b_14.py,train_output,NO,
+shufflenet_v2_layer2_v814.pth,./TODO.md,doc_mention,NO,
+shufflenet_v2_layer2_v815a_v812.pth,./eval_v815a_dualhead.py,eval_target,NO,
+shufflenet_v2_layer2_v815a_v814.pth,./eval_v815a_dualhead.py,eval_target,NO,
+shufflenet_v2_layer2_v815ablation_cellA_unfreeze0_inv0.pth,./eval_v815_ablation_full.py,eval_target,NO,
+shufflenet_v2_layer2_v815ablation_cellA_unfreeze0_inv0.pth,./threshold_sweep_v815.py,eval_target,NO,
+shufflenet_v2_layer2_v815ablation_cellB_unfreeze0_inv1.pth,./eval_v815_ablation_full.py,eval_target,NO,
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./AIGuard/train_v816.py,train_output,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./TODO.md,doc_mention,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./audit_cellC_checkpoint_ancestry.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./docs/phase2_story.md,doc_mention,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./eval_C_0.85_final_confirmation.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./eval_replication_auroc.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./eval_replication_set.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./eval_v815_ablation_full.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./phase2_composite_explanation.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellC_unfreeze1_inv0.pth,./threshold_sweep_v815.py,eval_target,NO,v8.15 'Cell C' research checkpoint (CLAUDE.md 'v8.15-C@0.85'); parent of v8.16 mixed-lineage
+shufflenet_v2_layer2_v815ablation_cellD_unfreeze1_inv1.pth,./eval_v815_ablation_full.py,eval_target,NO,
+shufflenet_v2_layer2_v815ablation_cellD_unfreeze1_inv1.pth,./threshold_sweep_v815.py,eval_target,NO,
+shufflenet_v2_layer2_v815b_14.pth,./AIGuard/train_v815b_14.py,train_output,NO,
+shufflenet_v2_layer2_v815b_14.pth,./diagnose_cascade_subset_v815b.py,eval_target,NO,
+shufflenet_v2_layer2_v815b_14.pth,./eval_v815a_dualhead.py,eval_target,NO,
+shufflenet_v2_layer2_v816_mixedlineage.pth,./AIGuard/train_v816.py,train_output,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./TODO.md,doc_mention,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./docs/EXPERIMENT_REGISTRY.md,doc_mention,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./docs/phase2_story.md,doc_mention,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./eval_replication_auroc_v816.py,eval_target,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./eval_replication_set_v816.py,eval_target,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./phase2_source_stratified_eval_adapter.py,eval_target,NO,v8.16 mixed-lineage research checkpoint
+shufflenet_v2_layer2_v816_mixedlineage.pth,./threshold_sweep_v816.py,eval_target,NO,v8.16 mixed-lineage research checkpoint

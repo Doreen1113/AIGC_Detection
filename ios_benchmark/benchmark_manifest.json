@@ -1,0 +1,61 @@
+{
+  "_comment": "Handoff manifest for the iPhone on-device benchmark. Prepared on Windows -- NOT run. sha256 fields are placeholders to be filled in once model files are copied onto the Mac (e.g. `shasum -a 256 <file>`). See ios_benchmark/README.md and IOS_BENCHMARK_SPEC.md for full context.",
+  "target_checkpoint": "v8.11 (production)",
+  "models": [
+    {
+      "layer": "layer1",
+      "role": "real vs manipulated (2-class)",
+      "training_checkpoint": "shufflenet_v2_layer1_v811d.pth",
+      "tflite_file": "layer1_v811d_float32.tflite",
+      "tflite_source_path": "results/mobile_export/layer1_v811d_tf/layer1_v811d_float32.tflite",
+      "sha256": "TODO_PLACEHOLDER_FILL_IN_ON_MAC",
+      "size_mb_desktop_measured": "TODO_PLACEHOLDER_split_of_20.91MB_combined_not_measured_per_file"
+    },
+    {
+      "layer": "layer2",
+      "role": "fake vs filter (2-class), only runs on manipulated path",
+      "training_checkpoint": "shufflenet_v2_layer2_v811.pth",
+      "tflite_file": "layer2_v811_float32.tflite",
+      "tflite_source_path": "results/mobile_export/layer2_v811_tf/layer2_v811_float32.tflite",
+      "sha256": "TODO_PLACEHOLDER_FILL_IN_ON_MAC",
+      "size_mb_desktop_measured": "TODO_PLACEHOLDER_split_of_20.91MB_combined_not_measured_per_file"
+    }
+  ],
+  "combined_size_mb_desktop_measured": 20.913387298583984,
+  "desktop_reference": {
+    "source": "results/mobile_deployment_benchmark.json (tflite_float32)",
+    "platform": "Windows desktop CPU",
+    "latency_ms_per_image_two_stage": 14.370852015592806,
+    "agreement_vs_pytorch": 1.0,
+    "true_test_recall": {
+      "filter": 93.57429718875501,
+      "real": 68.4,
+      "fake": 99.62962962962963
+    }
+  },
+  "test_config": {
+    "real_images": 20,
+    "manipulated_images": 20,
+    "manipulated_split_note": "20 manipulated = 10 fake + 10 filter, per test_assets_manifest.csv",
+    "repeats_per_image": 5,
+    "warmup_runs": 10,
+    "stability_runs": 500
+  },
+  "expected_output_schema": {
+    "device_model": "string, e.g. iPhone15,3 -- TODO fill from actual test device",
+    "ios_version": "string, e.g. 17.5 -- TODO fill from actual test device",
+    "runtime": "string, e.g. LiteRT/TensorFlowLiteSwift x.y.z -- TODO confirm which runtime is actually used, see IOS_BENCHMARK_SPEC.md TODO on CoreML vs LiteRT",
+    "threads": "int, number of threads configured on the LiteRT interpreter -- TODO decide and record",
+    "layer1_ms": "float, per-image Layer1-only inference time",
+    "layer2_ms": "float, per-image Layer2-only inference time (manipulated path only)",
+    "end_to_end_ms": "float, per-image total pipeline time (preprocessing + layer1 + [layer2] + routing)",
+    "p50": "float, median end-to-end latency over the 100 timed runs",
+    "p95": "float, 95th percentile end-to-end latency over the 100 timed runs",
+    "max": "float, max end-to-end latency over the 100 timed runs",
+    "init_ms": "float, one-time cost to load both .tflite models and allocate tensors",
+    "peak_memory_mb": "float, peak resident memory during the run",
+    "prediction_consistency": "float in [0,1], fraction of test images where iPhone prediction matches desktop fp32 TFLite prediction on the same image",
+    "thermal_notes": "string, free text -- e.g. thermal throttling observed during 500-run stability test, device warm/hot state, etc."
+  },
+  "not_yet_measured": true
+}

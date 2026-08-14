@@ -1,0 +1,25 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+    "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+    "script_path": "c:\\My_Project\\AIGC\\eval_truetest_filter_bytype_v811.py",
+    "script_sha256": "149acf30cffe8e5b28f6d1fb2ad664e03f78ea34fac9c30ba4b82d5b297c5872",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "python eval_truetest_filter_bytype_v811.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth",
+    "console_log_path": "c:\\My_Project\\AIGC\\results\\releases\\v8.11_production_20260813\\truetest_bytype_run_console.log",
+    "timestamp_utc_approx": "2026-08-13T04:11-04:13 (observed during this run)",
+    "provenance_capture_method": "COMPANION METADATA (script not edited -- not in the 4 authorized-edit list; provenance reconstructed externally by this repair task, hashes computed independently via PowerShell Get-FileHash, cross-checked against the same L1/L2 checkpoint hashes embedded by the 4 edited scripts' own runs)"
+  },
+  "eval_name": "truetest_filter_bytype",
+  "note": "Not one of the 4 authorized-edit scripts; already defaulted correctly to v811d/v811, invoked here with explicit positional args (no source modification). No internal JSON output mechanism.",
+  "key_results": {
+    "n": 249,
+    "smoothing_recall_pct": 100.0,
+    "whitening_recall_pct": 95.2,
+    "eye_enlarging_recall_pct": 82.3,
+    "face_reshaping_recall_pct": 96.8,
+    "overall_pct": 93.6
+  }
+}

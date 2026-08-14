@@ -1,0 +1,29 @@
+{
+  "audit_name": "fake_xai_level12_v811d_20260814",
+  "timestamp_utc": "2026-08-14T06:08:21.676420+00:00",
+  "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+  "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+  "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+  "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+  "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+  "global_seed": 20260814,
+  "sample_n_per_source_requested": 50,
+  "sources": {
+    "aiguard_unseen": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\clean_output\\clean_paths.txt",
+    "stylegan2_ood": "C:\\My_Project\\AIGC\\stylegan2_test\\fake",
+    "truetest_df40": "C:\\My_Project\\AIGC\\splits\\truetest_fake.txt"
+  },
+  "commands_run": [
+    "python phase2_fake_xai/task1_global_evidence.py",
+    "python phase2_fake_xai/task2_deletion.py",
+    "python phase2_fake_xai/task3_insertion.py",
+    "python phase2_fake_xai/task4_stability.py",
+    "python phase2_fake_xai/task_figures.py",
+    "python phase2_fake_xai/make_manifest.py"
+  ],
+  "notes": [
+    "Read-only audit: no training, no pipeline.py modification, no splits/ modification.",
+    "No MLLM/VLM used. No pixel-level fake manipulation mask produced or claimed.",
+    "This audit validates attention_faithfulness only (Tier C, docs/xai_evidence_schema.md); it does NOT and cannot support manipulation-location claims -- no fake-class GT exists."
+  ]
+}

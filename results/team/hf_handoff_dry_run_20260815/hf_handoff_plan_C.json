@@ -1,0 +1,207 @@
+{
+  "member": "C",
+  "generated_at_utc": "2026-08-14T14:00:47.896640+00:00",
+  "mode": "DRY_RUN -- nothing uploaded, no network access used, no HF token required",
+  "manifest_source": "C:\\My_Project\\AIGC\\manifests\\team_data\\C_android_benchmark_handoff_manifest_template.csv",
+  "proposed_hf_repo": "aigc-team/android-benchmark-handoff-c (PROPOSED, not created)",
+  "note": "Repo name is a PROPOSAL only. No Hugging Face repo was created or contacted this run.",
+  "summary": {
+    "total_manifest_rows": 16,
+    "cleared_for_upload_count": 14,
+    "cleared_for_upload_mb": 20.95,
+    "license_blocked_count": 0,
+    "size_flagged_count": 0,
+    "size_flagged_or_blocked_mb": 0.0,
+    "missing_count": 2
+  },
+  "cleared_for_upload": [
+    {
+      "relative_path": "results/mobile_export/layer1_v811d_tf/layer1_v811d_float32.tflite",
+      "required": true,
+      "license_status": "internal (project-owned)",
+      "asset_type": "tflite_model",
+      "size_bytes": 10964640,
+      "size_mb": 10.46,
+      "file_count": 1,
+      "sha256": "c16cf71f250bea1cc83fe171dc7120edbd2335c06eef3f20998e20d2f4194389",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "results/mobile_export/layer2_v811_tf/layer2_v811_float32.tflite",
+      "required": true,
+      "license_status": "internal (project-owned)",
+      "asset_type": "tflite_model",
+      "size_bytes": 10964636,
+      "size_mb": 10.46,
+      "file_count": 1,
+      "sha256": "3deed69d6ca4ebb9f7597391ce04390c49758e283a59bbbc988f615dd14eb0cd",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/TEST_ASSET_MANIFEST.csv",
+      "required": true,
+      "license_status": "internal (project-generated manifest; underlying images are self-built/LFW/DF40, not separately audited here)",
+      "asset_type": "manifest",
+      "size_bytes": 10092,
+      "size_mb": 0.01,
+      "file_count": 1,
+      "sha256": "2d9ec8a033e6d00ce3511b7c09416c0b5829646ca0c09acc732c11d62101aac3",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/PRODUCTION_ROUTING_SPEC.md",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "spec_doc",
+      "size_bytes": 5435,
+      "size_mb": 0.01,
+      "file_count": 1,
+      "sha256": "bdd5660eac4c31f7184e83379309d28c603eb951151e72e029b025de1edf61b0",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/DEVICE_BENCHMARK_PROTOCOL.md",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "spec_doc",
+      "size_bytes": 4413,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "96564cc1ad843249a531d4d82aa58096c22e9f298e0dbc65dc76b818cbc9fa94",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/EXPECTED_OUTPUT_SCHEMA.json",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "spec_doc",
+      "size_bytes": 5160,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "47c953c47b843681742211cc709c3caad5bdb61b92eb3d809475a6d84a0561e5",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/app_stub/MainActivity.kt",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "code_stub",
+      "size_bytes": 1176,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "375b043cc266b2aec430886a476511fbe62ea57a8d77ed13c1b913221897709d",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/app_stub/ModelRunner.kt",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "code_stub",
+      "size_bytes": 3157,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "fcbf6b95b4ee4be45c3f2a87f24a81235ce0958bb9b8970c1b6a9aeb2ec65835",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/app_stub/ImagePreprocessor.kt",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "code_stub",
+      "size_bytes": 1833,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "d8479b105e279016bf9a22440e7d45dcff3a64c42682e009755b80f001a22eff",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/app_stub/BenchmarkRunner.kt",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "code_stub",
+      "size_bytes": 1691,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "bcf4048dec96466f77d48647f5369734a6bdffdce26bcbc47c93ee1503d1afd0",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/app_stub/BenchmarkStats.kt",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "code_stub",
+      "size_bytes": 1226,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "460dad34a5f673ac45392a0b729d64e1a4eae20fa326079fb78f0f49cd1da227",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/README.md",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "spec_doc",
+      "size_bytes": 4098,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "6602a351beb6811e03361a8f0da24c322df3d04fc3b987c5b68ef6955436fda3",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "android_benchmark/golden_outputs/README.md",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "spec_doc",
+      "size_bytes": 1564,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "c5adb9fcebe9709c5139737039b0f2803478d26ca8fe0cf505ca9a49455357db",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    },
+    {
+      "relative_path": "results/mobile_deployment_benchmark.json",
+      "required": true,
+      "license_status": "internal (project-generated)",
+      "asset_type": "reference_result",
+      "size_bytes": 1119,
+      "size_mb": 0.0,
+      "file_count": 1,
+      "sha256": "e2fe5f1c2aa83dc76be2206144cfb5ee68371c117bebbc00366be0565167ec18",
+      "status": "CLEARED_FOR_UPLOAD",
+      "reason": "License-cleared (self-generated or project-owned) and under size thresholds."
+    }
+  ],
+  "excluded_license_blocked": [],
+  "excluded_size_flagged_manual_review": [],
+  "missing_not_yet_available": [
+    {
+      "relative_path": "<40 images listed in android_benchmark/TEST_ASSET_MANIFEST.csv>",
+      "required": true,
+      "license_status": "mixed -- lfw/ (LFW terms), sd2.1/ (DF40 terms), test_set_true/filter/ (self-built) -- not license-audited this round",
+      "asset_type": "test_image_set",
+      "status": "MISSING",
+      "reason": "Asset does not exist yet (not a single resolvable path, or explicitly marked not-yet-generated)."
+    },
+    {
+      "relative_path": "<golden prediction output, e.g. golden_predictions_v811d_layer2v811.json>",
+      "required": true,
+      "license_status": "internal (would be project-generated)",
+      "asset_type": "golden_output",
+      "status": "MISSING",
+      "reason": "Asset does not exist yet (not a single resolvable path, or explicitly marked not-yet-generated)."
+    }
+  ]
+}

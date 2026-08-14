@@ -1,0 +1,963 @@
+{
+  "_note": "Insertion test, PRODUCTION v8.11d hierarchical classifier, Layer2 fake logit (class_idx=0), same blur/feather machinery as Task 2 deletion test. Baseline is the WHOLE FRAME Gaussian-blurred (no feathering needed, full-frame). Progressive restoration at k in {5,10,20,40,60,100}% for hot-first (Grad-CAM++ order) vs bottom-first (least-attention-first) control. AUC via np.trapz, normalized to [0,1] k-axis.",
+  "status": "OK",
+  "protocol": {
+    "k_grid": [
+      0.05,
+      0.1,
+      0.2,
+      0.4,
+      0.6,
+      1.0
+    ],
+    "content_blur": {
+      "ksize": 31,
+      "sigma": 15
+    },
+    "feather": {
+      "ksize": 21,
+      "sigma": 8
+    },
+    "bootstrap_resamples": 2000
+  },
+  "per_image_auc": [
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_120.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9439,
+      "bottom_first_auc": 0.883
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_135.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.934,
+      "bottom_first_auc": 0.7461
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_141.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.932,
+      "bottom_first_auc": 0.8873
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_142.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9196,
+      "bottom_first_auc": 0.7335
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_143.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9221,
+      "bottom_first_auc": 0.8317
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_157.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9394,
+      "bottom_first_auc": 0.871
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_158.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9336,
+      "bottom_first_auc": 0.8595
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_160.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9388,
+      "bottom_first_auc": 0.9073
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_162.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.925,
+      "bottom_first_auc": 0.8362
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_164.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9247,
+      "bottom_first_auc": 0.8351
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_168.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.922,
+      "bottom_first_auc": 0.8365
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_170.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9401,
+      "bottom_first_auc": 0.8783
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_172.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9247,
+      "bottom_first_auc": 0.8209
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_176.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9314,
+      "bottom_first_auc": 0.8624
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_177.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9289,
+      "bottom_first_auc": 0.8209
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_179.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9305,
+      "bottom_first_auc": 0.8725
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_184.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9174,
+      "bottom_first_auc": 0.8398
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_187.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9225,
+      "bottom_first_auc": 0.8486
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_216.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9318,
+      "bottom_first_auc": 0.8464
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_222.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9239,
+      "bottom_first_auc": 0.8666
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_231.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9342,
+      "bottom_first_auc": 0.8604
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_237.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9297,
+      "bottom_first_auc": 0.8629
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_242.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9323,
+      "bottom_first_auc": 0.7928
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_247.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9309,
+      "bottom_first_auc": 0.8588
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_260.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9308,
+      "bottom_first_auc": 0.7865
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_262.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9298,
+      "bottom_first_auc": 0.8031
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_266.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.927,
+      "bottom_first_auc": 0.8626
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_272.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9163,
+      "bottom_first_auc": 0.6903
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_274.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.937,
+      "bottom_first_auc": 0.8418
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_29.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9261,
+      "bottom_first_auc": 0.9164
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_298.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9215,
+      "bottom_first_auc": 0.8928
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_304.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9316,
+      "bottom_first_auc": 0.8165
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_305.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9291,
+      "bottom_first_auc": 0.8806
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_318.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9233,
+      "bottom_first_auc": 0.7183
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_32.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9394,
+      "bottom_first_auc": 0.9281
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_424.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9224,
+      "bottom_first_auc": 0.8273
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_431.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9352,
+      "bottom_first_auc": 0.8193
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_434.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9241,
+      "bottom_first_auc": 0.8614
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_441.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9274,
+      "bottom_first_auc": 0.858
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_442.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.8128,
+      "bottom_first_auc": 0.7661
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_450.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9363,
+      "bottom_first_auc": 0.883
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_451.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9287,
+      "bottom_first_auc": 0.7361
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_453.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9319,
+      "bottom_first_auc": 0.8449
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_458.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9428,
+      "bottom_first_auc": 0.8746
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_465.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9334,
+      "bottom_first_auc": 0.8754
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_472.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9325,
+      "bottom_first_auc": 0.81
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_677.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.921,
+      "bottom_first_auc": 0.7599
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_679.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9393,
+      "bottom_first_auc": 0.8688
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_680.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9257,
+      "bottom_first_auc": 0.807
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\AIGuard\\unseen\\fake_687.jpg",
+      "source": "aiguard_unseen",
+      "hot_first_auc": 0.9302,
+      "bottom_first_auc": 0.7766
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\0YYEKMF3GY.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9339,
+      "bottom_first_auc": 0.86
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\30PIZ1A6JA.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9273,
+      "bottom_first_auc": 0.8413
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\30YAI4JQ1J.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.936,
+      "bottom_first_auc": 0.8452
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\3OCXA03C1S.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9237,
+      "bottom_first_auc": 0.6481
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\3YWOYM1KIG.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.91,
+      "bottom_first_auc": 0.7943
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\5SI1CK8UC0.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9333,
+      "bottom_first_auc": 0.8072
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\5W7U58MW2L.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9234,
+      "bottom_first_auc": 0.7475
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\68ZWU9N0A4.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9345,
+      "bottom_first_auc": 0.8625
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\6LKRPM42GN.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9398,
+      "bottom_first_auc": 0.8598
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\6V7NTIPR9L.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9395,
+      "bottom_first_auc": 0.86
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\74WMVN57OA.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9218,
+      "bottom_first_auc": 0.7701
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\78X3XXVFDY.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9264,
+      "bottom_first_auc": 0.8634
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\7BJI9BOS7B.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9393,
+      "bottom_first_auc": 0.9035
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\7DNN5FXAB5.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9246,
+      "bottom_first_auc": 0.8127
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\7XHLCD0DVI.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9274,
+      "bottom_first_auc": 0.8123
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\8K0CSLCSLO.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9304,
+      "bottom_first_auc": 0.8641
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\98O660FSWQ.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9335,
+      "bottom_first_auc": 0.7914
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\9CT9CLIOZH.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9425,
+      "bottom_first_auc": 0.8527
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\9YLX05B7V1.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.939,
+      "bottom_first_auc": 0.7892
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\9ZB4RQT9UA.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9406,
+      "bottom_first_auc": 0.8714
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\BXD2F7KMWA.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9405,
+      "bottom_first_auc": 0.901
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\DEBW16E2CA.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9271,
+      "bottom_first_auc": 0.6731
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\DXY4M1MLQ7.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9248,
+      "bottom_first_auc": 0.7964
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\HF1JHOEIGR.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9258,
+      "bottom_first_auc": 0.8453
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\ID9OH4XXHX.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9421,
+      "bottom_first_auc": 0.8454
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\IL3PGDMOUE.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.916,
+      "bottom_first_auc": 0.8267
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\JU9X9WZ3B5.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9506,
+      "bottom_first_auc": 0.9138
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\KJKLRCWBQ6.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9232,
+      "bottom_first_auc": 0.8136
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\KVB0KGWXCI.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9351,
+      "bottom_first_auc": 0.8556
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\LW30200T8S.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9291,
+      "bottom_first_auc": 0.82
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\MGPFLAVG6M.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9358,
+      "bottom_first_auc": 0.823
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\MHDZUQWTKO.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9386,
+      "bottom_first_auc": 0.8739
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\MM2UZURM5P.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.928,
+      "bottom_first_auc": 0.8153
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\PILJGXKJXZ.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9288,
+      "bottom_first_auc": 0.8658
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\PWDTNKVF36.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.928,
+      "bottom_first_auc": 0.85
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\RCETBMFUTR.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9187,
+      "bottom_first_auc": 0.8293
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\RE9I0JZ8XC.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9288,
+      "bottom_first_auc": 0.781
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\RTBQTLYH9Z.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9402,
+      "bottom_first_auc": 0.9027
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\SALHBWCNVW.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9264,
+      "bottom_first_auc": 0.8653
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\SMLN7GPDBD.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9375,
+      "bottom_first_auc": 0.8627
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\T84A6WMUGJ.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9355,
+      "bottom_first_auc": 0.8343
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\TF2K5P709A.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9331,
+      "bottom_first_auc": 0.8544
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\TGE19X7IKG.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9309,
+      "bottom_first_auc": 0.8446
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\U7U3VI9OU9.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9336,
+      "bottom_first_auc": 0.8156
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\VOA1F7DMQ6.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9362,
+      "bottom_first_auc": 0.8851
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\X0V9IP5OI8.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9355,
+      "bottom_first_auc": 0.7796
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\XIXEBV6U4Y.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9427,
+      "bottom_first_auc": 0.8135
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\Z31WALJXGD.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9359,
+      "bottom_first_auc": 0.7986
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\ZBQ6VDYCNP.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9391,
+      "bottom_first_auc": 0.8642
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\stylegan2_test\\fake\\ZIJJJONED1.jpg",
+      "source": "stylegan2_ood",
+      "hot_first_auc": 0.9335,
+      "bottom_first_auc": 0.8277
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\ff\\360\\768_116.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9282,
+      "bottom_first_auc": 0.8997
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\cdf\\YouTube-real\\00246\\Celeb-real_id11_0003_211.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.941,
+      "bottom_first_auc": 0.9214
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\ff\\065\\324_241.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9392,
+      "bottom_first_auc": 0.9357
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\cdf\\Celeb-real\\id47_0001\\YouTube-real_00218_046.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.942,
+      "bottom_first_auc": 0.9364
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\cdf\\Celeb-real\\id43_0001\\Celeb-real_id24_0007_207.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9458,
+      "bottom_first_auc": 0.9345
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\cdf\\YouTube-real\\00075\\Celeb-real_id41_0001_000.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9395,
+      "bottom_first_auc": 0.9272
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\ff\\875\\166_706.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.926,
+      "bottom_first_auc": 0.917
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\sd2.1\\ff\\708\\439_267.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9409,
+      "bottom_first_auc": 0.9259
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id16_0012\\17946.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9296,
+      "bottom_first_auc": 0.9092
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Youtube-real\\00014\\6566.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9494,
+      "bottom_first_auc": 0.927
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id59_0008\\9333.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9425,
+      "bottom_first_auc": 0.9261
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Youtube-real\\00289\\27470.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9357,
+      "bottom_first_auc": 0.9169
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id29_0006\\20335.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9327,
+      "bottom_first_auc": 0.8962
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id33_0008\\24852.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9404,
+      "bottom_first_auc": 0.9161
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id16_0006\\18374.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9472,
+      "bottom_first_auc": 0.918
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Youtube-real\\00070\\22616.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9488,
+      "bottom_first_auc": 0.9236
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\ff\\423\\297.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9407,
+      "bottom_first_auc": 0.9149
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Youtube-real\\00220\\19406.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.945,
+      "bottom_first_auc": 0.929
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\DiT\\cdf\\Fake_from_Celeb-real\\id45_0000\\10677.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9365,
+      "bottom_first_auc": 0.8924
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Celeb-real\\id40_0009\\14601.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9487,
+      "bottom_first_auc": 0.9304
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Celeb-real\\id32_0003\\23872.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9551,
+      "bottom_first_auc": 0.9331
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Celeb-real\\id28_0003\\27321.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9397,
+      "bottom_first_auc": 0.9088
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Youtube-real\\00064\\1599.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9392,
+      "bottom_first_auc": 0.9275
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Youtube-real\\00090\\11379.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9444,
+      "bottom_first_auc": 0.925
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\SiT\\cdf\\Fake_from_Celeb-real\\id56_0007\\26102.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9527,
+      "bottom_first_auc": 0.9454
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id46_0009\\Celeb-real_id6_0003_167.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9322,
+      "bottom_first_auc": 0.8963
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id4_0008\\Celeb-real_id5_0005_299.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9182,
+      "bottom_first_auc": 0.8739
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id59_0004\\YouTube-real_00018_420.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9262,
+      "bottom_first_auc": 0.8992
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id40_0009\\Celeb-real_id52_0005_373.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9247,
+      "bottom_first_auc": 0.9193
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Youtube-real\\00259\\Celeb-real_id25_0002_087.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9214,
+      "bottom_first_auc": 0.8788
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id48_0003\\Celeb-real_id26_0001_205.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9276,
+      "bottom_first_auc": 0.8941
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\ddim\\cdf\\Fake_from_Celeb-real\\id16_0013\\YouTube-real_00251_246.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9321,
+      "bottom_first_auc": 0.8898
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id56_0003\\YouTube-real_00197_360.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9512,
+      "bottom_first_auc": 0.939
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id42_0004\\Celeb-real_id53_0006_171.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9403,
+      "bottom_first_auc": 0.9319
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Youtube-real\\00025\\Celeb-real_id5_0002_447.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9508,
+      "bottom_first_auc": 0.9363
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id17_0009\\Celeb-real_id57_0007_227.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9461,
+      "bottom_first_auc": 0.9281
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id5_0004\\Celeb-real_id33_0002_290.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.938,
+      "bottom_first_auc": 0.9273
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id4_0003\\Celeb-real_id16_0006_000.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9559,
+      "bottom_first_auc": 0.9429
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id19_0005\\Celeb-real_id45_0005_042.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9397,
+      "bottom_first_auc": 0.9227
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Youtube-real\\00190\\YouTube-real_00202_417.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9331,
+      "bottom_first_auc": 0.8998
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\pixart\\cdf\\Fake_from_Celeb-real\\id9_0009\\YouTube-real_00207_016.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9492,
+      "bottom_first_auc": 0.9291
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Clean_East_Asian_female_face_face_only_shown_face_c_9a291ec4-afb9-4bb5-ae51-b6c6a0eb0231.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9438,
+      "bottom_first_auc": 0.9009
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_black_male_face_face_only_face_close-up_face_close-_524a2bd2-dac3-4b78-aeab-19043a1c99fa.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9364,
+      "bottom_first_auc": 0.8943
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Clean_East_Asian_female_face_face_only_shown_face_c_1d2e44fb-de7a-49c1-ba4f-3dc5771a38c3.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9353,
+      "bottom_first_auc": 0.8588
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Caucasian_male_face_face_only_shown_face_close-up_f_863eaf4d-e67a-4603-b654-2609e4e39dfd.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9142,
+      "bottom_first_auc": 0.8614
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Clean_caucasian_female_face_face_only_shown_face_cl_371aa179-9997-4f8e-971b-d379834f6fba.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9275,
+      "bottom_first_auc": 0.7625
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Single_person_black_male_looking_at_the_camera_faci_98af1a10-6ac8-4ca8-b1c5-ea25c727725d.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.926,
+      "bottom_first_auc": 0.8483
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Single_person_East_Asian_woman_looking_at_the_camer_77845836-0438-4211-80f8-57975f4c3ed3.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.926,
+      "bottom_first_auc": 0.8845
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Clean_East_Asian_male_face_face_only_shown_face_clo_c74641a3-5ee5-4d91-a444-5f1bb07857a2.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9341,
+      "bottom_first_auc": 0.8706
+    },
+    {
+      "image_path": "C:\\My_Project\\AIGC\\MidJourney\\fake\\13592447708_Single_person_East_Asian_male_looking_at_the_camera_78f40ad6-2361-4e4e-be75-f7932e116674.png",
+      "source": "truetest_df40",
+      "hot_first_auc": 0.9273,
+      "bottom_first_auc": 0.8581
+    }
+  ],
+  "summary_by_source": {
+    "aiguard_unseen": {
+      "n": 50,
+      "mean_hot_first_auc": 0.9274,
+      "mean_bottom_first_auc": 0.8353,
+      "mean_diff_hot_minus_bottom": 0.0921,
+      "cohens_d": 1.8813,
+      "bootstrap_ci_95": [
+        0.0793,
+        0.1068
+      ],
+      "hot_auc_significantly_greater": true
+    },
+    "stylegan2_ood": {
+      "n": 50,
+      "mean_hot_first_auc": 0.9322,
+      "mean_bottom_first_auc": 0.8307,
+      "mean_diff_hot_minus_bottom": 0.1015,
+      "cohens_d": 2.1466,
+      "bootstrap_ci_95": [
+        0.0898,
+        0.1147
+      ],
+      "hot_auc_significantly_greater": true
+    },
+    "truetest_df40": {
+      "n": 50,
+      "mean_hot_first_auc": 0.9378,
+      "mean_bottom_first_auc": 0.9077,
+      "mean_diff_hot_minus_bottom": 0.0301,
+      "cohens_d": 1.1338,
+      "bootstrap_ci_95": [
+        0.0238,
+        0.0379
+      ],
+      "hot_auc_significantly_greater": true
+    }
+  }
+}

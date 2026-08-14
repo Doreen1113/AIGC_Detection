@@ -1,0 +1,34 @@
+{
+  "provenance": {
+    "layer1_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+    "layer1_weights_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+    "layer2_weights_path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+    "layer2_weights_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+    "script_path": "c:\\My_Project\\AIGC\\eval_truetest_paired.py",
+    "script_sha256": "2b861f7f86097906f28eca2eaa9ccb2bdffaabb9f8e26f94df4ccab4d1309698",
+    "git_commit": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+    "command_line": "python eval_truetest_paired.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth",
+    "console_log_path": "c:\\My_Project\\AIGC\\results\\releases\\v8.11_production_20260813\\truetest_paired_run_console.log",
+    "timestamp_utc_approx": "2026-08-13T04:10-04:15 (observed during this run; script has no internal timestamp)",
+    "provenance_capture_method": "COMPANION METADATA (script not edited -- not in the 4 authorized-edit list; provenance reconstructed externally by this repair task, hashes computed independently via PowerShell Get-FileHash, cross-checked against the same L1/L2 checkpoint hashes embedded by the 4 edited scripts' own runs)"
+  },
+  "eval_name": "truetest_paired",
+  "note": "This script is NOT one of the 4 scripts authorized for editing in this P0 task; it already defaulted correctly to v811d/v811 and was invoked here with explicit positional args (no source modification). It has no internal JSON/provenance output mechanism, so this companion metadata file plus the raw console capture together constitute this run's provenance record.",
+  "key_results": {
+    "true_test_matched_pairs": 249,
+    "both_correct_pct": 62.2,
+    "filter_biased_pct": 31.3,
+    "missed_filter_pct": 6.4,
+    "both_wrong_pct": 0.0,
+    "filter_recall_pct": 93.6,
+    "real_recall_pct": 68.7,
+    "balanced_accuracy_pct": 81.1,
+    "strict_per_pair_accuracy_pct": 62.2,
+    "by_filter_type_both_ok_pct": {
+      "smoothing": 63.5,
+      "whitening": 64.5,
+      "eye_enlarging": 53.2,
+      "face_reshaping": 67.7
+    }
+  }
+}

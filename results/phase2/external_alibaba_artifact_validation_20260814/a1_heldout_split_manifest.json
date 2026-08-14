@@ -1,0 +1,14 @@
+{
+  "note": "Reconstructed test split via identical train_test_split(seed=42, stratify) calls as AIGuard/train_artifact_classifier_v3.py, applied to the SAME source file (filter_data/clean_output/clean_paths.txt) in its current on-disk order. If clean_paths.txt has not changed since original training, this reproduces the exact original held-out test set (not a fresh resample). Not independently verified against a saved original split file (none exists on disk) -- flagged per task instructions.",
+  "n_test": 2522,
+  "classes": [
+    "eye_enlarging",
+    "face_reshaping",
+    "smoothing",
+    "whitening"
+  ],
+  "seed": 42,
+  "clean_txt_path": "C:\\My_Project\\AIGC\\filter_data\\clean_output\\clean_paths.txt",
+  "clean_txt_n_lines": 25213,
+  "timestamp_utc": "2026-08-14T08:42:00.775753+00:00"
+}

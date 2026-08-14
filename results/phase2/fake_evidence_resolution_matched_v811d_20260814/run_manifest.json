@@ -1,0 +1,120 @@
+{
+  "seed": 20260814,
+  "n_boot": 1000,
+  "feature": "tex_local_variance_std",
+  "caliper_per_dim_sd": 0.2,
+  "matching_method": "1:1 optimal assignment (scipy.optimize.linear_sum_assignment) on standardized Euclidean distance, without replacement, real pool = pooled real (celeba_test+lfw+aiguard_unseen_real, n=210) for every fake source (documented consistent choice; no cross-source borrowing of fake images, each fake source matched independently against the full real pool using its own covariate distribution)",
+  "caliper_definition": "match discarded (MISSING_INSUFFICIENT_MATCH) if optimal standardized Euclidean distance > 0.20 * sqrt(n_covariate_dims) (equivalent to an average per-dimension tolerance of 0.20 SD)",
+  "conditions": {
+    "resolution_matched": [
+      "log_resolution"
+    ],
+    "facesize_matched": [
+      "log_fbw",
+      "log_fbh",
+      "crop_scale"
+    ],
+    "joint_matched": [
+      "log_resolution",
+      "log_fbw",
+      "log_fbh",
+      "crop_scale"
+    ]
+  },
+  "source_data": "C:\\My_Project\\AIGC\\results\\phase2\\fake_evidence_discovery_v811d_20260814\\raw_features.csv",
+  "source_data_reused_not_reextracted": true,
+  "n_rows_dropped_missing_covariates": 1,
+  "n_real_pool": 209,
+  "fake_sources": [
+    "aiguard_unseen",
+    "stylegan2_ood",
+    "df40_dit",
+    "df40_sit",
+    "df40_ddim",
+    "df40_pixart",
+    "df40_sd21",
+    "midjourney"
+  ],
+  "per_source_stage_counts": {
+    "aiguard_unseen": {
+      "requested_face_gate_passed": 60,
+      "resolution_matched_valid_matched": 58,
+      "resolution_matched_missing_insufficient_match": 2,
+      "facesize_matched_valid_matched": 21,
+      "facesize_matched_missing_insufficient_match": 39,
+      "joint_matched_valid_matched": 7,
+      "joint_matched_missing_insufficient_match": 53
+    },
+    "stylegan2_ood": {
+      "requested_face_gate_passed": 60,
+      "resolution_matched_valid_matched": 60,
+      "resolution_matched_missing_insufficient_match": 0,
+      "facesize_matched_valid_matched": 8,
+      "facesize_matched_missing_insufficient_match": 52,
+      "joint_matched_valid_matched": 1,
+      "joint_matched_missing_insufficient_match": 59
+    },
+    "df40_dit": {
+      "requested_face_gate_passed": 44,
+      "resolution_matched_valid_matched": 44,
+      "resolution_matched_missing_insufficient_match": 0,
+      "facesize_matched_valid_matched": 3,
+      "facesize_matched_missing_insufficient_match": 41,
+      "joint_matched_valid_matched": 1,
+      "joint_matched_missing_insufficient_match": 43
+    },
+    "df40_sit": {
+      "requested_face_gate_passed": 45,
+      "resolution_matched_valid_matched": 45,
+      "resolution_matched_missing_insufficient_match": 0,
+      "facesize_matched_valid_matched": 2,
+      "facesize_matched_missing_insufficient_match": 43,
+      "joint_matched_valid_matched": 1,
+      "joint_matched_missing_insufficient_match": 44
+    },
+    "df40_ddim": {
+      "requested_face_gate_passed": 45,
+      "resolution_matched_valid_matched": 45,
+      "resolution_matched_missing_insufficient_match": 0,
+      "facesize_matched_valid_matched": 5,
+      "facesize_matched_missing_insufficient_match": 40,
+      "joint_matched_valid_matched": 1,
+      "joint_matched_missing_insufficient_match": 44
+    },
+    "df40_pixart": {
+      "requested_face_gate_passed": 45,
+      "resolution_matched_valid_matched": 10,
+      "resolution_matched_missing_insufficient_match": 35,
+      "facesize_matched_valid_matched": 22,
+      "facesize_matched_missing_insufficient_match": 23,
+      "joint_matched_valid_matched": 5,
+      "joint_matched_missing_insufficient_match": 40
+    },
+    "df40_sd21": {
+      "requested_face_gate_passed": 44,
+      "resolution_matched_valid_matched": 5,
+      "resolution_matched_missing_insufficient_match": 39,
+      "facesize_matched_valid_matched": 36,
+      "facesize_matched_missing_insufficient_match": 8,
+      "joint_matched_valid_matched": 8,
+      "joint_matched_missing_insufficient_match": 36
+    },
+    "midjourney": {
+      "requested_face_gate_passed": 45,
+      "resolution_matched_valid_matched": 10,
+      "resolution_matched_missing_insufficient_match": 35,
+      "facesize_matched_valid_matched": 27,
+      "facesize_matched_missing_insufficient_match": 18,
+      "joint_matched_valid_matched": 8,
+      "joint_matched_missing_insufficient_match": 37
+    }
+  },
+  "package_versions": {
+    "numpy": "2.2.6",
+    "pandas": "3.0.3",
+    "scipy": "1.18.0",
+    "sklearn": "1.9.0",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.11.0"
+  }
+}

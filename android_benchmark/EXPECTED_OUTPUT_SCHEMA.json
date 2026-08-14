@@ -1,0 +1,88 @@
+{
+  "_comment": "Schema (with placeholder TODO values, NOT real measurements) for the completed Android on-device benchmark result. Save a real completed run using this shape as a new dated file under android_benchmark/results/<device_model>_<date>/ per C_ANDROID_HANDOFF_README_TEMPLATE.md -- never overwrite an existing result.",
+  "schema_version": "1.0.0",
+  "release_under_test": {
+    "release_id": "v8.11_production_20260813",
+    "release_status_at_time_of_benchmark": "FROZEN_DESKTOP_VALIDATED (per docs/releases/v8.11_production/RELEASE_MANIFEST.json -- android_on_device_status was PENDING before this benchmark)"
+  },
+  "checkpoint_provenance": {
+    "layer1": {
+      "training_checkpoint_path": "shufflenet_v2_layer1_v811d.pth",
+      "training_checkpoint_sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7",
+      "tflite_source_path": "results/mobile_export/layer1_v811d_tf/layer1_v811d_float32.tflite",
+      "tflite_sha256_expected": "c16cf71f250bea1cc83fe171dc7120edbd2335c06eef3f20998e20d2f4194389",
+      "tflite_sha256_recomputed_on_device": "<TODO: sha256sum on the Android-side copy, must equal tflite_sha256_expected -- if not, STOP and re-copy>"
+    },
+    "layer2": {
+      "training_checkpoint_path": "shufflenet_v2_layer2_v811.pth",
+      "training_checkpoint_sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e",
+      "tflite_source_path": "results/mobile_export/layer2_v811_tf/layer2_v811_float32.tflite",
+      "tflite_sha256_expected": "3deed69d6ca4ebb9f7597391ce04390c49758e283a59bbbc988f615dd14eb0cd",
+      "tflite_sha256_recomputed_on_device": "<TODO: sha256sum on the Android-side copy>"
+    },
+    "combined_size_bytes_expected": 20929276,
+    "combined_size_bytes_on_device": "<TODO: actual on-disk size once bundled into the app>"
+  },
+  "routing_rule_implemented": "production_composite (Layer2 always runs, per PRODUCTION_ROUTING_SPEC.md -- this is the ONLY primary path for this Android benchmark; a strict-gate comparison may be recorded separately but must not replace this)",
+  "device_metadata": {
+    "manufacturer": "<TODO>",
+    "model": "<TODO: e.g. Pixel 8, from Build.MODEL>",
+    "soc": "<TODO: chipset, e.g. Google Tensor G3>",
+    "android_version": "<TODO: Build.VERSION.RELEASE / API level>",
+    "total_ram_mb": "<TODO>",
+    "battery_level_pct_at_start": "<TODO>",
+    "thermal_state_at_start": "<TODO: from PowerManager.getCurrentThermalStatus() if available>",
+    "runtime": "<TODO: e.g. org.tensorflow:tensorflow-lite:2.x.y -- record exact version>",
+    "threads": "<TODO: int, LiteRT interpreter thread count used for this run>",
+    "delegate": "<TODO: 'CPU' | 'NNAPI' | 'GPU' -- CPU is the required baseline>",
+    "benchmark_date_utc": "<TODO: ISO 8601 timestamp>",
+    "app_build_identifier": "<TODO: git commit hash of the Kotlin project state, or Gradle build number>"
+  },
+  "warmup": {"runs_per_path": 10, "discarded": true},
+  "timed_runs": {
+    "real_path": {
+      "n_runs": 100,
+      "aggregate": {"mean_ms": "<TODO>", "p50_ms": "<TODO>", "p95_ms": "<TODO>", "max_ms": "<TODO>"}
+    },
+    "manipulated_path": {
+      "n_runs": 100,
+      "aggregate": {"mean_ms": "<TODO>", "p50_ms": "<TODO>", "p95_ms": "<TODO>", "max_ms": "<TODO>"}
+    },
+    "end_to_end_path": {
+      "n_runs": 100,
+      "aggregate": {"mean_ms": "<TODO>", "p50_ms": "<TODO>", "p95_ms": "<TODO>", "max_ms": "<TODO>"}
+    }
+  },
+  "initialization": {"init_ms": "<TODO: one-time cost to load both .tflite models and allocate interpreter tensors>"},
+  "memory": {"peak_memory_mb": "<TODO: from a real on-device measurement API, not an estimate>"},
+  "prediction_consistency": {
+    "n_images_compared": "<TODO: up to 40>",
+    "n_matching_golden": "<TODO>",
+    "consistency_fraction": "<TODO>",
+    "golden_reference_source": "android_benchmark/golden_outputs/ (see golden_outputs/README.md)"
+  },
+  "stability_run": {
+    "n_runs": 500,
+    "path_used": "manipulated (exercises both models, the stricter test)",
+    "crash_count": "<TODO: must be 0 to pass gate 5>",
+    "first_100_mean_ms": "<TODO>",
+    "last_100_mean_ms": "<TODO>",
+    "degradation_percent": "<TODO: must be <= 30 to pass gate 6>",
+    "thermal_notes": "<TODO: throttling observed, device warm/hot state>"
+  },
+  "acceptance_gate_evaluation": {
+    "gate_1_combined_size_le_25mb": "<TODO: PASS|FAIL>",
+    "gate_2_real_path_p50_le_100ms": "<TODO: PASS|FAIL>",
+    "gate_3_manipulated_path_p50_le_150ms": "<TODO: PASS|FAIL>",
+    "gate_4_manipulated_path_p95_le_250ms": "<TODO: PASS|FAIL>",
+    "gate_5_zero_crashes_in_500_runs": "<TODO: PASS|FAIL>",
+    "gate_6_latency_drift_le_30pct": "<TODO: PASS|FAIL>",
+    "gate_7_golden_prediction_consistency_100pct": "<TODO: PASS|FAIL>"
+  },
+  "optional_delegate_comparison": {
+    "note": "NNAPI/GPU delegate numbers, if measured, go here as a SEPARATE comparison -- must never replace the CPU baseline above for gate evaluation",
+    "nnapi": "<TODO: optional>",
+    "gpu": "<TODO: optional>"
+  },
+  "overall_result": "<TODO: 'ALL_GATES_PASSED' | 'PARTIAL_PASS' | 'FAILED' -- do not fill in until all 7 gates above have real evaluated values>"
+}

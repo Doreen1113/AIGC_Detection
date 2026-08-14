@@ -1,0 +1,165 @@
+{
+  "primary_joint_matched": {
+    "per_source": {
+      "aiguard_unseen": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 14
+      },
+      "df40_ddim": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 2
+      },
+      "df40_dit": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 2
+      },
+      "df40_pixart": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 10
+      },
+      "df40_sd21": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 16
+      },
+      "df40_sit": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 2
+      },
+      "midjourney": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 16
+      },
+      "stylegan2_ood": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 2
+      }
+    },
+    "pooled_naive": {
+      "method": "statsmodels.Logit (MLE)",
+      "n": 64,
+      "coef_tex_local_variance_std": -0.43824176047469704,
+      "se": 0.2954021353708242,
+      "p_value": 0.13793020939901574,
+      "ci_lower": -1.0172193067577382,
+      "ci_upper": 0.14073578580834406,
+      "converged": true
+    },
+    "pooled_source_fixed_effects": {
+      "method": "statsmodels.Logit (MLE)",
+      "n": 64,
+      "coef_tex_local_variance_std": -0.5359096154867024,
+      "se": 0.33542700942498066,
+      "p_value": 0.11011116437477438,
+      "ci_lower": -1.1933344734016416,
+      "ci_upper": 0.12151524242823697,
+      "converged": true,
+      "note": "Fixed-effects (source dummy) logistic regression used instead of a true random-intercept MixedLM: per-source matched n (44-70, further reduced by the joint caliper) is too small for a stable random-effects variance estimate; a fixed-effects model is a documented, more conservative substitute that still absorbs source-level baseline differences."
+    },
+    "_note": "PRIMARY analysis: pooled joint (resolution+face-size) matched set. n is small (see per-source n) because the joint caliper (0.20 SD/dim, 4 dims) is strict relative to sample size."
+  },
+  "secondary_resolution_matched": {
+    "per_source": {
+      "aiguard_unseen": {
+        "method": "statsmodels.Logit fit_regularized (fallback, MLE failed/separated)",
+        "n": 116,
+        "coef_tex_local_variance_std": 0.0,
+        "se": null,
+        "p_value": null,
+        "ci_lower": null,
+        "ci_upper": null,
+        "converged": false,
+        "mle_error": "Singular matrix"
+      },
+      "df40_ddim": {
+        "method": "statsmodels.Logit fit_regularized (fallback, MLE failed/separated)",
+        "n": 90,
+        "coef_tex_local_variance_std": -1.6342444517282282,
+        "se": null,
+        "p_value": null,
+        "ci_lower": null,
+        "ci_upper": null,
+        "converged": false,
+        "mle_error": "Singular matrix"
+      },
+      "df40_dit": {
+        "method": "statsmodels.Logit fit_regularized (fallback, MLE failed/separated)",
+        "n": 88,
+        "coef_tex_local_variance_std": -0.8082350993716896,
+        "se": null,
+        "p_value": null,
+        "ci_lower": null,
+        "ci_upper": null,
+        "converged": false,
+        "mle_error": "Singular matrix"
+      },
+      "df40_pixart": {
+        "method": "statsmodels.Logit (MLE)",
+        "n": 20,
+        "coef_tex_local_variance_std": -9.183958673856882,
+        "se": 5.165106908500719,
+        "p_value": 0.07539118146750133,
+        "ci_lower": -19.30738219081731,
+        "ci_upper": 0.939464843103547,
+        "converged": true
+      },
+      "df40_sd21": {
+        "method": "SKIPPED_INSUFFICIENT_N",
+        "n": 10
+      },
+      "df40_sit": {
+        "method": "statsmodels.Logit fit_regularized (fallback, MLE failed/separated)",
+        "n": 90,
+        "coef_tex_local_variance_std": -0.5008323343678022,
+        "se": null,
+        "p_value": null,
+        "ci_lower": null,
+        "ci_upper": null,
+        "converged": false,
+        "mle_error": "Singular matrix"
+      },
+      "midjourney": {
+        "method": "statsmodels.Logit (MLE)",
+        "n": 20,
+        "coef_tex_local_variance_std": 1.0266328551913033,
+        "se": 1.0454311260627462,
+        "p_value": 0.3260906640656759,
+        "ci_lower": -1.0223745002088322,
+        "ci_upper": 3.075640210591439,
+        "converged": true
+      },
+      "stylegan2_ood": {
+        "method": "statsmodels.Logit fit_regularized (fallback, MLE failed/separated)",
+        "n": 120,
+        "coef_tex_local_variance_std": -0.18694461041775387,
+        "se": null,
+        "p_value": null,
+        "ci_lower": null,
+        "ci_upper": null,
+        "converged": false,
+        "mle_error": "Singular matrix"
+      }
+    },
+    "pooled_naive": {
+      "method": "statsmodels.Logit (MLE)",
+      "n": 554,
+      "coef_tex_local_variance_std": -0.6843697716136967,
+      "se": 0.15287117457850752,
+      "p_value": 7.577922666376711e-06,
+      "ci_lower": -0.9839917680619066,
+      "ci_upper": -0.3847477751654869,
+      "converged": true
+    },
+    "pooled_source_fixed_effects": {
+      "method": "statsmodels.Logit (MLE)",
+      "n": 554,
+      "coef_tex_local_variance_std": -0.6863711507173442,
+      "se": 0.17940307367097952,
+      "p_value": 0.00013031602239275172,
+      "ci_lower": -1.0379947138282501,
+      "ci_upper": -0.33474758760643836,
+      "converged": true,
+      "note": "Fixed-effects (source dummy) logistic regression used instead of a true random-intercept MixedLM: per-source matched n (44-70, further reduced by the joint caliper) is too small for a stable random-effects variance estimate; a fixed-effects model is a documented, more conservative substitute that still absorbs source-level baseline differences."
+    },
+    "_note": "SECONDARY/supplementary robustness analysis: pooled resolution-ONLY matched set (larger n, face-size not separately controlled here -- see joint result as the primary, stricter check)."
+  }
+}

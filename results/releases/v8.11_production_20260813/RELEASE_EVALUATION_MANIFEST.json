@@ -1,0 +1,251 @@
+{
+  "release_id": "v8.11_production_20260813",
+  "task": "P0 Production Evaluation Integrity Repair",
+  "created_at": "2026-08-13T04:35:00Z",
+  "git_commit_at_run_time": "971a996d308aa383ebbcf48a8fefd082609c0f95",
+  "official_production_checkpoints": {
+    "layer1": {
+      "path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer1_v811d.pth",
+      "sha256": "3c61cf6886d2f9d4871b52749a15fd4e1b979d121c664ba85d9b069194c290b7"
+    },
+    "layer2": {
+      "path": "C:\\My_Project\\AIGC\\shufflenet_v2_layer2_v811.pth",
+      "sha256": "8470ad52dadcdb44a6789067efbbd7fbc20715cb3f4e3339630191889a55057e"
+    },
+    "artifact_classifier": {
+      "path": "C:\\My_Project\\AIGC\\artifact_classifier_v3.pth",
+      "sha256": "c5589c1839619bb3747f6562e188c83fd57cb856ee8fc4e7fb3c29e639b4c286",
+      "note": "Not exercised by any of the 6 evals in this pass (none test the artifact-subtype classifier specifically); hash recorded for completeness against the official 3-checkpoint definition."
+    }
+  },
+  "scripts_edited_this_task": [
+    {
+      "script": "eval_v811_gates.py",
+      "was_fail_open": true,
+      "old_default_layer1": "shufflenet_v2_layer1_v811c.pth (SUPERSEDED)",
+      "now_fail_closed": true,
+      "sha256_after_fix": "68955418fd525f9142db36bb3b3bb26ef43aea64f8a9b7a9fbd2b6e9f8271d31"
+    },
+    {
+      "script": "AIGuard/stress_test_v811_pipeline.py",
+      "was_fail_open": true,
+      "old_default_layer1": "shufflenet_v2_layer1_v811c.pth (SUPERSEDED)",
+      "now_fail_closed": true,
+      "sha256_after_fix": "892d629c223d7aa4ae4264a05c224f245902241f6f61c42f668e94ac144ee96a"
+    },
+    {
+      "script": "AIGuard/eval_ali_ood_v811.py",
+      "was_fail_open": true,
+      "old_default_layer1": "shufflenet_v2_layer1_v811c.pth (SUPERSEDED)",
+      "now_fail_closed": true,
+      "sha256_after_fix": "409556aeeafdcb36addf5d04b81203ab111480f173a86346ee3efde57d2d3839"
+    },
+    {
+      "script": "AIGuard/eval_robustness.py",
+      "was_fail_open": true,
+      "old_default_layer1": "shufflenet_v2_layer1_v811c.pth (SUPERSEDED)",
+      "now_fail_closed": true,
+      "sha256_after_fix": "3468611c0772a297b82b51e65a85e28046a13af9c320ca24c86eeca5969fe435"
+    }
+  ],
+  "scripts_run_unedited_out_of_scope": [
+    {
+      "script": "eval_truetest_paired.py",
+      "sha256": "2b861f7f86097906f28eca2eaa9ccb2bdffaabb9f8e26f94df4ccab4d1309698",
+      "reason_not_edited": "Not in the 4-script authorized-edit list; already defaulted correctly to v811d/v811."
+    },
+    {
+      "script": "eval_truetest_filter_bytype_v811.py",
+      "sha256": "149acf30cffe8e5b28f6d1fb2ad664e03f78ea34fac9c30ba4b82d5b297c5872",
+      "reason_not_edited": "Not in the 4-script authorized-edit list; already defaulted correctly to v811d/v811."
+    },
+    {
+      "script": "eval_paired_both_domains.py",
+      "sha256": "b3c09a97bd18613f1b8c4646d9fbdf2636185c51551a9ff2561c6598a16e7da5",
+      "reason_not_edited": "Not in the 4-script authorized-edit list; already defaulted correctly to v811d/v811."
+    },
+    {
+      "script": "eval_v811_layer1_shadow.py",
+      "sha256": "3385eb292f7aed8c7de24bb998fd768270939a9dab8e37cce3e0a36801e564ec",
+      "reason_not_edited": "Not in the 4-script authorized-edit list; default was shufflenet_v2_layer1_v811.pth (not v811d, not v811c either) -- ran with explicit CLI arg instead of relying on default."
+    }
+  ],
+  "evaluations": [
+    {
+      "step": "3.1 Core gate evaluation",
+      "status": "SUCCESS",
+      "script": "eval_v811_gates.py",
+      "command": "python eval_v811_gates.py --layer1-weights shufflenet_v2_layer1_v811d.pth --layer2-weights shufflenet_v2_layer2_v811.pth",
+      "output_json": "core_gates_v811d_layer2v811_20260813.json",
+      "console_log": "core_gates_run_console.log",
+      "results": {
+        "true_test_filter_recall_pct": 93.57429718875501,
+        "aiguard_unseen_fake_auroc": 0.8149898848428261,
+        "celeba_real_recall_pct": 99.73333333333333,
+        "stylegan2_not_real_recall_pct": 99.63333333333333
+      }
+    },
+    {
+      "step": "3.2 Alibaba filter OOD",
+      "status": "SUCCESS",
+      "script": "AIGuard/eval_ali_ood_v811.py",
+      "command": "python AIGuard/eval_ali_ood_v811.py --layer1-weights shufflenet_v2_layer1_v811d.pth --layer2-weights shufflenet_v2_layer2_v811.pth",
+      "output_json": "alibaba_filter_ood_v811d_layer2v811_20260813.json",
+      "console_log": "alibaba_ood_run_console.log",
+      "results": {
+        "overall_recall_pct": 98.07101319086567,
+        "n": 21151,
+        "by_type": {
+          "EyeEnlarging": 98.13,
+          "FaceLifting": 96.96,
+          "Smoothing": 99.87,
+          "Whitening": 97.33
+        }
+      },
+      "note": "This RESOLVES the previously-UNVERIFIABLE 98.1% figure flagged in docs/releases/v8.11_production/ORPHAN_AND_UNVERIFIABLE_REGISTER.md -- now backed by a fresh, fully-provenanced result file. 20743/21151 matches CLAUDE.md/TODO.md's narrative figure exactly."
+    },
+    {
+      "step": "3.3 True Test paired evaluation",
+      "status": "SUCCESS",
+      "script": "eval_truetest_paired.py (not in 4-script edit list; run unedited with explicit args)",
+      "command": "python eval_truetest_paired.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth",
+      "output_json": "truetest_paired_v811d_layer2v811_20260813_provenance.json (companion metadata; script itself is console-only)",
+      "console_log": "truetest_paired_run_console.log",
+      "results": {
+        "balanced_accuracy_pct": 81.1,
+        "filter_recall_pct": 93.6,
+        "real_recall_pct": 68.7,
+        "strict_pct": 62.2
+      },
+      "note": "This RESOLVES the previously-UNVERIFIABLE 81.1% Freeze Gate figure flagged in the prior release pass -- now backed by an archived console capture + companion provenance file."
+    },
+    {
+      "step": "3.4 True Test filter-by-type evaluation",
+      "status": "SUCCESS",
+      "script": "eval_truetest_filter_bytype_v811.py (not in 4-script edit list; run unedited with explicit args)",
+      "command": "python eval_truetest_filter_bytype_v811.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth",
+      "output_json": "truetest_filter_bytype_v811d_layer2v811_20260813_provenance.json (companion metadata; script itself is console-only)",
+      "console_log": "truetest_bytype_run_console.log",
+      "results": {
+        "smoothing_pct": 100.0,
+        "whitening_pct": 95.2,
+        "eye_enlarging_pct": 82.3,
+        "face_reshaping_pct": 96.8,
+        "overall_pct": 93.6
+      },
+      "note": "This RESOLVES the previously-UNVERIFIABLE per-type breakdown flagged in the prior release pass -- matches CLAUDE.md exactly."
+    },
+    {
+      "step": "3.5 Robustness evaluation (JPEG/blur/downscale/lighting/pose)",
+      "status": "SUCCESS",
+      "script": "AIGuard/eval_robustness.py",
+      "command": "python AIGuard/eval_robustness.py --layer1-weights shufflenet_v2_layer1_v811d.pth --layer2-weights shufflenet_v2_layer2_v811.pth",
+      "output_json": "robustness_eval_v811d_layer2v811_20260813.json",
+      "console_log": "robustness_run_console.log",
+      "results": {
+        "baseline": {
+          "overall_pct": 87.5,
+          "real_pct": 68.4,
+          "fake_pct": 99.6,
+          "filter_pct": 93.6
+        },
+        "worst_case_condition": "downscale_upscale_4x: overall=69.2%, real=16.8%",
+        "n_conditions": 19
+      }
+    },
+    {
+      "step": "3.6 Shadow paired evaluation / error routing",
+      "status": "SUCCESS",
+      "script": "eval_paired_both_domains.py (not in 4-script edit list; run unedited with explicit args) + eval_v811_layer1_shadow.py (supplementary)",
+      "command": "python eval_paired_both_domains.py shufflenet_v2_layer1_v811d.pth shufflenet_v2_layer2_v811.pth ; python eval_v811_layer1_shadow.py shufflenet_v2_layer1_v811d.pth",
+      "output_json": "paired_both_domains_truetest_and_shadow_v811d_layer2v811_20260813_provenance.json, shadow_layer1_isolated_v811d_20260813_provenance.json (companion metadata; scripts are console-only)",
+      "console_log": "paired_both_domains_run_console.log, shadow_layer1_isolated_run_console.log",
+      "results": {
+        "shadow_balanced_accuracy_pct": 43.5,
+        "shadow_filter_recall_pct": 10.0,
+        "shadow_real_recall_pct": 77.1,
+        "shadow_error_direction": {
+          "both_ok_pct": 7.2,
+          "filter_biased_pct": 2.9,
+          "missed_filter_pct": 69.9,
+          "both_wrong_pct": 20.1
+        },
+        "layer1_isolated_real_recall_pct": 76.9,
+        "layer1_isolated_auroc": 0.7907
+      }
+    }
+  ],
+  "failed_or_missing": [
+    {
+      "item": "iPhone on-device benchmark",
+      "status": "NOT ATTEMPTED (out of scope for this task)",
+      "reason": "No script exists in the repo for real-device benchmarking; this was already documented as the one pending Freeze Gate item in the prior release pass and remains Pending. This P0 task's scope is desktop-CPU/GPU evaluation integrity, not device provisioning."
+    }
+  ],
+  "output_file_hashes": {
+    "alibaba_filter_ood_v811d_layer2v811_20260813.json": {
+      "size_bytes": 1792,
+      "sha256": "3daffcd97aa0e392814c9d02f9382e36768d2471737ffa096418945c392c860a"
+    },
+    "alibaba_ood_run_console.log": {
+      "size_bytes": 2251,
+      "sha256": "5093a71783a3d76a5b04a04cc222f84249f52119f05bb13cee3b1d09b8c2a906"
+    },
+    "core_gates_run_console.log": {
+      "size_bytes": 1754,
+      "sha256": "a921a13f61b9540894e88ce84b00d3333b5dcdbd949e321617c0b2029cf7a2b9"
+    },
+    "core_gates_v811d_layer2v811_20260813.json": {
+      "size_bytes": 1205,
+      "sha256": "c5bd9a9e295b5ad9bab8d5dd337874dd7954a9b2159072d55c117902f6bcbdf3"
+    },
+    "paired_both_domains_run_console.log": {
+      "size_bytes": 3262,
+      "sha256": "4dadeefb8362ef57b66643abe854274baf5cf1f3ced6ff9a1a8dd15667beb493"
+    },
+    "paired_both_domains_truetest_and_shadow_v811d_layer2v811_20260813_provenance.json": {
+      "size_bytes": 2231,
+      "sha256": "6a82aeeaa24492671eed8b1c22db2a6ea80ea03dc2104279fd27d15953f8aff5"
+    },
+    "robustness_eval_v811d_layer2v811_20260813.json": {
+      "size_bytes": 12808,
+      "sha256": "7d5c1ac349226f94c7593149e437996f50d760fd58e2dc7fa0969890e0176eaa"
+    },
+    "robustness_run_console.log": {
+      "size_bytes": 5084,
+      "sha256": "3c1ddeaa33703deb9e2558c8924b906ee83319f469290e03d076b32945c0a806"
+    },
+    "shadow_layer1_isolated_run_console.log": {
+      "size_bytes": 1631,
+      "sha256": "6d607b0aa569390573e75e4660963bb7c904e686a9db76f48c3c035cd8c1e790"
+    },
+    "shadow_layer1_isolated_v811d_20260813_provenance.json": {
+      "size_bytes": 1721,
+      "sha256": "b00abb390fbfc55858c61ca656156c3ee740e207037e67c34b7b2ddbb7676ba3"
+    },
+    "stress_test_run_console.log": {
+      "size_bytes": 3837,
+      "sha256": "3f86fb4884edd234cf8590c044080faebbd97275f70d68623273ed308dc51cc8"
+    },
+    "stress_test_v811d_layer2v811_20260813.json": {
+      "size_bytes": 187516,
+      "sha256": "47ec0a8e8bef242a954e305d0f0a56bb0ea5189f5f051cffd0115dc845beddb1"
+    },
+    "truetest_bytype_run_console.log": {
+      "size_bytes": 1191,
+      "sha256": "c646722e09c6120e032d942efab568ea1484b0f6b9034deacf5741c136502872"
+    },
+    "truetest_filter_bytype_v811d_layer2v811_20260813_provenance.json": {
+      "size_bytes": 1751,
+      "sha256": "df0dbfd9bcb6bd5109fe3756ff5a5fff3cf0818b9fe34725c9de8599503d458e"
+    },
+    "truetest_paired_run_console.log": {
+      "size_bytes": 2924,
+      "sha256": "a5dbc6b830b4a6b8c399e5696aee96b57524e608f8274436fcedbef77bf9fe61"
+    },
+    "truetest_paired_v811d_layer2v811_20260813_provenance.json": {
+      "size_bytes": 2197,
+      "sha256": "ed86a6aa6e7b7b91d781a7794ac2152f7dc98d305c645b669df8886ac06b526c"
+    }
+  }
+}

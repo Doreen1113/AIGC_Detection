@@ -1,0 +1,99 @@
+{
+  "release_id": "v8.11_production",
+  "created_at": "2026-08-13T03:35:10Z",
+  "project_root": "c:\\My_Project\\AIGC",
+  "production_scope": "Single static face image, three-way classification: real / fake / filter (filter = identity-preserving beautification: smoothing, whitening, eye_enlarging, face_reshaping). Hierarchical inference: Layer1 (real vs manipulated) -> Layer2 (fake vs filter, only if Layer1 says manipulated) -> artifact classifier (only if final label is filter) -> Grad-CAM++ heatmap + rule-based explanation. Not a video/temporal deepfake detector; not validated for FF++-style compressed video frames as a primary claim.",
+  "checkpoints": {
+    "layer1_v811d": {
+      "path": "./shufflenet_v2_layer1_v811d.pth",
+      "size_bytes": 10313868,
+      "sha256": "3C61CF6886D2F9D4871B52749A15FD4E1B979D121C664BA85D9B069194C290B7"
+    },
+    "layer2_v811": {
+      "path": "./shufflenet_v2_layer2_v811.pth",
+      "size_bytes": 10313499,
+      "sha256": "8470AD52DADCDB44A6789067EFBBD7FBC20715CB3F4E3339630191889A55057E"
+    },
+    "artifact_classifier_v3": {
+      "path": "./artifact_classifier_v3.pth",
+      "size_bytes": 5209219,
+      "sha256": "C5589C1839619BB3747F6562E188C83FD57CB856EE8FC4E7FB3C29E639B4C286"
+    },
+    "face_landmarker_task": {
+      "path": "./face_landmarker.task",
+      "size_bytes": 3758596,
+      "sha256": "64184E229B263107BC2B804C6625DB1341FF2BB731874B0BCC2FE6544E0BC9FF",
+      "notes": "MediaPipe FaceLandmarker model used by pipeline.py's has_face() gate (added 2026-08-11). Not a trained classifier weight, but load-bearing for production inference; included here because pipeline.py cannot run without it."
+    }
+  },
+  "verified_pipeline_routing": {
+    "source": "pipeline.py lines 52-54, read directly in this pass, not assumed",
+    "LAYER1_WEIGHTS_PATH": "os.path.join(BASE, \"shufflenet_v2_layer1_v811d.pth\")",
+    "LAYER2_WEIGHTS_PATH": "os.path.join(BASE, \"shufflenet_v2_layer2_v811.pth\")",
+    "ARTIFACT_WEIGHTS_PATH": "os.path.join(BASE, \"artifact_classifier_v3.pth\")",
+    "matches_official_production_baseline_definition": true
+  },
+  "pipeline_py_sha256": "603584EFBE791F9135805392C2309AB683EF4DFDFB4AC9401C51ED668D2DDFC4",
+  "pipeline_py_size_bytes": 32184,
+  "mobile_fft_py_sha256": "31FD54024CB14FD7FAE69DC4EFDA8102EC698F65DDF54B79F5E3E4F03191E66A",
+  "mobile_fft_py_size_bytes": 5197,
+  "export_mobile_tflite_py_sha256": "954D37FC70B5AD33C596EF42A889991F8386B764D507B9CF745ACF79F568EE7C",
+  "export_mobile_tflite_py_size_bytes": 9450,
+  "current_tflite_artifact": {
+    "status": "FOUND",
+    "notes": "Production TFLite is TWO files (Layer1 + Layer2, hierarchical architecture cannot be exported as a single graph). fp16 is documented broken (CONV_2D prepare failure); int8/dynamic-range quant is documented broken (recall collapses to 0% for filter/fake, see mobile_deployment_benchmark.json). Only the float32 pair is the validated deployable artifact, matching CLAUDE.md's '20.91 MB (兩層合計)' claim (10,964,640 + 10,964,636 bytes = 20,929,276 bytes = 19.96 MiB / 20.93 MB decimal -- consistent with the documented figure within rounding/unit-convention).",
+    "layer1_float32_tflite": {
+      "path": "./results/mobile_export/layer1_v811d_tf/layer1_v811d_float32.tflite",
+      "size_bytes": 10964640,
+      "sha256": "C16CF71F250BEA1CC83FE171DC7120EDBD2335C06EEF3F20998E20D2F4194389"
+    },
+    "layer2_float32_tflite": {
+      "path": "./results/mobile_export/layer2_v811_tf/layer2_v811_float32.tflite",
+      "size_bytes": 10964636,
+      "sha256": "3DEED69D6CA4EBB9F7597391CE04390C49758E283A59BBBC988F615DD14EB0CD"
+    },
+    "other_variants_present_but_NOT_the_validated_production_artifact": [
+      "./results/mobile_export/layer1_v811d_tf/layer1_v811d_float16.tflite (documented BROKEN -- fails to load, CONV_2D prepare error, per mobile_deployment_benchmark.json)",
+      "./results/mobile_export/layer1_v811d_tf/layer1_v811d_dynamic_range_quant.tflite (documented BROKEN for correctness -- recall collapses to 0% filter/fake, per mobile_deployment_benchmark.json)",
+      "./results/mobile_export/layer2_v811_tf/layer2_v811_float16.tflite (same fp16 issue)",
+      "./results/mobile_export/layer2_v811_tf/layer2_v811_dynamic_range_quant.tflite (same int8/dynamic-range correctness collapse)"
+    ]
+  },
+  "active_split_manifest": {
+    "status": "FOUND",
+    "notes": "No single unified 'v811 split manifest' file exists; production Layer1d and Layer2 v811 were each trained from a distinct pair of split files, confirmed by reading the SPLITS path constants directly out of the actual training scripts (AIGuard/train_v811_layer1d.py line 126-127, AIGuard/train_v811_layer2.py line 132-133). Layer1d's training script loads 'v811_layer1_round4_train.txt' (the round-4 hard-neg mined version), not the earlier 'v811_layer1_train.txt' -- do not conflate the two.",
+    "layer1_train": {"path": "./splits/v811_layer1_round4_train.txt", "size_bytes": 18722634, "line_count": 212375, "sha256": "8A33AC2209B3E1EC5EC1CB97ECA6C0AD2E8302BA0AF1115B5210EBD856F45FF9"},
+    "layer1_val": {"path": "./splits/v811_layer1_val.txt", "size_bytes": 1137758, "line_count": 14676, "sha256": "D8DAAF3A6A84E620FED60379E6DB5A3E8E1787C2CC90B6F8CBABF44E9BA703AA"},
+    "layer2_train": {"path": "./splits/v811_layer2_train.txt", "size_bytes": 13783593, "line_count": 146426, "sha256": "3AE92D2ACBF215897A31BE70C5FA9EC8410518F1A3B5C15985CF4E0A6C681BD4"},
+    "layer2_val": {"path": "./splits/v811_layer2_val.txt", "size_bytes": 794645, "line_count": 8794, "sha256": "B46BB7BB4E3F1E4942BBE8D6DFD40DDF3B2C7C963BEA5733EDF95270CAC28931"}
+  },
+  "current_preprocessing_configuration": {
+    "source": "Read directly out of pipeline.py's actual code in this pass; every field below is quoted/paraphrased from literal code, not inferred",
+    "image_resize": "transforms.Resize((224, 224)) -- used both for the classifier input tensor (transform_infer) and the artifact classifier input tensor (transform_artifact); pipeline.py line ~446-450 and ~306-310",
+    "normalization": "transforms.Normalize([0.5]*3, [0.5]*3) for both transform_infer and transform_artifact (i.e. mean=0.5,std=0.5 per channel, NOT ImageNet mean/std, despite the backbone being an ImageNet-pretrained ShuffleNetV2)",
+    "jpeg_preprocessing": "preprocess_jpeg(img_pil, quality=85): re-encodes the PIL image to an in-memory JPEG buffer at quality=85 and reloads it as RGB before inference, ON BY DEFAULT (jpeg_preprocess=True in run_single's signature; CLI flag --no_jpeg_preproc disables it). Rationale per code comment: '統一壓縮程度，改善 domain gap'.",
+    "face_presence_gate": "has_face(pil_img): converts to RGB numpy, wraps as mp.Image, runs MediaPipe FaceLandmarker (num_faces=1) via a lazy singleton (_get_face_landmarker loaded from FACE_LANDMARKER_PATH = face_landmarker.task); returns bool(res.face_landmarks). If no face detected, run_single short-circuits and returns prediction='non_face' WITHOUT running any classifier (added 2026-08-11 per in-code comment -- previously pipeline.py had no such gate at all).",
+    "input_tensor_construction": "image_np = np.array(pil_img.resize((224, 224))) is built separately from input_tensor = transform_infer(pil_img).unsqueeze(0).to(device) -- both derived from the same (already JPEG-preprocessed, face-gated) pil_img.",
+    "artifact_classifier_trigger": "classify_artifact() only runs when hierarchical_predict's final prediction == 'filter'; otherwise artifact_types come from the rule-based infer_artifact_type() using compute_skin_stats() (Laplacian-variance texture + LAB-L brightness thresholds: _SMOOTH_TEXTURE_THR=210, _WHITE_BRIGHT_THR=147) with Grad-CAM region fallback.",
+    "artifact_open_set_threshold": "ARTIFACT_UNKNOWN_THRESHOLD = 0.6 -- below this softmax confidence, classify_artifact returns ('unknown_filter', conf) instead of forcing a guess; code comment states this is a 'reasoned default... NOT a calibrated value'.",
+    "class_probability_composition": "hierarchical_predict() composes class_probs as a genuine joint distribution: P(real)=L1.P(real); P(fake)=L1.P(manip)*L2.P(fake|manip); P(filter)=L1.P(manip)*L2.P(filter|manip) -- these three sum to 1 and are directly comparable to the retired single-model v8.8 output format."
+  },
+  "known_limitations": [
+    "Shadow domain gap: cross-photography-style (VGGFace2-base) filter/real generalization remains far below True Test performance (Shadow real recall ~76.9-77.1% vs True Test in the 90s%; Shadow paired balanced accuracy only 43.5-56% depending on checkpoint, with v8.11 itself at the lower end of that range) -- root-caused to base-image photography-style domain gap, not filter-algorithm generalization (Alibaba cross-algorithm filter OOD is high).",
+    "Fake+filter end-to-end misclassification rate (85/2289 = 3.71%, AIGuard/unseen x 8 filter-strength conditions, see RELEASE_RESULTS.md) exceeds the original stretch-goal target of <=2%; this is a known, tracked gap, not a hidden one.",
+    "FaceForensics++ (FF++) fake recall does not meet the informal >=70% stretch goal -- Layer1 has a documented video/H.264-domain gap; FF++ is out of Phase 1's claimed scope.",
+    "Cross-source 'has_filter' joint recognition generalization (DF40-cdf cross-source composite test) remains far below the informal >=25% stretch goal even after the dedicated v8.16 mixed-lineage research attempt (2.02%->4.53%, still short) -- this research track exists specifically because of this gap and does NOT resolve it for production.",
+    "int8 mobile quantization is blocked: FFT branch magnitude has a ~7.6x10^9 dynamic range that per-tensor int8 quantization cannot represent (98% of frequency bins collapse to zero, producing NaN outputs) -- root-caused via diagnose_int8_collapse.py/diagnose_int8_collapse2.py, not merely observed.",
+    "Real on-device (iPhone) latency/memory benchmark is still pending -- this is the ONE Freeze Gate item not yet passed per TODO.md's own Freeze Gate table; all other static/desktop-measured gates pass.",
+    "fp16 TFLite export does not load at all (CONV_2D prepare failure); only fp32 TFLite (20.91 MB combined) is a validated, loadable, numerically-matching mobile artifact. Dynamic-range/int8 TFLite loads but produces incorrect predictions (recall collapses to 0% for filter/fake classes)."
+  ],
+  "status": {
+    "release_status": "FROZEN_DESKTOP_VALIDATED",
+    "checkpoint_provenance_status": "VERIFIED",
+    "evaluation_integrity_status": "VERIFIED",
+    "filter_xai_status": "VERIFIED",
+    "desktop_tflite_status": "VERIFIED",
+    "ios_on_device_status": "PENDING",
+    "status_justification": "Updated 2026-08-13 following the P0 Production Evaluation Integrity Repair (results/releases/v8.11_production_20260813/). That repair closed every gap that previously justified an overall PARTIALLY_VERIFIED rating: (1) Alibaba OOD filter recall (98.1%, 20,743/21,151) is now backed by a fresh, fully-provenanced result file (alibaba_filter_ood_v811d_layer2v811_20260813.json) -- checkpoint_provenance_status and evaluation_integrity_status VERIFIED; (2) True Test paired balanced accuracy (81.1%) is now backed by an archived console capture + companion provenance file (truetest_paired_v811d_layer2v811_20260813_provenance.json) -- evaluation_integrity_status VERIFIED; (3) the four eval scripts that previously silently defaulted to the superseded shufflenet_v2_layer1_v811c.pth checkpoint (eval_v811_gates.py, AIGuard/stress_test_v811_pipeline.py, AIGuard/eval_ali_ood_v811.py, AIGuard/eval_robustness.py) are now fail-closed (verified to reject no-argument invocations with exit code 1) -- the live footgun risk that justified withholding VERIFIED status is resolved. filter_xai_status VERIFIED per the existing v8.11d-checkpoint-confirmed Filter XAI validation (results/phase2_p0_v811_filter_gradcam_validation_20260813.json, checkpoint fields embedded in-file). desktop_tflite_status VERIFIED per the fp32 TFLite pair's confirmed load + numerical-match-to-PyTorch (mobile_deployment_benchmark.json, decision agreement 1.0 across 769/769 True Test images). ios_on_device_status remains PENDING -- no real-device benchmark has been run; this was never one of the gaps that caused the prior PARTIALLY_VERIFIED rating (it was already tracked separately as the sole open Freeze Gate item) and is unaffected by the P0 repair. release_status is FROZEN_DESKTOP_VALIDATED, not simply VERIFIED or PRODUCTION-READY, precisely to keep the iOS gap visible at the top level: every desktop/static claim this release makes is now independently verifiable from an archived, hash-stamped artifact, but the release has not been validated on the target deployment hardware. See docs/releases/v8.11_production/EVALUATION_INTEGRITY_REPAIR.md for the full repair narrative and docs/releases/v8.11_production/PHASE1_FREEZE_DECISION.md for the freeze decision this status block supports."
+  }
+}

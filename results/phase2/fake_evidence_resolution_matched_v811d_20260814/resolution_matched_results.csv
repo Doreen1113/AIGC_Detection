@@ -1,0 +1,33 @@
+source,condition,n_fake,n_real,cohens_d,auroc,auroc_ci_lower,auroc_ci_upper,direction,clears_060_bar,reliable_n
+aiguard_unseen,a_unmatched_recomputed,60,209,-0.20177636203827093,0.42942583732057416,0.3511901913875598,0.5111901913875597,higher-in-real,False,True
+aiguard_unseen,resolution_matched,58,58,-0.6561466973237675,0.30291319857312726,0.2059898929845422,0.4087767538644471,higher-in-real,True,True
+aiguard_unseen,facesize_matched,21,21,-0.6516985302156129,0.3197278911564626,0.1678004535147392,0.4875283446712018,higher-in-real,True,True
+aiguard_unseen,joint_matched,7,7,-0.12905119001256454,0.44897959183673475,0.16275510204081634,0.7551020408163265,UNRELIABLE_N<10 (higher-in-real),False,False
+stylegan2_ood,a_unmatched_recomputed,60,209,-0.5233813107076549,0.3715311004784689,0.3012659489633174,0.4395713716108453,higher-in-real,True,True
+stylegan2_ood,resolution_matched,60,60,-1.1277333838514754,0.2175,0.14470833333333333,0.3105625,higher-in-real,True,True
+stylegan2_ood,facesize_matched,8,8,-0.5436487620276667,0.375,0.109375,0.671875,UNRELIABLE_N<10 (higher-in-real),False,False
+stylegan2_ood,joint_matched,1,1,,1.0,1.0,1.0,UNRELIABLE_N<10 (no-diff),False,False
+df40_dit,a_unmatched_recomputed,44,209,-1.2742113231149954,0.10363201391909527,0.0469606350587212,0.1695438234014789,higher-in-real,True,True
+df40_dit,resolution_matched,44,44,-1.9280153547341374,0.05940082644628098,0.014449896694214873,0.1136621900826446,higher-in-real,True,True
+df40_dit,facesize_matched,3,3,-1.9434167960266195,0.0,0.0,0.0,UNRELIABLE_N<10 (higher-in-real),False,False
+df40_dit,joint_matched,1,1,,0.0,0.0,0.0,UNRELIABLE_N<10 (no-diff),False,False
+df40_sit,a_unmatched_recomputed,45,209,-1.2188540284149743,0.1250398724082935,0.06250930356193517,0.2001063264221159,higher-in-real,True,True
+df40_sit,resolution_matched,45,45,-1.8521815356821225,0.07506172839506173,0.021716049382716054,0.145679012345679,higher-in-real,True,True
+df40_sit,facesize_matched,2,2,-1.2023037882127474,0.0,0.0,0.0,UNRELIABLE_N<10 (higher-in-real),False,False
+df40_sit,joint_matched,1,1,,0.0,0.0,0.0,UNRELIABLE_N<10 (no-diff),False,False
+df40_ddim,a_unmatched_recomputed,45,209,-1.3028228425675372,0.0937799043062201,0.05940988835725678,0.13409090909090907,higher-in-real,True,True
+df40_ddim,resolution_matched,45,45,-2.295439266093857,0.038518518518518514,0.006913580246913583,0.08446913580246912,higher-in-real,True,True
+df40_ddim,facesize_matched,5,5,-0.39898765877800746,0.4800000000000001,0.12,0.8400000000000001,UNRELIABLE_N<10 (higher-in-real),False,False
+df40_ddim,joint_matched,1,1,,0.0,0.0,0.0,UNRELIABLE_N<10 (no-diff),False,False
+df40_pixart,a_unmatched_recomputed,45,209,-1.3849750894881836,0.07591706539074962,0.0408240297713982,0.11834928229665072,higher-in-real,True,True
+df40_pixart,resolution_matched,10,10,-1.3980681590754398,0.09999999999999999,0.0,0.24000000000000002,higher-in-real,True,True
+df40_pixart,facesize_matched,22,22,-1.738621592890413,0.05991735537190081,0.0,0.13636363636363635,higher-in-real,True,True
+df40_pixart,joint_matched,5,5,-1.6494458801745466,0.07999999999999999,0.0,0.32000000000000006,UNRELIABLE_N<10 (higher-in-real),False,False
+df40_sd21,a_unmatched_recomputed,44,209,-1.2457664703261748,0.12505437146585474,0.069141474554154,0.1946525663331883,higher-in-real,True,True
+df40_sd21,resolution_matched,5,5,-0.3504617115564327,0.36,0.0,0.8,UNRELIABLE_N<10 (higher-in-real),False,False
+df40_sd21,facesize_matched,36,36,-1.0430526552388233,0.16435185185185186,0.07868441358024691,0.2700617283950617,higher-in-real,True,True
+df40_sd21,joint_matched,8,8,-1.1300466709112835,0.171875,0.0,0.4375,UNRELIABLE_N<10 (higher-in-real),False,False
+midjourney,a_unmatched_recomputed,45,209,-0.08859286317828372,0.5152578415736311,0.4391281233386497,0.5919271664008506,higher-in-real,False,True
+midjourney,resolution_matched,10,10,0.667971455588946,0.75,0.48975,0.96,higher-in-fake,True,True
+midjourney,facesize_matched,27,27,-0.5019651256619795,0.3950617283950617,0.22493141289437588,0.5665637860082304,higher-in-real,True,True
+midjourney,joint_matched,8,8,0.543349238680741,0.734375,0.453125,1.0,UNRELIABLE_N<10 (higher-in-fake),False,False

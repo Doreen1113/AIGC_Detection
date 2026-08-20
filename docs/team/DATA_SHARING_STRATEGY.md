@@ -1,9 +1,18 @@
 # Data Sharing Strategy（資料共享架構決策）— Hybrid Architecture
 
-> 建立於 2026-08-14，中文撰寫。本文件記錄一項真實的團隊決策：專案程式碼、文件、
-> manifest、與資料未來要如何分散在不同儲存層之間。這是一份前瞻性的設計筆記——
-> **撰寫本文件過程中沒有建立任何資料註冊表（registry）、沒有建立任何 Hugging Face
-> repo、也沒有任何資料集檔案被搬移、複製或上傳。**
+> 建立於 2026-08-14，中文撰寫；**2026-08-14 修正一次**（N-drive 定位更正，見下）。
+> 本文件記錄一項真實的團隊決策：專案程式碼、文件、manifest、與資料未來要如何分散在
+> 不同儲存層之間。這是一份前瞻性的設計筆記——**撰寫本文件過程中沒有建立任何資料
+> 註冊表（registry）、沒有建立任何 Hugging Face repo、也沒有任何資料集檔案被搬移、
+> 複製或上傳。**
+>
+> **修正說明（2026-08-14）**：初版把 N-drive／Google Drive／外接 SSD 跟 Hugging Face
+> 並列成同等地位的「大型資料交接層」，這是錯的——**N-drive 是 Member A 自己的個人／
+> 區域網路磁碟，Member B 與 Member C 完全無法存取**。N-drive 不是、也不能是跨團隊
+> 的交接管道，只能是 Member A 自己的個人備份／工作副本（`CLAUDE.md` 既有的 robocopy
+> 備份指令用法本身沒有問題，只是那個用途跟「交給 B/C」是兩件事，不能混為一談）。
+> 真正的跨團隊大型資料交付管道是 **Hugging Face private Dataset repo**——這是本次
+> 修正的核心，見下方第 3、4 層的重新定位，以及 `docs/team/HF_HANDOFF_PLAN.md`。
 
 ## 五個層級
 
@@ -40,17 +49,21 @@ regression-test 用的圖片。Git LFS **絕對不能**被當成完整訓練資�
 demo／regression 圖片的規模，那就是該挪到第 3 層或第 4 層的訊號，而不是繼續往 LFS
 裡塞的理由。
 
-### 3. Hugging Face（private Dataset repo）— 規劃中，依優先順序推進
+### 3. Hugging Face（private Dataset repo）— **實際的跨團隊主要交付管道**（非規劃中）
 
-Hugging Face private Dataset repo 是規劃中的存放處，放置那些 (a) 對團隊共用或重現
-實驗有價值、且 (b) 已確認可安全轉散布的資料。等這一層真的要建置時，優先順序如下：
+Hugging Face private Dataset repo 是 Member B、Member C 交接資料**實際會用**的主要
+管道，不是「規劃中、以後再說」的層級——這是本次修正的重點：**在這份清單裡，HF
+private repo 是唯一一個 Member B 與 Member C 不需要人在 Member A 本機／區域網路上
+就能真正存取的層級**，這正是決定它成為主要管道的關鍵原因（相對地，見下方第 4 層，
+N-drive 完全不具備這個性質）。放置那些 (a) 對團隊共用或重現實驗有價值、且
+(b) 已確認可安全轉散布的資料。優先順序：
 
 1. **Manifest** — 跟第 1 層一樣的 split/pair manifest，可能會在這裡跟它們描述的
    實際資料放在一起以方便使用，但 GitHub 仍是版控的正本。
 2. **小型 benchmark 素材** — 例如 True Test set、DF40-cdf replication set
    （`v815_replication_set/`，994 張）——體積小、對全隊的可重現性價值高。
-3. **iOS package** — `ios_benchmark/` 的測試圖子集（`ios_benchmark/TEST_ASSET_MANIFEST.csv`
-   中已鎖定的 40 張圖），待實際裝箱後。
+3. **Android benchmark package** — `android_benchmark/` 的測試圖子集
+   （`android_benchmark/TEST_ASSET_MANIFEST.csv` 中已鎖定的 40 張圖），待實際裝箱後。
 4. **XAI 樣本** — 用於 Tier A GT 驗證的 before/after 配對樣本
    （`filter_data/` 子集、`fake_filter_hard_neg/` 子集）——自建產生，不涉及第三方
    轉散布的問題。
@@ -58,34 +71,59 @@ Hugging Face private Dataset repo 是規劃中的存放處，放置那些 (a) �
    來源圖片產生出來的資料集（例如對 AIGuard/real 或 LFW 套用濾鏡的輸出，前提是
    LFW 本身的條款確實允許轉散布衍生裁切結果——這點要逐來源確認，不能假設）。
 
-### 4. N-drive／Google Drive／外接 SSD — 大型資料的主要交接機制
+具體的兩個 repo 規劃（Member B 一個、Member C 一個）、資料夾結構、哪些項目現在就能上傳、
+哪些卡在授權審查，見 `docs/team/HF_HANDOFF_PLAN.md`——本文件只定架構層級的定位，
+不重複那邊的細節。
 
-這仍然是所有大型、及／或尚未通過第 3 層審核的資料的主要機制：
+**體積安全提醒（2026-08-14 新增，來自實際發生過的事故）**：本次協作過程中，一次
+較寬鬆的 `git add results/research/` 曾經不小心把一個 998MB 的衍生逐圖資料夾
+（`resolution_controlled_images/`，P1-R1.5 產生）加進暫存區，所幸在 pre-commit 階段
+被發現並移除。這件事的教訓是：**`results/research/` 或 `results/phase2/` 底下不是
+每個子資料夾都是小型 figure／CSV**，有些子資料夾裝的是逐圖衍生資料，體積可以到
+接近 1GB。之後任何要建 manifest／上傳腳本去參照這兩個目錄底下內容的人，都要先實際
+檢查大小，不能預設「這裡放的都是小檔案」。`scripts/build_hf_handoff_package.py` 已經
+把這個教訓做成程式邏輯（單一檔案 >100MB、單一 manifest 項目聚合 >500MB 都會被攔下來
+要求人工審查，不會被自動判定成可上傳）。
+
+### 4. N-drive／Google Drive／外接 SSD — **僅限 Member A 個人備份／工作副本，不是跨團隊交接機制**（2026-08-14 修正）
+
+**修正前的錯誤**：初版文件把這一層寫成「大型資料的主要交接機制」，等同於 Hugging
+Face。這是錯的——**N-drive（`N:\2603055\AIGC\`）是 Member A 自己的個人／區域網路
+磁碟，Member B 與 Member C 沒有存取權限**，物理上就到不了那裡，不能承擔「交給
+B/C」這個功能。
+
+**修正後的定位**：這一層現在**只**代表 Member A 自己的個人備份與工作副本，用途
+限於 Member A 個人的資料保存與版本備份，`CLAUDE.md` 中既有的 robocopy 備份指令
+就是這個用途的具體例子，**這個用法本身完全沒有問題，繼續照舊使用即可**——問題只
+在於絕對不能把它當成「resource B/C 也能從這裡拿資料」的管道。
 
 - **大型 A/B 訓練資料**（完整的自建 `filter_data/` 家族、`AIGuard/real`、
-  `AIGuard/fake`、DF40 各來源等）
-- **清洗後資料**（Step1/Step2 清洗後的輸出，專案內各處的 `clean_output/` 資料夾）
+  `AIGuard/fake`、DF40 各來源等）：Member A 個人備份留在這裡沒問題；若要交給
+  B/C，走第 3 層（HF），依授權狀態分批處理。
+- **清洗後資料**（Step1/Step2 清洗後的輸出，專案內各處的 `clean_output/` 資料夾）：
+  同上。
 - **Composite 資料**（`fake_filter_hard_neg/`、`v816_composite/` 及類似的生成
-  composite pool）
+  composite pool）：同上。
 - **原始第三方資料集**（RetouchingFFHQ four/megvii/ali 各區塊、DF40、CelebA、
-  VGGFace2、IMDB-WIKI 等）——見下方硬性規則，說明為什麼這些特別要留在這一層、
-  不會自動流向第 3 層
+  VGGFace2、IMDB-WIKI 等）：Member A 個人留存沒問題；**是否能流向第 3 層（HF）
+  由下方硬性規則決定，跟存放在 N-drive／Drive／SSD 或 HF 完全無關——授權問題不會
+  因為換了平台就消失**。
 
-`CLAUDE.md` 中已經記載的 N-drive 備份慣例（`N:\2603055\AIGC\`）就是這一層目前
-實際在用的具體例子。
+### 硬性規則：原始第三方資料集絕不自動上傳到任何共享平台
 
-### 硬性規則：原始第三方資料集絕不自動上傳到 Hugging Face
-
-**原始第三方資料集絕對不能自動重新上傳到 Hugging Face。** 任何第三方來源的資料
-（相對於本專案自己衍生／生成的資料），在放進共享的 HF repo（不論是否為 private）
-之前，都必須先逐資料集完成授權／轉散布審查。這件事對本專案很具體：
+**原始第三方資料集絕對不能自動重新上傳到 Hugging Face（或任何其他共享位置）。**
+這條規則跟平台無關——不論是 HF、Google Drive 共享、或任何形式的「分享給 B/C」，
+判斷依據都是授權狀態，不是儲存位置。任何第三方來源的資料（相對於本專案自己衍生／
+生成的資料），在放進共享的 HF repo（不論是否為 private）之前，都必須先逐資料集
+完成授權／轉散布審查。這件事對本專案很具體：
 `results/phase2/filter_data_xai_provenance_audit_20260814/FILTER_DATA_PROVENANCE.csv`
 已經記載 RetouchingFFHQ（家族 B/C/D）是一份公開學術資料集、有自己的授權條款，
 而 DF40／CelebA／VGGFace2／IMDB-WIKI／LFW 各自也有各自的條款——本專案先前的任何
 工作都從未對它們做過轉散布權利的審查。「Private repo」不能取代授權審查——即使是
 private，若從未做過審查，「私下分享不當」依然違反大多數學術／研究資料集的授權條款。
 截至本文件建立為止，本專案沒有對任何一個資料集做過這樣的審查；在完成之前，
-所有原始第三方資料一律留在第 4 層。
+所有原始第三方資料只能留在 Member A 個人的第 4 層（N-drive／Drive／SSD）**個人
+備份**中，不得流向第 3 層（HF）或任何其他 B/C 可存取的共享位置。
 
 ---
 

@@ -150,12 +150,14 @@ def analyze(img_path, landmarker, age_app, ear_thresh, dark_thresh, age_thresh):
 
 
 def export_samples(paths, dest_dir, n=30):
-    import random
+    import random, shutil
     os.makedirs(dest_dir, exist_ok=True)
     sample = random.sample(paths, min(n, len(paths)))
     for p in sample:
-        import shutil
-        shutil.copy2(p, os.path.join(dest_dir, Path(p).name))
+        try:
+            shutil.copy2(p, os.path.join(dest_dir, Path(p).name))
+        except OSError as e:
+            print(f"    [warn] skip review-sample copy for {p}: {e}")
 
 
 def main():

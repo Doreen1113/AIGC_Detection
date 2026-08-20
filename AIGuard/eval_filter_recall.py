@@ -7,12 +7,20 @@ Usage:
   python AIGuard/eval_filter_recall.py --ckpt shufflenet_v2_3class_v7.pth
   python AIGuard/eval_filter_recall.py --ckpt shufflenet_v2_3class_v73.pth --tribranch
 """
-import argparse, torch, torch.nn as nn, torch.nn.functional as F
+import argparse, io, torch, torch.nn as nn, torch.nn.functional as F
 import torchvision.models as tv_models
 import torchvision.transforms as T
 from PIL import Image
 from pathlib import Path
 from collections import defaultdict
+
+
+def preprocess_jpeg(img_pil, quality=85):
+    """Matches pipeline.py's inference-time JPEG canonicalization (2026-07-29 preprocessing unification)."""
+    buf = io.BytesIO()
+    img_pil.save(buf, format="JPEG", quality=quality)
+    buf.seek(0)
+    return Image.open(buf).convert("RGB")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--ckpt", default="shufflenet_v2_3class_v6.pth")
@@ -88,7 +96,8 @@ class TriBranchModel(nn.Module):
         return self.classifier(feat)
 
 
-tf = T.Compose([T.Resize(224), T.CenterCrop(224),
+# Geometric transform now matches pipeline.py's transform_infer exactly (was Resize+CenterCrop, mismatched vs training's direct square Resize)
+tf = T.Compose([T.Resize((224, 224)),
                 T.ToTensor(), T.Normalize([0.5]*3, [0.5]*3)])
 eye_resize = T.Resize((64, 128))
 
@@ -109,7 +118,7 @@ for p in sorted(filter_dir.glob("*.jpg")):
     if ftype is None:
         continue
     try:
-        pil = Image.open(p).convert("RGB").resize((224, 224))
+        pil = preprocess_jpeg(Image.open(p).convert("RGB"), quality=85)
         x = tf(pil).unsqueeze(0).to(DEVICE)
         if args.tribranch:
             eye_pil = pil.crop((EYE_X0, EYE_Y0, EYE_X1, EYE_Y1))

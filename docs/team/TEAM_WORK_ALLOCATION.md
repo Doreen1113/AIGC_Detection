@@ -1,3 +1,5 @@
+
+
 # AIGC Detection Team — 工作分配與協作規範
 
 
@@ -70,9 +72,17 @@
   這是一個現行、尚未處理的 overclaim 風險。已找到成本最低的修法：用 `FFHQ_ali_process`
   自己的資料夾名稱標籤來評分（資料已存在，不需新蒐集）——**2026-08-14 已收斂範圍**：
   詳見下方 §D 與驗證說明。
-- repo 中找不到任何名為 `tex_local_variance_std` 的候選特徵（`.py`、`.md`、`.json`
-  皆已搜尋，本文件自己也重新驗證過一次）——若日後任何規劃資料中出現這個名字，一律當成
-  **提議中、尚未實作**的特徵名稱，不是既有特徵。
+- **⚠️ 2026-08-20 更正（先前敘述已過期，已用完整 `grep -r` 重新查證，先前查證用的
+  Grep 工具因遵循 ignore 規則而漏掉 `results/` 底下的內容，導致誤判）**：
+  `tex_local_variance_std` **已被明確定義並實作**（`results/phase2/
+  fake_evidence_discovery_v811d_20260814/scripts/extract_features.py` L283，
+  5x5 local-variance map 跨畫面標準差），是 24 個候選特徵中唯一通過 discovery 輪
+  direction-consistency 的一個，並已在 `fake_evidence_resolution_matched_v811d_
+  20260814/` 做過解析度混淆因子排除的專屬複測。**有限度可宣稱**：7/8 來源在
+  解析度配對後仍保持方向一致；**不可宣稱**：最嚴格的 joint_matched 檢定因樣本
+  量不足（6/8 來源 n<10）無法排除混淆因子、midjourney 方向相反、目前是描述性
+  統計非已訓練驗證的分類特徵、未接入 `pipeline.py`。完整版見
+  `docs/team/WORKSTREAM_STATUS_BOARD.md` 對應條目。
 
 ### Deployment 已完成事項
 
@@ -145,11 +155,12 @@ latency/RAM 量測（Member C 的）。
 ## D. Member B 詳細工作包 — Phase 2（XAI／外部驗證）
 
 - **Phase 2F — fake per-image evidence 研究**：探索 fake-class evidence 的候選量化特徵
-  （類比於目前支撐 filter-class Tier A 主張的紋理／頻率統計量）。**在任何規劃或程式碼中
-  使用 `tex_local_variance_std` 這個名字之前**，請先確認——本次稽核已搜尋過整個 repo
-  （`.py`/`.md`/`.json`），**完全找不到**這個名字；它目前在本專案中不存在。應把它當成
-  外部討論中的未驗證候選名稱，不是既有特徵——先明確定義它（公式、計算方式、預期數值範圍）
-  再開始建置，且不得在任何報告中把它描述成已驗證或已實作。
+  （類比於目前支撐 filter-class Tier A 主張的紋理／頻率統計量）。**⚠️ 2026-08-20
+  更正**：`tex_local_variance_std` 已不再是「找不到、未實作」的候選名稱——它已被
+  定義、實作、且做過兩輪查證（discovery + resolution-matched 複測），有限度可宣稱
+  部分方向一致性，但尚未排除 joint 混淆因子、未接入 pipeline.py。完整、有界限的
+  現況見上方§A 更正段落，任何後續使用此特徵的規劃請先讀那段，不要重複本條目
+  已過期的「完全找不到」說法。
 - **外部 RetouchingFFHQ single-operation benchmark — 已收斂範圍（2026-08-14 修正）**：
   用 `FFHQ_ali_process` 自己的資料夾名稱 ground truth 評分 `artifact_classifier_v3`，
   但**只有 `Whitening_60` 與 `Whitening_90` 可以算進 exact-type accuracy 指標**——這是

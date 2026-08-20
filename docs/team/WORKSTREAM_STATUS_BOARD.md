@@ -1,5 +1,11 @@
 # Workstream Status Board（工作流狀態看板）
 
+> **最後更新：2026-08-20（Member B 全欄位補正）。** 本看板自 2026-08-14 建立後停滯一週，
+> 期間 Phase 2 實際進度（Alibaba 外部 benchmark、Phase 2F fake evidence、FF++ Tier D
+> Stage 1-5、Status C 核准、v8.17 promotion 後的 Detection Gate 重測）皆未反映。本次已
+> 依磁碟上的實際輸出逐項核對後補正 Member B 欄位與 Pending Dependency 的 FF++ 條目；
+> Member A／Member C 欄位**未更動**（不代任何成員宣告進度，仍為 8/14 當時狀態）。
+>
 > 建立於 2026-08-14，2026-08-14 改寫為中文版並納入 Member B 任務範圍修正。看板形式，
 > 於每週例會（見 `TEAM_WORK_ALLOCATION.md` §G）開頭更新——本文件由任何成員視狀態變化
 > 自行編輯；「Frozen/Completed」欄描述的是本文件建立當下的狀態，之後只能增加內容，
@@ -38,10 +44,34 @@
 
 ## Active — Member B（Phase 2）
 
-- [ ] Phase 2F — fake per-image evidence 候選特徵驗證（包括先明確定義、再驗證任何類似
-      `tex_local_variance_std` 這種名稱的特徵——**撰寫本看板當下 repo 中找不到**，
-      必須從零開始定義）
-- [ ] RetouchingFFHQ single-operation（Alibaba）外部 artifact-type benchmark ——
+- [x] Phase 2F — fake per-image evidence 候選特徵驗證 —— **已完成（2026-08-14）**，見
+      `results/phase2/fake_evidence_discovery_v811d_20260814/`（候選特徵分類法、
+      per-source 指標、candidate decision table）與
+      `results/phase2/fake_evidence_resolution_matched_v811d_20260814/`
+      （解析度配對後的重測 + regression sensitivity，排除解析度混淆因子）。
+      **⚠️ `tex_local_variance_std` 的狀態已改變，本看板與 `TEAM_WORK_ALLOCATION.md` §D
+      的舊敘述（「repo 中完全找不到，應視為外部討論中的未驗證候選名稱」）自 2026-08-14
+      起已不再成立**：該特徵已被**明確定義並實作**（`fake_evidence_discovery_.../scripts/
+      extract_features.py` L283，定義為 5x5 local-variance map 跨畫面的標準差），
+      是 24 個候選特徵中**唯一**通過 discovery 輪 direction-consistency 的一個
+      （8 個 fake source 方向一致，6/8 AUROC 清 0.60 門檻），並已針對它做過一輪專屬的
+      resolution-matched 驗證（Phase 2F-R1）。
+      **可宣稱**：在 resolution-only matching + resolution/face-size 校正、含 source
+      fixed-effects 的 logistic regression 下，8 個來源中有 7 個仍維持 higher-in-real
+      方向的區辨力——足以反駁「原始訊號主要是解析度混淆」。
+      **不可宣稱**：最嚴格的 joint_matched（同時控制解析度與臉部尺寸）8 個來源中有 6 個
+      資料量不足（caliper 後 n<10），pooled 層級僅方向一致但不顯著（n=64，p=0.11-0.14），
+      **無法宣稱聯合混淆已被排除**；`midjourney` 是明確的反例（配對後方向反轉），
+      不得併入 pooled 讀數；全程為 n=44-70/來源的描述統計，**不是**訓練驗證過的分類器特徵，
+      也**未**接入 `pipeline.py` 任何輸出。原始 findings 自己對 "ACCEPT" 的定義即為
+      「僅通過本輪兩項混淆檢查」，不得被引用成更強的結論。
+- [x] RetouchingFFHQ single-operation（Alibaba）外部 artifact-type benchmark ——
+      **已完成（2026-08-14）**，見
+      `results/phase2/external_alibaba_artifact_validation_20260814/`。關鍵結果：
+      `Whitening_60`/`_90`（唯一 `VERIFIED_SINGLE_TYPE` 子集）pooled exact-type
+      recall = **27.5%（95% CI 23.2-31.8%，n=400）**，對 4-way 分類器 25% 的隨機
+      基準而言**與亂猜無統計差異**；12 個資料夾**無一**達到 `EXACT_TYPE_ALLOWED`，
+      全部落在 `COARSE_RETOUCH_ONLY`。以下為原始範圍限定說明，保留不改：
       **已收斂範圍（2026-08-14）**：只有 `Whitening_60`/`Whitening_90` 這個
       `VERIFIED_SINGLE_TYPE` 子集可用於計算 exact-type accuracy；其餘 `FFHQ_ali_process`
       資料夾（`EyeEnlarging_*`、`FaceLifting_*`、`Smoothing_*`、`Whitening_30`）一律列為
@@ -52,8 +82,50 @@
       `FFHQ_four_process/four_process.txt` 那種逐圖操作參數 metadata——換句話說，
       `Whitening_60`/`90` 目前被列為 `VERIFIED_SINGLE_TYPE`是**團隊政策選擇**，不是本次
       複查獨立發現的結構性事實。詳見 `TEAM_WORK_ALLOCATION.md` §A/§D。
-- [ ] 外部 artifact-classifier type 泛化完整拆解
-- [ ] `unknown_or_mixed_retouch` 輸出類別提案（僅設計，非實作）
+- [x] 外部 artifact-classifier type 泛化完整拆解 —— **已完成（2026-08-14）**，見
+      `results/phase2/external_alibaba_artifact_validation_20260814/`（per-folder、
+      per-intensity prediction-distribution 拆解 + `EXTERNAL_ALIBABA_CLAIM_RECOMMENDATION.md`
+      的 `COARSE_OR_MIXED`/`UNVERIFIABLE`/`VERIFIED_SINGLE_TYPE` 分級與 per-folder 措辭政策）。
+- [x] `unknown_or_mixed_retouch` 輸出類別提案（僅設計，非實作）—— **本輪完成（2026-08-20）**：
+      `docs/team/change_proposals/20260820_unknown_mixed_retouch_category_proposal.md`。
+      依 `PRODUCTION_CHANGE_CONTROL.md` 八段格式撰寫，**狀態為 PROPOSAL，尚未核准、
+      尚未實作**（`pipeline.py`／`artifact_classifier_v3.pth`／`ARTIFACT_REGION_MAP`／
+      `TEMPLATES`／`ARTIFACT_UNKNOWN_THRESHOLD`／JSON schema 全部未變動）。核心設計：
+      四階 decision ladder（multiplicity → exact-type entitlement → confidence → single
+      type），只新增 `mixed_retouch`／`app_processed` 兩個 tag（第三個構想
+      `unknown_retouch` 查證後發現 `pipeline.py` 既有的 `unknown_filter` 已完全對應，
+      改為釐清角色而非重複實作）；`ARTIFACT_UNKNOWN_THRESHOLD=0.6` **不變動**，並記錄
+      它在 OOD 上僅 2-11% 觸發率（平均信心 0.87-0.96），結構上無法承擔新類別的判定。
+      待 reviewer 核准 + Member A 確認無 Phase 1 語意衝突。
+
+## Active — Member B（Phase 2，2026-08-20 新增：FF++ Tier D 支線）
+
+> 2026-08-14 建立的上方 Member B 清單一週未更新；以下為 8/14 之後實際發生、
+> 但原清單沒有欄位可記錄的工作。
+
+- [x] FF++ 官方 mask 定位驗證 Stage 1-5（Phase2-FFPP）—— 完成，含兩次自我糾錯
+      （撤回不具鑑別力的 Pointing Game 證據、修正 Stage 3 前處理不一致後 B2 重跑）。
+      見 `results/phase2/ffpp_mask_verified_localization_20260818/`、
+      `.../ffpp_mask_verified_localization_B2_20260819/`、
+      `.../ffpp_full_set_recall_reconciliation_20260819/`。
+- [x] Fake XAI Status C（Tier D）claim policy 升級提案 —— **2026-08-20 核准**，範圍
+      3 個 method（Deepfakes 77.3% / FaceSwap 68.0% / NeuralTextures 72.5%），
+      Face2Face 因 56.7% < 60% 門檻排除。已套用於 `docs/phase2_story.md` §8；
+      `pipeline.py` 未變更。見
+      `docs/team/change_proposals/20260819_fake_xai_status_c_upgrade_ffpp.md`。
+- [x] **FF++ Detection Gate 在新 production Layer1（v8.17/SBIAUG）下重測** ——
+      本輪完成（2026-08-20），**Face2Face 翻盤：56.7% → 68.0%，判定為 ELIGIBLE**；
+      四個 method 全數改善 8-11pp，無任何退步。決策規則於讀取結果前已寫入
+      `PRE_DECLARED_PROTOCOL.md`；v811d 對照組逐一重現既有 B2 數字（116/85/102/108）。
+      依預先聲明的規則觸發 Face2Face 專屬 Stage 4/4b：IoU@10%=0.334（與 3 個已核准
+      method 同一區間），faithfulness 3/3 k 全通過（比已核准的 FaceSwap 更嚴格，後者
+      k=5% 不顯著）。見 `results/phase2/ffpp_detection_gate_v817sbi_20260820/`。
+- [ ] **（待送審，非本輪授權）** 依上一項證據，把 Face2Face 加入 Status C / Tier D
+      的 change proposal —— 需另走一輪 change control，Member B 無權自行核准。
+- [ ] **（待 reviewer 裁決）** 已核准的 3 個 method 的 Stage 4/4b IoU/faithfulness
+      數字是用 **v811d 挑出的子母體**算的，而 v811d 已非上線 checkpoint（各 method
+      子母體在 v817sbi 下 +14～+17 支影片）。detection 基礎在 v817sbi 下只更好、
+      不會造成 overclaim，故本輪**刻意未重跑**，改為呈報 change control 裁決。
 
 ## Active — Member C（Deployment）
 
@@ -75,7 +147,15 @@
 - **Android Studio + 實體 Android 裝置 + USB 偵錯** — 卡住 Member C 全部進行中項目；
   本專案先前任何工作都無法從 Windows 端滿足這個依賴（`android_benchmark/README.md`
   已詳盡確認）。
-- **FF++ masks／可信的 fake manipulation mask** — 卡住任何未來的 fake-class
+- ~~**FF++ masks／可信的 fake manipulation mask**~~ —— **依賴已於 2026-08-18～08-20 解除**
+  （原文保留於下方，不改寫既有紀錄）。解除情形：(1) FF++ 官方 mask 已取得並驗證
+  非 degenerate（`results/phase2/ffpp_mask_verified_localization_20260818/MASK_INVENTORY.md`，
+  4/4 method，frame-mask 配對 PAIRED_OK ≥99.3%）；(2) Layer1 對 FF++ 的 fake recall
+  在新 production checkpoint（v8.17/SBIAUG）下為 **68.0-86.0%（4/4 method 全數
+  ≥60% detection gate）**，見 `results/phase2/ffpp_detection_gate_v817sbi_20260820/`。
+  Tier D 已正式啟用，3 個 method 的 GT-backed localization 措辭已核准
+  （`docs/phase2_story.md` §8）；Face2Face 的加入待另一輪 change control。
+  **原始條目（2026-08-14 撰寫，已不再成立，保留供對照）**：卡住任何未來的 fake-class
   region-level XAI 工作；依 `docs/phase2_story.md` §11 明確標記為 `pending`
   （非暫停、非放棄），解除條件是 (1) 取得 FF++ masks，(2) Layer1 對 FF++ 來源達到
   fake-recall stretch goal（目前未達）。

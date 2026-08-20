@@ -11,7 +11,7 @@ Compare with v3:  unseen=0.640  FakeClue=0.540  WildDeepfake=N/A
 
 python AIGuard/eval_crossdataset_v3_1.py
 """
-import csv, torch, torch.nn as nn
+import csv, io, torch, torch.nn as nn
 import torchvision.models as tv_models
 import torchvision.transforms as T
 from PIL import Image
@@ -28,8 +28,19 @@ BASE   = Path(r"C:\My_Project\AIGC")
 CKPT   = BASE / _args.ckpt
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
+
+def preprocess_jpeg(img_pil, quality=85):
+    """Matches pipeline.py's inference-time JPEG canonicalization (2026-07-29 preprocessing unification)."""
+    buf = io.BytesIO()
+    img_pil.save(buf, format="JPEG", quality=quality)
+    buf.seek(0)
+    return Image.open(buf).convert("RGB")
+
+
+# Geometric transform now matches pipeline.py's transform_infer exactly (was Resize+CenterCrop, mismatched vs training's direct square Resize)
 transform = T.Compose([
-    T.Resize(224), T.CenterCrop(224), T.ToTensor(),
+    T.Lambda(lambda img: preprocess_jpeg(img, quality=85)),
+    T.Resize((224, 224)), T.ToTensor(),
     T.Normalize([0.5]*3, [0.5]*3),
 ])
 

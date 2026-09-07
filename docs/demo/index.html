@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIGC Detector - real / fake / filter with explanation</title>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#111; --mut:#666; --line:#ddd; --acc:#0a7;
+          --real:#1b9e77; --fake:#d95f02; --filter:#7570b3; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111; --fg:#eee; --mut:#999; --line:#333; } }
+  body { margin:0; padding:16px; font:15px/1.5 system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--fg); max-width:820px; margin:0 auto; }
+  h1 { font-size:20px; margin:0 0 4px; } h2 { font-size:15px; margin:20px 0 8px; }
+  .mut { color:var(--mut); font-size:13px; }
+  button { font:inherit; padding:11px 16px; margin:6px 6px 6px 0; border:1px solid var(--line);
+           border-radius:8px; background:var(--acc); color:#fff; font-weight:600; }
+  button.sec { background:transparent; color:var(--fg); }
+  button:disabled { opacity:.45; }
+  pre { background:rgba(128,128,128,.12); padding:12px; border-radius:8px; overflow-x:auto; font-size:12.5px; white-space:pre-wrap; }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; margin:8px 0; }
+  th,td { border-bottom:1px solid var(--line); padding:7px 6px; text-align:right; }
+  th:first-child,td:first-child { text-align:left; }
+  #prog { height:6px; background:rgba(128,128,128,.2); border-radius:3px; overflow:hidden; margin:8px 0; }
+  #bar { height:100%; width:0; background:var(--acc); transition:width .2s; }
+  img, canvas { max-width:100%; border-radius:8px; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:12px; margin:10px 0; }
+  .verdict { font-size:22px; font-weight:700; letter-spacing:.02em; }
+  .verdict.real { color:var(--real); } .verdict.fake { color:var(--fake); } .verdict.filter { color:var(--filter); }
+  .row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start; }
+  .row > div { flex:1 1 240px; }
+  .expl { font-size:14.5px; line-height:1.55; border-left:4px solid var(--acc); padding:6px 10px; margin:8px 0; }
+  .pill { display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid var(--line); font-size:12.5px; margin:2px 4px 2px 0; }
+  .step { display:flex; gap:8px; align-items:center; font-size:13px; margin:3px 0; }
+  .step b { min-width:150px; display:inline-block; }
+  .bar { flex:1; height:8px; background:rgba(128,128,128,.18); border-radius:4px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:var(--acc); }
+</style>
+</head>
+<body>
+<h1>AIGC Detector &mdash; real / fake / beauty-filter, with explanation</h1>
+<p class="mut">The complete production system (v8.17) running <b>entirely in this browser</b> with ONNX Runtime WASM:
+Layer&nbsp;1 real-vs-manipulated &rarr; Layer&nbsp;2 fake-vs-filter &rarr; artifact-type head &rarr; patch evidence head &rarr; structured
+explanation. Same weights, same decision rule and same explanation templates as the desktop <code>pipeline.py</code>.
+Nothing is uploaded; the photo never leaves this device.</p>
+<div id="dev" class="card mut"></div>
+<div id="prog"><div id="bar"></div></div>
+<div id="status" class="mut">idle</div>
+<p>
+<button id="load">1. Load models</button>
+<button id="pickBtn" disabled>2. Analyse a face photo</button>
+<button id="bench" class="sec" disabled>Latency benchmark</button>
+<input id="pick" type="file" accept="image/*" hidden>
+</p>
+<div id="out"></div>
+<h2>Structured record (schema v2.1.0 fields)</h2>
+<pre id="json">(nothing yet)</pre>
+<p class="mut">Limits of this web build: no MediaPipe face gate and no facial-landmark measurements (crop the face yourself;
+landmark-based clauses for eye enlarging / face reshaping report "landmarks unavailable" exactly as the desktop pipeline
+does when landmarks fail). Scores are raw model outputs, not calibrated probabilities.</p>
+
+<script>
+// ------------------------------------------------------------------ models (identical weights to pipeline.py)
+const MODELS = [
+  { key: "layer1",   file: "models/layer1_v817sbi.onnx",         label: "Layer1 (real vs manipulated)" },
+  { key: "layer2",   file: "models/layer2_v811.onnx",            label: "Layer2 (fake vs filter)" },
+  { key: "artifact", file: "models/artifact_classifier_v6.onnx", label: "Artifact classifier (4 types)" },
+  { key: "evidence", file: "models/evidence_head_patch.onnx",    label: "Patch evidence head (7x7)" },
+];
+const ARTIFACTS = ["eye_enlarging", "face_reshaping", "smoothing", "whitening"];
+const WARMUP = 5, ITERS = 50, MANIP_THR = 0.5;   // decision_rule.decide operating point
+const MODEL_VERSION = "v8.17";
+const sess = {}, bytes = {};
+const $ = id => document.getElementById(id);
+const setStatus = t => $("status").textContent = t;
+const setBar = f => $("bar").style.width = (100 * f).toFixed(1) + "%";
+
+ort.env.wasm.numThreads = Math.min(4, navigator.hardwareConcurrency || 1);
+ort.env.wasm.simd = true;
+$("dev").textContent =
+  `device: ${navigator.userAgent}\ncores: ${navigator.hardwareConcurrency || "?"}` +
+  `  memory: ${navigator.deviceMemory ? navigator.deviceMemory + " GB" : "?"}` +
+  `  threads: ${ort.env.wasm.numThreads}  dpr: ${window.devicePixelRatio}`;
+
+// ------------------------------------------------------------------ explanation constants (pipeline.py, verbatim)
+const TEMPLATES = {
+  non_face: "No face detected in this image. This pipeline only classifies face crops; real/fake/filter labels are not meaningful for non-face input.",
+  real: "No significant manipulation artifacts detected. The image appears authentic.",
+};
+const FAKE_TIERS = [
+  [0.80, s => `(model score ${s.toFixed(2)}, well above the decision boundary; this score is not a calibrated probability and should not be read as a percentage chance, especially on images unlike the training data)`],
+  [0.0,  s => `(model score ${s.toFixed(2)}, close to the decision boundary; this call warrants extra scrutiny and the score is not a calibrated probability)`],
+];
+const SMOOTH_TEXTURE_THR = 210;
+const REAL_REF = {   // (p05, p50, p95) on authentic faces
+  texture_var: [52.35, 137.03, 299.86], brightness_L: [75.09, 112.48, 161.32],
+  eye_width_ratio: [0.1696, 0.1850, 0.2044], eye_area_ratio: [0.0037, 0.0085, 0.0137],
+  jaw_face_ratio: [0.7711, 0.8056, 0.8375], face_aspect: [1.1044, 1.2017, 1.3039],
+};
+const EVIDENCE_FOR_TYPE = {   // key, name, decimals, validated single-image AUROC
+  smoothing:      [["texture_var", "skin-texture variance (Laplacian)", 1, 0.5521]],
+  whitening:      [["brightness_L", "mean skin lightness (LAB L*)", 1, 0.5537]],
+  eye_enlarging:  [["eye_area_ratio", "eye-area-to-face-area ratio", 4, 0.5510], ["eye_width_ratio", "eye-width-to-face-width ratio", 4, 0.5445]],
+  face_reshaping: [["face_aspect", "face height-to-width ratio", 3, 0.7457], ["jaw_face_ratio", "jaw-width-to-face-width ratio", 4, 0.5661]],
+};
+const ARTIFACT_REGION_MAP = {
+  eye_enlarging: ["emp_eye_left", "emp_eye_right"], face_reshaping: ["emp_reshape_left", "emp_reshape_right"],
+  smoothing: ["emp_smoothing_upper", "emp_smoothing_lower"], whitening: ["emp_whitening_center"],
+};
+// evidence-head cell -> region grouping (FACE_REGIONS boxes, priority order, central-face fallback)
+const FACE_REGIONS = { forehead: [10, 65, 40, 184], left_eye: [60, 100, 30, 110], right_eye: [60, 100, 114, 194],
+  nose: [90, 150, 75, 149], left_cheek: [100, 175, 15, 90], right_cheek: [100, 175, 134, 209],
+  mouth: [148, 185, 65, 159], jaw: [170, 214, 40, 184] };
+const BOX_TO_REGION = { left_eye: "eyes", right_eye: "eyes", nose: "nose", mouth: "mouth",
+  forehead: "skin", left_cheek: "skin", right_cheek: "skin", jaw: "face_contour" };
+const BOX_PRIORITY = ["left_eye", "right_eye", "nose", "mouth", "forehead", "left_cheek", "right_cheek", "jaw"];
+const CENTRAL_FACE = [40, 190, 40, 184];
+const CENTER_CELL_MASS = [
+  [0.003085, 0.006863, 0.011109, 0.013087, 0.011220, 0.007000, 0.003178],
+  [0.006863, 0.015267, 0.024713, 0.029113, 0.024960, 0.015573, 0.007070],
+  [0.011109, 0.024713, 0.040004, 0.047127, 0.040404, 0.025209, 0.011445],
+  [0.013087, 0.029113, 0.047127, 0.055516, 0.047597, 0.029697, 0.013483],
+  [0.011220, 0.024960, 0.040404, 0.047597, 0.040807, 0.025461, 0.011559],
+  [0.007000, 0.015573, 0.025209, 0.029697, 0.025461, 0.015886, 0.007212],
+  [0.003178, 0.007070, 0.011445, 0.013483, 0.011559, 0.007212, 0.003274]];
+const CELL_MAP = (() => {
+  const m = [];
+  for (let i = 0; i < 7; i++) { m.push([]);
+    for (let j = 0; j < 7; j++) {
+      const cy = 32 * i + 16, cx = 32 * j + 16; let a = null;
+      for (const b of BOX_PRIORITY) { const [y0, y1, x0, x1] = FACE_REGIONS[b];
+        if (y0 <= cy && cy < y1 && x0 <= cx && cx < x1) { a = BOX_TO_REGION[b]; break; } }
+      if (a === null) { const [y0, y1, x0, x1] = CENTRAL_FACE;
+        a = (y0 <= cy && cy < y1 && x0 <= cx && cx < x1) ? "skin" : "face_contour"; }
+      m[i].push(a);
+    } }
+  return m; })();
+
+// ------------------------------------------------------------------ numerics
+function softmax(a) {
+  const m = Math.max(...a), e = a.map(v => Math.exp(v - m)), s = e.reduce((x, y) => x + y, 0);
+  return e.map(v => v / s);
+}
+const sigmoid = v => 1 / (1 + Math.exp(-v));
+
+/** production preprocessing: JPEG q85 re-encode -> resize 224 -> (x/255 - .5)/.5, NCHW; also returns the 224 RGB pixels */
+async function toTensor(imgSrc) {
+  const img = new Image(); img.src = imgSrc; await img.decode();
+  const c1 = document.createElement("canvas");
+  c1.width = img.naturalWidth; c1.height = img.naturalHeight;
+  c1.getContext("2d").drawImage(img, 0, 0);
+  const jpeg = c1.toDataURL("image/jpeg", 0.85);        // pipeline.preprocess_jpeg(quality=85)
+  const img2 = new Image(); img2.src = jpeg; await img2.decode();
+  const c = document.createElement("canvas"); c.width = c.height = 224;
+  c.getContext("2d").drawImage(img2, 0, 0, 224, 224);
+  const d = c.getContext("2d").getImageData(0, 0, 224, 224).data;
+  const f = new Float32Array(3 * 224 * 224), n = 224 * 224;
+  for (let i = 0; i < n; i++) {
+    f[i]         = ((d[i * 4]     / 255) - 0.5) / 0.5;
+    f[i + n]     = ((d[i * 4 + 1] / 255) - 0.5) / 0.5;
+    f[i + 2 * n] = ((d[i * 4 + 2] / 255) - 0.5) / 0.5;
+  }
+  return { tensor: new ort.Tensor("float32", f, [1, 3, 224, 224]), rgba: d, canvas: c };
+}
+function syntheticTensor() {
+  const n = 224 * 224, f = new Float32Array(3 * n);
+  for (let i = 0; i < f.length; i++) f[i] = Math.sin(i * 0.017) * 0.5;
+  return new ort.Tensor("float32", f, [1, 3, 224, 224]);
+}
+async function runRaw(key, tensor) {
+  const s = sess[key]; const o = await s.run({ [s.inputNames[0]]: tensor });
+  return Array.from(o[s.outputNames[0]].data);
+}
+const run = async (key, t) => softmax(await runRaw(key, t));
+
+/** pipeline.compute_skin_stats: central 70% crop; Laplacian (ksize=1 kernel) variance on gray; OpenCV-scaled LAB L mean */
+function skinStats(rgba) {
+  const W = 224, y0 = 33, y1 = 190, x0 = 33, x1 = 190;   // int(224*0.15)=33, int(224*0.85)=190
+  const w = x1 - x0, h = y1 - y0, gray = new Float32Array(w * h); let Lsum = 0;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const p = ((y + y0) * W + (x + x0)) * 4, r = rgba[p], g = rgba[p + 1], b = rgba[p + 2];
+    gray[y * w + x] = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+    const lin = v => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+    const Y = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+    const fy = Y > 0.008856 ? Math.cbrt(Y) : 7.787 * Y + 16 / 116;
+    Lsum += (116 * fy - 16) * 255 / 100;
+  }
+  const lap = []; for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const g = (yy, xx) => gray[Math.min(h - 1, Math.max(0, yy)) * w + Math.min(w - 1, Math.max(0, xx))];
+    lap.push(g(y - 1, x) + g(y + 1, x) + g(y, x - 1) + g(y, x + 1) - 4 * g(y, x)); }
+  const mean = lap.reduce((a, b) => a + b, 0) / lap.length;
+  const texture_var = lap.reduce((a, v) => a + (v - mean) * (v - mean), 0) / lap.length;
+  return { texture_var, brightness_L: Lsum / (w * h) };
+}
+
+/** pipeline.evidence_regions_for_filter: probability mass per region minus a centre-prior's mass; keep positives */
+function evidenceRegions(patchLogits) {
+  const pm = []; let tot = 0;
+  for (let i = 0; i < 7; i++) { pm.push([]); for (let j = 0; j < 7; j++) { const v = sigmoid(patchLogits[49 + i * 7 + j]); pm[i].push(v); tot += v; } }
+  if (!(tot > 0)) return { regions: null, map: pm };
+  const head = {}, cen = {};
+  for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) { const r = CELL_MAP[i][j];
+    head[r] = (head[r] || 0) + pm[i][j] / tot; cen[r] = (cen[r] || 0) + CENTER_CELL_MASS[i][j]; }
+  const picked = Object.keys(head).map(r => [r, head[r] - (cen[r] || 0)]).filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]);
+  return { regions: picked.length ? picked : null, map: pm };
+}
+
+// ------------------------------------------------------------------ explanation text (pipeline.build_explanation, verbatim wording)
+function positionPhrase(v, [p05, p50, p95]) {
+  if (v < p05) return "below the 5th percentile of";
+  if (v > p95) return "above the 95th percentile of";
+  return Math.abs(v - p50) ? "within" : "at the median of";
+}
+function fakeExplanation(conf, stats) {
+  const tier = FAKE_TIERS.find(t => conf >= t[0])[1](conf);
+  const base = `Classified as AI-generated (synthetic) facial imagery ${tier}.`;
+  const tail = stats.texture_var < SMOOTH_TEXTURE_THR
+    ? " Measured skin-texture variance for this image falls in the lower range; on its own this reading does not reliably separate synthetic from authentic faces, and it is reported as a descriptive observation rather than as the basis for the classification."
+    : " Measured skin-texture variance for this image is not unusually low; the classification rests on the model's global spatial and frequency-domain features rather than on any single measured statistic.";
+  return base + tail;
+}
+function filterExplanation(atype, ev, regions) {
+  const has = !!regions;
+  const vtail = has ? " On a held-out set with independent ground-truth masks this map beats a centre-prior baseline overall (IoU@10% 0.61 vs 0.57, paired diff significant), though the margin varies by filter type and is not significant for face_reshaping -- this is supporting, not conclusive, evidence." : "";
+  const lead = has
+    ? `Model evidence concentrates in: ${regions.map(([r, d]) => `${r} (+${d.toFixed(3)} mass over centre-prior)`).join(", ")} -- these regions received more of the model's attention than a centred-face prior alone would predict. Artifact classifier's top filter type: ${atype.replace(/_/g, " ")}.`
+    : `Classified as filter-processed (identity-preserving beautification). Artifact classifier's top filter type: ${atype.replace(/_/g, " ")}.`;
+  const spec = EVIDENCE_FOR_TYPE[atype];
+  if (!spec) return lead + " No filter type reached the confidence threshold, so no type-specific measurement is reported for this image." + vtail;
+  const clauses = [], aurocs = [];
+  for (const [key, name, dec, auroc] of spec) {
+    if (!(key in ev)) continue;
+    const v = ev[key], ref = REAL_REF[key], f = x => x.toFixed(dec);
+    clauses.push(`${name} = ${f(v)} (${positionPhrase(v, ref)} the authentic reference range ${f(ref[0])}-${f(ref[2])}, median ${f(ref[1])})`);
+    aurocs.push(auroc);
+  }
+  if (!clauses.length) return lead + " Facial landmarks were unavailable, so no geometric measurement is reported." + vtail;
+  const measured = `${has ? "Supporting measurement on this image" : "Measured on this image"}: ${clauses.join("; ")}.`;
+  const weakest = Math.min(...aurocs);
+  const caveat = weakest >= 0.75
+    ? `On our paired held-out test these measurements separate this filter type from authentic faces at AUROC ${weakest.toFixed(2)} or better, so they are supporting, not conclusive, evidence.`
+    : weakest >= 0.60
+    ? `Single-image discriminative power is limited (AUROC as low as ${weakest.toFixed(2)} on our paired held-out test), so these values are reported rather than asserted as abnormal.`
+    : `On our paired held-out test these measurements separate filtered from authentic faces at AUROC as low as ${weakest.toFixed(2)}, close to chance for a single image, so they are reported as measurements and are not the basis for the classification, which rests on the model's learned features.`;
+  return `${lead} ${measured} ${caveat}${vtail}`;
+}
+
+// ------------------------------------------------------------------ UI: load / analyse / benchmark
+$("load").onclick = async () => {
+  $("load").disabled = true; let done = 0;
+  for (const m of MODELS) {
+    setStatus(`loading ${m.label} ...`);
+    const buf = await (await fetch(m.file)).arrayBuffer();
+    bytes[m.key] = buf.byteLength;
+    sess[m.key] = await ort.InferenceSession.create(buf, { executionProviders: ["wasm"], graphOptimizationLevel: "all" });
+    setBar(++done / MODELS.length);
+  }
+  const mb = (Object.values(bytes).reduce((a, b) => a + b, 0) / 1e6).toFixed(2);
+  setStatus(`models loaded (${mb} MB total)`);
+  $("bench").disabled = $("pickBtn").disabled = false;
+};
+
+$("pickBtn").onclick = () => $("pick").click();
+$("pick").onchange = async e => {
+  const file = e.target.files[0]; if (!file) return;
+  setStatus("analysing ..."); $("out").innerHTML = "";
+  const url = URL.createObjectURL(file);
+  const t0 = performance.now(), { tensor, rgba, canvas } = await toTensor(url);
+  const stats = skinStats(rgba);
+  // Layer 1 gate at the published operating point, then Layer 2 -- mirrors decision_rule.decide
+  const s1 = await run("layer1", tensor), p_real = s1[0], p_manip = s1[1];
+  const s2 = await run("layer2", tensor), pf_m = s2[0], pfl_m = s2[1];
+  const p_fake = p_manip * pf_m, p_filter = p_manip * pfl_m;      // composite class_probs
+  let prediction = "real";
+  if (p_manip >= MANIP_THR) prediction = pf_m >= pfl_m ? "fake" : "filter";
+  const confidence = { real: p_real, fake: p_fake, filter: p_filter }[prediction];
+  let artifact_types = [], regions = [], evid = null, artProbs = null, explanation;
+  if (prediction === "filter") {
+    artProbs = await run("artifact", tensor);
+    const atype = ARTIFACTS[artProbs.indexOf(Math.max(...artProbs))];
+    artifact_types = [atype]; regions = ARTIFACT_REGION_MAP[atype] || [];
+    evid = evidenceRegions(await runRaw("evidence", tensor));
+    explanation = filterExplanation(atype, stats, evid.regions);
+  } else if (prediction === "fake") {
+    explanation = fakeExplanation(confidence, stats);
+  } else explanation = TEMPLATES.real;
+  const ms = performance.now() - t0;
+
+  const record = { schema_version: "2.1.0", model_version: MODEL_VERSION, image: file.name, prediction,
+    confidence: +confidence.toFixed(4),
+    class_probs: { real: +p_real.toFixed(4), fake: +p_fake.toFixed(4), filter: +p_filter.toFixed(4) },
+    artifact_types, suspicious_regions: regions, explanation,
+    web_extras: { latency_ms: +ms.toFixed(1), calibrated: false, face_gate: "not run in web build",
+      ...(artProbs ? { artifact_probs: Object.fromEntries(ARTIFACTS.map((a, i) => [a, +artProbs[i].toFixed(3)])) } : {}),
+      ...(evid && evid.regions ? { evidence_regions: evid.regions.map(([r, d]) => ({ region: r, delta_mass: +d.toFixed(4) })) } : {}),
+      skin_stats: { texture_var: +stats.texture_var.toFixed(1), brightness_L: +stats.brightness_L.toFixed(1) } } };
+
+  // render: verdict, decision trace, evidence overlay, explanation
+  const pct = v => (100 * v).toFixed(1) + "%";
+  let h = `<div class="card"><div class="row"><div><img src="${url}"></div><div>`;
+  h += `<div class="verdict ${prediction}">${prediction.toUpperCase()}</div>`;
+  if (artifact_types.length) h += `<span class="pill">filter type: ${artifact_types[0].replace(/_/g, " ")}</span>`;
+  h += `<span class="pill">${ms.toFixed(0)} ms on this device</span>`;
+  h += `<div style="margin-top:8px"><div class="step"><b>Layer 1 p(manipulated)</b><span class="bar"><i style="width:${pct(p_manip)}"></i></span>${pct(p_manip)}</div>`;
+  h += `<div class="step"><b>Layer 2 p(fake | manip.)</b><span class="bar"><i style="width:${pct(pf_m)}"></i></span>${pct(pf_m)}</div>`;
+  h += `<div class="step"><b>composite real / fake / filter</b>${pct(p_real)} / ${pct(p_fake)} / ${pct(p_filter)}</div>`;
+  h += `<div class="mut">gate: p(manipulated) &ge; ${MANIP_THR} &rarr; Layer 2; raw scores, not calibrated</div></div></div></div>`;
+  if (evid) {
+    h += `<h2>Where the model looked (patch evidence head, filter class)</h2><div class="row"><div><canvas id="ev" width="224" height="224"></canvas></div><div>`;
+    h += evid.regions
+      ? `<table><tr><th>region</th><th>mass over centre-prior</th></tr>` + evid.regions.map(([r, d]) => `<tr><td>${r}</td><td>+${d.toFixed(3)}</td></tr>`).join("") + `</table><p class="mut">Only regions that receive more probability mass than a centred-face prior would assign them are listed.</p>`
+      : `<p class="mut">No region beats the centre-prior baseline for this image, so no region claim is made (fail-safe).</p>`;
+    h += `</div></div>`;
+  }
+  h += `<h2>Explanation</h2><div class="expl">${explanation}</div></div>`;
+  $("out").innerHTML = h;
+  if (evid) {   // overlay: 7x7 sigmoid map on the 224 crop
+    const cv = $("ev"), cx = cv.getContext("2d"); cx.drawImage(canvas, 0, 0);
+    const mx = Math.max(...evid.map.flat());
+    for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) {
+      cx.fillStyle = `rgba(217,95,2,${(0.65 * evid.map[i][j] / mx).toFixed(3)})`; cx.fillRect(32 * j, 32 * i, 32, 32); }
+    cx.strokeStyle = "rgba(255,255,255,.35)"; for (let k = 1; k < 7; k++) { cx.beginPath(); cx.moveTo(32 * k, 0); cx.lineTo(32 * k, 224); cx.moveTo(0, 32 * k); cx.lineTo(224, 32 * k); cx.stroke(); }
+  }
+  $("json").textContent = JSON.stringify(record, null, 1);
+  setStatus("done");
+};
+
+$("bench").onclick = async () => {
+  $("bench").disabled = true;
+  const t = syntheticTensor(), res = {};
+  let step = 0, total = MODELS.length * (WARMUP + ITERS);
+  for (const m of MODELS) {
+    for (let i = 0; i < WARMUP; i++) { await runRaw(m.key, t); setBar(++step / total); }
+    const ts = [];
+    for (let i = 0; i < ITERS; i++) {
+      const t0 = performance.now(); await runRaw(m.key, t); ts.push(performance.now() - t0);
+      setBar(++step / total); if (i % 10 === 0) setStatus(`${m.label}: ${i}/${ITERS}`);
+    }
+    ts.sort((a, b) => a - b);
+    res[m.key] = { label: m.label, bytes: bytes[m.key], iters: ITERS,
+      mean: +(ts.reduce((a, b) => a + b, 0) / ts.length).toFixed(2), min: +ts[0].toFixed(2),
+      p50: +ts[Math.floor(ts.length * 0.5)].toFixed(2), p95: +ts[Math.floor(ts.length * 0.95)].toFixed(2),
+      max: +ts[ts.length - 1].toFixed(2) };
+  }
+  const real = res.layer1.mean + res.layer2.mean;            // pipeline always runs both layers
+  const fake = real, filt = real + res.artifact.mean + res.evidence.mean;
+  const out = { kind: "latency_benchmark", when: new Date().toISOString(), device: navigator.userAgent,
+    cores: navigator.hardwareConcurrency || null, deviceMemoryGB: navigator.deviceMemory || null,
+    wasmThreads: ort.env.wasm.numThreads, warmup: WARMUP, iters: ITERS, perModel: res,
+    routes: { real_or_fake_path_ms: +real.toFixed(2), filter_path_ms: +filt.toFixed(2) },
+    totalModelBytes: Object.values(bytes).reduce((a, b) => a + b, 0),
+    note: "ONNX Runtime WASM in a browser; an upper bound on native TFLite latency." };
+  let h = `<h2>Latency (${ITERS} iterations each)</h2><table><tr><th>model</th><th>MB</th><th>mean</th><th>p50</th><th>p95</th><th>min</th></tr>`;
+  for (const m of MODELS) { const r = res[m.key];
+    h += `<tr><td>${m.label}</td><td>${(r.bytes / 1e6).toFixed(2)}</td><td><b>${r.mean}</b></td><td>${r.p50}</td><td>${r.p95}</td><td>${r.min}</td></tr>`; }
+  h += `</table><table><tr><th>decision route</th><th>ms/image</th></tr><tr><td>real or fake (L1+L2)</td><td><b>${real.toFixed(2)}</b></td></tr>` +
+       `<tr><td>filter (L1+L2+artifact+evidence)</td><td><b>${filt.toFixed(2)}</b></td></tr></table>`;
+  $("out").innerHTML = h; $("json").textContent = JSON.stringify(out, null, 1);
+  setStatus("benchmark done - copy the JSON below"); $("bench").disabled = false;
+};
+</script>
+</body>
+</html>

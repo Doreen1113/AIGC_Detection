@@ -1,0 +1,20 @@
+{
+ "schema_version": "2.1.0",
+ "model_version": "v8.17",
+ "image": "smoothing_Rebecca_Romijn-Stamos_0002.jpg",
+ "prediction": "filter",
+ "confidence": 0.8442,
+ "class_probs": {
+  "real": 0.0943,
+  "fake": 0.0615,
+  "filter": 0.8442
+ },
+ "artifact_types": [
+  "smoothing"
+ ],
+ "suspicious_regions": [
+  "emp_smoothing_upper",
+  "emp_smoothing_lower"
+ ],
+ "explanation": "Model evidence concentrates in: nose (+0.242 mass over centre-prior), eyes (+0.001 mass over centre-prior) -- these regions received more of the model's attention than a centred-face prior alone would predict. Artifact classifier's top filter type: smoothing. Supporting measurement on this image: skin-texture variance (Laplacian) = 135.8 (within the authentic reference range 52.4-299.9, median 137.0). On our paired held-out test these measurements separate filtered from authentic faces at AUROC as low as 0.55, close to chance for a single image, so they are reported as measurements and are not the basis for the classification, which rests on the model's learned features. On a held-out set with independent ground-truth masks this map beats a centre-prior baseline overall (IoU@10% 0.61 vs 0.57, paired diff significant), though the margin varies by filter type and is not significant for face_reshaping -- this is supporting, not conclusive, evidence."
+}

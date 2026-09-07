@@ -1,0 +1,15 @@
+{
+ "schema_version": "2.1.0",
+ "model_version": "v8.17",
+ "image": "Rebecca_Romijn-Stamos_0002.jpg",
+ "prediction": "real",
+ "confidence": 0.7966,
+ "class_probs": {
+  "real": 0.7966,
+  "fake": 0.0139,
+  "filter": 0.1894
+ },
+ "artifact_types": [],
+ "suspicious_regions": [],
+ "explanation": "No significant manipulation artifacts detected. The image appears authentic."
+}

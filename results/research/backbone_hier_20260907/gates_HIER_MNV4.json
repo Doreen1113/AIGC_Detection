@@ -1,0 +1,293 @@
+{
+  "provenance": {
+    "arm": "HIER_MNV4",
+    "layer1": "C:\\My_Project\\AIGC\\checkpoints\\research\\backbone_hier_20260907\\layer1_BASE_mobilenetv4_last.pth",
+    "layer1_sha256": "8bda66d276bcf3a9f700eb28b37e937374d84f14662bc7ec37b116c61aa8891d",
+    "layer1_backbone": "mobilenetv4",
+    "layer2": "C:\\My_Project\\AIGC\\checkpoints\\research\\backbone_hier_20260907\\layer2_BASE_mobilenetv4_s20260907.pth",
+    "layer2_sha256": "dae517f203b46f9b5e9ec9312e589419bc1d8ea0c3a799fad66f07d1b58849db",
+    "layer2_backbone": "mobilenetv4",
+    "layer2_type": "twoclass",
+    "filter_threshold": 0.5,
+    "manip_threshold": 0.5,
+    "script": "C:\\My_Project\\AIGC\\results\\research\\backbone_hier_20260907\\eval_gates.py",
+    "script_sha256": "3cda6e681bf127d3b03724e2a73f9fb6bc4618d157d4a61925cb65edcad63c30",
+    "device": "cuda"
+  },
+  "gates": {
+    "truetest_paired": {
+      "n": 249,
+      "real_recall": 68.27309236947792,
+      "filter_recall": 89.5582329317269,
+      "balanced": 78.91566265060241,
+      "strict": 57.831325301204814,
+      "by_type": {
+        "eye_enlarging": {
+          "n": 62,
+          "filter_recall": 85.48387096774194,
+          "strict": 59.67741935483871
+        },
+        "face_reshaping": {
+          "n": 62,
+          "filter_recall": 90.32258064516128,
+          "strict": 61.29032258064516
+        },
+        "smoothing": {
+          "n": 63,
+          "filter_recall": 100.0,
+          "strict": 60.317460317460316
+        },
+        "whitening": {
+          "n": 62,
+          "filter_recall": 82.25806451612904,
+          "strict": 50.0
+        }
+      }
+    },
+    "truetest_fake_recall": {
+      "n": 270,
+      "recall": 98.51851851851852
+    },
+    "truetest_lowfpr": {
+      "n": 520,
+      "auroc": 0.9966666666666667,
+      "tpr_at_fpr1": 0.9851851851851852,
+      "tpr_at_fpr5": 0.9851851851851852,
+      "pauc5": 0.0
+    },
+    "shadow_paired": {
+      "n": 279,
+      "real_recall": 94.6236559139785,
+      "filter_recall": 7.526881720430108,
+      "balanced": 51.075268817204304,
+      "strict": 6.093189964157706,
+      "by_type": {
+        "eye_enlarging": {
+          "n": 77,
+          "filter_recall": 3.896103896103896,
+          "strict": 2.5974025974025974
+        },
+        "face_reshaping": {
+          "n": 71,
+          "filter_recall": 2.8169014084507045,
+          "strict": 2.8169014084507045
+        },
+        "smoothing": {
+          "n": 63,
+          "filter_recall": 15.873015873015872,
+          "strict": 12.698412698412698
+        },
+        "whitening": {
+          "n": 68,
+          "filter_recall": 8.823529411764707,
+          "strict": 7.352941176470589
+        }
+      }
+    },
+    "aiguard_unseen_auroc": {
+      "n": 454,
+      "auroc": 0.7652894491129785
+    },
+    "celeba_real_recall": {
+      "n": 3000,
+      "recall": 99.96666666666667
+    },
+    "stylegan2_notreal_recall": {
+      "n": 3000,
+      "recall": 98.13333333333333
+    },
+    "stylegan2_decontam_notreal_recall": {
+      "n": 3000,
+      "n_excluded_from_pool": 6376,
+      "recall": 96.89999999999999
+    },
+    "fake_filter_stress": {
+      "n": 2289,
+      "misclassified": 346,
+      "error_pct": 15.11577107907383,
+      "per_condition": {
+        "combined_heavy": {
+          "n": 286,
+          "misclassified": 2,
+          "error_pct": 0.6993006993006993
+        },
+        "combined_medium": {
+          "n": 286,
+          "misclassified": 3,
+          "error_pct": 1.048951048951049
+        },
+        "eye_enlarging": {
+          "n": 286,
+          "misclassified": 114,
+          "error_pct": 39.86013986013986
+        },
+        "face_reshaping": {
+          "n": 286,
+          "misclassified": 99,
+          "error_pct": 34.61538461538461
+        },
+        "smoothing_heavy": {
+          "n": 286,
+          "misclassified": 3,
+          "error_pct": 1.048951048951049
+        },
+        "smoothing_light": {
+          "n": 286,
+          "misclassified": 13,
+          "error_pct": 4.545454545454546
+        },
+        "smoothing_medium": {
+          "n": 286,
+          "misclassified": 0,
+          "error_pct": 0.0
+        },
+        "whitening_medium": {
+          "n": 287,
+          "misclassified": 112,
+          "error_pct": 39.02439024390244
+        }
+      }
+    },
+    "alibaba_filter_recall": {
+      "n": 21151,
+      "recall": 57.30698312136542,
+      "by_type": {
+        "EyeEnlarging": {
+          "n": 5340,
+          "recall": 52.41573033707865
+        },
+        "FaceLifting": {
+          "n": 5265,
+          "recall": 39.71509971509972
+        },
+        "Smoothing": {
+          "n": 5268,
+          "recall": 94.98861047835992
+        },
+        "Whitening": {
+          "n": 5278,
+          "recall": 42.19401288366806
+        }
+      }
+    },
+    "stressdev": {
+      "n": 2351,
+      "error_pct": 4.8064653339004675,
+      "per_condition": {
+        "combined_heavy": {
+          "n": 293,
+          "error_pct": 0.6825938566552902
+        },
+        "combined_medium": {
+          "n": 293,
+          "error_pct": 1.3651877133105803
+        },
+        "eye_enlarging": {
+          "n": 293,
+          "error_pct": 8.19112627986348
+        },
+        "face_reshaping": {
+          "n": 293,
+          "error_pct": 8.873720136518772
+        },
+        "smoothing_heavy": {
+          "n": 293,
+          "error_pct": 0.6825938566552902
+        },
+        "smoothing_light": {
+          "n": 293,
+          "error_pct": 1.3651877133105803
+        },
+        "smoothing_medium": {
+          "n": 293,
+          "error_pct": 1.023890784982935
+        },
+        "whitening_medium": {
+          "n": 300,
+          "error_pct": 16.0
+        }
+      }
+    },
+    "indomain_filter": {
+      "real_filter_n": 8445,
+      "real_filter_recall": 81.1367673179396,
+      "clean_fake_n": 3551,
+      "clean_fake_fake_recall": 97.35285834976062,
+      "clean_fake_false_filter": 0.056322162771050406
+    },
+    "ffpp_zeroshot_900frame": {
+      "n": 900,
+      "auroc_layer1": 0.5508333333333333,
+      "auroc_end2end": 0.5498833333333333,
+      "pauc5_layer1": 0.03666666666666667,
+      "pauc5_end2end": 0.028333333333333335,
+      "tpr_at_fpr1_layer1": 0.011666666666666667,
+      "tpr_at_fpr5_layer1": 0.06666666666666667,
+      "tpr_at_fpr1_end2end": 0.011666666666666667,
+      "tpr_at_fpr5_end2end": 0.06333333333333334,
+      "per_method": {
+        "Deepfakes": {
+          "n": 150,
+          "rate": 37.333333333333336
+        },
+        "Face2Face": {
+          "n": 150,
+          "rate": 20.0
+        },
+        "FaceSwap": {
+          "n": 150,
+          "rate": 27.333333333333332
+        },
+        "NeuralTextures": {
+          "n": 150,
+          "rate": 21.333333333333336
+        },
+        "real": {
+          "n": 300,
+          "rate": 81.0
+        }
+      },
+      "fake_catch_rate": 26.5,
+      "real_recall": 81.0
+    },
+    "ffpp_official_test_frame": {
+      "n": 6620,
+      "auroc_layer1": 0.5423494684289428,
+      "auroc_end2end": 0.5425050543949168,
+      "pauc5_layer1": 0.02797395553966267,
+      "pauc5_end2end": 0.026243312382236036,
+      "tpr_at_fpr1_layer1": 0.013386123680241327,
+      "tpr_at_fpr5_layer1": 0.05486425339366516,
+      "tpr_at_fpr1_end2end": 0.0111236802413273,
+      "tpr_at_fpr5_end2end": 0.05260180995475113,
+      "per_method": {
+        "Deepfakes": {
+          "n": 1327,
+          "rate": 39.41220798794273
+        },
+        "Face2Face": {
+          "n": 1326,
+          "rate": 23.076923076923077
+        },
+        "FaceSwap": {
+          "n": 1323,
+          "rate": 29.327286470143616
+        },
+        "NeuralTextures": {
+          "n": 1328,
+          "rate": 28.915662650602407
+        },
+        "real": {
+          "n": 1316,
+          "rate": 75.98784194528876
+        }
+      },
+      "fake_catch_rate": 30.184766214177976,
+      "real_recall": 75.98784194528876
+    },
+    "ffpp_official_test_video": {
+      "n": 679,
+      "auroc": 0.5484644133896652
+    }
+  }
+}

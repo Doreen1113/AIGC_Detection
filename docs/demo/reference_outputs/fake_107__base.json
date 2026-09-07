@@ -1,0 +1,15 @@
+{
+ "schema_version": "2.1.0",
+ "model_version": "v8.17",
+ "image": "fake_107__base.png",
+ "prediction": "fake",
+ "confidence": 0.8113,
+ "class_probs": {
+  "real": 0.1153,
+  "fake": 0.8113,
+  "filter": 0.0734
+ },
+ "artifact_types": [],
+ "suspicious_regions": [],
+ "explanation": "Classified as AI-generated (synthetic) facial imagery (model score 0.81, well above the decision boundary; this score is not a calibrated probability and should not be read as a percentage chance, especially on images unlike the training data). Measured skin-texture variance for this image is not unusually low; the classification rests on the model's global spatial and frequency-domain features rather than on any single measured statistic."
+}

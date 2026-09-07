@@ -1,0 +1,30 @@
+{
+ "FA": {
+  "axis": "FA",
+  "n": 249,
+  "clusters": 249,
+  "mnv4_pct": 2.811,
+  "shufflenet_pct": 8.835,
+  "delta_pp": -6.024,
+  "ci95": [
+   -10.04,
+   -2.008
+  ],
+  "verdict": "IMPROVES (significant)"
+ },
+ "MISS": {
+  "axis": "MISS",
+  "n": 2289,
+  "clusters": 287,
+  "mnv4_pct": 2.49,
+  "shufflenet_pct": 1.966,
+  "delta_pp": 0.524,
+  "ci95": [
+   -0.482,
+   1.568
+  ],
+  "verdict": "no significant change"
+ },
+ "degraded_axes": [],
+ "verdict": "KEEP"
+}
